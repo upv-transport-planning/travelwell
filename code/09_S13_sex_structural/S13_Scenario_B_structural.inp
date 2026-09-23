@@ -1,0 +1,253 @@
+TITLE:
+SCENARIO B - SEX - STRUCTURAL FREE
+TREE PRESENCE AND TREE SIZE
+TYPE=COMPLEX, MLR, CLUSTER=ID, STARTS=100;
+
+DATA:
+FILE = ../../data/Scenario_B_long_final.txt;
+
+VARIABLE:
+
+NAMES =
+ID
+MODO_rango
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+V1 V2 V3 V4 V5
+V6 V7 V8 V9 V10
+V11 V12 V13 V14 V15
+V16 V17 V18 V19;
+
+USEVARIABLES =
+ID
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+pblock;
+
+CLUSTER = ID;
+
+GROUPING = V3 (1 = woman 2 = man);
+! V3=1: mujer; V3=2: hombre.
+
+MISSING = ALL(-999);
+
+DEFINE:
+! Survey method: online=1, face-to-face=2.
+pblock = present*block;
+
+ANALYSIS:
+TYPE = COMPLEX;
+ESTIMATOR = MLR;
+STARTS = 100;
+ITERATIONS = 10000;
+
+MODEL:
+
+! Reference group = category 1.
+AP BY
+AP1@1
+AP2 (lpa2)
+AP3 (lpa3)
+AP4 (lpa4)
+AP5 (lpa5);
+
+AN BY
+AN1@1
+AN2 (lna2)
+AN3 (lna3)
+AN4 (lna4)
+AN5 (lna5);
+
+ST BY
+S1@1
+S2 (lst2)
+S3 (lst3)
+S4 (lst4)
+S5 (lst5);
+
+! Cross-loadings kept free across groups.
+AN BY AP2 (wxpa);
+AP BY AN2 (wxan);
+
+! Item intercepts free: scalar invariance is not imposed.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Latent intercepts fixed to zero when item intercepts are free.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Latent variances and item residual variances free by group.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+AP WITH AN (wpan);
+
+AP ON
+present (wa1)
+block   (wa2)
+pblock  (wa3)
+online  (wa4);
+
+AN ON
+present (wd1)
+block   (wd2)
+pblock  (wd3)
+online  (wd4);
+
+ST ON
+AP      (wb1)
+AN      (wb2)
+present (wc1)
+block   (wc2)
+pblock  (wc3)
+online  (wc4);
+
+MODEL man:
+
+AP BY
+AP1@1
+AP2 (lpa2)
+AP3 (lpa3)
+AP4 (lpa4)
+AP5 (lpa5);
+
+AN BY
+AN1@1
+AN2 (lna2)
+AN3 (lna3)
+AN4 (lna4)
+AN5 (lna5);
+
+ST BY
+S1@1
+S2 (lst2)
+S3 (lst3)
+S4 (lst4)
+S5 (lst5);
+
+! Cross-loadings kept free across groups.
+AN BY AP2 (mxpa);
+AP BY AN2 (mxan);
+
+! Item intercepts free: scalar invariance is not imposed.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Latent intercepts fixed to zero when item intercepts are free.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Latent variances and item residual variances free by group.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+AP WITH AN (mpan);
+
+AP ON
+present (ma1)
+block   (ma2)
+pblock  (ma3)
+online  (ma4);
+
+AN ON
+present (md1)
+block   (md2)
+pblock  (md3)
+online  (md4);
+
+ST ON
+AP      (mb1)
+AN      (mb2)
+present (mc1)
+block   (mc2)
+pblock  (mc3)
+online  (mc4);
+
+MODEL CONSTRAINT:
+
+NEW(wpdr wpip wpin wpii wpto wsdr wsip wsin wsii wsto mpdr mpip mpin
+mpii mpto msdr msip msin msii msto d21pdr d21pip d21pin d21pii d21pto
+d21sdr d21sip d21sin d21sii d21sto);
+
+! w: primary attribute (block=0).
+wpdr = wc1;
+wpip = wa1*wb1;
+wpin = wd1*wb2;
+wpii = wpip+wpin;
+wpto = wpdr+wpii;
+
+! w: secondary attribute (block=1).
+wsdr = wc1+wc3;
+wsip = (wa1+wa3)*wb1;
+wsin = (wd1+wd3)*wb2;
+wsii = wsip+wsin;
+wsto = wsdr+wsii;
+
+! m: primary attribute (block=0).
+mpdr = mc1;
+mpip = ma1*mb1;
+mpin = md1*mb2;
+mpii = mpip+mpin;
+mpto = mpdr+mpii;
+
+! m: secondary attribute (block=1).
+msdr = mc1+mc3;
+msip = (ma1+ma3)*mb1;
+msin = (md1+md3)*mb2;
+msii = msip+msin;
+msto = msdr+msii;
+
+! Pairwise differences: group 2 minus group 1.
+d21pdr = mpdr-wpdr;
+d21pip = mpip-wpip;
+d21pin = mpin-wpin;
+d21pii = mpii-wpii;
+d21pto = mpto-wpto;
+d21sdr = msdr-wsdr;
+d21sip = msip-wsip;
+d21sin = msin-wsin;
+d21sii = msii-wsii;
+d21sto = msto-wsto;
+
+
+MODEL TEST:
+
+! Global equality test across groups: 11 df.
+! online adjustment coefficients are not tested.
+0 = ma1-wa1;
+0 = ma2-wa2;
+0 = ma3-wa3;
+0 = md1-wd1;
+0 = md2-wd2;
+0 = md3-wd3;
+0 = mb1-wb1;
+0 = mb2-wb2;
+0 = mc1-wc1;
+0 = mc2-wc2;
+0 = mc3-wc3;
+
+OUTPUT:
+SAMPSTAT;
+STANDARDIZED;
+CINTERVAL;
+RESIDUAL;
+TECH1;
+TECH4;
+MODINDICES(10);

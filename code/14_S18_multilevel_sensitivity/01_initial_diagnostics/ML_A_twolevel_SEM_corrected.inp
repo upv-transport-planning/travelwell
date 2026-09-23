@@ -1,0 +1,122 @@
+TITLE:
+  TWO-LEVEL SEM SENSITIVITY - SCENARIO A
+  social street activation: commercial frontage and outdoor terraces.
+  Separates within-participant from between-participant variation.
+  Within-level condition/attribute effects are the sensitivity target.
+
+DATA:
+  FILE = ../../data/Scenario_A_long_final.txt;
+
+VARIABLE:
+  NAMES =
+  ID MODO_rango online block present AP1 AP2
+  AP3 AP4 AP5 AN1 AN2 AN3 AN4
+  AN5 S1 S2 S3 S4 S5 V1
+  V2 V3 V4 V5 V6 V7 V8
+  V9 V10 V11 V12 V13 V14 V15
+  V16 V17 V18 V19
+  ;
+  USEVARIABLES =
+  ID online block present
+  AP1 AP2 AP3 AP4 AP5
+  AN1 AN2 AN3 AN4 AN5
+  S1 S2 S3 S4 S5
+  pblock;
+  CLUSTER = ID;
+  WITHIN = block present pblock;
+  BETWEEN = online;
+  MISSING = ALL(-999);
+
+DEFINE:
+  pblock = present*block;
+
+ANALYSIS:
+  TYPE = TWOLEVEL;
+  ESTIMATOR = MLR;
+  ITERATIONS = 10000;
+
+MODEL:
+
+  %WITHIN%
+
+  APW BY AP1@1 AP2 AP3 AP4 AP5;
+  ANW BY AN1@1 AN2 AN3 AN4 AN5;
+  ANW BY AP2;
+  APW BY AN2;
+
+  STW BY S1@1 S2 S3 S4 S5;
+
+  APW WITH ANW;
+
+  APW ON
+    present (a1w)
+    block   (a2w)
+    pblock  (a3w);
+
+  ANW ON
+    present (d1w)
+    block   (d2w)
+    pblock  (d3w);
+
+  STW ON
+    APW     (b1w)
+    ANW     (b2w)
+    present (c1w)
+    block   (c2w)
+    pblock  (c3w);
+
+  %BETWEEN%
+
+  APB BY AP1@1 AP2 AP3 AP4 AP5;
+  ANB BY AN1@1 AN2 AN3 AN4 AN5;
+  ANB BY AP2;
+  APB BY AN2;
+
+  STB BY S1@1 S2 S3 S4 S5;
+
+  APB WITH ANB;
+
+  APB ON online (a4b);
+  ANB ON online (d4b);
+
+  STB ON
+    APB    (b1b)
+    ANB    (b2b)
+    online (c4b);
+
+MODEL CONSTRAINT:
+  NEW(
+    capw canw cdirw ciapw cianw ciindw ctotw
+    tapw tanw tdirw tiapw tianw tiindw ttotw
+    dapw danw ddirw diapw dianw diindw dtotw
+  );
+
+  ! Within-person commercial-frontage contrast: block = 0.
+  capw   = a1w;
+  canw   = d1w;
+  cdirw  = c1w;
+  ciapw  = a1w*b1w;
+  cianw  = d1w*b2w;
+  ciindw = ciapw+cianw;
+  ctotw  = cdirw+ciindw;
+
+  ! Within-person outdoor-terrace contrast: block = 1.
+  tapw   = a1w+a3w;
+  tanw   = d1w+d3w;
+  tdirw  = c1w+c3w;
+  tiapw  = (a1w+a3w)*b1w;
+  tianw  = (d1w+d3w)*b2w;
+  tiindw = tiapw+tianw;
+  ttotw  = tdirw+tiindw;
+
+  ! Difference: terraces minus commercial frontage.
+  dapw   = tapw-capw;
+  danw   = tanw-canw;
+  ddirw  = tdirw-cdirw;
+  diapw  = tiapw-ciapw;
+  dianw  = tianw-cianw;
+  diindw = tiindw-ciindw;
+  dtotw  = ttotw-ctotw;
+
+OUTPUT:
+  SAMPSTAT STANDARDIZED CINTERVAL RESIDUAL TECH1 TECH4 TECH8;

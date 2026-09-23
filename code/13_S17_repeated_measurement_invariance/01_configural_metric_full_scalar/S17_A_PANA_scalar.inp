@@ -1,0 +1,170 @@
+TITLE:
+  S17 - REPEATED-EVALUATION SCALAR INVARIANCE - SCENARIO A
+  PA/NA measurement model; social street activation: commercial frontage and outdoor terraces.
+  Primary and retained cross-loadings constrained equal; indicator intercepts also constrained equal.
+
+DATA:
+  FILE = ../../data/Scenario_A_short_final_revised.txt;
+
+VARIABLE:
+  NAMES =
+  ID MODO_rango online V1 V2 V3 V4
+  V5 V6 V7 V8 V9 V10 V11
+  V12 V13 V14 V15 V16 V17 V18
+  V19 AP1cc AP2cc AP3cc AP4cc AP5cc AN1cc
+  AN2cc AN3cc AN4cc AN5cc S1cc S2cc S3cc
+  S4cc S5cc AP1sc AP2sc AP3sc AP4sc AP5sc
+  AN1sc AN2sc AN3sc AN4sc AN5sc S1sc S2sc
+  S3sc S4sc S5sc AP1ct AP2ct AP3ct AP4ct
+  AP5ct AN1ct AN2ct AN3ct AN4ct AN5ct S1ct
+  S2ct S3ct S4ct S5ct AP1st AP2st AP3st
+  AP4st AP5st AN1st AN2st AN3st AN4st AN5st
+  S1st S2st S3st S4st S5st
+  ;
+  USEVARIABLES =
+  AP1cc AP2cc AP3cc AP4cc AP5cc AN1cc AN2cc
+  AN3cc AN4cc AN5cc AP1sc AP2sc AP3sc AP4sc
+  AP5sc AN1sc AN2sc AN3sc AN4sc AN5sc AP1ct
+  AP2ct AP3ct AP4ct AP5ct AN1ct AN2ct AN3ct
+  AN4ct AN5ct AP1st AP2st AP3st AP4st AP5st
+  AN1st AN2st AN3st AN4st AN5st
+  ;
+  MISSING = ALL(-999);
+
+ANALYSIS:
+  ESTIMATOR = MLR;
+  ITERATIONS = 10000;
+
+MODEL:
+  APcc BY AP1cc@1;
+  APcc BY AP2cc (la2);
+  APcc BY AP3cc (la3);
+  APcc BY AP4cc (la4);
+  APcc BY AP5cc (la5);
+  ANcc BY AN1cc@1;
+  ANcc BY AN2cc (ln2);
+  ANcc BY AN3cc (ln3);
+  ANcc BY AN4cc (ln4);
+  ANcc BY AN5cc (ln5);
+  ANcc BY AP2cc (xpa2);
+  APcc BY AN2cc (xan2);
+
+  APsc BY AP1sc@1;
+  APsc BY AP2sc (la2);
+  APsc BY AP3sc (la3);
+  APsc BY AP4sc (la4);
+  APsc BY AP5sc (la5);
+  ANsc BY AN1sc@1;
+  ANsc BY AN2sc (ln2);
+  ANsc BY AN3sc (ln3);
+  ANsc BY AN4sc (ln4);
+  ANsc BY AN5sc (ln5);
+  ANsc BY AP2sc (xpa2);
+  APsc BY AN2sc (xan2);
+
+  APct BY AP1ct@1;
+  APct BY AP2ct (la2);
+  APct BY AP3ct (la3);
+  APct BY AP4ct (la4);
+  APct BY AP5ct (la5);
+  ANct BY AN1ct@1;
+  ANct BY AN2ct (ln2);
+  ANct BY AN3ct (ln3);
+  ANct BY AN4ct (ln4);
+  ANct BY AN5ct (ln5);
+  ANct BY AP2ct (xpa2);
+  APct BY AN2ct (xan2);
+
+  APst BY AP1st@1;
+  APst BY AP2st (la2);
+  APst BY AP3st (la3);
+  APst BY AP4st (la4);
+  APst BY AP5st (la5);
+  ANst BY AN1st@1;
+  ANst BY AN2st (ln2);
+  ANst BY AN3st (ln3);
+  ANst BY AN4st (ln4);
+  ANst BY AN5st (ln5);
+  ANst BY AP2st (xpa2);
+  APst BY AN2st (xan2);
+
+  ! Equal indicator intercepts across the four evaluations.
+  [AP1cc] (ia1);
+  [AP1sc] (ia1);
+  [AP1ct] (ia1);
+  [AP1st] (ia1);
+  [AP2cc] (ia2);
+  [AP2sc] (ia2);
+  [AP2ct] (ia2);
+  [AP2st] (ia2);
+  [AP3cc] (ia3);
+  [AP3sc] (ia3);
+  [AP3ct] (ia3);
+  [AP3st] (ia3);
+  [AP4cc] (ia4);
+  [AP4sc] (ia4);
+  [AP4ct] (ia4);
+  [AP4st] (ia4);
+  [AP5cc] (ia5);
+  [AP5sc] (ia5);
+  [AP5ct] (ia5);
+  [AP5st] (ia5);
+  [AN1cc] (in1);
+  [AN1sc] (in1);
+  [AN1ct] (in1);
+  [AN1st] (in1);
+  [AN2cc] (in2);
+  [AN2sc] (in2);
+  [AN2ct] (in2);
+  [AN2st] (in2);
+  [AN3cc] (in3);
+  [AN3sc] (in3);
+  [AN3ct] (in3);
+  [AN3st] (in3);
+  [AN4cc] (in4);
+  [AN4sc] (in4);
+  [AN4ct] (in4);
+  [AN4st] (in4);
+  [AN5cc] (in5);
+  [AN5sc] (in5);
+  [AN5ct] (in5);
+  [AN5st] (in5);
+
+  ! Reference latent means fixed at zero; remaining evaluation means free.
+  [APcc@0 ANcc@0];
+  [APsc* ANsc* APct* ANct* APst* ANst*];
+
+  ! Same-indicator residuals correlated across all repeated evaluations.
+  AP1cc WITH AP1sc AP1ct AP1st;
+  AP1sc WITH AP1ct AP1st;
+  AP1ct WITH AP1st;
+  AP2cc WITH AP2sc AP2ct AP2st;
+  AP2sc WITH AP2ct AP2st;
+  AP2ct WITH AP2st;
+  AP3cc WITH AP3sc AP3ct AP3st;
+  AP3sc WITH AP3ct AP3st;
+  AP3ct WITH AP3st;
+  AP4cc WITH AP4sc AP4ct AP4st;
+  AP4sc WITH AP4ct AP4st;
+  AP4ct WITH AP4st;
+  AP5cc WITH AP5sc AP5ct AP5st;
+  AP5sc WITH AP5ct AP5st;
+  AP5ct WITH AP5st;
+  AN1cc WITH AN1sc AN1ct AN1st;
+  AN1sc WITH AN1ct AN1st;
+  AN1ct WITH AN1st;
+  AN2cc WITH AN2sc AN2ct AN2st;
+  AN2sc WITH AN2ct AN2st;
+  AN2ct WITH AN2st;
+  AN3cc WITH AN3sc AN3ct AN3st;
+  AN3sc WITH AN3ct AN3st;
+  AN3ct WITH AN3st;
+  AN4cc WITH AN4sc AN4ct AN4st;
+  AN4sc WITH AN4ct AN4st;
+  AN4ct WITH AN4st;
+  AN5cc WITH AN5sc AN5ct AN5st;
+  AN5sc WITH AN5ct AN5st;
+  AN5ct WITH AN5st;
+
+OUTPUT:
+  SAMPSTAT STANDARDIZED CINTERVAL RESIDUAL TECH1 TECH4 MODINDICES(10);

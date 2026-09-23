@@ -1,0 +1,179 @@
+TITLE:
+SCENARIO A - CONTINUOUS AGE MODERATION (V1)
+COMMERCIAL ACTIVITY AND TERRACES
+Age centered at 45 years and scaled per 10 years.
+TYPE=COMPLEX, MLR, CLUSTER=ID, STARTS=100;
+
+DATA:
+FILE = ../../data/Scenario_A_long_final.txt;
+
+VARIABLE:
+
+NAMES =
+ID
+MODO_rango
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+V1 V2 V3 V4 V5
+V6 V7 V8 V9 V10
+V11 V12 V13 V14 V15
+V16 V17 V18 V19;
+
+! V1 se usa en DEFINE para crear age10, pero no se incluye
+! como variable analizada separada en USEVARIABLES.
+USEVARIABLES =
+ID
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+pblock age10 prage blage pbage;
+
+CLUSTER = ID;
+MISSING = ALL(-999);
+
+DEFINE:
+! Survey method: 1=online, 2=face-to-face.
+pblock = present*block;
+age10 = (V1-45)/10;
+prage = present*age10;
+blage = block*age10;
+pbage = pblock*age10;
+
+ANALYSIS:
+TYPE = COMPLEX;
+ESTIMATOR = MLR;
+STARTS = 100;
+ITERATIONS = 10000;
+
+MODEL:
+
+AP BY AP1@1 AP2 AP3 AP4 AP5;
+AN BY AN1@1 AN2 AN3 AN4 AN5;
+AN BY AP2;
+AP BY AN2;
+ST BY S1@1 S2 S3 S4 S5;
+AP WITH AN;
+
+AP ON
+present (a1)
+block   (a2)
+pblock  (a3)
+online  (a4)
+age10   (a5)
+prage   (ma1)
+blage   (ma2)
+pbage   (ma3);
+
+AN ON
+present (d1)
+block   (d2)
+pblock  (d3)
+online  (d4)
+age10   (d5)
+prage   (md1)
+blage   (md2)
+pbage   (md3);
+
+ST ON
+AP      (b1)
+AN      (b2)
+present (c1)
+block   (c2)
+pblock  (c3)
+online  (c4)
+age10   (c5)
+prage   (mc1)
+blage   (mc2)
+pbage   (mc3);
+
+MODEL CONSTRAINT:
+
+NEW(c25ap c25an c25dr c25ip c25in c25ii c25to t25ap t25an t25dr t25ip
+t25in t25ii t25to c45ap c45an c45dr c45ip c45in c45ii c45to t45ap t45an
+t45dr t45ip t45in t45ii t45to c65ap c65an c65dr c65ip c65in c65ii c65to
+t65ap t65an t65dr t65ip t65in t65ii t65to c6525 t6525);
+
+! commercial activity at age 25.
+c25ap = a1+ma1*(-2.0);
+c25an = d1+md1*(-2.0);
+c25dr = c1+mc1*(-2.0);
+c25ip = c25ap*b1;
+c25in = c25an*b2;
+c25ii = c25ip+c25in;
+c25to = c25dr+c25ii;
+
+! terraces at age 25.
+t25ap = (a1+a3)+(ma1+ma3)*(-2.0);
+t25an = (d1+d3)+(md1+md3)*(-2.0);
+t25dr = (c1+c3)+(mc1+mc3)*(-2.0);
+t25ip = t25ap*b1;
+t25in = t25an*b2;
+t25ii = t25ip+t25in;
+t25to = t25dr+t25ii;
+
+! commercial activity at age 45.
+c45ap = a1+ma1*(0.0);
+c45an = d1+md1*(0.0);
+c45dr = c1+mc1*(0.0);
+c45ip = c45ap*b1;
+c45in = c45an*b2;
+c45ii = c45ip+c45in;
+c45to = c45dr+c45ii;
+
+! terraces at age 45.
+t45ap = (a1+a3)+(ma1+ma3)*(0.0);
+t45an = (d1+d3)+(md1+md3)*(0.0);
+t45dr = (c1+c3)+(mc1+mc3)*(0.0);
+t45ip = t45ap*b1;
+t45in = t45an*b2;
+t45ii = t45ip+t45in;
+t45to = t45dr+t45ii;
+
+! commercial activity at age 65.
+c65ap = a1+ma1*(2.0);
+c65an = d1+md1*(2.0);
+c65dr = c1+mc1*(2.0);
+c65ip = c65ap*b1;
+c65in = c65an*b2;
+c65ii = c65ip+c65in;
+c65to = c65dr+c65ii;
+
+! terraces at age 65.
+t65ap = (a1+a3)+(ma1+ma3)*(2.0);
+t65an = (d1+d3)+(md1+md3)*(2.0);
+t65dr = (c1+c3)+(mc1+mc3)*(2.0);
+t65ip = t65ap*b1;
+t65in = t65an*b2;
+t65ii = t65ip+t65in;
+t65to = t65dr+t65ii;
+
+! Difference in total effect: age 65 minus age 25.
+c6525 = c65to-c25to;
+t6525 = t65to-t25to;
+
+MODEL TEST:
+! Global test of linear age moderation: 9 df.
+0 = ma1;
+0 = ma2;
+0 = ma3;
+0 = md1;
+0 = md2;
+0 = md3;
+0 = mc1;
+0 = mc2;
+0 = mc3;
+
+OUTPUT:
+SAMPSTAT;
+STANDARDIZED;
+CINTERVAL;
+RESIDUAL;
+TECH1;
+TECH4;

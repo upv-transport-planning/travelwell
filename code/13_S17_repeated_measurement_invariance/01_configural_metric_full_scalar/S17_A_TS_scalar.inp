@@ -1,0 +1,103 @@
+TITLE:
+  S17 - REPEATED-EVALUATION SCALAR INVARIANCE - SCENARIO A
+  Travel-satisfaction measurement model; social street activation: commercial frontage and outdoor terraces.
+
+DATA:
+  FILE = ../../data/Scenario_A_short_final_revised.txt;
+
+VARIABLE:
+  NAMES =
+  ID MODO_rango online V1 V2 V3 V4
+  V5 V6 V7 V8 V9 V10 V11
+  V12 V13 V14 V15 V16 V17 V18
+  V19 AP1cc AP2cc AP3cc AP4cc AP5cc AN1cc
+  AN2cc AN3cc AN4cc AN5cc S1cc S2cc S3cc
+  S4cc S5cc AP1sc AP2sc AP3sc AP4sc AP5sc
+  AN1sc AN2sc AN3sc AN4sc AN5sc S1sc S2sc
+  S3sc S4sc S5sc AP1ct AP2ct AP3ct AP4ct
+  AP5ct AN1ct AN2ct AN3ct AN4ct AN5ct S1ct
+  S2ct S3ct S4ct S5ct AP1st AP2st AP3st
+  AP4st AP5st AN1st AN2st AN3st AN4st AN5st
+  S1st S2st S3st S4st S5st
+  ;
+  USEVARIABLES =
+  S1cc S2cc S3cc S4cc S5cc S1sc S2sc
+  S3sc S4sc S5sc S1ct S2ct S3ct S4ct
+  S5ct S1st S2st S3st S4st S5st
+  ;
+  MISSING = ALL(-999);
+
+ANALYSIS:
+  ESTIMATOR = MLR;
+  ITERATIONS = 10000;
+
+MODEL:
+  STcc BY S1cc@1;
+  STcc BY S2cc (ls2);
+  STcc BY S3cc (ls3);
+  STcc BY S4cc (ls4);
+  STcc BY S5cc (ls5);
+
+  STsc BY S1sc@1;
+  STsc BY S2sc (ls2);
+  STsc BY S3sc (ls3);
+  STsc BY S4sc (ls4);
+  STsc BY S5sc (ls5);
+
+  STct BY S1ct@1;
+  STct BY S2ct (ls2);
+  STct BY S3ct (ls3);
+  STct BY S4ct (ls4);
+  STct BY S5ct (ls5);
+
+  STst BY S1st@1;
+  STst BY S2st (ls2);
+  STst BY S3st (ls3);
+  STst BY S4st (ls4);
+  STst BY S5st (ls5);
+
+  ! Equal indicator intercepts across the four evaluations.
+  [S1cc] (is1);
+  [S1sc] (is1);
+  [S1ct] (is1);
+  [S1st] (is1);
+  [S2cc] (is2);
+  [S2sc] (is2);
+  [S2ct] (is2);
+  [S2st] (is2);
+  [S3cc] (is3);
+  [S3sc] (is3);
+  [S3ct] (is3);
+  [S3st] (is3);
+  [S4cc] (is4);
+  [S4sc] (is4);
+  [S4ct] (is4);
+  [S4st] (is4);
+  [S5cc] (is5);
+  [S5sc] (is5);
+  [S5ct] (is5);
+  [S5st] (is5);
+
+  ! Reference latent mean fixed at zero; remaining evaluation means free.
+  [STcc@0];
+  [STsc* STct* STst*];
+
+  ! Same-indicator residuals correlated across all repeated evaluations.
+  S1cc WITH S1sc S1ct S1st;
+  S1sc WITH S1ct S1st;
+  S1ct WITH S1st;
+  S2cc WITH S2sc S2ct S2st;
+  S2sc WITH S2ct S2st;
+  S2ct WITH S2st;
+  S3cc WITH S3sc S3ct S3st;
+  S3sc WITH S3ct S3st;
+  S3ct WITH S3st;
+  S4cc WITH S4sc S4ct S4st;
+  S4sc WITH S4ct S4st;
+  S4ct WITH S4st;
+  S5cc WITH S5sc S5ct S5st;
+  S5sc WITH S5ct S5st;
+  S5ct WITH S5st;
+
+OUTPUT:
+  SAMPSTAT STANDARDIZED CINTERVAL RESIDUAL TECH1 TECH4 MODINDICES(10);

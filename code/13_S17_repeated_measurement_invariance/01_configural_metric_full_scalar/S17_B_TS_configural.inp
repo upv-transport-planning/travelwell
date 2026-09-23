@@ -1,0 +1,61 @@
+TITLE:
+  S17 - REPEATED-EVALUATION CONFIGURAL INVARIANCE - SCENARIO B
+  Travel-satisfaction measurement model; urban greenery: street-tree presence and tree size.
+
+DATA:
+  FILE = ../../data/Scenario_B_short_final_revised.txt;
+
+VARIABLE:
+  NAMES =
+  ID MODO_rango online V1 V2 V3 V4
+  V5 V6 V7 V8 V9 V10 V11
+  V12 V13 V14 V15 V16 V17 V18
+  V19 AP1ca AP2ca AP3ca AP4ca AP5ca AN1ca
+  AN2ca AN3ca AN4ca AN5ca S1ca S2ca S3ca
+  S4ca S5ca AP1sa AP2sa AP3sa AP4sa AP5sa
+  AN1sa AN2sa AN3sa AN4sa AN5sa S1sa S2sa
+  S3sa S4sa S5sa AP1ap AP2ap AP3ap AP4ap
+  AP5ap AN1ap AN2ap AN3ap AN4ap AN5ap S1ap
+  S2ap S3ap S4ap S5ap AP1ag AP2ag AP3ag
+  AP4ag AP5ag AN1ag AN2ag AN3ag AN4ag AN5ag
+  S1ag S2ag S3ag S4ag S5ag
+  ;
+  USEVARIABLES =
+  S1ca S2ca S3ca S4ca S5ca S1sa S2sa
+  S3sa S4sa S5sa S1ap S2ap S3ap S4ap
+  S5ap S1ag S2ag S3ag S4ag S5ag
+  ;
+  MISSING = ALL(-999);
+
+ANALYSIS:
+  ESTIMATOR = MLR;
+  ITERATIONS = 10000;
+
+MODEL:
+  STca BY S1ca@1 S2ca S3ca S4ca S5ca;
+
+  STsa BY S1sa@1 S2sa S3sa S4sa S5sa;
+
+  STap BY S1ap@1 S2ap S3ap S4ap S5ap;
+
+  STag BY S1ag@1 S2ag S3ag S4ag S5ag;
+
+  ! Same-indicator residuals correlated across all repeated evaluations.
+  S1ca WITH S1sa S1ap S1ag;
+  S1sa WITH S1ap S1ag;
+  S1ap WITH S1ag;
+  S2ca WITH S2sa S2ap S2ag;
+  S2sa WITH S2ap S2ag;
+  S2ap WITH S2ag;
+  S3ca WITH S3sa S3ap S3ag;
+  S3sa WITH S3ap S3ag;
+  S3ap WITH S3ag;
+  S4ca WITH S4sa S4ap S4ag;
+  S4sa WITH S4ap S4ag;
+  S4ap WITH S4ag;
+  S5ca WITH S5sa S5ap S5ag;
+  S5sa WITH S5ap S5ag;
+  S5ap WITH S5ag;
+
+OUTPUT:
+  SAMPSTAT STANDARDIZED CINTERVAL RESIDUAL TECH1 TECH4 MODINDICES(10);

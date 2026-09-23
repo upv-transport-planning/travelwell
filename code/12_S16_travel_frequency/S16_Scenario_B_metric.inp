@@ -1,0 +1,257 @@
+TITLE:
+SCENARIO B - TRAVEL FREQUENCY - METRIC
+TREE PRESENCE AND TREE SIZE
+TYPE=COMPLEX, MLR, CLUSTER=ID, STARTS=100;
+
+DATA:
+FILE = ../../data/Scenario_B_long_final.txt;
+
+VARIABLE:
+
+NAMES =
+ID
+MODO_rango
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+V1 V2 V3 V4 V5
+V6 V7 V8 V9 V10
+V11 V12 V13 V14 V15
+V16 V17 V18 V19;
+
+USEVARIABLES =
+ID
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+pblock;
+
+CLUSTER = ID;
+
+GROUPING = V14 (1 = f1 2 = f2 3 = f3);
+! V14=1: 1-2 dias/semana.
+! V14=2: 3-4 dias/semana.
+! V14=3: todos los dias.
+
+MISSING = ALL(-999);
+
+DEFINE:
+! Survey method: online=1, face-to-face=2.
+pblock = present*block;
+
+ANALYSIS:
+TYPE = COMPLEX;
+ESTIMATOR = MLR;
+STARTS = 100;
+ITERATIONS = 10000;
+
+MODEL:
+
+! Reference group = category 1.
+AP BY
+AP1@1
+AP2 (lpa2)
+AP3 (lpa3)
+AP4 (lpa4)
+AP5 (lpa5);
+
+AN BY
+AN1@1
+AN2 (lna2)
+AN3 (lna3)
+AN4 (lna4)
+AN5 (lna5);
+
+ST BY
+S1@1
+S2 (lst2)
+S3 (lst3)
+S4 (lst4)
+S5 (lst5);
+
+! Cross-loadings kept free across groups.
+AN BY AP2 (f1xpa);
+AP BY AN2 (f1xan);
+
+! Item intercepts free: scalar invariance is not imposed.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Latent intercepts fixed to zero when item intercepts are free.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Latent variances and item residual variances free by group.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+AP WITH AN (f1pan);
+
+AP ON
+present (f1a1)
+block   (f1a2)
+pblock  (f1a3)
+online  (f1a4);
+
+AN ON
+present (f1d1)
+block   (f1d2)
+pblock  (f1d3)
+online  (f1d4);
+
+ST ON
+AP      (f1b1)
+AN      (f1b2)
+present (f1c1)
+block   (f1c2)
+pblock  (f1c3)
+online  (f1c4);
+
+MODEL f2:
+
+AP BY
+AP1@1
+AP2 (lpa2)
+AP3 (lpa3)
+AP4 (lpa4)
+AP5 (lpa5);
+
+AN BY
+AN1@1
+AN2 (lna2)
+AN3 (lna3)
+AN4 (lna4)
+AN5 (lna5);
+
+ST BY
+S1@1
+S2 (lst2)
+S3 (lst3)
+S4 (lst4)
+S5 (lst5);
+
+! Cross-loadings kept free across groups.
+AN BY AP2 (f2xpa);
+AP BY AN2 (f2xan);
+
+! Item intercepts free: scalar invariance is not imposed.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Latent intercepts fixed to zero when item intercepts are free.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Latent variances and item residual variances free by group.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+AP WITH AN (f2pan);
+
+AP ON
+present (f2a1)
+block   (f2a2)
+pblock  (f2a3)
+online  (f2a4);
+
+AN ON
+present (f2d1)
+block   (f2d2)
+pblock  (f2d3)
+online  (f2d4);
+
+ST ON
+AP      (f2b1)
+AN      (f2b2)
+present (f2c1)
+block   (f2c2)
+pblock  (f2c3)
+online  (f2c4);
+
+MODEL f3:
+
+AP BY
+AP1@1
+AP2 (lpa2)
+AP3 (lpa3)
+AP4 (lpa4)
+AP5 (lpa5);
+
+AN BY
+AN1@1
+AN2 (lna2)
+AN3 (lna3)
+AN4 (lna4)
+AN5 (lna5);
+
+ST BY
+S1@1
+S2 (lst2)
+S3 (lst3)
+S4 (lst4)
+S5 (lst5);
+
+! Cross-loadings kept free across groups.
+AN BY AP2 (f3xpa);
+AP BY AN2 (f3xan);
+
+! Item intercepts free: scalar invariance is not imposed.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Latent intercepts fixed to zero when item intercepts are free.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Latent variances and item residual variances free by group.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+AP WITH AN (f3pan);
+
+AP ON
+present (f3a1)
+block   (f3a2)
+pblock  (f3a3)
+online  (f3a4);
+
+AN ON
+present (f3d1)
+block   (f3d2)
+pblock  (f3d3)
+online  (f3d4);
+
+ST ON
+AP      (f3b1)
+AN      (f3b2)
+present (f3c1)
+block   (f3c2)
+pblock  (f3c3)
+online  (f3c4);
+
+OUTPUT:
+SAMPSTAT;
+STANDARDIZED;
+CINTERVAL;
+RESIDUAL;
+TECH1;
+TECH4;
+MODINDICES(10);

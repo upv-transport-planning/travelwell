@@ -1,0 +1,369 @@
+TITLE:
+MULTIGRUPO POR MODO - ESCENARIO A
+ACTIVIDAD COMERCIAL Y TERRAZAS
+INVARIANZA METRICA FLEXIBLE + INTERCEPTOS LATENTES FIJOS + PATINETE VS CAMINAR 11 GL;
+
+DATA:
+FILE = ../../data/Scenario_A_long_final.txt;
+
+VARIABLE:
+
+NAMES =
+ID
+MODO_rango
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+V1 V2 V3 V4 V5
+V6 V7 V8 V9 V10
+V11 V12 V13 V14 V15
+V16 V17 V18 V19;
+
+USEVARIABLES =
+ID
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+
+! Variable creada en DEFINE.
+pblock;
+
+CLUSTER = ID;
+
+GROUPING = MODO_rango
+(1 = walking
+ 2 = cycling
+ 3 = escooter);
+
+MISSING = ALL(-999);
+
+DEFINE:
+
+! online = 1: encuesta online.
+! online = 2: encuesta presencial.
+! online se incluye como covariable de ajuste y NO se contrasta en Wald.
+pblock = present*block;
+
+ANALYSIS:
+
+TYPE = COMPLEX;
+ESTIMATOR = MLR;
+STARTS = 100;
+ITERATIONS = 10000;
+
+MODEL:
+
+! ==================================================
+! INVARIANZA METRICA FLEXIBLE ENTRE MODOS
+! Cargas primarias iguales; interceptos y residuales libres.
+! Las dos cargas cruzadas se dejan libres entre modos.
+! ==================================================
+
+AP BY
+AP1@1
+AP2 (lpa2)
+AP3 (lpa3)
+AP4 (lpa4)
+AP5 (lpa5);
+
+AN BY
+AN1@1
+AN2 (lna2)
+AN3 (lna3)
+AN4 (lna4)
+AN5 (lna5);
+
+ST BY
+S1@1
+S2 (lst2)
+S3 (lst3)
+S4 (lst4)
+S5 (lst5);
+
+AP WITH AN;
+
+! ==================================================
+! MODELO ESTRUCTURAL GENERAL
+! En analisis multigrupo Mplus, los caminos que despues
+! se modifican/etiquetan por grupo deben declararse primero
+! en el MODEL general. Sin esta plantilla general, Mplus
+! puede ignorar los ON especificados solo en MODEL grupo.
+! ==================================================
+
+! Cargas cruzadas presentes en todos los grupos.
+! Se liberan posteriormente con etiquetas propias por grupo.
+AN BY AP2;
+AP BY AN2;
+
+! Caminos estructurales presentes en todos los grupos.
+! Los MODEL walking/cycling/escooter asignan etiquetas
+! diferentes para estimarlos libremente por modo.
+AP ON
+present
+block
+pblock
+online;
+
+AN ON
+present
+block
+pblock
+online;
+
+ST ON
+AP
+AN
+present
+block
+pblock
+online;
+
+MODEL walking:
+
+! Cargas cruzadas libres por modo.
+AN BY AP2 (wxpa);
+AP BY AN2 (wxan);
+
+! Interceptos y varianzas residuales de indicadores libres.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Con interceptos de items libres (invarianza solo metrica),
+! los interceptos de los factores endogenos se fijan a cero
+! para identificar la estructura de medias/interceptos.
+[AP@0];
+[AN@0];
+[ST@0];
+
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+! Caminos estructurales libres por modo.
+AP ON
+present (wa1)
+block   (wa2)
+pblock  (wa3)
+online  (wa4);
+
+AN ON
+present (wd1)
+block   (wd2)
+pblock  (wd3)
+online  (wd4);
+
+ST ON
+AP      (wb1)
+AN      (wb2)
+present (wc1)
+block   (wc2)
+pblock  (wc3)
+online  (wc4);
+
+
+MODEL cycling:
+
+! Cargas cruzadas libres por modo.
+AN BY AP2 (cxpa);
+AP BY AN2 (cxan);
+
+! Interceptos y varianzas residuales de indicadores libres.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Con interceptos de items libres (invarianza solo metrica),
+! los interceptos de los factores endogenos se fijan a cero
+! para identificar la estructura de medias/interceptos.
+[AP@0];
+[AN@0];
+[ST@0];
+
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+! Caminos estructurales libres por modo.
+AP ON
+present (ca1)
+block   (ca2)
+pblock  (ca3)
+online  (ca4);
+
+AN ON
+present (cd1)
+block   (cd2)
+pblock  (cd3)
+online  (cd4);
+
+ST ON
+AP      (cb1)
+AN      (cb2)
+present (cc1)
+block   (cc2)
+pblock  (cc3)
+online  (cc4);
+
+
+MODEL escooter:
+
+! Cargas cruzadas libres por modo.
+AN BY AP2 (sxpa);
+AP BY AN2 (sxan);
+
+! Interceptos y varianzas residuales de indicadores libres.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Con interceptos de items libres (invarianza solo metrica),
+! los interceptos de los factores endogenos se fijan a cero
+! para identificar la estructura de medias/interceptos.
+[AP@0];
+[AN@0];
+[ST@0];
+
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+! Caminos estructurales libres por modo.
+AP ON
+present (sa1)
+block   (sa2)
+pblock  (sa3)
+online  (sa4);
+
+AN ON
+present (sd1)
+block   (sd2)
+pblock  (sd3)
+online  (sd4);
+
+ST ON
+AP      (sb1)
+AN      (sb2)
+present (sc1)
+block   (sc2)
+pblock  (sc3)
+online  (sc4);
+
+
+MODEL CONSTRAINT:
+
+NEW(wcdr wcip wcin wcii wcto wtdr wtip wtin wtii wtto ccdr ccip ccin
+ccii ccto ctdr ctip ctin ctii ctto scdr scip scin scii scto stdr stip
+stin stii stto dcwcdr dcwcip dcwcin dcwcii dcwcto dcwtdr dcwtip dcwtin
+dcwtii dcwtto dswcdr dswcip dswcin dswcii dswcto dswtdr dswtip dswtin
+dswtii dswtto dsccdr dsccip dsccin dsccii dsccto dsctdr dsctip dsctin
+dsctii dsctto);
+
+! w: atributo primario, block = 0.
+wcdr = wc1;
+wcip = wa1*wb1;
+wcin = wd1*wb2;
+wcii = wcip+wcin;
+wcto = wcdr+wcii;
+
+! w: atributo secundario, block = 1.
+wtdr = wc1+wc3;
+wtip = (wa1+wa3)*wb1;
+wtin = (wd1+wd3)*wb2;
+wtii = wtip+wtin;
+wtto = wtdr+wtii;
+
+! c: atributo primario, block = 0.
+ccdr = cc1;
+ccip = ca1*cb1;
+ccin = cd1*cb2;
+ccii = ccip+ccin;
+ccto = ccdr+ccii;
+
+! c: atributo secundario, block = 1.
+ctdr = cc1+cc3;
+ctip = (ca1+ca3)*cb1;
+ctin = (cd1+cd3)*cb2;
+ctii = ctip+ctin;
+ctto = ctdr+ctii;
+
+! s: atributo primario, block = 0.
+scdr = sc1;
+scip = sa1*sb1;
+scin = sd1*sb2;
+scii = scip+scin;
+scto = scdr+scii;
+
+! s: atributo secundario, block = 1.
+stdr = sc1+sc3;
+stip = (sa1+sa3)*sb1;
+stin = (sd1+sd3)*sb2;
+stii = stip+stin;
+stto = stdr+stii;
+
+! Diferencias c menos w.
+dcwcdr = ccdr-wcdr;
+dcwcip = ccip-wcip;
+dcwcin = ccin-wcin;
+dcwcii = ccii-wcii;
+dcwcto = ccto-wcto;
+dcwtdr = ctdr-wtdr;
+dcwtip = ctip-wtip;
+dcwtin = ctin-wtin;
+dcwtii = ctii-wtii;
+dcwtto = ctto-wtto;
+
+! Diferencias s menos w.
+dswcdr = scdr-wcdr;
+dswcip = scip-wcip;
+dswcin = scin-wcin;
+dswcii = scii-wcii;
+dswcto = scto-wcto;
+dswtdr = stdr-wtdr;
+dswtip = stip-wtip;
+dswtin = stin-wtin;
+dswtii = stii-wtii;
+dswtto = stto-wtto;
+
+! Diferencias s menos c.
+dsccdr = scdr-ccdr;
+dsccip = scip-ccip;
+dsccin = scin-ccin;
+dsccii = scii-ccii;
+dsccto = scto-ccto;
+dsctdr = stdr-ctdr;
+dsctip = stip-ctip;
+dsctin = stin-ctin;
+dsctii = stii-ctii;
+dsctto = stto-ctto;
+
+
+MODEL TEST:
+
+! Wald patinete vs caminar: 11 gl.
+0 = sa1-wa1;
+0 = sa2-wa2;
+0 = sa3-wa3;
+0 = sd1-wd1;
+0 = sd2-wd2;
+0 = sd3-wd3;
+0 = sb1-wb1;
+0 = sb2-wb2;
+0 = sc1-wc1;
+0 = sc2-wc2;
+0 = sc3-wc3;
+
+OUTPUT:
+STANDARDIZED;
+CINTERVAL;
+SAMPSTAT;
+RESIDUAL;
+TECH1;
+TECH3;
+TECH4;

@@ -1,0 +1,124 @@
+TITLE:
+  S17 - REPEATED-EVALUATION METRIC INVARIANCE - SCENARIO B
+  PA/NA measurement model; urban greenery: street-tree presence and tree size.
+  Primary and retained cross-loadings constrained equal; indicator intercepts free.
+
+DATA:
+  FILE = ../../data/Scenario_B_short_final_revised.txt;
+
+VARIABLE:
+  NAMES =
+  ID MODO_rango online V1 V2 V3 V4
+  V5 V6 V7 V8 V9 V10 V11
+  V12 V13 V14 V15 V16 V17 V18
+  V19 AP1ca AP2ca AP3ca AP4ca AP5ca AN1ca
+  AN2ca AN3ca AN4ca AN5ca S1ca S2ca S3ca
+  S4ca S5ca AP1sa AP2sa AP3sa AP4sa AP5sa
+  AN1sa AN2sa AN3sa AN4sa AN5sa S1sa S2sa
+  S3sa S4sa S5sa AP1ap AP2ap AP3ap AP4ap
+  AP5ap AN1ap AN2ap AN3ap AN4ap AN5ap S1ap
+  S2ap S3ap S4ap S5ap AP1ag AP2ag AP3ag
+  AP4ag AP5ag AN1ag AN2ag AN3ag AN4ag AN5ag
+  S1ag S2ag S3ag S4ag S5ag
+  ;
+  USEVARIABLES =
+  AP1ca AP2ca AP3ca AP4ca AP5ca AN1ca AN2ca
+  AN3ca AN4ca AN5ca AP1sa AP2sa AP3sa AP4sa
+  AP5sa AN1sa AN2sa AN3sa AN4sa AN5sa AP1ap
+  AP2ap AP3ap AP4ap AP5ap AN1ap AN2ap AN3ap
+  AN4ap AN5ap AP1ag AP2ag AP3ag AP4ag AP5ag
+  AN1ag AN2ag AN3ag AN4ag AN5ag
+  ;
+  MISSING = ALL(-999);
+
+ANALYSIS:
+  ESTIMATOR = MLR;
+  ITERATIONS = 10000;
+
+MODEL:
+  APca BY AP1ca@1;
+  APca BY AP2ca (la2);
+  APca BY AP3ca (la3);
+  APca BY AP4ca (la4);
+  APca BY AP5ca (la5);
+  ANca BY AN1ca@1;
+  ANca BY AN2ca (ln2);
+  ANca BY AN3ca (ln3);
+  ANca BY AN4ca (ln4);
+  ANca BY AN5ca (ln5);
+  ANca BY AP2ca (xpa2);
+  APca BY AN2ca (xan2);
+
+  APsa BY AP1sa@1;
+  APsa BY AP2sa (la2);
+  APsa BY AP3sa (la3);
+  APsa BY AP4sa (la4);
+  APsa BY AP5sa (la5);
+  ANsa BY AN1sa@1;
+  ANsa BY AN2sa (ln2);
+  ANsa BY AN3sa (ln3);
+  ANsa BY AN4sa (ln4);
+  ANsa BY AN5sa (ln5);
+  ANsa BY AP2sa (xpa2);
+  APsa BY AN2sa (xan2);
+
+  APap BY AP1ap@1;
+  APap BY AP2ap (la2);
+  APap BY AP3ap (la3);
+  APap BY AP4ap (la4);
+  APap BY AP5ap (la5);
+  ANap BY AN1ap@1;
+  ANap BY AN2ap (ln2);
+  ANap BY AN3ap (ln3);
+  ANap BY AN4ap (ln4);
+  ANap BY AN5ap (ln5);
+  ANap BY AP2ap (xpa2);
+  APap BY AN2ap (xan2);
+
+  APag BY AP1ag@1;
+  APag BY AP2ag (la2);
+  APag BY AP3ag (la3);
+  APag BY AP4ag (la4);
+  APag BY AP5ag (la5);
+  ANag BY AN1ag@1;
+  ANag BY AN2ag (ln2);
+  ANag BY AN3ag (ln3);
+  ANag BY AN4ag (ln4);
+  ANag BY AN5ag (ln5);
+  ANag BY AP2ag (xpa2);
+  APag BY AN2ag (xan2);
+
+  ! Same-indicator residuals correlated across all repeated evaluations.
+  AP1ca WITH AP1sa AP1ap AP1ag;
+  AP1sa WITH AP1ap AP1ag;
+  AP1ap WITH AP1ag;
+  AP2ca WITH AP2sa AP2ap AP2ag;
+  AP2sa WITH AP2ap AP2ag;
+  AP2ap WITH AP2ag;
+  AP3ca WITH AP3sa AP3ap AP3ag;
+  AP3sa WITH AP3ap AP3ag;
+  AP3ap WITH AP3ag;
+  AP4ca WITH AP4sa AP4ap AP4ag;
+  AP4sa WITH AP4ap AP4ag;
+  AP4ap WITH AP4ag;
+  AP5ca WITH AP5sa AP5ap AP5ag;
+  AP5sa WITH AP5ap AP5ag;
+  AP5ap WITH AP5ag;
+  AN1ca WITH AN1sa AN1ap AN1ag;
+  AN1sa WITH AN1ap AN1ag;
+  AN1ap WITH AN1ag;
+  AN2ca WITH AN2sa AN2ap AN2ag;
+  AN2sa WITH AN2ap AN2ag;
+  AN2ap WITH AN2ag;
+  AN3ca WITH AN3sa AN3ap AN3ag;
+  AN3sa WITH AN3ap AN3ag;
+  AN3ap WITH AN3ag;
+  AN4ca WITH AN4sa AN4ap AN4ag;
+  AN4sa WITH AN4ap AN4ag;
+  AN4ap WITH AN4ag;
+  AN5ca WITH AN5sa AN5ap AN5ag;
+  AN5sa WITH AN5ap AN5ag;
+  AN5ap WITH AN5ag;
+
+OUTPUT:
+  SAMPSTAT STANDARDIZED CINTERVAL RESIDUAL TECH1 TECH4 MODINDICES(10);

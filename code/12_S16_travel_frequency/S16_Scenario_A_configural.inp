@@ -1,0 +1,207 @@
+TITLE:
+SCENARIO A - TRAVEL FREQUENCY - BINARY RECODING
+CONFIGURAL: NON-DAILY VS DAILY
+COMMERCIAL ACTIVITY AND TERRACES
+TYPE=COMPLEX, MLR, CLUSTER=ID, STARTS=100;
+
+DATA:
+FILE = ../../data/Scenario_A_long_final.txt;
+
+VARIABLE:
+
+NAMES =
+ID
+MODO_rango
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+V1 V2 V3 V4 V5
+V6 V7 V8 V9 V10
+V11 V12 V13 V14 V15
+V16 V17 V18 V19;
+
+USEVARIABLES =
+ID
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+pblock
+freq2;
+
+CLUSTER = ID;
+
+! Recodificacion:
+! freq2=1: no diario (V14=1 o 2; 1-2 o 3-4 dias/semana).
+! freq2=2: diario (V14=3; todos los dias).
+GROUPING = freq2 (1 = nondaily 2 = daily);
+
+MISSING = ALL(-999);
+
+DEFINE:
+! Survey method: online=1, face-to-face=2.
+pblock = present*block;
+
+! Crear la variable de agrupacion binaria a partir de V14.
+freq2 = V14;
+IF (V14 EQ 1) THEN freq2 = 1;
+IF (V14 EQ 2) THEN freq2 = 1;
+IF (V14 EQ 3) THEN freq2 = 2;
+
+ANALYSIS:
+TYPE = COMPLEX;
+ESTIMATOR = MLR;
+STARTS = 100;
+ITERATIONS = 10000;
+
+
+MODEL:
+
+! Grupo de referencia: no diario.
+AP BY
+AP1@1
+AP2 (ndpa2)
+AP3 (ndpa3)
+AP4 (ndpa4)
+AP5 (ndpa5);
+
+AN BY
+AN1@1
+AN2 (ndna2)
+AN3 (ndna3)
+AN4 (ndna4)
+AN5 (ndna5);
+
+ST BY
+S1@1
+S2 (ndst2)
+S3 (ndst3)
+S4 (ndst4)
+S5 (ndst5);
+
+! Las dos cross-loadings del modelo global se conservan
+! y permanecen libres entre grupos.
+AN BY AP2 (ndxpa);
+AP BY AN2 (ndxan);
+
+! Interceptos de items libres: no se impone invariancia escalar.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Interceptos latentes fijados a cero con interceptos de items libres.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Varianzas latentes y residuos de items libres por grupo.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+! Covarianza AP-AN libre por grupo.
+AP WITH AN (ndpan);
+
+AP ON
+present (nda1)
+block   (nda2)
+pblock  (nda3)
+online  (nda4);
+
+AN ON
+present (ndd1)
+block   (ndd2)
+pblock  (ndd3)
+online  (ndd4);
+
+ST ON
+AP      (ndb1)
+AN      (ndb2)
+present (ndc1)
+block   (ndc2)
+pblock  (ndc3)
+online  (ndc4);
+
+MODEL daily:
+
+AP BY
+AP1@1
+AP2 (dypa2)
+AP3 (dypa3)
+AP4 (dypa4)
+AP5 (dypa5);
+
+AN BY
+AN1@1
+AN2 (dyna2)
+AN3 (dyna3)
+AN4 (dyna4)
+AN5 (dyna5);
+
+ST BY
+S1@1
+S2 (dyst2)
+S3 (dyst3)
+S4 (dyst4)
+S5 (dyst5);
+
+! Las dos cross-loadings del modelo global se conservan
+! y permanecen libres entre grupos.
+AN BY AP2 (dyxpa);
+AP BY AN2 (dyxan);
+
+! Interceptos de items libres: no se impone invariancia escalar.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Interceptos latentes fijados a cero con interceptos de items libres.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Varianzas latentes y residuos de items libres por grupo.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+! Covarianza AP-AN libre por grupo.
+AP WITH AN (dypan);
+
+AP ON
+present (dya1)
+block   (dya2)
+pblock  (dya3)
+online  (dya4);
+
+AN ON
+present (dyd1)
+block   (dyd2)
+pblock  (dyd3)
+online  (dyd4);
+
+ST ON
+AP      (dyb1)
+AN      (dyb2)
+present (dyc1)
+block   (dyc2)
+pblock  (dyc3)
+online  (dyc4);
+
+
+OUTPUT:
+SAMPSTAT;
+STANDARDIZED;
+CINTERVAL;
+RESIDUAL;
+TECH1;
+TECH4;
+MODINDICES(10);
+

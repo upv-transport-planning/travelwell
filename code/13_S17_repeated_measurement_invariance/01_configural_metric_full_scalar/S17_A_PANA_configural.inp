@@ -1,0 +1,93 @@
+TITLE:
+  S17 - REPEATED-EVALUATION CONFIGURAL INVARIANCE - SCENARIO A
+  PA/NA measurement model; social street activation: commercial frontage and outdoor terraces.
+  Four repeated condition-specific evaluations in wide format.
+  Retains both pooled-model cross-loadings: AN BY AP2 and AP BY AN2.
+
+DATA:
+  FILE = ../../data/Scenario_A_short_final_revised.txt;
+
+VARIABLE:
+  NAMES =
+  ID MODO_rango online V1 V2 V3 V4
+  V5 V6 V7 V8 V9 V10 V11
+  V12 V13 V14 V15 V16 V17 V18
+  V19 AP1cc AP2cc AP3cc AP4cc AP5cc AN1cc
+  AN2cc AN3cc AN4cc AN5cc S1cc S2cc S3cc
+  S4cc S5cc AP1sc AP2sc AP3sc AP4sc AP5sc
+  AN1sc AN2sc AN3sc AN4sc AN5sc S1sc S2sc
+  S3sc S4sc S5sc AP1ct AP2ct AP3ct AP4ct
+  AP5ct AN1ct AN2ct AN3ct AN4ct AN5ct S1ct
+  S2ct S3ct S4ct S5ct AP1st AP2st AP3st
+  AP4st AP5st AN1st AN2st AN3st AN4st AN5st
+  S1st S2st S3st S4st S5st
+  ;
+  USEVARIABLES =
+  AP1cc AP2cc AP3cc AP4cc AP5cc AN1cc AN2cc
+  AN3cc AN4cc AN5cc AP1sc AP2sc AP3sc AP4sc
+  AP5sc AN1sc AN2sc AN3sc AN4sc AN5sc AP1ct
+  AP2ct AP3ct AP4ct AP5ct AN1ct AN2ct AN3ct
+  AN4ct AN5ct AP1st AP2st AP3st AP4st AP5st
+  AN1st AN2st AN3st AN4st AN5st
+  ;
+  MISSING = ALL(-999);
+
+ANALYSIS:
+  ESTIMATOR = MLR;
+  ITERATIONS = 10000;
+
+MODEL:
+  APcc BY AP1cc@1 AP2cc AP3cc AP4cc AP5cc;
+  ANcc BY AN1cc@1 AN2cc AN3cc AN4cc AN5cc;
+  ANcc BY AP2cc;
+  APcc BY AN2cc;
+
+  APsc BY AP1sc@1 AP2sc AP3sc AP4sc AP5sc;
+  ANsc BY AN1sc@1 AN2sc AN3sc AN4sc AN5sc;
+  ANsc BY AP2sc;
+  APsc BY AN2sc;
+
+  APct BY AP1ct@1 AP2ct AP3ct AP4ct AP5ct;
+  ANct BY AN1ct@1 AN2ct AN3ct AN4ct AN5ct;
+  ANct BY AP2ct;
+  APct BY AN2ct;
+
+  APst BY AP1st@1 AP2st AP3st AP4st AP5st;
+  ANst BY AN1st@1 AN2st AN3st AN4st AN5st;
+  ANst BY AP2st;
+  APst BY AN2st;
+
+  ! Same-indicator residuals correlated across all repeated evaluations.
+  AP1cc WITH AP1sc AP1ct AP1st;
+  AP1sc WITH AP1ct AP1st;
+  AP1ct WITH AP1st;
+  AP2cc WITH AP2sc AP2ct AP2st;
+  AP2sc WITH AP2ct AP2st;
+  AP2ct WITH AP2st;
+  AP3cc WITH AP3sc AP3ct AP3st;
+  AP3sc WITH AP3ct AP3st;
+  AP3ct WITH AP3st;
+  AP4cc WITH AP4sc AP4ct AP4st;
+  AP4sc WITH AP4ct AP4st;
+  AP4ct WITH AP4st;
+  AP5cc WITH AP5sc AP5ct AP5st;
+  AP5sc WITH AP5ct AP5st;
+  AP5ct WITH AP5st;
+  AN1cc WITH AN1sc AN1ct AN1st;
+  AN1sc WITH AN1ct AN1st;
+  AN1ct WITH AN1st;
+  AN2cc WITH AN2sc AN2ct AN2st;
+  AN2sc WITH AN2ct AN2st;
+  AN2ct WITH AN2st;
+  AN3cc WITH AN3sc AN3ct AN3st;
+  AN3sc WITH AN3ct AN3st;
+  AN3ct WITH AN3st;
+  AN4cc WITH AN4sc AN4ct AN4st;
+  AN4sc WITH AN4ct AN4st;
+  AN4ct WITH AN4st;
+  AN5cc WITH AN5sc AN5ct AN5st;
+  AN5sc WITH AN5ct AN5st;
+  AN5ct WITH AN5st;
+
+OUTPUT:
+  SAMPSTAT STANDARDIZED CINTERVAL RESIDUAL TECH1 TECH4 MODINDICES(10);

@@ -1,0 +1,179 @@
+TITLE:
+SCENARIO B - CONTINUOUS AGE MODERATION (V1)
+TREE PRESENCE AND TREE SIZE
+Age centered at 45 years and scaled per 10 years.
+TYPE=COMPLEX, MLR, CLUSTER=ID, STARTS=100;
+
+DATA:
+FILE = ../../data/Scenario_B_long_final.txt;
+
+VARIABLE:
+
+NAMES =
+ID
+MODO_rango
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+V1 V2 V3 V4 V5
+V6 V7 V8 V9 V10
+V11 V12 V13 V14 V15
+V16 V17 V18 V19;
+
+! V1 se usa en DEFINE para crear age10, pero no se incluye
+! como variable analizada separada en USEVARIABLES.
+USEVARIABLES =
+ID
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+pblock age10 prage blage pbage;
+
+CLUSTER = ID;
+MISSING = ALL(-999);
+
+DEFINE:
+! Survey method: 1=online, 2=face-to-face.
+pblock = present*block;
+age10 = (V1-45)/10;
+prage = present*age10;
+blage = block*age10;
+pbage = pblock*age10;
+
+ANALYSIS:
+TYPE = COMPLEX;
+ESTIMATOR = MLR;
+STARTS = 100;
+ITERATIONS = 10000;
+
+MODEL:
+
+AP BY AP1@1 AP2 AP3 AP4 AP5;
+AN BY AN1@1 AN2 AN3 AN4 AN5;
+AN BY AP2;
+AP BY AN2;
+ST BY S1@1 S2 S3 S4 S5;
+AP WITH AN;
+
+AP ON
+present (a1)
+block   (a2)
+pblock  (a3)
+online  (a4)
+age10   (a5)
+prage   (ma1)
+blage   (ma2)
+pbage   (ma3);
+
+AN ON
+present (d1)
+block   (d2)
+pblock  (d3)
+online  (d4)
+age10   (d5)
+prage   (md1)
+blage   (md2)
+pbage   (md3);
+
+ST ON
+AP      (b1)
+AN      (b2)
+present (c1)
+block   (c2)
+pblock  (c3)
+online  (c4)
+age10   (c5)
+prage   (mc1)
+blage   (mc2)
+pbage   (mc3);
+
+MODEL CONSTRAINT:
+
+NEW(p25ap p25an p25dr p25ip p25in p25ii p25to s25ap s25an s25dr s25ip
+s25in s25ii s25to p45ap p45an p45dr p45ip p45in p45ii p45to s45ap s45an
+s45dr s45ip s45in s45ii s45to p65ap p65an p65dr p65ip p65in p65ii p65to
+s65ap s65an s65dr s65ip s65in s65ii s65to p6525 s6525);
+
+! tree presence at age 25.
+p25ap = a1+ma1*(-2.0);
+p25an = d1+md1*(-2.0);
+p25dr = c1+mc1*(-2.0);
+p25ip = p25ap*b1;
+p25in = p25an*b2;
+p25ii = p25ip+p25in;
+p25to = p25dr+p25ii;
+
+! tree size at age 25.
+s25ap = (a1+a3)+(ma1+ma3)*(-2.0);
+s25an = (d1+d3)+(md1+md3)*(-2.0);
+s25dr = (c1+c3)+(mc1+mc3)*(-2.0);
+s25ip = s25ap*b1;
+s25in = s25an*b2;
+s25ii = s25ip+s25in;
+s25to = s25dr+s25ii;
+
+! tree presence at age 45.
+p45ap = a1+ma1*(0.0);
+p45an = d1+md1*(0.0);
+p45dr = c1+mc1*(0.0);
+p45ip = p45ap*b1;
+p45in = p45an*b2;
+p45ii = p45ip+p45in;
+p45to = p45dr+p45ii;
+
+! tree size at age 45.
+s45ap = (a1+a3)+(ma1+ma3)*(0.0);
+s45an = (d1+d3)+(md1+md3)*(0.0);
+s45dr = (c1+c3)+(mc1+mc3)*(0.0);
+s45ip = s45ap*b1;
+s45in = s45an*b2;
+s45ii = s45ip+s45in;
+s45to = s45dr+s45ii;
+
+! tree presence at age 65.
+p65ap = a1+ma1*(2.0);
+p65an = d1+md1*(2.0);
+p65dr = c1+mc1*(2.0);
+p65ip = p65ap*b1;
+p65in = p65an*b2;
+p65ii = p65ip+p65in;
+p65to = p65dr+p65ii;
+
+! tree size at age 65.
+s65ap = (a1+a3)+(ma1+ma3)*(2.0);
+s65an = (d1+d3)+(md1+md3)*(2.0);
+s65dr = (c1+c3)+(mc1+mc3)*(2.0);
+s65ip = s65ap*b1;
+s65in = s65an*b2;
+s65ii = s65ip+s65in;
+s65to = s65dr+s65ii;
+
+! Difference in total effect: age 65 minus age 25.
+p6525 = p65to-p25to;
+s6525 = s65to-s25to;
+
+MODEL TEST:
+! Global test of linear age moderation: 9 df.
+0 = ma1;
+0 = ma2;
+0 = ma3;
+0 = md1;
+0 = md2;
+0 = md3;
+0 = mc1;
+0 = mc2;
+0 = mc3;
+
+OUTPUT:
+SAMPSTAT;
+STANDARDIZED;
+CINTERVAL;
+RESIDUAL;
+TECH1;
+TECH4;

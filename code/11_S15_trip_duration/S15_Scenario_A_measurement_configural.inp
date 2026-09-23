@@ -1,0 +1,253 @@
+TITLE:
+SCENARIO A - TRIP DURATION - MEASUREMENT-ONLY CONFIGURAL
+COMMERCIAL ACTIVITY AND TERRACES
+V15: 1=<15 MIN; 2=15-30 MIN; 3=30-60 MIN; 4=>60 MIN;
+
+DATA:
+FILE = ../../data/Scenario_A_long_final.txt;
+
+VARIABLE:
+
+NAMES =
+ID
+MODO_rango
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+V1 V2 V3 V4 V5
+V6 V7 V8 V9 V10
+V11 V12 V13 V14 V15
+V16 V17 V18 V19;
+
+USEVARIABLES =
+ID
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5;
+
+CLUSTER = ID;
+
+GROUPING = V15 (1 = t1 2 = t2 3 = t3 4 = t4);
+
+MISSING = ALL(-999);
+
+ANALYSIS:
+TYPE = COMPLEX;
+ESTIMATOR = MLR;
+STARTS = 100;
+ITERATIONS = 10000;
+
+! ==========================================================
+! MEASUREMENT-ONLY MODEL
+! No structural regressions are estimated here.
+! PA, NA and ST are related only through latent covariances.
+! ==========================================================
+
+MODEL:
+
+! Group T1: <15 min
+AP BY
+AP1@1
+AP2 (t1pa2)
+AP3 (t1pa3)
+AP4 (t1pa4)
+AP5 (t1pa5);
+
+AN BY
+AN1@1
+AN2 (t1na2)
+AN3 (t1na3)
+AN4 (t1na4)
+AN5 (t1na5);
+
+ST BY
+S1@1
+S2 (t1st2)
+S3 (t1st3)
+S4 (t1st4)
+S5 (t1st5);
+
+! Both PA/NA cross-loadings retained and free across duration groups.
+AN BY AP2 (t1xpa);
+AP BY AN2 (t1xan);
+
+! Item intercepts free across groups: no scalar invariance imposed.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Latent means fixed at zero for identification.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Latent variances and item residual variances free across groups.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+! Measurement-model factor covariances free across groups.
+AP WITH AN (t1pan);
+AP WITH ST (t1pst);
+AN WITH ST (t1nst);
+
+MODEL t2:
+
+! Group T2: 15-30 min
+AP BY
+AP1@1
+AP2 (t2pa2)
+AP3 (t2pa3)
+AP4 (t2pa4)
+AP5 (t2pa5);
+
+AN BY
+AN1@1
+AN2 (t2na2)
+AN3 (t2na3)
+AN4 (t2na4)
+AN5 (t2na5);
+
+ST BY
+S1@1
+S2 (t2st2)
+S3 (t2st3)
+S4 (t2st4)
+S5 (t2st5);
+
+! Both PA/NA cross-loadings retained and free across duration groups.
+AN BY AP2 (t2xpa);
+AP BY AN2 (t2xan);
+
+! Item intercepts free across groups: no scalar invariance imposed.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Latent means fixed at zero for identification.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Latent variances and item residual variances free across groups.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+! Measurement-model factor covariances free across groups.
+AP WITH AN (t2pan);
+AP WITH ST (t2pst);
+AN WITH ST (t2nst);
+
+MODEL t3:
+
+! Group T3: 30-60 min
+AP BY
+AP1@1
+AP2 (t3pa2)
+AP3 (t3pa3)
+AP4 (t3pa4)
+AP5 (t3pa5);
+
+AN BY
+AN1@1
+AN2 (t3na2)
+AN3 (t3na3)
+AN4 (t3na4)
+AN5 (t3na5);
+
+ST BY
+S1@1
+S2 (t3st2)
+S3 (t3st3)
+S4 (t3st4)
+S5 (t3st5);
+
+! Both PA/NA cross-loadings retained and free across duration groups.
+AN BY AP2 (t3xpa);
+AP BY AN2 (t3xan);
+
+! Item intercepts free across groups: no scalar invariance imposed.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Latent means fixed at zero for identification.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Latent variances and item residual variances free across groups.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+! Measurement-model factor covariances free across groups.
+AP WITH AN (t3pan);
+AP WITH ST (t3pst);
+AN WITH ST (t3nst);
+
+MODEL t4:
+
+! Group T4: >60 min
+AP BY
+AP1@1
+AP2 (t4pa2)
+AP3 (t4pa3)
+AP4 (t4pa4)
+AP5 (t4pa5);
+
+AN BY
+AN1@1
+AN2 (t4na2)
+AN3 (t4na3)
+AN4 (t4na4)
+AN5 (t4na5);
+
+ST BY
+S1@1
+S2 (t4st2)
+S3 (t4st3)
+S4 (t4st4)
+S5 (t4st5);
+
+! Both PA/NA cross-loadings retained and free across duration groups.
+AN BY AP2 (t4xpa);
+AP BY AN2 (t4xan);
+
+! Item intercepts free across groups: no scalar invariance imposed.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Latent means fixed at zero for identification.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Latent variances and item residual variances free across groups.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+! Measurement-model factor covariances free across groups.
+AP WITH AN (t4pan);
+AP WITH ST (t4pst);
+AN WITH ST (t4nst);
+
+OUTPUT:
+SAMPSTAT;
+STANDARDIZED;
+CINTERVAL;
+RESIDUAL;
+TECH1;
+TECH4;
+TECH8;
+MODINDICES(10);

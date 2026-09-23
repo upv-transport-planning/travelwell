@@ -1,0 +1,360 @@
+TITLE:
+SCENARIO B - TRAVEL FREQUENCY - STRUCTURAL FREE
+TREE PRESENCE AND TREE SIZE
+TYPE=COMPLEX, MLR, CLUSTER=ID, STARTS=100;
+
+DATA:
+FILE = ../../data/Scenario_B_long_final.txt;
+
+VARIABLE:
+
+NAMES =
+ID
+MODO_rango
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+V1 V2 V3 V4 V5
+V6 V7 V8 V9 V10
+V11 V12 V13 V14 V15
+V16 V17 V18 V19;
+
+USEVARIABLES =
+ID
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+pblock;
+
+CLUSTER = ID;
+
+GROUPING = V14 (1 = f1 2 = f2 3 = f3);
+! V14=1: 1-2 dias/semana.
+! V14=2: 3-4 dias/semana.
+! V14=3: todos los dias.
+
+MISSING = ALL(-999);
+
+DEFINE:
+! Survey method: online=1, face-to-face=2.
+pblock = present*block;
+
+ANALYSIS:
+TYPE = COMPLEX;
+ESTIMATOR = MLR;
+STARTS = 100;
+ITERATIONS = 10000;
+
+MODEL:
+
+! Reference group = category 1.
+AP BY
+AP1@1
+AP2 (lpa2)
+AP3 (lpa3)
+AP4 (lpa4)
+AP5 (lpa5);
+
+AN BY
+AN1@1
+AN2 (lna2)
+AN3 (lna3)
+AN4 (lna4)
+AN5 (lna5);
+
+ST BY
+S1@1
+S2 (lst2)
+S3 (lst3)
+S4 (lst4)
+S5 (lst5);
+
+! Cross-loadings kept free across groups.
+AN BY AP2 (f1xpa);
+AP BY AN2 (f1xan);
+
+! Item intercepts free: scalar invariance is not imposed.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Latent intercepts fixed to zero when item intercepts are free.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Latent variances and item residual variances free by group.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+AP WITH AN (f1pan);
+
+AP ON
+present (f1a1)
+block   (f1a2)
+pblock  (f1a3)
+online  (f1a4);
+
+AN ON
+present (f1d1)
+block   (f1d2)
+pblock  (f1d3)
+online  (f1d4);
+
+ST ON
+AP      (f1b1)
+AN      (f1b2)
+present (f1c1)
+block   (f1c2)
+pblock  (f1c3)
+online  (f1c4);
+
+MODEL f2:
+
+AP BY
+AP1@1
+AP2 (lpa2)
+AP3 (lpa3)
+AP4 (lpa4)
+AP5 (lpa5);
+
+AN BY
+AN1@1
+AN2 (lna2)
+AN3 (lna3)
+AN4 (lna4)
+AN5 (lna5);
+
+ST BY
+S1@1
+S2 (lst2)
+S3 (lst3)
+S4 (lst4)
+S5 (lst5);
+
+! Cross-loadings kept free across groups.
+AN BY AP2 (f2xpa);
+AP BY AN2 (f2xan);
+
+! Item intercepts free: scalar invariance is not imposed.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Latent intercepts fixed to zero when item intercepts are free.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Latent variances and item residual variances free by group.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+AP WITH AN (f2pan);
+
+AP ON
+present (f2a1)
+block   (f2a2)
+pblock  (f2a3)
+online  (f2a4);
+
+AN ON
+present (f2d1)
+block   (f2d2)
+pblock  (f2d3)
+online  (f2d4);
+
+ST ON
+AP      (f2b1)
+AN      (f2b2)
+present (f2c1)
+block   (f2c2)
+pblock  (f2c3)
+online  (f2c4);
+
+MODEL f3:
+
+AP BY
+AP1@1
+AP2 (lpa2)
+AP3 (lpa3)
+AP4 (lpa4)
+AP5 (lpa5);
+
+AN BY
+AN1@1
+AN2 (lna2)
+AN3 (lna3)
+AN4 (lna4)
+AN5 (lna5);
+
+ST BY
+S1@1
+S2 (lst2)
+S3 (lst3)
+S4 (lst4)
+S5 (lst5);
+
+! Cross-loadings kept free across groups.
+AN BY AP2 (f3xpa);
+AP BY AN2 (f3xan);
+
+! Item intercepts free: scalar invariance is not imposed.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Latent intercepts fixed to zero when item intercepts are free.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Latent variances and item residual variances free by group.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+AP WITH AN (f3pan);
+
+AP ON
+present (f3a1)
+block   (f3a2)
+pblock  (f3a3)
+online  (f3a4);
+
+AN ON
+present (f3d1)
+block   (f3d2)
+pblock  (f3d3)
+online  (f3d4);
+
+ST ON
+AP      (f3b1)
+AN      (f3b2)
+present (f3c1)
+block   (f3c2)
+pblock  (f3c3)
+online  (f3c4);
+
+MODEL CONSTRAINT:
+
+NEW(f1pdr f1pip f1pin f1pii f1pto f1sdr f1sip f1sin f1sii f1sto f2pdr
+f2pip f2pin f2pii f2pto f2sdr f2sip f2sin f2sii f2sto f3pdr f3pip f3pin
+f3pii f3pto f3sdr f3sip f3sin f3sii f3sto d21pdr d21pip d21pin d21pii
+d21pto d21sdr d21sip d21sin d21sii d21sto d31pdr d31pip d31pin d31pii
+d31pto d31sdr d31sip d31sin d31sii d31sto d32pdr d32pip d32pin d32pii
+d32pto d32sdr d32sip d32sin d32sii d32sto);
+
+! f1: primary attribute (block=0).
+f1pdr = f1c1;
+f1pip = f1a1*f1b1;
+f1pin = f1d1*f1b2;
+f1pii = f1pip+f1pin;
+f1pto = f1pdr+f1pii;
+
+! f1: secondary attribute (block=1).
+f1sdr = f1c1+f1c3;
+f1sip = (f1a1+f1a3)*f1b1;
+f1sin = (f1d1+f1d3)*f1b2;
+f1sii = f1sip+f1sin;
+f1sto = f1sdr+f1sii;
+
+! f2: primary attribute (block=0).
+f2pdr = f2c1;
+f2pip = f2a1*f2b1;
+f2pin = f2d1*f2b2;
+f2pii = f2pip+f2pin;
+f2pto = f2pdr+f2pii;
+
+! f2: secondary attribute (block=1).
+f2sdr = f2c1+f2c3;
+f2sip = (f2a1+f2a3)*f2b1;
+f2sin = (f2d1+f2d3)*f2b2;
+f2sii = f2sip+f2sin;
+f2sto = f2sdr+f2sii;
+
+! f3: primary attribute (block=0).
+f3pdr = f3c1;
+f3pip = f3a1*f3b1;
+f3pin = f3d1*f3b2;
+f3pii = f3pip+f3pin;
+f3pto = f3pdr+f3pii;
+
+! f3: secondary attribute (block=1).
+f3sdr = f3c1+f3c3;
+f3sip = (f3a1+f3a3)*f3b1;
+f3sin = (f3d1+f3d3)*f3b2;
+f3sii = f3sip+f3sin;
+f3sto = f3sdr+f3sii;
+
+! Pairwise differences: group 2 minus group 1.
+d21pdr = f2pdr-f1pdr;
+d21pip = f2pip-f1pip;
+d21pin = f2pin-f1pin;
+d21pii = f2pii-f1pii;
+d21pto = f2pto-f1pto;
+d21sdr = f2sdr-f1sdr;
+d21sip = f2sip-f1sip;
+d21sin = f2sin-f1sin;
+d21sii = f2sii-f1sii;
+d21sto = f2sto-f1sto;
+
+! Pairwise differences: group 3 minus group 1.
+d31pdr = f3pdr-f1pdr;
+d31pip = f3pip-f1pip;
+d31pin = f3pin-f1pin;
+d31pii = f3pii-f1pii;
+d31pto = f3pto-f1pto;
+d31sdr = f3sdr-f1sdr;
+d31sip = f3sip-f1sip;
+d31sin = f3sin-f1sin;
+d31sii = f3sii-f1sii;
+d31sto = f3sto-f1sto;
+
+! Pairwise differences: group 3 minus group 2.
+d32pdr = f3pdr-f2pdr;
+d32pip = f3pip-f2pip;
+d32pin = f3pin-f2pin;
+d32pii = f3pii-f2pii;
+d32pto = f3pto-f2pto;
+d32sdr = f3sdr-f2sdr;
+d32sip = f3sip-f2sip;
+d32sin = f3sin-f2sin;
+d32sii = f3sii-f2sii;
+d32sto = f3sto-f2sto;
+
+
+MODEL TEST:
+
+! Pairwise equality test of the 11 substantive structural paths.
+0 = f2a1-f1a1;
+0 = f2a2-f1a2;
+0 = f2a3-f1a3;
+0 = f2d1-f1d1;
+0 = f2d2-f1d2;
+0 = f2d3-f1d3;
+0 = f2b1-f1b1;
+0 = f2b2-f1b2;
+0 = f2c1-f1c1;
+0 = f2c2-f1c2;
+0 = f2c3-f1c3;
+
+OUTPUT:
+SAMPSTAT;
+STANDARDIZED;
+CINTERVAL;
+RESIDUAL;
+TECH1;
+TECH4;
+MODINDICES(10);

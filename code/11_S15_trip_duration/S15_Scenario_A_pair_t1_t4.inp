@@ -1,0 +1,480 @@
+TITLE:
+SCENARIO A - TRIP DURATION - STRUCTURAL FREE
+COMMERCIAL ACTIVITY AND TERRACES
+TYPE=COMPLEX, MLR, CLUSTER=ID, STARTS=100;
+
+DATA:
+FILE = ../../data/Scenario_A_long_final.txt;
+
+VARIABLE:
+
+NAMES =
+ID
+MODO_rango
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+V1 V2 V3 V4 V5
+V6 V7 V8 V9 V10
+V11 V12 V13 V14 V15
+V16 V17 V18 V19;
+
+USEVARIABLES =
+ID
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+pblock;
+
+CLUSTER = ID;
+
+GROUPING = V15 (1 = t1 2 = t2 3 = t3 4 = t4);
+! V15=1: <15 min.
+! V15=2: >15 y <=30 min.
+! V15=3: >30 y <=60 min.
+! V15=4: >60 min.
+
+MISSING = ALL(-999);
+
+DEFINE:
+! Survey method: online=1, face-to-face=2.
+pblock = present*block;
+
+ANALYSIS:
+TYPE = COMPLEX;
+ESTIMATOR = MLR;
+STARTS = 100;
+ITERATIONS = 10000;
+
+MODEL:
+
+! Reference group = category 1.
+AP BY
+AP1@1
+AP2 (lpa2)
+AP3 (lpa3)
+AP4 (lpa4)
+AP5 (lpa5);
+
+AN BY
+AN1@1
+AN2 (lna2)
+AN3 (lna3)
+AN4 (lna4)
+AN5 (lna5);
+
+ST BY
+S1@1
+S2 (lst2)
+S3 (lst3)
+S4 (lst4)
+S5 (lst5);
+
+! Cross-loadings kept free across groups.
+AN BY AP2 (t1xpa);
+AP BY AN2 (t1xan);
+
+! Item intercepts free: scalar invariance is not imposed.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Latent intercepts fixed to zero when item intercepts are free.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Latent variances and item residual variances free by group.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+AP WITH AN (t1pan);
+
+AP ON
+present (t1a1)
+block   (t1a2)
+pblock  (t1a3)
+online  (t1a4);
+
+AN ON
+present (t1d1)
+block   (t1d2)
+pblock  (t1d3)
+online  (t1d4);
+
+ST ON
+AP      (t1b1)
+AN      (t1b2)
+present (t1c1)
+block   (t1c2)
+pblock  (t1c3)
+online  (t1c4);
+
+MODEL t2:
+
+AP BY
+AP1@1
+AP2 (lpa2)
+AP3 (lpa3)
+AP4 (lpa4)
+AP5 (lpa5);
+
+AN BY
+AN1@1
+AN2 (lna2)
+AN3 (lna3)
+AN4 (lna4)
+AN5 (lna5);
+
+ST BY
+S1@1
+S2 (lst2)
+S3 (lst3)
+S4 (lst4)
+S5 (lst5);
+
+! Cross-loadings kept free across groups.
+AN BY AP2 (t2xpa);
+AP BY AN2 (t2xan);
+
+! Item intercepts free: scalar invariance is not imposed.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Latent intercepts fixed to zero when item intercepts are free.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Latent variances and item residual variances free by group.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+AP WITH AN (t2pan);
+
+AP ON
+present (t2a1)
+block   (t2a2)
+pblock  (t2a3)
+online  (t2a4);
+
+AN ON
+present (t2d1)
+block   (t2d2)
+pblock  (t2d3)
+online  (t2d4);
+
+ST ON
+AP      (t2b1)
+AN      (t2b2)
+present (t2c1)
+block   (t2c2)
+pblock  (t2c3)
+online  (t2c4);
+
+MODEL t3:
+
+AP BY
+AP1@1
+AP2 (lpa2)
+AP3 (lpa3)
+AP4 (lpa4)
+AP5 (lpa5);
+
+AN BY
+AN1@1
+AN2 (lna2)
+AN3 (lna3)
+AN4 (lna4)
+AN5 (lna5);
+
+ST BY
+S1@1
+S2 (lst2)
+S3 (lst3)
+S4 (lst4)
+S5 (lst5);
+
+! Cross-loadings kept free across groups.
+AN BY AP2 (t3xpa);
+AP BY AN2 (t3xan);
+
+! Item intercepts free: scalar invariance is not imposed.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Latent intercepts fixed to zero when item intercepts are free.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Latent variances and item residual variances free by group.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+AP WITH AN (t3pan);
+
+AP ON
+present (t3a1)
+block   (t3a2)
+pblock  (t3a3)
+online  (t3a4);
+
+AN ON
+present (t3d1)
+block   (t3d2)
+pblock  (t3d3)
+online  (t3d4);
+
+ST ON
+AP      (t3b1)
+AN      (t3b2)
+present (t3c1)
+block   (t3c2)
+pblock  (t3c3)
+online  (t3c4);
+
+MODEL t4:
+
+AP BY
+AP1@1
+AP2 (lpa2)
+AP3 (lpa3)
+AP4 (lpa4)
+AP5 (lpa5);
+
+AN BY
+AN1@1
+AN2 (lna2)
+AN3 (lna3)
+AN4 (lna4)
+AN5 (lna5);
+
+ST BY
+S1@1
+S2 (lst2)
+S3 (lst3)
+S4 (lst4)
+S5 (lst5);
+
+! Cross-loadings kept free across groups.
+AN BY AP2 (t4xpa);
+AP BY AN2 (t4xan);
+
+! Item intercepts free: scalar invariance is not imposed.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Latent intercepts fixed to zero when item intercepts are free.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Latent variances and item residual variances free by group.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+AP WITH AN (t4pan);
+
+AP ON
+present (t4a1)
+block   (t4a2)
+pblock  (t4a3)
+online  (t4a4);
+
+AN ON
+present (t4d1)
+block   (t4d2)
+pblock  (t4d3)
+online  (t4d4);
+
+ST ON
+AP      (t4b1)
+AN      (t4b2)
+present (t4c1)
+block   (t4c2)
+pblock  (t4c3)
+online  (t4c4);
+
+MODEL CONSTRAINT:
+
+NEW(t1cdr t1cip t1cin t1cii t1cto t1tdr t1tip t1tin t1tii t1tto t2cdr
+t2cip t2cin t2cii t2cto t2tdr t2tip t2tin t2tii t2tto t3cdr t3cip t3cin
+t3cii t3cto t3tdr t3tip t3tin t3tii t3tto t4cdr t4cip t4cin t4cii t4cto
+t4tdr t4tip t4tin t4tii t4tto d21cdr d21cip d21cin d21cii d21cto d21tdr
+d21tip d21tin d21tii d21tto d31cdr d31cip d31cin d31cii d31cto d31tdr
+d31tip d31tin d31tii d31tto d41cdr d41cip d41cin d41cii d41cto d41tdr
+d41tip d41tin d41tii d41tto d32cdr d32cip d32cin d32cii d32cto d32tdr
+d32tip d32tin d32tii d32tto d42cdr d42cip d42cin d42cii d42cto d42tdr
+d42tip d42tin d42tii d42tto d43cdr d43cip d43cin d43cii d43cto d43tdr
+d43tip d43tin d43tii d43tto);
+
+! t1: primary attribute (block=0).
+t1cdr = t1c1;
+t1cip = t1a1*t1b1;
+t1cin = t1d1*t1b2;
+t1cii = t1cip+t1cin;
+t1cto = t1cdr+t1cii;
+
+! t1: secondary attribute (block=1).
+t1tdr = t1c1+t1c3;
+t1tip = (t1a1+t1a3)*t1b1;
+t1tin = (t1d1+t1d3)*t1b2;
+t1tii = t1tip+t1tin;
+t1tto = t1tdr+t1tii;
+
+! t2: primary attribute (block=0).
+t2cdr = t2c1;
+t2cip = t2a1*t2b1;
+t2cin = t2d1*t2b2;
+t2cii = t2cip+t2cin;
+t2cto = t2cdr+t2cii;
+
+! t2: secondary attribute (block=1).
+t2tdr = t2c1+t2c3;
+t2tip = (t2a1+t2a3)*t2b1;
+t2tin = (t2d1+t2d3)*t2b2;
+t2tii = t2tip+t2tin;
+t2tto = t2tdr+t2tii;
+
+! t3: primary attribute (block=0).
+t3cdr = t3c1;
+t3cip = t3a1*t3b1;
+t3cin = t3d1*t3b2;
+t3cii = t3cip+t3cin;
+t3cto = t3cdr+t3cii;
+
+! t3: secondary attribute (block=1).
+t3tdr = t3c1+t3c3;
+t3tip = (t3a1+t3a3)*t3b1;
+t3tin = (t3d1+t3d3)*t3b2;
+t3tii = t3tip+t3tin;
+t3tto = t3tdr+t3tii;
+
+! t4: primary attribute (block=0).
+t4cdr = t4c1;
+t4cip = t4a1*t4b1;
+t4cin = t4d1*t4b2;
+t4cii = t4cip+t4cin;
+t4cto = t4cdr+t4cii;
+
+! t4: secondary attribute (block=1).
+t4tdr = t4c1+t4c3;
+t4tip = (t4a1+t4a3)*t4b1;
+t4tin = (t4d1+t4d3)*t4b2;
+t4tii = t4tip+t4tin;
+t4tto = t4tdr+t4tii;
+
+! Pairwise differences: group 2 minus group 1.
+d21cdr = t2cdr-t1cdr;
+d21cip = t2cip-t1cip;
+d21cin = t2cin-t1cin;
+d21cii = t2cii-t1cii;
+d21cto = t2cto-t1cto;
+d21tdr = t2tdr-t1tdr;
+d21tip = t2tip-t1tip;
+d21tin = t2tin-t1tin;
+d21tii = t2tii-t1tii;
+d21tto = t2tto-t1tto;
+
+! Pairwise differences: group 3 minus group 1.
+d31cdr = t3cdr-t1cdr;
+d31cip = t3cip-t1cip;
+d31cin = t3cin-t1cin;
+d31cii = t3cii-t1cii;
+d31cto = t3cto-t1cto;
+d31tdr = t3tdr-t1tdr;
+d31tip = t3tip-t1tip;
+d31tin = t3tin-t1tin;
+d31tii = t3tii-t1tii;
+d31tto = t3tto-t1tto;
+
+! Pairwise differences: group 4 minus group 1.
+d41cdr = t4cdr-t1cdr;
+d41cip = t4cip-t1cip;
+d41cin = t4cin-t1cin;
+d41cii = t4cii-t1cii;
+d41cto = t4cto-t1cto;
+d41tdr = t4tdr-t1tdr;
+d41tip = t4tip-t1tip;
+d41tin = t4tin-t1tin;
+d41tii = t4tii-t1tii;
+d41tto = t4tto-t1tto;
+
+! Pairwise differences: group 3 minus group 2.
+d32cdr = t3cdr-t2cdr;
+d32cip = t3cip-t2cip;
+d32cin = t3cin-t2cin;
+d32cii = t3cii-t2cii;
+d32cto = t3cto-t2cto;
+d32tdr = t3tdr-t2tdr;
+d32tip = t3tip-t2tip;
+d32tin = t3tin-t2tin;
+d32tii = t3tii-t2tii;
+d32tto = t3tto-t2tto;
+
+! Pairwise differences: group 4 minus group 2.
+d42cdr = t4cdr-t2cdr;
+d42cip = t4cip-t2cip;
+d42cin = t4cin-t2cin;
+d42cii = t4cii-t2cii;
+d42cto = t4cto-t2cto;
+d42tdr = t4tdr-t2tdr;
+d42tip = t4tip-t2tip;
+d42tin = t4tin-t2tin;
+d42tii = t4tii-t2tii;
+d42tto = t4tto-t2tto;
+
+! Pairwise differences: group 4 minus group 3.
+d43cdr = t4cdr-t3cdr;
+d43cip = t4cip-t3cip;
+d43cin = t4cin-t3cin;
+d43cii = t4cii-t3cii;
+d43cto = t4cto-t3cto;
+d43tdr = t4tdr-t3tdr;
+d43tip = t4tip-t3tip;
+d43tin = t4tin-t3tin;
+d43tii = t4tii-t3tii;
+d43tto = t4tto-t3tto;
+
+
+MODEL TEST:
+
+! Pairwise equality test of the 11 substantive structural paths.
+0 = t4a1-t1a1;
+0 = t4a2-t1a2;
+0 = t4a3-t1a3;
+0 = t4d1-t1d1;
+0 = t4d2-t1d2;
+0 = t4d3-t1d3;
+0 = t4b1-t1b1;
+0 = t4b2-t1b2;
+0 = t4c1-t1c1;
+0 = t4c2-t1c2;
+0 = t4c3-t1c3;
+
+OUTPUT:
+SAMPSTAT;
+STANDARDIZED;
+CINTERVAL;
+RESIDUAL;
+TECH1;
+TECH4;
+MODINDICES(10);
