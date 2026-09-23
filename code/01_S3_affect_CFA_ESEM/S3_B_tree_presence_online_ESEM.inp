@@ -1,0 +1,83 @@
+TITLE: SD rboles - ESEM APN Online;
+
+  DATA:
+  FILE = ../../data/datos_arb_legacy_order.txt;
+
+  VARIABLE:
+  NAMES =
+  id MODO online
+  AP1ca	AP1sa	AN1ca	AN1sa	
+  AP2ca	AP2sa	AN2ca	AN2sa	
+  AP3ca	AP3sa	AN3ca	AN3sa	
+  AP4ca	AP4sa	AN4ca	AN4sa	
+  AP5ca	AP5sa	AN5ca	AN5sa	
+  SD1ca	SD1sa	SD2ca	SD2sa	SD3ca	SD3sa	SD4ca	SD4sa	SD5ca	SD5sa	
+  AP1ap	AP1ag	AN1ap	AN1ag
+  AP2ap	AP2ag	AN2ap	AN2ag	
+  P3ap	AP3ag	AN3ap	AN3ag	
+  AP4ap	AP4ag	AN4ap	AN4ag	
+  AP5ap	AP5ag	AN5ap	AN5ag	
+  SD1ap	SD1ag	SD2ap	SD2ag	SD3ap	SD3ag	SD4ap	SD4ag	SD5ap	SD5ag	
+  V1	V2	V3	V4	V5	V6	V7	V8	V9	V10	V11	V12	V13	V14	V15	V16	V17	V18	V19;
+
+  USEVARIABLES =
+  AP1ca	AP1sa	AN1ca	AN1sa	
+  AP2ca	AP2sa	AN2ca	AN2sa	
+  AP3ca	AP3sa	AN3ca	AN3sa	
+  AP4ca	AP4sa	AN4ca	AN4sa	
+  AP5ca	AP5sa	AN5ca	AN5sa;
+
+USEOBSERVATIONS = online EQ 1;
+
+  MISSING = ALL (-999);
+
+  ANALYSIS:
+  ESTIMATOR = MLR;
+  ROTATION = TARGET;
+
+  MODEL:
+
+    APca BY ap1ca ap2ca ap3ca ap4ca ap5ca
+    ap1sa~0 ap2sa~0 ap3sa~0 ap4sa~0 ap5sa~0
+    an1ca~0 an2ca~0 an3ca~0 an4ca~0 an5ca~0
+    an1sa~0 an2sa~0 an3sa~0 an4sa~0 an5sa~0 (*1);
+
+    APsa BY ap1sa ap2sa ap3sa ap4sa ap5sa
+    ap1ca~0 ap2ca~0 ap3ca~0 ap4ca~0 ap5ca~0
+    an1ca~0 an2ca~0 an3ca~0 an4ca~0 an5ca~0
+    an1sa~0 an2sa~0 an3sa~0 an4sa~0 an5sa~0 (*1);
+
+    ANca BY an1ca an2ca an3ca an4ca an5ca
+    ap1ca~0 ap2ca~0 ap3ca~0 ap4ca~0 ap5ca~0
+    ap1sa~0 ap2sa~0 ap3sa~0 ap4sa~0 ap5sa~0
+    an1sa~0 an2sa~0 an3sa~0 an4sa~0 an5sa~0 (*1);
+
+    ANsa BY an1sa an2sa an3sa an4sa an5sa
+    ap1ca~0 ap2ca~0 ap3ca~0 ap4ca~0 ap5ca~0
+    ap1sa~0 ap2sa~0 ap3sa~0 ap4sa~0 ap5sa~0
+    an1ca~0 an2ca~0 an3ca~0 an4ca~0 an5ca~0 (*1);
+
+  APca WITH ANca;
+  APsa WITH ANsa;
+  APca WITH APsa;
+  ANca WITH ANsa;
+
+  ap1ca WITH ap1sa;
+  ap2ca WITH ap2sa;
+  ap3ca WITH ap3sa;
+  ap4ca WITH ap4sa;
+  ap5ca WITH ap5sa;
+
+  an1ca WITH an1sa;
+  an2ca WITH an2sa;
+  an3ca WITH an3sa;
+  an4ca WITH an4sa;
+  an5ca WITH an5sa;
+
+  OUTPUT:
+  STANDARDIZED;
+  MODINDICES(10);
+  SAMPSTAT;
+  RESIDUAL;
+  TECH1;
+  TECH4;

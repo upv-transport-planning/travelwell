@@ -1,0 +1,2153 @@
+Mplus VERSION 9.1
+MUTHEN & MUTHEN
+08/17/2026   8:20 AM
+
+INPUT INSTRUCTIONS
+
+  TITLE: SD rbolesPG - CFA APN Online;
+
+    DATA:
+    FILE = ../data/datos_arb_legacy_order.txt;
+
+    VARIABLE:
+    NAMES =
+    id MODO online
+    AP1ca	AP1sa	AN1ca	AN1sa	
+    AP2ca	AP2sa	AN2ca	AN2sa	
+    AP3ca	AP3sa	AN3ca	AN3sa	
+    AP4ca	AP4sa	AN4ca	AN4sa	
+    AP5ca	AP5sa	AN5ca	AN5sa	
+    SD1ca	SD1sa	SD2ca	SD2sa	SD3ca	SD3sa	SD4ca	SD4sa	SD5ca	SD5sa	
+    AP1ap	AP1ag	AN1ap	AN1ag
+    AP2ap	AP2ag	AN2ap	AN2ag	
+    AP3ap	AP3ag	AN3ap	AN3ag	
+    AP4ap	AP4ag	AN4ap	AN4ag	
+    AP5ap	AP5ag	AN5ap	AN5ag	
+    SD1ap	SD1ag	SD2ap	SD2ag	SD3ap	SD3ag	SD4ap	SD4ag	SD5ap	SD5ag	
+    V1	V2	V3	V4	V5	V6	V7	V8	V9	V10	V11	V12	V13	V14	V15	V16	V17	V18	V19;
+
+    USEVARIABLES =
+    AP1ap	AP1ag	AN1ap	AN1ag
+    AP2ap	AP2ag	AN2ap	AN2ag	
+    AP3ap	AP3ag	AN3ap	AN3ag	
+    AP4ap	AP4ag	AN4ap	AN4ag	
+    AP5ap	AP5ag	AN5ap	AN5ag	;
+
+  USEOBSERVATIONS = online EQ 1;
+
+    MISSING = ALL (-999);
+
+    ANALYSIS:
+    ESTIMATOR = MLR;
+
+    MODEL:
+
+    APap BY ap1ap ap2ap ap3ap ap4ap ap5ap;
+    APag BY ap1ag ap2ag ap3ag ap4ag ap5ag;
+    ANap BY an1ap an2ap an3ap an4ap an5ap;
+    ANag BY an1ag an2ag an3ag an4ag an5ag;
+
+    APap WITH ANap;
+    APag WITH ANag;
+    APap WITH APag;
+    ANap WITH ANag;
+
+    ap1ap WITH ap1ag;
+    ap2ap WITH ap2ag;
+    ap3ap WITH ap3ag;
+    ap4ap WITH ap4ag;
+    ap5ap WITH ap5ag;
+
+    an1ap WITH an1ag;
+    an2ap WITH an2ag;
+    an3ap WITH an3ag;
+    an4ap WITH an4ag;
+    an5ap WITH an5ag;
+
+    OUTPUT:
+    STANDARDIZED;
+    MODINDICES(10);
+    SAMPSTAT;
+    RESIDUAL;
+    TECH1;
+    TECH4;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+SD rbolesPG - CFA APN Online;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         319
+
+Number of dependent variables                                   20
+Number of independent variables                                  0
+Number of continuous latent variables                            4
+
+Observed dependent variables
+
+  Continuous
+   AP1AP       AP1AG       AN1AP       AN1AG       AP2AP       AP2AG
+   AN2AP       AN2AG       AP3AP       AP3AG       AN3AP       AN3AG
+   AP4AP       AP4AG       AN4AP       AN4AG       AP5AP       AP5AG
+   AN5AP       AN5AG
+
+Continuous latent variables
+   APAP        APAG        ANAP        ANAG
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  ../data/datos_arb_legacy_order.txt
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              AP1AP         AP1AG         AN1AP         AN1AG         AP2AP
+              ________      ________      ________      ________      ________
+ AP1AP          1.000
+ AP1AG          1.000         1.000
+ AN1AP          1.000         1.000         1.000
+ AN1AG          1.000         1.000         1.000         1.000
+ AP2AP          1.000         1.000         1.000         1.000         1.000
+ AP2AG          1.000         1.000         1.000         1.000         1.000
+ AN2AP          1.000         1.000         1.000         1.000         1.000
+ AN2AG          1.000         1.000         1.000         1.000         1.000
+ AP3AP          1.000         1.000         1.000         1.000         1.000
+ AP3AG          1.000         1.000         1.000         1.000         1.000
+ AN3AP          1.000         1.000         1.000         1.000         1.000
+ AN3AG          1.000         1.000         1.000         1.000         1.000
+ AP4AP          1.000         1.000         1.000         1.000         1.000
+ AP4AG          1.000         1.000         1.000         1.000         1.000
+ AN4AP          1.000         1.000         1.000         1.000         1.000
+ AN4AG          1.000         1.000         1.000         1.000         1.000
+ AP5AP          1.000         1.000         1.000         1.000         1.000
+ AP5AG          1.000         1.000         1.000         1.000         1.000
+ AN5AP          1.000         1.000         1.000         1.000         1.000
+ AN5AG          1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              AP2AG         AN2AP         AN2AG         AP3AP         AP3AG
+              ________      ________      ________      ________      ________
+ AP2AG          1.000
+ AN2AP          1.000         1.000
+ AN2AG          1.000         1.000         1.000
+ AP3AP          1.000         1.000         1.000         1.000
+ AP3AG          1.000         1.000         1.000         1.000         1.000
+ AN3AP          1.000         1.000         1.000         1.000         1.000
+ AN3AG          1.000         1.000         1.000         1.000         1.000
+ AP4AP          1.000         1.000         1.000         1.000         1.000
+ AP4AG          1.000         1.000         1.000         1.000         1.000
+ AN4AP          1.000         1.000         1.000         1.000         1.000
+ AN4AG          1.000         1.000         1.000         1.000         1.000
+ AP5AP          1.000         1.000         1.000         1.000         1.000
+ AP5AG          1.000         1.000         1.000         1.000         1.000
+ AN5AP          1.000         1.000         1.000         1.000         1.000
+ AN5AG          1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              AN3AP         AN3AG         AP4AP         AP4AG         AN4AP
+              ________      ________      ________      ________      ________
+ AN3AP          1.000
+ AN3AG          1.000         1.000
+ AP4AP          1.000         1.000         1.000
+ AP4AG          1.000         1.000         1.000         1.000
+ AN4AP          1.000         1.000         1.000         1.000         1.000
+ AN4AG          1.000         1.000         1.000         1.000         1.000
+ AP5AP          1.000         1.000         1.000         1.000         1.000
+ AP5AG          1.000         1.000         1.000         1.000         1.000
+ AN5AP          1.000         1.000         1.000         1.000         1.000
+ AN5AG          1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              AN4AG         AP5AP         AP5AG         AN5AP         AN5AG
+              ________      ________      ________      ________      ________
+ AN4AG          1.000
+ AP5AP          1.000         1.000
+ AP5AG          1.000         1.000         1.000
+ AN5AP          1.000         1.000         1.000         1.000
+ AN5AG          1.000         1.000         1.000         1.000         1.000
+
+
+SAMPLE STATISTICS
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           Means
+              AP1AP         AP1AG         AN1AP         AN1AG         AP2AP
+              ________      ________      ________      ________      ________
+                3.392         3.878         2.417         2.357         3.364
+
+
+           Means
+              AP2AG         AN2AP         AN2AG         AP3AP         AP3AG
+              ________      ________      ________      ________      ________
+                3.439         2.313         2.191         3.408         3.646
+
+
+           Means
+              AN3AP         AN3AG         AP4AP         AP4AG         AN4AP
+              ________      ________      ________      ________      ________
+                2.342         2.219         3.411         3.734         2.219
+
+
+           Means
+              AN4AG         AP5AP         AP5AG         AN5AP         AN5AG
+              ________      ________      ________      ________      ________
+                2.144         3.442         3.511         2.141         2.066
+
+
+           Covariances
+              AP1AP         AP1AG         AN1AP         AN1AG         AP2AP
+              ________      ________      ________      ________      ________
+ AP1AP          0.978
+ AP1AG          0.123         1.104
+ AN1AP         -0.235        -0.081         0.989
+ AN1AG         -0.077        -0.182         0.534         1.151
+ AP2AP          0.378         0.151         0.033         0.039         0.827
+ AP2AG          0.163         0.493        -0.111        -0.010         0.342
+ AN2AP         -0.273        -0.115         0.531         0.343        -0.061
+ AN2AG         -0.091        -0.290         0.359         0.662        -0.073
+ AP3AP          0.480         0.181        -0.154        -0.067         0.372
+ AP3AG          0.195         0.612        -0.075        -0.115         0.141
+ AN3AP         -0.259        -0.165         0.566         0.423        -0.068
+ AN3AG         -0.152        -0.299         0.432         0.674        -0.036
+ AP4AP          0.475         0.198        -0.168        -0.184         0.337
+ AP4AG          0.158         0.679        -0.143        -0.184         0.125
+ AN4AP         -0.271        -0.171         0.579         0.473        -0.083
+ AN4AG         -0.122        -0.236         0.416         0.641        -0.027
+ AP5AP          0.344         0.107        -0.122        -0.092         0.313
+ AP5AG          0.116         0.420        -0.150        -0.201         0.156
+ AN5AP         -0.281        -0.155         0.455         0.442        -0.117
+ AN5AG         -0.114        -0.343         0.383         0.544        -0.043
+
+
+           Covariances
+              AP2AG         AN2AP         AN2AG         AP3AP         AP3AG
+              ________      ________      ________      ________      ________
+ AP2AG          0.999
+ AN2AP         -0.125         1.143
+ AN2AG         -0.093         0.605         1.258
+ AP3AP          0.135        -0.259        -0.181         0.875
+ AP3AG          0.529        -0.115        -0.180         0.442         1.182
+ AN3AP         -0.119         0.604         0.395        -0.227        -0.189
+ AN3AG         -0.146         0.448         0.576        -0.190        -0.255
+ AP4AP          0.174        -0.270        -0.151         0.576         0.368
+ AP4AG          0.418        -0.183        -0.241         0.356         0.796
+ AN4AP         -0.140         0.640         0.438        -0.205        -0.217
+ AN4AG         -0.120         0.438         0.568        -0.194        -0.200
+ AP5AP          0.204        -0.217        -0.113         0.394         0.266
+ AP5AG          0.374        -0.151        -0.251         0.253         0.498
+ AN5AP         -0.090         0.633         0.434        -0.305        -0.248
+ AN5AG         -0.167         0.487         0.561        -0.193        -0.306
+
+
+           Covariances
+              AN3AP         AN3AG         AP4AP         AP4AG         AN4AP
+              ________      ________      ________      ________      ________
+ AN3AP          0.927
+ AN3AG          0.630         1.043
+ AP4AP         -0.291        -0.225         0.831
+ AP4AG         -0.244        -0.355         0.454         1.092
+ AN4AP          0.721         0.541        -0.297        -0.274         0.968
+ AN4AG          0.462         0.727        -0.207        -0.284         0.614
+ AP5AP         -0.207        -0.125         0.467         0.249        -0.244
+ AP5AG         -0.218        -0.294         0.226         0.547        -0.200
+ AN5AP          0.654         0.536        -0.324        -0.229         0.706
+ AN5AG          0.485         0.729        -0.171        -0.396         0.515
+
+
+           Covariances
+              AN4AG         AP5AP         AP5AG         AN5AP         AN5AG
+              ________      ________      ________      ________      ________
+ AN4AG          0.951
+ AP5AP         -0.117         0.686
+ AP5AG         -0.274         0.354         0.783
+ AN5AP          0.522        -0.326        -0.273         0.930
+ AN5AG          0.693        -0.186        -0.404         0.709         0.977
+
+
+           Correlations
+              AP1AP         AP1AG         AN1AP         AN1AG         AP2AP
+              ________      ________      ________      ________      ________
+ AP1AP          1.000
+ AP1AG          0.118         1.000
+ AN1AP         -0.239        -0.077         1.000
+ AN1AG         -0.073        -0.161         0.501         1.000
+ AP2AP          0.420         0.158         0.037         0.040         1.000
+ AP2AG          0.165         0.469        -0.112        -0.009         0.376
+ AN2AP         -0.258        -0.103         0.499         0.299        -0.062
+ AN2AG         -0.082        -0.246         0.322         0.550        -0.071
+ AP3AP          0.519         0.185        -0.166        -0.067         0.438
+ AP3AG          0.182         0.536        -0.069        -0.098         0.143
+ AN3AP         -0.272        -0.163         0.591         0.410        -0.077
+ AN3AG         -0.150        -0.279         0.425         0.615        -0.039
+ AP4AP          0.527         0.206        -0.185        -0.188         0.406
+ AP4AG          0.153         0.618        -0.137        -0.164         0.132
+ AN4AP         -0.279        -0.165         0.592         0.448        -0.093
+ AN4AG         -0.127        -0.231         0.429         0.613        -0.031
+ AP5AP          0.420         0.123        -0.148        -0.104         0.415
+ AP5AG          0.133         0.452        -0.171        -0.212         0.194
+ AN5AP         -0.295        -0.153         0.475         0.427        -0.134
+ AN5AG         -0.116        -0.330         0.390         0.513        -0.048
+
+
+           Correlations
+              AP2AG         AN2AP         AN2AG         AP3AP         AP3AG
+              ________      ________      ________      ________      ________
+ AP2AG          1.000
+ AN2AP         -0.117         1.000
+ AN2AG         -0.083         0.504         1.000
+ AP3AP          0.144        -0.259        -0.173         1.000
+ AP3AG          0.487        -0.099        -0.148         0.435         1.000
+ AN3AP         -0.123         0.587         0.366        -0.252        -0.181
+ AN3AG         -0.144         0.411         0.503        -0.199        -0.229
+ AP4AP          0.191        -0.277        -0.147         0.675         0.371
+ AP4AG          0.400        -0.164        -0.205         0.365         0.701
+ AN4AP         -0.143         0.608         0.397        -0.223        -0.203
+ AN4AG         -0.123         0.420         0.519        -0.212        -0.188
+ AP5AP          0.247        -0.245        -0.121         0.508         0.296
+ AP5AG          0.424        -0.159        -0.253         0.305         0.517
+ AN5AP         -0.094         0.614         0.401        -0.338        -0.236
+ AN5AG         -0.169         0.461         0.506        -0.209        -0.285
+
+
+           Correlations
+              AN3AP         AN3AG         AP4AP         AP4AG         AN4AP
+              ________      ________      ________      ________      ________
+ AN3AP          1.000
+ AN3AG          0.641         1.000
+ AP4AP         -0.331        -0.242         1.000
+ AP4AG         -0.243        -0.333         0.477         1.000
+ AN4AP          0.762         0.539        -0.331        -0.266         1.000
+ AN4AG          0.492         0.730        -0.232        -0.279         0.640
+ AP5AP         -0.260        -0.148         0.619         0.288        -0.300
+ AP5AG         -0.256        -0.325         0.280         0.591        -0.230
+ AN5AP          0.704         0.545        -0.369        -0.227         0.744
+ AN5AG          0.510         0.722        -0.190        -0.384         0.530
+
+
+           Correlations
+              AN4AG         AP5AP         AP5AG         AN5AP         AN5AG
+              ________      ________      ________      ________      ________
+ AN4AG          1.000
+ AP5AP         -0.145         1.000
+ AP5AG         -0.318         0.483         1.000
+ AN5AP          0.555        -0.408        -0.320         1.000
+ AN5AG          0.719        -0.227        -0.461         0.743         1.000
+
+
+     MAXIMUM LOG-LIKELIHOOD VALUE FOR THE UNRESTRICTED (H1) MODEL IS -6845.901
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     AP1AP                 3.392      -0.496       1.000    5.96%       3.000      3.000      3.000
+             319.000       0.978       0.204       5.000   11.60%       4.000      4.000
+     AP1AG                 3.878      -0.808       1.000    4.08%       3.000      4.000      4.000
+             319.000       1.104       0.268       5.000   33.54%       4.000      5.000
+     AN1AP                 2.417      -0.009       1.000   24.14%       1.000      2.000      3.000
+             319.000       0.989      -0.690       5.000    1.57%       3.000      3.000
+     AN1AG                 2.357       0.228       1.000   28.84%       1.000      2.000      3.000
+             319.000       1.151      -0.689       5.000    2.82%       3.000      3.000
+     AP2AP                 3.364      -0.255       1.000    4.08%       3.000      3.000      3.000
+             319.000       0.827       0.410       5.000   10.66%       4.000      4.000
+     AP2AG                 3.439      -0.378       1.000    5.33%       3.000      3.000      3.000
+             319.000       0.999       0.116       5.000   15.05%       4.000      4.000
+     AN2AP                 2.313       0.337       1.000   29.78%       1.000      2.000      2.000
+             319.000       1.143      -0.492       5.000    3.45%       3.000      3.000
+     AN2AG                 2.191       0.565       1.000   36.99%       1.000      2.000      2.000
+             319.000       1.258      -0.438       5.000    4.08%       3.000      3.000
+     AP3AP                 3.408      -0.317       1.000    4.08%       3.000      3.000      3.000
+             319.000       0.875       0.245       5.000   11.91%       4.000      4.000
+     AP3AG                 3.646      -0.552       1.000    5.64%       3.000      3.000      4.000
+             319.000       1.182      -0.092       5.000   25.71%       4.000      5.000
+     AN3AP                 2.342       0.137       1.000   24.14%       1.000      2.000      2.000
+             319.000       0.927      -0.432       5.000    1.88%       3.000      3.000
+     AN3AG                 2.219       0.170       1.000   33.54%       1.000      2.000      2.000
+             319.000       1.043      -1.003       5.000    0.94%       3.000      3.000
+     AP4AP                 3.411      -0.405       1.000    4.39%       3.000      3.000      3.000
+             319.000       0.831       0.530       5.000   10.66%       4.000      4.000
+     AP4AG                 3.734      -0.589       1.000    4.39%       3.000      3.000      4.000
+             319.000       1.092       0.040       5.000   27.59%       4.000      5.000
+     AN4AP                 2.219       0.242       1.000   30.41%       1.000      2.000      2.000
+             319.000       0.968      -0.624       5.000    1.57%       3.000      3.000
+     AN4AG                 2.144       0.195       1.000   34.48%       1.000      2.000      2.000
+             319.000       0.951      -1.008       5.000    0.63%       3.000      3.000
+     AP5AP                 3.442      -0.180       1.000    2.82%       3.000      3.000      3.000
+             319.000       0.686       0.829       5.000   10.34%       4.000      4.000
+     AP5AG                 3.511      -0.183       1.000    2.82%       3.000      3.000      3.000
+             319.000       0.783       0.389       5.000   14.42%       4.000      4.000
+     AN5AP                 2.141       0.240       1.000   33.54%       1.000      2.000      2.000
+             319.000       0.930      -0.822       5.000    0.94%       3.000      3.000
+     AN5AG                 2.066       0.414       1.000   38.24%       1.000      2.000      2.000
+             319.000       0.977      -0.689       5.000    1.25%       2.000      3.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       76
+
+Loglikelihood
+
+          H0 Value                       -7061.411
+          H0 Scaling Correction Factor      2.1233
+            for MLR
+          H1 Value                       -6845.901
+          H1 Scaling Correction Factor      1.6746
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   14274.823
+          Bayesian (BIC)                 14560.977
+          Sample-Size Adjusted BIC       14319.920
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                            296.604*
+          Degrees of Freedom                   154
+          P-Value                           0.0000
+          Scaling Correction Factor         1.4532
+            for MLR
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.054
+          90 Percent C.I.                    0.045  0.063
+          Probability RMSEA <= .05           0.237
+
+CFI/TLI
+
+          CFI                                0.933
+          TLI                                0.918
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           2325.066
+          Degrees of Freedom                   190
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.052
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ APAP     BY
+    AP1AP              1.000      0.000    999.000    999.000
+    AP2AP              0.753      0.129      5.851      0.000
+    AP3AP              1.097      0.127      8.668      0.000
+    AP4AP              1.208      0.124      9.764      0.000
+    AP5AP              0.889      0.108      8.224      0.000
+
+ APAG     BY
+    AP1AG              1.000      0.000    999.000    999.000
+    AP2AG              0.757      0.085      8.886      0.000
+    AP3AG              1.122      0.103     10.941      0.000
+    AP4AG              1.182      0.098     12.015      0.000
+    AP5AG              0.801      0.091      8.788      0.000
+
+ ANAP     BY
+    AN1AP              1.000      0.000    999.000    999.000
+    AN2AP              1.154      0.124      9.322      0.000
+    AN3AP              1.281      0.123     10.430      0.000
+    AN4AP              1.359      0.134     10.140      0.000
+    AN5AP              1.216      0.177      6.853      0.000
+
+ ANAG     BY
+    AN1AG              1.000      0.000    999.000    999.000
+    AN2AG              0.951      0.073     13.022      0.000
+    AN3AG              1.214      0.086     14.090      0.000
+    AN4AG              1.142      0.086     13.247      0.000
+    AN5AG              1.076      0.119      9.058      0.000
+
+ APAP     WITH
+    ANAP              -0.183      0.042     -4.377      0.000
+    APAG               0.221      0.043      5.171      0.000
+
+ APAG     WITH
+    ANAG              -0.236      0.053     -4.432      0.000
+
+ ANAP     WITH
+    ANAG               0.345      0.060      5.783      0.000
+    APAG              -0.147      0.044     -3.327      0.001
+
+ ANAG     WITH
+    APAP              -0.124      0.039     -3.154      0.002
+
+ AP1AP    WITH
+    AP1AG              0.027      0.043      0.633      0.527
+
+ AP2AP    WITH
+    AP2AG              0.242      0.065      3.756      0.000
+
+ AP3AP    WITH
+    AP3AG              0.103      0.056      1.839      0.066
+
+ AP4AP    WITH
+    AP4AG              0.124      0.042      2.978      0.003
+
+ AP5AP    WITH
+    AP5AG              0.182      0.049      3.723      0.000
+
+ AN1AP    WITH
+    AN1AG              0.171      0.052      3.261      0.001
+
+ AN2AP    WITH
+    AN2AG              0.229      0.079      2.881      0.004
+
+ AN3AP    WITH
+    AN3AG              0.128      0.031      4.049      0.000
+
+ AN4AP    WITH
+    AN4AG              0.093      0.026      3.552      0.000
+
+ AN5AP    WITH
+    AN5AG              0.204      0.055      3.730      0.000
+
+ Intercepts
+    AP1AP              3.392      0.055     61.254      0.000
+    AP1AG              3.878      0.059     65.911      0.000
+    AN1AP              2.417      0.056     43.403      0.000
+    AN1AG              2.357      0.060     39.240      0.000
+    AP2AP              3.364      0.051     66.061      0.000
+    AP2AG              3.439      0.056     61.463      0.000
+    AN2AP              2.313      0.060     38.647      0.000
+    AN2AG              2.191      0.063     34.892      0.000
+    AP3AP              3.408      0.052     65.074      0.000
+    AP3AG              3.646      0.061     59.900      0.000
+    AN3AP              2.342      0.054     43.436      0.000
+    AN3AG              2.219      0.057     38.819      0.000
+    AP4AP              3.411      0.051     66.810      0.000
+    AP4AG              3.734      0.059     63.812      0.000
+    AN4AP              2.219      0.055     40.300      0.000
+    AN4AG              2.144      0.055     39.271      0.000
+    AP5AP              3.442      0.046     74.251      0.000
+    AP5AG              3.511      0.050     70.876      0.000
+    AN5AP              2.141      0.054     39.655      0.000
+    AN5AG              2.066      0.055     37.331      0.000
+
+ Variances
+    APAP               0.415      0.076      5.466      0.000
+    APAG               0.566      0.084      6.760      0.000
+    ANAP               0.418      0.085      4.918      0.000
+    ANAG               0.539      0.084      6.440      0.000
+
+ Residual Variances
+    AP1AP              0.569      0.071      7.978      0.000
+    AP1AG              0.544      0.077      7.107      0.000
+    AN1AP              0.571      0.079      7.222      0.000
+    AN1AG              0.602      0.080      7.521      0.000
+    AP2AP              0.594      0.077      7.668      0.000
+    AP2AG              0.693      0.074      9.373      0.000
+    AN2AP              0.584      0.082      7.130      0.000
+    AN2AG              0.777      0.119      6.544      0.000
+    AP3AP              0.360      0.070      5.121      0.000
+    AP3AG              0.449      0.094      4.761      0.000
+    AN3AP              0.254      0.034      7.438      0.000
+    AN3AG              0.269      0.043      6.245      0.000
+    AP4AP              0.221      0.046      4.818      0.000
+    AP4AG              0.290      0.066      4.410      0.000
+    AN4AP              0.201      0.032      6.249      0.000
+    AN4AG              0.257      0.042      6.098      0.000
+    AP5AP              0.348      0.051      6.794      0.000
+    AP5AG              0.414      0.052      7.941      0.000
+    AN5AP              0.285      0.058      4.888      0.000
+    AN5AG              0.307      0.066      4.662      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.137E-02
+       (ratio of smallest to largest eigenvalue)
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ APAP     BY
+    AP1AP              0.650      0.048     13.441      0.000
+    AP2AP              0.533      0.075      7.125      0.000
+    AP3AP              0.763      0.053     14.476      0.000
+    AP4AP              0.856      0.032     26.539      0.000
+    AP5AP              0.697      0.053     13.230      0.000
+
+ APAG     BY
+    AP1AG              0.714      0.041     17.466      0.000
+    AP2AG              0.565      0.057      9.931      0.000
+    AP3AG              0.783      0.047     16.573      0.000
+    AP4AG              0.856      0.033     25.684      0.000
+    AP5AG              0.683      0.050     13.674      0.000
+
+ ANAP     BY
+    AN1AP              0.650      0.059     11.040      0.000
+    AN2AP              0.699      0.047     14.771      0.000
+    AN3AP              0.854      0.024     35.682      0.000
+    AN4AP              0.891      0.020     44.176      0.000
+    AN5AP              0.827      0.041     20.302      0.000
+
+ ANAG     BY
+    AN1AG              0.687      0.046     14.856      0.000
+    AN2AG              0.621      0.056     11.004      0.000
+    AN3AG              0.864      0.024     36.752      0.000
+    AN4AG              0.856      0.027     31.652      0.000
+    AN5AG              0.819      0.044     18.592      0.000
+
+ APAP     WITH
+    ANAP              -0.440      0.082     -5.336      0.000
+    APAG               0.455      0.096      4.762      0.000
+
+ APAG     WITH
+    ANAG              -0.427      0.075     -5.660      0.000
+
+ ANAP     WITH
+    ANAG               0.728      0.067     10.830      0.000
+    APAG              -0.303      0.077     -3.940      0.000
+
+ ANAG     WITH
+    APAP              -0.263      0.081     -3.242      0.001
+
+ AP1AP    WITH
+    AP1AG              0.049      0.078      0.635      0.525
+
+ AP2AP    WITH
+    AP2AG              0.378      0.089      4.259      0.000
+
+ AP3AP    WITH
+    AP3AG              0.258      0.148      1.745      0.081
+
+ AP4AP    WITH
+    AP4AG              0.492      0.104      4.730      0.000
+
+ AP5AP    WITH
+    AP5AG              0.478      0.095      5.057      0.000
+
+ AN1AP    WITH
+    AN1AG              0.292      0.085      3.426      0.001
+
+ AN2AP    WITH
+    AN2AG              0.340      0.100      3.414      0.001
+
+ AN3AP    WITH
+    AN3AG              0.488      0.100      4.864      0.000
+
+ AN4AP    WITH
+    AN4AG              0.412      0.106      3.873      0.000
+
+ AN5AP    WITH
+    AN5AG              0.690      0.084      8.213      0.000
+
+ Intercepts
+    AP1AP              3.419      0.170     20.089      0.000
+    AP1AG              3.680      0.192     19.181      0.000
+    AN1AP              2.431      0.098     24.902      0.000
+    AN1AG              2.207      0.083     26.593      0.000
+    AP2AP              3.693      0.187     19.759      0.000
+    AP2AG              3.410      0.165     20.641      0.000
+    AN2AP              2.166      0.082     26.272      0.000
+    AN2AG              1.949      0.068     28.785      0.000
+    AP3AP              3.675      0.176     20.877      0.000
+    AP3AG              3.382      0.159     21.330      0.000
+    AN3AP              2.415      0.098     24.631      0.000
+    AN3AG              2.152      0.077     28.036      0.000
+    AP4AP              3.752      0.192     19.537      0.000
+    AP4AG              3.589      0.171     21.001      0.000
+    AN4AP              2.251      0.087     25.981      0.000
+    AN4AG              2.189      0.075     29.369      0.000
+    AP5AP              4.185      0.224     18.686      0.000
+    AP5AG              3.981      0.195     20.367      0.000
+    AN5AP              2.254      0.098     23.112      0.000
+    AN5AG              2.141      0.089     24.068      0.000
+
+ Variances
+    APAP               1.000      0.000    999.000    999.000
+    APAG               1.000      0.000    999.000    999.000
+    ANAP               1.000      0.000    999.000    999.000
+    ANAG               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    AP1AP              0.578      0.063      9.199      0.000
+    AP1AG              0.490      0.058      8.387      0.000
+    AN1AP              0.577      0.077      7.538      0.000
+    AN1AG              0.528      0.064      8.299      0.000
+    AP2AP              0.716      0.080      8.995      0.000
+    AP2AG              0.681      0.064     10.612      0.000
+    AN2AP              0.512      0.066      7.746      0.000
+    AN2AG              0.614      0.070      8.769      0.000
+    AP3AP              0.418      0.080      5.207      0.000
+    AP3AG              0.386      0.074      5.214      0.000
+    AN3AP              0.270      0.041      6.614      0.000
+    AN3AG              0.253      0.041      6.215      0.000
+    AP4AP              0.267      0.055      4.830      0.000
+    AP4AG              0.268      0.057      4.703      0.000
+    AN4AP              0.206      0.036      5.744      0.000
+    AN4AG              0.267      0.046      5.774      0.000
+    AP5AP              0.514      0.073      7.010      0.000
+    AP5AG              0.533      0.068      7.799      0.000
+    AN5AP              0.316      0.067      4.689      0.000
+    AN5AG              0.329      0.072      4.566      0.000
+
+
+STDY Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ APAP     BY
+    AP1AP              0.650      0.048     13.441      0.000
+    AP2AP              0.533      0.075      7.125      0.000
+    AP3AP              0.763      0.053     14.476      0.000
+    AP4AP              0.856      0.032     26.539      0.000
+    AP5AP              0.697      0.053     13.230      0.000
+
+ APAG     BY
+    AP1AG              0.714      0.041     17.466      0.000
+    AP2AG              0.565      0.057      9.931      0.000
+    AP3AG              0.783      0.047     16.573      0.000
+    AP4AG              0.856      0.033     25.684      0.000
+    AP5AG              0.683      0.050     13.674      0.000
+
+ ANAP     BY
+    AN1AP              0.650      0.059     11.040      0.000
+    AN2AP              0.699      0.047     14.771      0.000
+    AN3AP              0.854      0.024     35.682      0.000
+    AN4AP              0.891      0.020     44.176      0.000
+    AN5AP              0.827      0.041     20.302      0.000
+
+ ANAG     BY
+    AN1AG              0.687      0.046     14.856      0.000
+    AN2AG              0.621      0.056     11.004      0.000
+    AN3AG              0.864      0.024     36.752      0.000
+    AN4AG              0.856      0.027     31.652      0.000
+    AN5AG              0.819      0.044     18.592      0.000
+
+ APAP     WITH
+    ANAP              -0.440      0.082     -5.336      0.000
+    APAG               0.455      0.096      4.762      0.000
+
+ APAG     WITH
+    ANAG              -0.427      0.075     -5.660      0.000
+
+ ANAP     WITH
+    ANAG               0.728      0.067     10.830      0.000
+    APAG              -0.303      0.077     -3.940      0.000
+
+ ANAG     WITH
+    APAP              -0.263      0.081     -3.242      0.001
+
+ AP1AP    WITH
+    AP1AG              0.049      0.078      0.635      0.525
+
+ AP2AP    WITH
+    AP2AG              0.378      0.089      4.259      0.000
+
+ AP3AP    WITH
+    AP3AG              0.258      0.148      1.745      0.081
+
+ AP4AP    WITH
+    AP4AG              0.492      0.104      4.730      0.000
+
+ AP5AP    WITH
+    AP5AG              0.478      0.095      5.057      0.000
+
+ AN1AP    WITH
+    AN1AG              0.292      0.085      3.426      0.001
+
+ AN2AP    WITH
+    AN2AG              0.340      0.100      3.414      0.001
+
+ AN3AP    WITH
+    AN3AG              0.488      0.100      4.864      0.000
+
+ AN4AP    WITH
+    AN4AG              0.412      0.106      3.873      0.000
+
+ AN5AP    WITH
+    AN5AG              0.690      0.084      8.213      0.000
+
+ Intercepts
+    AP1AP              3.419      0.170     20.089      0.000
+    AP1AG              3.680      0.192     19.181      0.000
+    AN1AP              2.431      0.098     24.902      0.000
+    AN1AG              2.207      0.083     26.593      0.000
+    AP2AP              3.693      0.187     19.759      0.000
+    AP2AG              3.410      0.165     20.641      0.000
+    AN2AP              2.166      0.082     26.272      0.000
+    AN2AG              1.949      0.068     28.785      0.000
+    AP3AP              3.675      0.176     20.877      0.000
+    AP3AG              3.382      0.159     21.330      0.000
+    AN3AP              2.415      0.098     24.631      0.000
+    AN3AG              2.152      0.077     28.036      0.000
+    AP4AP              3.752      0.192     19.537      0.000
+    AP4AG              3.589      0.171     21.001      0.000
+    AN4AP              2.251      0.087     25.981      0.000
+    AN4AG              2.189      0.075     29.369      0.000
+    AP5AP              4.185      0.224     18.686      0.000
+    AP5AG              3.981      0.195     20.367      0.000
+    AN5AP              2.254      0.098     23.112      0.000
+    AN5AG              2.141      0.089     24.068      0.000
+
+ Variances
+    APAP               1.000      0.000    999.000    999.000
+    APAG               1.000      0.000    999.000    999.000
+    ANAP               1.000      0.000    999.000    999.000
+    ANAG               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    AP1AP              0.578      0.063      9.199      0.000
+    AP1AG              0.490      0.058      8.387      0.000
+    AN1AP              0.577      0.077      7.538      0.000
+    AN1AG              0.528      0.064      8.299      0.000
+    AP2AP              0.716      0.080      8.995      0.000
+    AP2AG              0.681      0.064     10.612      0.000
+    AN2AP              0.512      0.066      7.746      0.000
+    AN2AG              0.614      0.070      8.769      0.000
+    AP3AP              0.418      0.080      5.207      0.000
+    AP3AG              0.386      0.074      5.214      0.000
+    AN3AP              0.270      0.041      6.614      0.000
+    AN3AG              0.253      0.041      6.215      0.000
+    AP4AP              0.267      0.055      4.830      0.000
+    AP4AG              0.268      0.057      4.703      0.000
+    AN4AP              0.206      0.036      5.744      0.000
+    AN4AG              0.267      0.046      5.774      0.000
+    AP5AP              0.514      0.073      7.010      0.000
+    AP5AG              0.533      0.068      7.799      0.000
+    AN5AP              0.316      0.067      4.689      0.000
+    AN5AG              0.329      0.072      4.566      0.000
+
+
+STD Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ APAP     BY
+    AP1AP              0.645      0.059     10.931      0.000
+    AP2AP              0.485      0.075      6.449      0.000
+    AP3AP              0.707      0.062     11.470      0.000
+    AP4AP              0.778      0.050     15.485      0.000
+    AP5AP              0.573      0.059      9.774      0.000
+
+ APAG     BY
+    AP1AG              0.753      0.056     13.519      0.000
+    AP2AG              0.569      0.068      8.356      0.000
+    AP3AG              0.844      0.059     14.414      0.000
+    AP4AG              0.890      0.049     18.092      0.000
+    AP5AG              0.603      0.060     10.061      0.000
+
+ ANAP     BY
+    AN1AP              0.646      0.066      9.837      0.000
+    AN2AP              0.746      0.060     12.366      0.000
+    AN3AP              0.828      0.046     18.172      0.000
+    AN4AP              0.878      0.043     20.509      0.000
+    AN5AP              0.786      0.056     13.917      0.000
+
+ ANAG     BY
+    AN1AG              0.734      0.057     12.881      0.000
+    AN2AG              0.698      0.060     11.632      0.000
+    AN3AG              0.892      0.039     22.947      0.000
+    AN4AG              0.838      0.041     20.673      0.000
+    AN5AG              0.790      0.059     13.499      0.000
+
+ APAP     WITH
+    ANAP              -0.440      0.082     -5.336      0.000
+    APAG               0.455      0.096      4.762      0.000
+
+ APAG     WITH
+    ANAG              -0.427      0.075     -5.660      0.000
+
+ ANAP     WITH
+    ANAG               0.728      0.067     10.830      0.000
+    APAG              -0.303      0.077     -3.940      0.000
+
+ ANAG     WITH
+    APAP              -0.263      0.081     -3.242      0.001
+
+ AP1AP    WITH
+    AP1AG              0.027      0.043      0.633      0.527
+
+ AP2AP    WITH
+    AP2AG              0.242      0.065      3.756      0.000
+
+ AP3AP    WITH
+    AP3AG              0.103      0.056      1.839      0.066
+
+ AP4AP    WITH
+    AP4AG              0.124      0.042      2.978      0.003
+
+ AP5AP    WITH
+    AP5AG              0.182      0.049      3.723      0.000
+
+ AN1AP    WITH
+    AN1AG              0.171      0.052      3.261      0.001
+
+ AN2AP    WITH
+    AN2AG              0.229      0.079      2.881      0.004
+
+ AN3AP    WITH
+    AN3AG              0.128      0.031      4.049      0.000
+
+ AN4AP    WITH
+    AN4AG              0.093      0.026      3.552      0.000
+
+ AN5AP    WITH
+    AN5AG              0.204      0.055      3.730      0.000
+
+ Intercepts
+    AP1AP              3.392      0.055     61.254      0.000
+    AP1AG              3.878      0.059     65.911      0.000
+    AN1AP              2.417      0.056     43.403      0.000
+    AN1AG              2.357      0.060     39.240      0.000
+    AP2AP              3.364      0.051     66.061      0.000
+    AP2AG              3.439      0.056     61.463      0.000
+    AN2AP              2.313      0.060     38.647      0.000
+    AN2AG              2.191      0.063     34.892      0.000
+    AP3AP              3.408      0.052     65.074      0.000
+    AP3AG              3.646      0.061     59.900      0.000
+    AN3AP              2.342      0.054     43.436      0.000
+    AN3AG              2.219      0.057     38.819      0.000
+    AP4AP              3.411      0.051     66.810      0.000
+    AP4AG              3.734      0.059     63.812      0.000
+    AN4AP              2.219      0.055     40.300      0.000
+    AN4AG              2.144      0.055     39.271      0.000
+    AP5AP              3.442      0.046     74.251      0.000
+    AP5AG              3.511      0.050     70.876      0.000
+    AN5AP              2.141      0.054     39.655      0.000
+    AN5AG              2.066      0.055     37.331      0.000
+
+ Variances
+    APAP               1.000      0.000    999.000    999.000
+    APAG               1.000      0.000    999.000    999.000
+    ANAP               1.000      0.000    999.000    999.000
+    ANAG               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    AP1AP              0.569      0.071      7.978      0.000
+    AP1AG              0.544      0.077      7.107      0.000
+    AN1AP              0.571      0.079      7.222      0.000
+    AN1AG              0.602      0.080      7.521      0.000
+    AP2AP              0.594      0.077      7.668      0.000
+    AP2AG              0.693      0.074      9.373      0.000
+    AN2AP              0.584      0.082      7.130      0.000
+    AN2AG              0.777      0.119      6.544      0.000
+    AP3AP              0.360      0.070      5.121      0.000
+    AP3AG              0.449      0.094      4.761      0.000
+    AN3AP              0.254      0.034      7.438      0.000
+    AN3AG              0.269      0.043      6.245      0.000
+    AP4AP              0.221      0.046      4.818      0.000
+    AP4AG              0.290      0.066      4.410      0.000
+    AN4AP              0.201      0.032      6.249      0.000
+    AN4AG              0.257      0.042      6.098      0.000
+    AP5AP              0.348      0.051      6.794      0.000
+    AP5AG              0.414      0.052      7.941      0.000
+    AN5AP              0.285      0.058      4.888      0.000
+    AN5AG              0.307      0.066      4.662      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    AP1AP              0.422      0.063      6.720      0.000
+    AP1AG              0.510      0.058      8.733      0.000
+    AN1AP              0.423      0.077      5.520      0.000
+    AN1AG              0.472      0.064      7.428      0.000
+    AP2AP              0.284      0.080      3.562      0.000
+    AP2AG              0.319      0.064      4.966      0.000
+    AN2AP              0.488      0.066      7.386      0.000
+    AN2AG              0.386      0.070      5.502      0.000
+    AP3AP              0.582      0.080      7.238      0.000
+    AP3AG              0.614      0.074      8.286      0.000
+    AN3AP              0.730      0.041     17.841      0.000
+    AN3AG              0.747      0.041     18.376      0.000
+    AP4AP              0.733      0.055     13.269      0.000
+    AP4AG              0.732      0.057     12.842      0.000
+    AN4AP              0.794      0.036     22.088      0.000
+    AN4AG              0.733      0.046     15.826      0.000
+    AP5AP              0.486      0.073      6.615      0.000
+    AP5AG              0.467      0.068      6.837      0.000
+    AN5AP              0.684      0.067     10.151      0.000
+    AN5AG              0.671      0.072      9.296      0.000
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED)
+
+
+           Model Estimated Means
+              AP1AP         AP1AG         AN1AP         AN1AG         AP2AP
+              ________      ________      ________      ________      ________
+                3.392         3.878         2.417         2.357         3.364
+
+
+           Model Estimated Means
+              AP2AG         AN2AP         AN2AG         AP3AP         AP3AG
+              ________      ________      ________      ________      ________
+                3.439         2.313         2.191         3.408         3.646
+
+
+           Model Estimated Means
+              AN3AP         AN3AG         AP4AP         AP4AG         AN4AP
+              ________      ________      ________      ________      ________
+                2.342         2.219         3.411         3.734         2.219
+
+
+           Model Estimated Means
+              AN4AG         AP5AP         AP5AG         AN5AP         AN5AG
+              ________      ________      ________      ________      ________
+                2.144         3.442         3.511         2.141         2.066
+
+
+           Residuals for Means
+              AP1AP         AP1AG         AN1AP         AN1AG         AP2AP
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means
+              AP2AG         AN2AP         AN2AG         AP3AP         AP3AG
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means
+              AN3AP         AN3AG         AP4AP         AP4AG         AN4AP
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means
+              AN4AG         AP5AP         AP5AG         AN5AP         AN5AG
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              AP1AP         AP1AG         AN1AP         AN1AG         AP2AP
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              AP2AG         AN2AP         AN2AG         AP3AP         AP3AG
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              AN3AP         AN3AG         AP4AP         AP4AG         AN4AP
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              AN4AG         AP5AP         AP5AG         AN5AP         AN5AG
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              AP1AP         AP1AG         AN1AP         AN1AG         AP2AP
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              AP2AG         AN2AP         AN2AG         AP3AP         AP3AG
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              AN3AP         AN3AG         AP4AP         AP4AG         AN4AP
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              AN4AG         AP5AP         AP5AG         AN5AP         AN5AG
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Model Estimated Covariances
+              AP1AP         AP1AG         AN1AP         AN1AG         AP2AP
+              ________      ________      ________      ________      ________
+ AP1AP          0.984
+ AP1AG          0.248         1.110
+ AN1AP         -0.183        -0.147         0.988
+ AN1AG         -0.124        -0.236         0.516         1.141
+ AP2AP          0.313         0.166        -0.138        -0.094         0.829
+ AP2AG          0.167         0.429        -0.112        -0.178         0.368
+ AN2AP         -0.212        -0.170         0.482         0.399        -0.159
+ AN2AG         -0.118        -0.224         0.328         0.512        -0.089
+ AP3AP          0.456         0.242        -0.201        -0.136         0.343
+ AP3AG          0.248         0.636        -0.165        -0.265         0.186
+ AN3AP         -0.235        -0.189         0.535         0.442        -0.177
+ AN3AG         -0.151        -0.286         0.419         0.655        -0.114
+ AP4AP          0.502         0.266        -0.221        -0.150         0.378
+ AP4AG          0.261         0.670        -0.174        -0.279         0.196
+ AN4AP         -0.249        -0.200         0.568         0.469        -0.187
+ AN4AG         -0.142        -0.269         0.394         0.616        -0.107
+ AP5AP          0.369         0.196        -0.163        -0.111         0.278
+ AP5AG          0.177         0.454        -0.118        -0.189         0.133
+ AN5AP         -0.223        -0.179         0.508         0.420        -0.168
+ AN5AG         -0.134        -0.254         0.372         0.580        -0.101
+
+
+           Model Estimated Covariances
+              AP2AG         AN2AP         AN2AG         AP3AP         AP3AG
+              ________      ________      ________      ________      ________
+ AP2AG          1.017
+ AN2AP         -0.129         1.141
+ AN2AG         -0.170         0.608         1.264
+ AP3AP          0.183        -0.232        -0.130         0.860
+ AP3AG          0.481        -0.191        -0.252         0.375         1.162
+ AN3AP         -0.143         0.618         0.421        -0.258        -0.212
+ AN3AG         -0.217         0.484         0.622        -0.166        -0.321
+ AP4AP          0.202        -0.256        -0.143         0.550         0.299
+ AP4AG          0.507        -0.201        -0.265         0.286         0.752
+ AN4AP         -0.152         0.655         0.446        -0.273        -0.225
+ AN4AG         -0.204         0.455         0.585        -0.156        -0.302
+ AP5AP          0.148        -0.188        -0.105         0.405         0.220
+ AP5AG          0.343        -0.136        -0.180         0.194         0.509
+ AN5AP         -0.136         0.586         0.399        -0.244        -0.201
+ AN5AG         -0.192         0.429         0.551        -0.147        -0.285
+
+
+           Model Estimated Covariances
+              AN3AP         AN3AG         AP4AP         AP4AG         AN4AP
+              ________      ________      ________      ________      ________
+ AN3AP          0.940
+ AN3AG          0.665         1.064
+ AP4AP         -0.284        -0.182         0.826
+ AP4AG         -0.223        -0.339         0.439         1.082
+ AN4AP          0.727         0.570        -0.301        -0.237         0.972
+ AN4AG          0.505         0.748        -0.172        -0.319         0.629
+ AP5AP         -0.209        -0.134         0.446         0.232        -0.221
+ AP5AG         -0.151        -0.229         0.213         0.536        -0.160
+ AN5AP          0.651         0.510        -0.269        -0.212         0.690
+ AN5AG          0.476         0.704        -0.162        -0.300         0.505
+
+
+           Model Estimated Covariances
+              AN4AG         AP5AP         AP5AG         AN5AP         AN5AG
+              ________      ________      ________      ________      ________
+ AN4AG          0.960
+ AP5AP         -0.126         0.676
+ AP5AG         -0.216         0.339         0.778
+ AN5AP          0.479        -0.198        -0.143         0.902
+ AN5AG          0.662        -0.119        -0.203         0.656         0.931
+
+
+           Model Estimated Correlations
+              AP1AP         AP1AG         AN1AP         AN1AG         AP2AP
+              ________      ________      ________      ________      ________
+ AP1AP          1.000
+ AP1AG          0.237         1.000
+ AN1AP         -0.186        -0.141         1.000
+ AN1AG         -0.117        -0.210         0.486         1.000
+ AP2AP          0.346         0.173        -0.152        -0.096         1.000
+ AP2AG          0.167         0.403        -0.111        -0.166         0.401
+ AN2AP         -0.200        -0.151         0.454         0.349        -0.164
+ AN2AG         -0.106        -0.189         0.294         0.427        -0.087
+ AP3AP          0.496         0.248        -0.218        -0.138         0.406
+ AP3AG          0.232         0.560        -0.154        -0.230         0.190
+ AN3AP         -0.244        -0.185         0.555         0.427        -0.200
+ AN3AG         -0.148        -0.264         0.409         0.594        -0.121
+ AP4AP          0.556         0.278        -0.245        -0.155         0.456
+ AP4AG          0.253         0.611        -0.169        -0.251         0.207
+ AN4AP         -0.255        -0.193         0.579         0.445        -0.209
+ AN4AG         -0.146        -0.261         0.405         0.588        -0.120
+ AP5AP          0.453         0.226        -0.199        -0.126         0.371
+ AP5AG          0.202         0.488        -0.135        -0.201         0.166
+ AN5AP         -0.236        -0.179         0.538         0.414        -0.194
+ AN5AG         -0.140        -0.250         0.387         0.563        -0.115
+
+
+           Model Estimated Correlations
+              AP2AG         AN2AP         AN2AG         AP3AP         AP3AG
+              ________      ________      ________      ________      ________
+ AP2AG          1.000
+ AN2AP         -0.120         1.000
+ AN2AG         -0.150         0.506         1.000
+ AP3AP          0.196        -0.234        -0.124         1.000
+ AP3AG          0.442        -0.166        -0.208         0.375         1.000
+ AN3AP         -0.146         0.597         0.386        -0.287        -0.203
+ AN3AG         -0.208         0.439         0.537        -0.173        -0.289
+ AP4AP          0.220        -0.263        -0.140         0.653         0.305
+ AP4AG          0.483        -0.181        -0.227         0.297         0.670
+ AN4AP         -0.152         0.622         0.402        -0.299        -0.211
+ AN4AG         -0.206         0.435         0.531        -0.172        -0.286
+ AP5AP          0.179        -0.214        -0.114         0.531         0.248
+ AP5AG          0.386        -0.145        -0.181         0.237         0.535
+ AN5AP         -0.141         0.578         0.374        -0.277        -0.196
+ AN5AG         -0.197         0.416         0.508        -0.164        -0.274
+
+
+           Model Estimated Correlations
+              AN3AP         AN3AG         AP4AP         AP4AG         AN4AP
+              ________      ________      ________      ________      ________
+ AN3AP          1.000
+ AN3AG          0.665         1.000
+ AP4AP         -0.322        -0.195         1.000
+ AP4AG         -0.221        -0.316         0.465         1.000
+ AN4AP          0.761         0.560        -0.336        -0.231         1.000
+ AN4AG          0.532         0.740        -0.193        -0.313         0.652
+ AP5AP         -0.262        -0.158         0.597         0.271        -0.273
+ AP5AG         -0.177        -0.252         0.266         0.585        -0.184
+ AN5AP          0.706         0.520        -0.312        -0.214         0.737
+ AN5AG          0.509         0.708        -0.184        -0.299         0.531
+
+
+           Model Estimated Correlations
+              AN4AG         AP5AP         AP5AG         AN5AP         AN5AG
+              ________      ________      ________      ________      ________
+ AN4AG          1.000
+ AP5AP         -0.157         1.000
+ AP5AG         -0.250         0.467         1.000
+ AN5AP          0.515        -0.254        -0.171         1.000
+ AN5AG          0.701        -0.150        -0.239         0.715         1.000
+
+
+           Model Estimated Partial Correlations
+              AP1AP         AP1AG         AN1AP         AN1AG         AP2AP
+              ________      ________      ________      ________      ________
+ AP1AP          1.000
+ AP1AG          0.092         1.000
+ AN1AP         -0.005        -0.001         1.000
+ AN1AG          0.000        -0.006         0.310         1.000
+ AP2AP          0.069        -0.004        -0.003         0.001         1.000
+ AP2AG         -0.001         0.089         0.001        -0.004         0.378
+ AN2AP         -0.005        -0.001         0.063         0.003        -0.004
+ AN2AG          0.001        -0.005        -0.009         0.061         0.002
+ AP3AP          0.139         0.016        -0.007         0.002         0.103
+ AP3AG          0.015         0.176         0.001        -0.008        -0.028
+ AN3AP         -0.010         0.001         0.117        -0.035        -0.008
+ AN3AG          0.003        -0.012        -0.031         0.160         0.005
+ AP4AP          0.237        -0.042        -0.012         0.006         0.191
+ AP4AG         -0.045         0.265         0.004        -0.013        -0.094
+ AN4AP         -0.013        -0.001         0.147        -0.008        -0.009
+ AN4AG          0.003        -0.011        -0.031         0.143         0.004
+ AP5AP          0.116        -0.016        -0.006         0.003         0.092
+ AP5AG         -0.021         0.125         0.002        -0.006        -0.044
+ AN5AP         -0.011         0.004         0.124        -0.069        -0.009
+ AN5AG          0.006        -0.010        -0.067         0.146         0.007
+
+
+           Model Estimated Partial Correlations
+              AP2AG         AN2AP         AN2AG         AP3AP         AP3AG
+              ________      ________      ________      ________      ________
+ AP2AG          1.000
+ AN2AP          0.001         1.000
+ AN2AG         -0.003         0.354         1.000
+ AP3AP         -0.026        -0.008         0.002         1.000
+ AP3AG          0.116         0.000        -0.006         0.288         1.000
+ AN3AP          0.003         0.137        -0.046        -0.015         0.005
+ AN3AG         -0.009        -0.028         0.132         0.007        -0.016
+ AP4AP         -0.090        -0.014         0.007         0.361        -0.131
+ AP4AG          0.193         0.004        -0.011        -0.137         0.361
+ AN4AP          0.002         0.174        -0.029        -0.019         0.002
+ AN4AG         -0.008        -0.029         0.118         0.007        -0.015
+ AP5AP         -0.041        -0.007         0.003         0.175        -0.058
+ AP5AG          0.091         0.002        -0.005        -0.065         0.170
+ AN5AP          0.005         0.144        -0.075        -0.017         0.008
+ AN5AG         -0.009        -0.072         0.127         0.011        -0.015
+
+
+           Model Estimated Partial Correlations
+              AN3AP         AN3AG         AP4AP         AP4AG         AN4AP
+              ________      ________      ________      ________      ________
+ AN3AP          1.000
+ AN3AG          0.502         1.000
+ AP4AP         -0.029         0.019         1.000
+ AP4AG          0.015        -0.029         0.433         1.000
+ AN4AP          0.324        -0.097        -0.033         0.013         1.000
+ AN4AG         -0.128         0.312         0.018        -0.026         0.458
+ AP5AP         -0.014         0.009         0.328        -0.175        -0.016
+ AP5AG          0.007        -0.014        -0.180         0.295         0.006
+ AN5AP          0.300        -0.211        -0.033         0.021         0.347
+ AN5AG         -0.208         0.339         0.026        -0.030        -0.194
+
+
+           Model Estimated Partial Correlations
+              AN4AG         AP5AP         AP5AG         AN5AP         AN5AG
+              ________      ________      ________      ________      ________
+ AN4AG          1.000
+ AP5AP          0.008         1.000
+ AP5AG         -0.012         0.467         1.000
+ AN5AP         -0.195        -0.016         0.010         1.000
+ AN5AG          0.306         0.012        -0.014         0.651         1.000
+
+
+           Residuals for Covariances
+              AP1AP         AP1AG         AN1AP         AN1AG         AP2AP
+              ________      ________      ________      ________      ________
+ AP1AP         -0.006
+ AP1AG         -0.125        -0.006
+ AN1AP         -0.052         0.067         0.001
+ AN1AG          0.047         0.054         0.018         0.010
+ AP2AP          0.065        -0.015         0.171         0.133        -0.002
+ AP2AG         -0.003         0.064         0.001         0.169        -0.026
+ AN2AP         -0.062         0.055         0.048        -0.056         0.099
+ AN2AG          0.028        -0.066         0.031         0.150         0.016
+ AP3AP          0.024        -0.061         0.047         0.069         0.029
+ AP3AG         -0.052        -0.024         0.091         0.150        -0.045
+ AN3AP         -0.024         0.024         0.031        -0.019         0.109
+ AN3AG         -0.001        -0.013         0.013         0.019         0.078
+ AP4AP         -0.026        -0.069         0.053        -0.034        -0.041
+ AP4AG         -0.103         0.009         0.031         0.095        -0.071
+ AN4AP         -0.022         0.030         0.012         0.004         0.104
+ AN4AG          0.020         0.033         0.022         0.026         0.080
+ AP5AP         -0.025        -0.089         0.041         0.018         0.035
+ AP5AG         -0.060        -0.034        -0.032        -0.012         0.023
+ AN5AP         -0.058         0.024        -0.053         0.022         0.051
+ AN5AG          0.020        -0.089         0.012        -0.036         0.058
+
+
+           Residuals for Covariances
+              AP2AG         AN2AP         AN2AG         AP3AP         AP3AG
+              ________      ________      ________      ________      ________
+ AP2AG         -0.018
+ AN2AP          0.004         0.002
+ AN2AG          0.076        -0.003        -0.006
+ AP3AP         -0.049        -0.027        -0.052         0.015
+ AP3AG          0.048         0.076         0.072         0.067         0.020
+ AN3AP          0.024        -0.013        -0.025         0.031         0.023
+ AN3AG          0.070        -0.036        -0.047        -0.024         0.067
+ AP4AP         -0.028        -0.014        -0.008         0.025         0.069
+ AP4AG         -0.089         0.018         0.025         0.070         0.044
+ AN4AP          0.011        -0.016        -0.008         0.068         0.008
+ AN4AG          0.084        -0.018        -0.017        -0.038         0.103
+ AP5AP          0.056        -0.029        -0.008        -0.012         0.046
+ AP5AG          0.031        -0.015        -0.072         0.059        -0.011
+ AN5AP          0.045         0.047         0.035        -0.061        -0.047
+ AN5AG          0.025         0.058         0.010        -0.046        -0.021
+
+
+           Residuals for Covariances
+              AN3AP         AN3AG         AP4AP         AP4AG         AN4AP
+              ________      ________      ________      ________      ________
+ AN3AP         -0.013
+ AN3AG         -0.034        -0.021
+ AP4AP         -0.007        -0.042         0.005
+ AP4AG         -0.021        -0.017         0.015         0.010
+ AN4AP         -0.006        -0.029         0.004        -0.037        -0.004
+ AN4AG         -0.044        -0.021        -0.035         0.034        -0.015
+ AP5AP          0.001         0.009         0.021         0.017        -0.023
+ AP5AG         -0.067        -0.065         0.013         0.010        -0.040
+ AN5AP          0.003         0.027        -0.055        -0.017         0.016
+ AN5AG          0.009         0.024        -0.010        -0.096         0.010
+
+
+           Residuals for Covariances
+              AN4AG         AP5AP         AP5AG         AN5AP         AN5AG
+              ________      ________      ________      ________      ________
+ AN4AG         -0.009
+ AP5AP          0.009         0.009
+ AP5AG         -0.059         0.015         0.005
+ AN5AP          0.043        -0.128        -0.129         0.028
+ AN5AG          0.030        -0.067        -0.200         0.053         0.046
+
+
+           Residuals for Correlations
+              AP1AP         AP1AG         AN1AP         AN1AG         AP2AP
+              ________      ________      ________      ________      ________
+ AP1AP          0.000
+ AP1AG         -0.119         0.000
+ AN1AP         -0.054         0.063         0.000
+ AN1AG          0.045         0.048         0.015         0.000
+ AP2AP          0.074        -0.015         0.189         0.137         0.000
+ AP2AG         -0.001         0.066         0.000         0.157        -0.024
+ AN2AP         -0.059         0.049         0.045        -0.051         0.101
+ AN2AG          0.024        -0.057         0.028         0.123         0.016
+ AP3AP          0.023        -0.063         0.052         0.071         0.031
+ AP3AG         -0.050        -0.024         0.085         0.131        -0.047
+ AN3AP         -0.028         0.022         0.036        -0.017         0.123
+ AN3AG         -0.003        -0.015         0.016         0.021         0.082
+ AP4AP         -0.029        -0.072         0.060        -0.034        -0.050
+ AP4AG         -0.100         0.007         0.031         0.087        -0.076
+ AN4AP         -0.024         0.028         0.013         0.003         0.116
+ AN4AG          0.019         0.030         0.024         0.025         0.089
+ AP5AP         -0.033        -0.103         0.052         0.022         0.044
+ AP5AG         -0.069        -0.037        -0.036        -0.012         0.028
+ AN5AP         -0.058         0.026        -0.063         0.013         0.060
+ AN5AG          0.024        -0.081         0.002        -0.050         0.067
+
+
+           Residuals for Correlations
+              AP2AG         AN2AP         AN2AG         AP3AP         AP3AG
+              ________      ________      ________      ________      ________
+ AP2AG          0.000
+ AN2AP          0.002         0.000
+ AN2AG          0.066        -0.002         0.000
+ AP3AP         -0.052        -0.025        -0.048         0.000
+ AP3AG          0.044         0.067         0.060         0.060         0.000
+ AN3AP          0.023        -0.010        -0.020         0.034         0.022
+ AN3AG          0.065        -0.029        -0.034        -0.025         0.060
+ AP4AP         -0.029        -0.014        -0.008         0.022         0.066
+ AP4AG         -0.083         0.017         0.022         0.068         0.030
+ AN4AP          0.010        -0.014        -0.006         0.076         0.009
+ AN4AG          0.083        -0.015        -0.012        -0.041         0.098
+ AP5AP          0.068        -0.031        -0.008        -0.023         0.048
+ AP5AG          0.038        -0.015        -0.072         0.068        -0.018
+ AN5AP          0.048         0.036         0.027        -0.061        -0.040
+ AN5AG          0.028         0.045        -0.002        -0.045        -0.011
+
+
+           Residuals for Correlations
+              AN3AP         AN3AG         AP4AP         AP4AG         AN4AP
+              ________      ________      ________      ________      ________
+ AN3AP          0.000
+ AN3AG         -0.024         0.000
+ AP4AP         -0.009        -0.047         0.000
+ AP4AG         -0.021        -0.017         0.012         0.000
+ AN4AP          0.001        -0.022         0.004        -0.035         0.000
+ AN4AG         -0.040        -0.010        -0.040         0.033        -0.011
+ AP5AP          0.002         0.010         0.023         0.017        -0.027
+ AP5AG         -0.080        -0.073         0.014         0.007        -0.045
+ AN5AP         -0.002         0.025        -0.057        -0.013         0.007
+ AN5AG          0.001         0.014        -0.006        -0.085        -0.001
+
+
+           Residuals for Correlations
+              AN4AG         AP5AP         AP5AG         AN5AP         AN5AG
+              ________      ________      ________      ________      ________
+ AN4AG          0.000
+ AP5AP          0.012         0.000
+ AP5AG         -0.068         0.016         0.000
+ AN5AP          0.040        -0.154        -0.148         0.000
+ AN5AG          0.018        -0.077        -0.223         0.028         0.000
+
+
+           Residuals for Partial Correlations
+              AP1AP         AP1AG         AN1AP         AN1AG         AP2AP
+              ________      ________      ________      ________      ________
+ AP1AP          0.000
+ AP1AG          0.005         0.000
+ AN1AP         -0.136         0.067         0.000
+ AN1AG          0.044        -0.035         0.063         0.000
+ AP2AP          0.115         0.046         0.174         0.005         0.000
+ AP2AG          0.005         0.135        -0.163         0.122         0.022
+ AN2AP         -0.041         0.044         0.107        -0.193         0.129
+ AN2AG          0.059        -0.114        -0.088         0.290        -0.103
+ AP3AP          0.050        -0.047        -0.148         0.200         0.169
+ AP3AG         -0.011        -0.073         0.117        -0.049        -0.193
+ AN3AP          0.033        -0.032         0.114        -0.087         0.018
+ AN3AG         -0.053         0.021        -0.080         0.105        -0.004
+ AP4AP         -0.038        -0.018         0.103        -0.193        -0.116
+ AP4AG         -0.076         0.054        -0.023         0.100         0.031
+ AN4AP         -0.050         0.008         0.049        -0.024        -0.064
+ AN4AG          0.051         0.035        -0.028         0.042         0.061
+ AP5AP         -0.062        -0.082         0.037         0.006         0.022
+ AP5AG         -0.016        -0.080        -0.032        -0.032         0.036
+ AN5AP          0.008         0.026        -0.239         0.175         0.011
+ AN5AG          0.006        -0.062         0.150        -0.216        -0.031
+
+
+           Residuals for Partial Correlations
+              AP2AG         AN2AP         AN2AG         AP3AP         AP3AG
+              ________      ________      ________      ________      ________
+ AP2AG          0.000
+ AN2AP         -0.137         0.000
+ AN2AG          0.077         0.048         0.000
+ AP3AP         -0.234        -0.065        -0.081         0.000
+ AP3AG          0.239         0.124        -0.011         0.061         0.000
+ AN3AP          0.012        -0.041         0.035         0.015         0.037
+ AN3AG         -0.021         0.006        -0.107        -0.020        -0.002
+ AP4AP          0.100        -0.020         0.065        -0.007         0.031
+ AP4AG         -0.261        -0.044         0.049         0.088         0.048
+ AN4AP          0.001        -0.062         0.038         0.220        -0.049
+ AN4AG         -0.046         0.000        -0.060        -0.177         0.079
+ AP5AP          0.082        -0.005         0.008        -0.131         0.048
+ AP5AG          0.063         0.085        -0.045         0.117        -0.110
+ AN5AP          0.090         0.027        -0.024        -0.075        -0.153
+ AN5AG          0.015         0.089        -0.036         0.056         0.092
+
+
+           Residuals for Partial Correlations
+              AN3AP         AN3AG         AP4AP         AP4AG         AN4AP
+              ________      ________      ________      ________      ________
+ AN3AP          0.000
+ AN3AG          0.011         0.000
+ AP4AP         -0.057        -0.019         0.000
+ AP4AG          0.020        -0.018         0.017         0.000
+ AN4AP          0.040        -0.032         0.111        -0.215         0.000
+ AN4AG         -0.096        -0.010        -0.126         0.155         0.056
+ AP5AP          0.131        -0.015         0.075         0.017        -0.104
+ AP5AG         -0.146         0.105        -0.065         0.026         0.144
+ AN5AP         -0.023         0.000        -0.087         0.242         0.058
+ AN5AG          0.015         0.021         0.170        -0.207        -0.092
+
+
+           Residuals for Partial Correlations
+              AN4AG         AP5AP         AP5AG         AN5AP         AN5AG
+              ________      ________      ________      ________      ________
+ AN4AG          0.000
+ AP5AP          0.132         0.000
+ AP5AG         -0.093        -0.003         0.000
+ AN5AP         -0.011        -0.120         0.011         0.000
+ AN5AG          0.057         0.008        -0.128         0.035         0.000
+
+
+           Standardized Residuals (z-scores) for Covariances
+              AP1AP         AP1AG         AN1AP         AN1AG         AP2AP
+              ________      ________      ________      ________      ________
+ AP1AP        999.000
+ AP1AG         -8.008       999.000
+ AN1AP         -1.036         1.372       999.000
+ AN1AG          0.987         1.105       999.000       999.000
+ AP2AP          3.133        -0.299         2.934         2.494       999.000
+ AP2AG         -0.063         3.047         0.010         2.697       999.000
+ AN2AP         -1.284         1.076       999.000        -1.573         1.810
+ AN2AG          0.505        -1.245         0.751        13.065         0.265
+ AP3AP          0.924        -2.272         0.917         1.716       999.000
+ AP3AG         -1.209        -1.128         1.735         2.717        -0.869
+ AN3AP         -0.903         0.682       999.000        -0.613         2.156
+ AN3AG         -0.020        -0.606         1.123       999.000         1.704
+ AP4AP         -1.260        -4.738         1.152        -0.954        -4.693
+ AP4AG         -3.560         0.328         0.679         1.982        -1.596
+ AN4AP         -0.780         0.777       999.000         0.138         2.208
+ AN4AG          0.513         1.002         1.598       999.000         1.788
+ AP5AP         -0.987        -2.394         0.875         0.413         1.098
+ AP5AG         -1.335        -3.916        -0.667        -0.280         0.413
+ AN5AP         -6.594         0.684        -1.979         1.195         1.275
+ AN5AG          0.495        -5.256         0.464        -1.817         1.263
+
+
+           Standardized Residuals (z-scores) for Covariances
+              AP2AG         AN2AP         AN2AG         AP3AP         AP3AG
+              ________      ________      ________      ________      ________
+ AP2AG        999.000
+ AN2AP          0.061       999.000
+ AN2AG          1.181       999.000       999.000
+ AP3AP         -0.906        -0.605        -1.133         1.279
+ AP3AG          6.490         1.379         1.187       999.000         0.781
+ AN3AP          0.485        -1.039        -0.518         0.828         0.587
+ AN3AG          1.549        -1.224        -1.480        -1.047         1.896
+ AP4AP         -0.559        -0.355        -0.167         1.884       999.000
+ AP4AG         -5.050         0.386         0.488       999.000       999.000
+ AN4AP          0.230        -1.459        -0.199         2.111         0.220
+ AN4AG          1.941        -0.565        -0.946        -1.449         2.823
+ AP5AP          0.992        -0.625        -0.140        -0.483         1.191
+ AP5AG          1.210        -0.275        -1.325         1.347        -0.526
+ AN5AP          0.988         2.618         0.879        -9.202        -1.249
+ AN5AG          0.627         2.098         0.384        -1.319        -0.886
+
+
+           Standardized Residuals (z-scores) for Covariances
+              AN3AP         AN3AG         AP4AP         AP4AG         AN4AP
+              ________      ________      ________      ________      ________
+ AN3AP        999.000
+ AN3AG        999.000       999.000
+ AP4AP         -0.281        -2.683       999.000
+ AP4AG         -0.724        -0.697       999.000         0.502
+ AN4AP        999.000        -1.271         0.253        -1.258       999.000
+ AN4AG         -2.119        -2.104        -1.872         1.173       999.000
+ AP5AP          0.038         0.246       999.000         0.492        -0.721
+ AP5AG         -1.661        -2.135         0.319         0.704        -1.014
+ AN5AP          1.150       999.000       999.000        -0.529       999.000
+ AN5AG          1.902       999.000        -0.279       -13.042       999.000
+
+
+           Standardized Residuals (z-scores) for Covariances
+              AN4AG         AP5AP         AP5AG         AN5AP         AN5AG
+              ________      ________      ________      ________      ________
+ AN4AG        999.000
+ AP5AP          0.262       999.000
+ AP5AG         -2.030         0.675       999.000
+ AN5AP        999.000        -6.897        -3.257       999.000
+ AN5AG        999.000        -1.631        -7.297       999.000       999.000
+
+
+           Normalized Residuals for Covariances
+              AP1AP         AP1AG         AN1AP         AN1AG         AP2AP
+              ________      ________      ________      ________      ________
+ AP1AP         -0.075
+ AP1AG         -1.854        -0.067
+ AN1AP         -0.797         1.014         0.014
+ AN1AG          0.761         0.747         0.275         0.134
+ AP2AP          1.042        -0.236         2.655         2.170        -0.033
+ AP2AG         -0.054         0.872         0.009         2.277        -0.347
+ AN2AP         -0.870         0.806         0.695        -0.861         1.524
+ AN2AG          0.415        -0.876         0.451         1.993         0.239
+ AP3AP          0.356        -1.055         0.721         1.158         0.427
+ AP3AG         -0.775        -0.323         1.270         2.027        -0.635
+ AN3AP         -0.396         0.378         0.460        -0.317         1.749
+ AN3AG         -0.012        -0.192         0.215         0.293         1.335
+ AP4AP         -0.410        -1.196         0.841        -0.585        -0.666
+ AP4AG         -1.653         0.127         0.451         1.311        -1.061
+ AN4AP         -0.337         0.444         0.178         0.070         1.722
+ AN4AG          0.333         0.490         0.386         0.403         1.420
+ AP5AP         -0.412        -1.591         0.702         0.335         0.549
+ AP5AG         -1.042        -0.553        -0.533        -0.199         0.350
+ AN5AP         -0.938         0.421        -0.927         0.388         0.893
+ AN5AG          0.349        -1.333         0.204        -0.569         1.048
+
+
+           Normalized Residuals for Covariances
+              AP2AG         AN2AP         AN2AG         AP3AP         AP3AG
+              ________      ________      ________      ________      ________
+ AP2AG         -0.226
+ AN2AP          0.053         0.030
+ AN2AG          1.006        -0.044        -0.064
+ AP3AP         -0.707        -0.404        -0.828         0.204
+ AP3AG          0.584         1.028         0.916         0.878         0.218
+ AN3AP          0.377        -0.193        -0.364         0.486         0.328
+ AN3AG          1.077        -0.586        -0.627        -0.416         0.988
+ AP4AP         -0.414        -0.213        -0.121         0.362         0.992
+ AP4AG         -1.207         0.259         0.329         1.007         0.559
+ AN4AP          0.175        -0.225        -0.130         1.088         0.112
+ AN4AG          1.369        -0.296        -0.258        -0.672         1.571
+ AP5AP          0.842        -0.451        -0.121        -0.188         0.701
+ AP5AG          0.454        -0.225        -1.028         0.923        -0.156
+ AN5AP          0.798         0.694         0.507        -1.039        -0.776
+ AN5AG          0.409         0.941         0.134        -0.807        -0.321
+
+
+           Normalized Residuals for Covariances
+              AN3AP         AN3AG         AP4AP         AP4AG         AN4AP
+              ________      ________      ________      ________      ________
+ AN3AP         -0.196
+ AN3AG         -0.618        -0.360
+ AP4AP         -0.116        -0.733         0.068
+ AP4AG         -0.312        -0.243         0.200         0.115
+ AN4AP         -0.090        -0.517         0.060        -0.528        -0.067
+ AN4AG         -0.812        -0.355        -0.628         0.511        -0.285
+ AP5AP          0.023         0.169         0.337         0.261        -0.385
+ AP5AG         -1.140        -1.068         0.197         0.145        -0.664
+ AN5AP          0.060         0.499        -0.933        -0.281         0.284
+ AN5AG          0.175         0.400        -0.162        -1.413         0.201
+
+
+           Normalized Residuals for Covariances
+              AN4AG         AP5AP         AP5AG         AN5AP         AN5AG
+              ________      ________      ________      ________      ________
+ AN4AG         -0.161
+ AP5AP          0.181         0.140
+ AP5AG         -1.025         0.239         0.076
+ AN5AP          0.809        -2.269        -2.401         0.488
+ AN5AG          0.522        -1.255        -3.355         0.970         0.735
+
+
+MODEL MODIFICATION INDICES
+
+NOTE:  Modification indices for direct effects of observed dependent variables
+regressed on covariates may not be included.  To include these, request
+MODINDICES (ALL).
+
+Minimum M.I. value for printing the modification index    10.000
+
+                                   M.I.     E.P.C.  Std E.P.C.  StdYX E.P.C.
+
+BY Statements
+
+APAP     BY AN5AP                 10.981    -0.200     -0.129       -0.135
+APAG     BY AN5AG                 14.161    -0.200     -0.151       -0.156
+
+WITH Statements
+
+AN2AP    WITH AN1AG               10.356    -0.126     -0.126       -0.212
+AN2AG    WITH AN1AG               19.461     0.198      0.198        0.289
+AP3AP    WITH AP2AG               12.706    -0.124     -0.124       -0.248
+AP3AG    WITH AP2AG               10.753     0.134      0.134        0.241
+AP4AG    WITH AP2AG               11.653    -0.126     -0.126       -0.280
+AN4AP    WITH AP3AP               10.464     0.067      0.067        0.251
+AN5AP    WITH AN1AP               14.934    -0.091     -0.091       -0.226
+AN5AP    WITH AP4AG               10.130     0.058      0.058        0.202
+AN5AG    WITH AN1AG               16.532    -0.106     -0.106       -0.247
+AN5AG    WITH AP4AP               10.715     0.055      0.055        0.212
+AN5AG    WITH AP4AG               10.381    -0.061     -0.061       -0.205
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              AP1AP         AP1AG         AN1AP         AN1AG         AP2AP
+              ________      ________      ________      ________      ________
+                  1             2             3             4             5
+
+
+           NU
+              AP2AG         AN2AP         AN2AG         AP3AP         AP3AG
+              ________      ________      ________      ________      ________
+                  6             7             8             9            10
+
+
+           NU
+              AN3AP         AN3AG         AP4AP         AP4AG         AN4AP
+              ________      ________      ________      ________      ________
+                 11            12            13            14            15
+
+
+           NU
+              AN4AG         AP5AP         AP5AG         AN5AP         AN5AG
+              ________      ________      ________      ________      ________
+                 16            17            18            19            20
+
+
+           LAMBDA
+              APAP          APAG          ANAP          ANAG
+              ________      ________      ________      ________
+ AP1AP              0             0             0             0
+ AP1AG              0             0             0             0
+ AN1AP              0             0             0             0
+ AN1AG              0             0             0             0
+ AP2AP             21             0             0             0
+ AP2AG              0            22             0             0
+ AN2AP              0             0            23             0
+ AN2AG              0             0             0            24
+ AP3AP             25             0             0             0
+ AP3AG              0            26             0             0
+ AN3AP              0             0            27             0
+ AN3AG              0             0             0            28
+ AP4AP             29             0             0             0
+ AP4AG              0            30             0             0
+ AN4AP              0             0            31             0
+ AN4AG              0             0             0            32
+ AP5AP             33             0             0             0
+ AP5AG              0            34             0             0
+ AN5AP              0             0            35             0
+ AN5AG              0             0             0            36
+
+
+           THETA
+              AP1AP         AP1AG         AN1AP         AN1AG         AP2AP
+              ________      ________      ________      ________      ________
+ AP1AP             37
+ AP1AG             38            39
+ AN1AP              0             0            40
+ AN1AG              0             0            41            42
+ AP2AP              0             0             0             0            43
+ AP2AG              0             0             0             0            44
+ AN2AP              0             0             0             0             0
+ AN2AG              0             0             0             0             0
+ AP3AP              0             0             0             0             0
+ AP3AG              0             0             0             0             0
+ AN3AP              0             0             0             0             0
+ AN3AG              0             0             0             0             0
+ AP4AP              0             0             0             0             0
+ AP4AG              0             0             0             0             0
+ AN4AP              0             0             0             0             0
+ AN4AG              0             0             0             0             0
+ AP5AP              0             0             0             0             0
+ AP5AG              0             0             0             0             0
+ AN5AP              0             0             0             0             0
+ AN5AG              0             0             0             0             0
+
+
+           THETA
+              AP2AG         AN2AP         AN2AG         AP3AP         AP3AG
+              ________      ________      ________      ________      ________
+ AP2AG             45
+ AN2AP              0            46
+ AN2AG              0            47            48
+ AP3AP              0             0             0            49
+ AP3AG              0             0             0            50            51
+ AN3AP              0             0             0             0             0
+ AN3AG              0             0             0             0             0
+ AP4AP              0             0             0             0             0
+ AP4AG              0             0             0             0             0
+ AN4AP              0             0             0             0             0
+ AN4AG              0             0             0             0             0
+ AP5AP              0             0             0             0             0
+ AP5AG              0             0             0             0             0
+ AN5AP              0             0             0             0             0
+ AN5AG              0             0             0             0             0
+
+
+           THETA
+              AN3AP         AN3AG         AP4AP         AP4AG         AN4AP
+              ________      ________      ________      ________      ________
+ AN3AP             52
+ AN3AG             53            54
+ AP4AP              0             0            55
+ AP4AG              0             0            56            57
+ AN4AP              0             0             0             0            58
+ AN4AG              0             0             0             0            59
+ AP5AP              0             0             0             0             0
+ AP5AG              0             0             0             0             0
+ AN5AP              0             0             0             0             0
+ AN5AG              0             0             0             0             0
+
+
+           THETA
+              AN4AG         AP5AP         AP5AG         AN5AP         AN5AG
+              ________      ________      ________      ________      ________
+ AN4AG             60
+ AP5AP              0            61
+ AP5AG              0            62            63
+ AN5AP              0             0             0            64
+ AN5AG              0             0             0            65            66
+
+
+           ALPHA
+              APAP          APAG          ANAP          ANAG
+              ________      ________      ________      ________
+                  0             0             0             0
+
+
+           BETA
+              APAP          APAG          ANAP          ANAG
+              ________      ________      ________      ________
+ APAP               0             0             0             0
+ APAG               0             0             0             0
+ ANAP               0             0             0             0
+ ANAG               0             0             0             0
+
+
+           PSI
+              APAP          APAG          ANAP          ANAG
+              ________      ________      ________      ________
+ APAP              67
+ APAG              68            69
+ ANAP              70            71            72
+ ANAG              73            74            75            76
+
+
+     STARTING VALUES
+
+
+           NU
+              AP1AP         AP1AG         AN1AP         AN1AG         AP2AP
+              ________      ________      ________      ________      ________
+                3.392         3.878         2.417         2.357         3.364
+
+
+           NU
+              AP2AG         AN2AP         AN2AG         AP3AP         AP3AG
+              ________      ________      ________      ________      ________
+                3.439         2.313         2.191         3.408         3.646
+
+
+           NU
+              AN3AP         AN3AG         AP4AP         AP4AG         AN4AP
+              ________      ________      ________      ________      ________
+                2.342         2.219         3.411         3.734         2.219
+
+
+           NU
+              AN4AG         AP5AP         AP5AG         AN5AP         AN5AG
+              ________      ________      ________      ________      ________
+                2.144         3.442         3.511         2.141         2.066
+
+
+           LAMBDA
+              APAP          APAG          ANAP          ANAG
+              ________      ________      ________      ________
+ AP1AP          1.000         0.000         0.000         0.000
+ AP1AG          0.000         1.000         0.000         0.000
+ AN1AP          0.000         0.000         1.000         0.000
+ AN1AG          0.000         0.000         0.000         1.000
+ AP2AP          0.765         0.000         0.000         0.000
+ AP2AG          0.000         0.705         0.000         0.000
+ AN2AP          0.000         0.000         1.076         0.000
+ AN2AG          0.000         0.000         0.000         0.871
+ AP3AP          1.138         0.000         0.000         0.000
+ AP3AG          0.000         1.147         0.000         0.000
+ AN3AP          0.000         0.000         1.213         0.000
+ AN3AG          0.000         0.000         0.000         1.051
+ AP4AP          1.153         0.000         0.000         0.000
+ AP4AG          0.000         1.167         0.000         0.000
+ AN4AP          0.000         0.000         1.263         0.000
+ AN4AG          0.000         0.000         0.000         1.007
+ AP5AP          0.890         0.000         0.000         0.000
+ AP5AG          0.000         0.795         0.000         0.000
+ AN5AP          0.000         0.000         1.188         0.000
+ AN5AG          0.000         0.000         0.000         1.010
+
+
+           THETA
+              AP1AP         AP1AG         AN1AP         AN1AG         AP2AP
+              ________      ________      ________      ________      ________
+ AP1AP          0.489
+ AP1AG          0.000         0.552
+ AN1AP          0.000         0.000         0.495
+ AN1AG          0.000         0.000         0.000         0.576
+ AP2AP          0.000         0.000         0.000         0.000         0.414
+ AP2AG          0.000         0.000         0.000         0.000         0.000
+ AN2AP          0.000         0.000         0.000         0.000         0.000
+ AN2AG          0.000         0.000         0.000         0.000         0.000
+ AP3AP          0.000         0.000         0.000         0.000         0.000
+ AP3AG          0.000         0.000         0.000         0.000         0.000
+ AN3AP          0.000         0.000         0.000         0.000         0.000
+ AN3AG          0.000         0.000         0.000         0.000         0.000
+ AP4AP          0.000         0.000         0.000         0.000         0.000
+ AP4AG          0.000         0.000         0.000         0.000         0.000
+ AN4AP          0.000         0.000         0.000         0.000         0.000
+ AN4AG          0.000         0.000         0.000         0.000         0.000
+ AP5AP          0.000         0.000         0.000         0.000         0.000
+ AP5AG          0.000         0.000         0.000         0.000         0.000
+ AN5AP          0.000         0.000         0.000         0.000         0.000
+ AN5AG          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              AP2AG         AN2AP         AN2AG         AP3AP         AP3AG
+              ________      ________      ________      ________      ________
+ AP2AG          0.499
+ AN2AP          0.000         0.572
+ AN2AG          0.000         0.000         0.629
+ AP3AP          0.000         0.000         0.000         0.437
+ AP3AG          0.000         0.000         0.000         0.000         0.591
+ AN3AP          0.000         0.000         0.000         0.000         0.000
+ AN3AG          0.000         0.000         0.000         0.000         0.000
+ AP4AP          0.000         0.000         0.000         0.000         0.000
+ AP4AG          0.000         0.000         0.000         0.000         0.000
+ AN4AP          0.000         0.000         0.000         0.000         0.000
+ AN4AG          0.000         0.000         0.000         0.000         0.000
+ AP5AP          0.000         0.000         0.000         0.000         0.000
+ AP5AG          0.000         0.000         0.000         0.000         0.000
+ AN5AP          0.000         0.000         0.000         0.000         0.000
+ AN5AG          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              AN3AP         AN3AG         AP4AP         AP4AG         AN4AP
+              ________      ________      ________      ________      ________
+ AN3AP          0.464
+ AN3AG          0.000         0.521
+ AP4AP          0.000         0.000         0.416
+ AP4AG          0.000         0.000         0.000         0.546
+ AN4AP          0.000         0.000         0.000         0.000         0.484
+ AN4AG          0.000         0.000         0.000         0.000         0.000
+ AP5AP          0.000         0.000         0.000         0.000         0.000
+ AP5AG          0.000         0.000         0.000         0.000         0.000
+ AN5AP          0.000         0.000         0.000         0.000         0.000
+ AN5AG          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              AN4AG         AP5AP         AP5AG         AN5AP         AN5AG
+              ________      ________      ________      ________      ________
+ AN4AG          0.475
+ AP5AP          0.000         0.343
+ AP5AG          0.000         0.000         0.391
+ AN5AP          0.000         0.000         0.000         0.465
+ AN5AG          0.000         0.000         0.000         0.000         0.488
+
+
+           ALPHA
+              APAP          APAG          ANAP          ANAG
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           BETA
+              APAP          APAG          ANAP          ANAG
+              ________      ________      ________      ________
+ APAP           0.000         0.000         0.000         0.000
+ APAG           0.000         0.000         0.000         0.000
+ ANAP           0.000         0.000         0.000         0.000
+ ANAG           0.000         0.000         0.000         0.000
+
+
+           PSI
+              APAP          APAG          ANAP          ANAG
+              ________      ________      ________      ________
+ APAP           0.050
+ APAG           0.000         0.050
+ ANAP           0.000         0.000         0.050
+ ANAG           0.000         0.000         0.000         0.050
+
+
+TECHNICAL 4 OUTPUT
+
+
+     ESTIMATES DERIVED FROM THE MODEL
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              APAP          APAG          ANAP          ANAG
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              APAP          APAG          ANAP          ANAG
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              APAP          APAG          ANAP          ANAG
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              APAP          APAG          ANAP          ANAG
+              ________      ________      ________      ________
+                1.000         1.000         1.000         1.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              APAP          APAG          ANAP          ANAG
+              ________      ________      ________      ________
+ APAP           0.415
+ APAG           0.221         0.566
+ ANAP          -0.183        -0.147         0.418
+ ANAG          -0.124        -0.236         0.345         0.539
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              APAP          APAG          ANAP          ANAG
+              ________      ________      ________      ________
+ APAP           0.076
+ APAG           0.043         0.084
+ ANAP           0.042         0.044         0.085
+ ANAG           0.039         0.053         0.060         0.084
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              APAP          APAG          ANAP          ANAG
+              ________      ________      ________      ________
+ APAP           5.466
+ APAG           5.171         6.760
+ ANAP          -4.377        -3.327         4.918
+ ANAG          -3.154        -4.432         5.783         6.440
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              APAP          APAG          ANAP          ANAG
+              ________      ________      ________      ________
+ APAP           0.000
+ APAG           0.000         0.000
+ ANAP           0.000         0.001         0.000
+ ANAG           0.002         0.000         0.000         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              APAP          APAG          ANAP          ANAG
+              ________      ________      ________      ________
+ APAP           1.000
+ APAG           0.455         1.000
+ ANAP          -0.440        -0.303         1.000
+ ANAG          -0.263        -0.427         0.728         1.000
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              APAP          APAG          ANAP          ANAG
+              ________      ________      ________      ________
+ APAP           0.000
+ APAG           0.096         0.000
+ ANAP           0.082         0.077         0.000
+ ANAG           0.081         0.075         0.067         0.000
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              APAP          APAG          ANAP          ANAG
+              ________      ________      ________      ________
+ APAP         999.000
+ APAG           4.762       999.000
+ ANAP          -5.336        -3.940       999.000
+ ANAG          -3.242        -5.660        10.830       999.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              APAP          APAG          ANAP          ANAG
+              ________      ________      ________      ________
+ APAP           0.000
+ APAG           0.000         0.000
+ ANAP           0.000         0.000         0.000
+ ANAG           0.001         0.000         0.000         0.000
+
+
+           ESTIMATED PARTIAL CORRELATION MATRIX FOR THE LATENT VARIABLES
+              APAP          APAG          ANAP          ANAG
+              ________      ________      ________      ________
+ APAP           1.000
+ APAG           0.429         1.000
+ ANAP          -0.414         0.188         1.000
+ ANAG           0.241        -0.380         0.713         1.000
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    c:\users\mm\onedrive - upv\dat_dropbox\investigaciÓn\cit_2025\travelwell\mplus_validation_rerun_package\mplus_valida
+
+     Beginning Time:  08:20:49
+        Ending Time:  08:20:50
+       Elapsed Time:  00:00:01
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2026 Muthen & Muthen
