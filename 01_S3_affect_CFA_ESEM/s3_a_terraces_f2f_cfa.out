@@ -1,0 +1,2155 @@
+Mplus VERSION 9.1
+MUTHEN & MUTHEN
+08/17/2026   8:17 AM
+
+INPUT INSTRUCTIONS
+
+  TITLE: PANAS Terrazas- CFA Face-to-face;
+
+  DATA:
+  FILE = ../data/datos_com_terr_legacy_order.txt;
+
+  VARIABLE:
+  NAMES =
+  id MODO online
+  ap1cc ap1sc an1cc an1sc
+  ap2cc ap2sc an2cc an2sc
+  ap3cc ap3sc an3cc an3sc
+  ap4cc ap4sc an4cc an4sc
+  ap5cc ap5sc an5cc an5sc
+  S1cc S1sc S2cc S2sc S3cc S3sc S4cc S4sc S5cc S5sc
+  ap1ct ap1st an1ct an1st
+  ap2ct ap2st an2ct an2st
+  ap3ct ap3st an3ct an3st
+  ap4ct ap4st an4ct an4st
+  ap5ct ap5st an5ct an5st
+  S1ct S1st S2ct S2st S3ct S3st S4ct S4st S5ct S5st
+  V1 V2 V3 V4 V5 V6 V7 V8 V9
+  V10 V11 V12 V13 V14 V15 V16
+  V17 V18 V19;
+
+  USEVARIABLES =
+  ap1ct ap2ct ap3ct ap4ct ap5ct
+  ap1st ap2st ap3st ap4st ap5st
+  an1ct an2ct an3ct an4ct an5ct
+  an1st an2st an3st an4st an5st;
+
+  USEOBSERVATIONS = online EQ 2;
+
+  MISSING = ALL (-999);
+
+  ANALYSIS:
+  ESTIMATOR = MLR;
+
+  MODEL:
+
+  APct BY ap1ct ap2ct ap3ct ap4ct ap5ct;
+  APst BY ap1st ap2st ap3st ap4st ap5st;
+  ANct BY an1ct an2ct an3ct an4ct an5ct;
+  ANst BY an1st an2st an3st an4st an5st;
+
+  APct WITH ANct;
+  APst WITH ANst;
+  APct WITH APst;
+  ANct WITH ANst;
+
+  ap1ct WITH ap1st;
+  ap2ct WITH ap2st;
+  ap3ct WITH ap3st;
+  ap4ct WITH ap4st;
+  ap5ct WITH ap5st;
+
+  an1ct WITH an1st;
+  an2ct WITH an2st;
+  an3ct WITH an3st;
+  an4ct WITH an4st;
+  an5ct WITH an5st;
+
+  OUTPUT:
+  STANDARDIZED;
+  MODINDICES(10);
+  SAMPSTAT;
+  RESIDUAL;
+  TECH1;
+  TECH4;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+PANAS Terrazas- CFA Face-to-face;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         318
+
+Number of dependent variables                                   20
+Number of independent variables                                  0
+Number of continuous latent variables                            4
+
+Observed dependent variables
+
+  Continuous
+   AP1CT       AP2CT       AP3CT       AP4CT       AP5CT       AP1ST
+   AP2ST       AP3ST       AP4ST       AP5ST       AN1CT       AN2CT
+   AN3CT       AN4CT       AN5CT       AN1ST       AN2ST       AN3ST
+   AN4ST       AN5ST
+
+Continuous latent variables
+   APCT        APST        ANCT        ANST
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  ../data/datos_com_terr_legacy_order.txt
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              AP1CT         AP2CT         AP3CT         AP4CT         AP5CT
+              ________      ________      ________      ________      ________
+ AP1CT          1.000
+ AP2CT          1.000         1.000
+ AP3CT          1.000         1.000         1.000
+ AP4CT          1.000         1.000         1.000         1.000
+ AP5CT          1.000         1.000         1.000         1.000         1.000
+ AP1ST          1.000         1.000         1.000         1.000         1.000
+ AP2ST          1.000         1.000         1.000         1.000         1.000
+ AP3ST          1.000         1.000         1.000         1.000         1.000
+ AP4ST          1.000         1.000         1.000         1.000         1.000
+ AP5ST          1.000         1.000         1.000         1.000         1.000
+ AN1CT          1.000         1.000         1.000         1.000         1.000
+ AN2CT          1.000         1.000         1.000         1.000         1.000
+ AN3CT          1.000         1.000         1.000         1.000         1.000
+ AN4CT          1.000         1.000         1.000         1.000         1.000
+ AN5CT          1.000         1.000         1.000         1.000         1.000
+ AN1ST          1.000         1.000         1.000         1.000         1.000
+ AN2ST          1.000         1.000         1.000         1.000         1.000
+ AN3ST          1.000         1.000         1.000         1.000         1.000
+ AN4ST          1.000         1.000         1.000         1.000         1.000
+ AN5ST          1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              AP1ST         AP2ST         AP3ST         AP4ST         AP5ST
+              ________      ________      ________      ________      ________
+ AP1ST          1.000
+ AP2ST          1.000         1.000
+ AP3ST          1.000         1.000         1.000
+ AP4ST          1.000         1.000         1.000         1.000
+ AP5ST          1.000         1.000         1.000         1.000         1.000
+ AN1CT          1.000         1.000         1.000         1.000         1.000
+ AN2CT          1.000         1.000         1.000         1.000         1.000
+ AN3CT          1.000         1.000         1.000         1.000         1.000
+ AN4CT          1.000         1.000         1.000         1.000         1.000
+ AN5CT          1.000         1.000         1.000         1.000         1.000
+ AN1ST          1.000         1.000         1.000         1.000         1.000
+ AN2ST          1.000         1.000         1.000         1.000         1.000
+ AN3ST          1.000         1.000         1.000         1.000         1.000
+ AN4ST          1.000         1.000         1.000         1.000         1.000
+ AN5ST          1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              AN1CT         AN2CT         AN3CT         AN4CT         AN5CT
+              ________      ________      ________      ________      ________
+ AN1CT          1.000
+ AN2CT          1.000         1.000
+ AN3CT          1.000         1.000         1.000
+ AN4CT          1.000         1.000         1.000         1.000
+ AN5CT          1.000         1.000         1.000         1.000         1.000
+ AN1ST          1.000         1.000         1.000         1.000         1.000
+ AN2ST          1.000         1.000         1.000         1.000         1.000
+ AN3ST          1.000         1.000         1.000         1.000         1.000
+ AN4ST          1.000         1.000         1.000         1.000         1.000
+ AN5ST          1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              AN1ST         AN2ST         AN3ST         AN4ST         AN5ST
+              ________      ________      ________      ________      ________
+ AN1ST          1.000
+ AN2ST          1.000         1.000
+ AN3ST          1.000         1.000         1.000
+ AN4ST          1.000         1.000         1.000         1.000
+ AN5ST          1.000         1.000         1.000         1.000         1.000
+
+
+SAMPLE STATISTICS
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           Means
+              AP1CT         AP2CT         AP3CT         AP4CT         AP5CT
+              ________      ________      ________      ________      ________
+                3.135         4.233         3.157         3.110         3.220
+
+
+           Means
+              AP1ST         AP2ST         AP3ST         AP4ST         AP5ST
+              ________      ________      ________      ________      ________
+                3.233         2.890         2.997         2.984         3.330
+
+
+           Means
+              AN1CT         AN2CT         AN3CT         AN4CT         AN5CT
+              ________      ________      ________      ________      ________
+                2.994         2.657         3.019         2.714         2.698
+
+
+           Means
+              AN1ST         AN2ST         AN3ST         AN4ST         AN5ST
+              ________      ________      ________      ________      ________
+                2.330         2.362         2.396         2.305         2.252
+
+
+           Covariances
+              AP1CT         AP2CT         AP3CT         AP4CT         AP5CT
+              ________      ________      ________      ________      ________
+ AP1CT          1.633
+ AP2CT          0.170         0.795
+ AP3CT          0.844         0.108         1.183
+ AP4CT          0.869         0.122         0.917         1.280
+ AP5CT          0.763         0.075         0.597         0.696         1.279
+ AP1ST         -0.708        -0.016        -0.474        -0.494        -0.429
+ AP2ST         -0.032        -0.144        -0.077         0.000         0.156
+ AP3ST         -0.345        -0.034        -0.323        -0.276        -0.229
+ AP4ST         -0.268         0.001        -0.155        -0.225        -0.198
+ AP5ST         -0.277         0.150        -0.360        -0.288        -0.302
+ AN1CT         -0.691         0.341        -0.537        -0.550        -0.621
+ AN2CT         -0.696         0.004        -0.566        -0.591        -0.519
+ AN3CT         -0.713         0.282        -0.582        -0.508        -0.570
+ AN4CT         -0.619         0.211        -0.477        -0.402        -0.516
+ AN5CT         -0.638         0.048        -0.503        -0.492        -0.528
+ AN1ST          0.210        -0.111         0.288         0.335         0.229
+ AN2ST          0.376         0.004         0.267         0.382         0.244
+ AN3ST          0.324        -0.070         0.337         0.368         0.237
+ AN4ST          0.213        -0.074         0.144         0.218         0.191
+ AN5ST          0.142        -0.043         0.209         0.189         0.149
+
+
+           Covariances
+              AP1ST         AP2ST         AP3ST         AP4ST         AP5ST
+              ________      ________      ________      ________      ________
+ AP1ST          1.241
+ AP2ST          0.356         1.293
+ AP3ST          0.617         0.320         1.035
+ AP4ST          0.497         0.247         0.550         0.921
+ AP5ST          0.562         0.370         0.532         0.521         1.196
+ AN1CT          0.508        -0.148         0.195         0.223         0.392
+ AN2CT          0.542        -0.053         0.298         0.344         0.192
+ AN3CT          0.527        -0.127         0.324         0.302         0.403
+ AN4CT          0.444        -0.101         0.181         0.241         0.305
+ AN5CT          0.388        -0.178         0.251         0.278         0.172
+ AN1ST         -0.184         0.087        -0.109        -0.149        -0.203
+ AN2ST         -0.317        -0.102        -0.206        -0.208        -0.318
+ AN3ST         -0.231         0.009        -0.112        -0.104        -0.216
+ AN4ST         -0.288        -0.036        -0.137        -0.115        -0.198
+ AN5ST         -0.200        -0.054        -0.119        -0.046        -0.240
+
+
+           Covariances
+              AN1CT         AN2CT         AN3CT         AN4CT         AN5CT
+              ________      ________      ________      ________      ________
+ AN1CT          1.899
+ AN2CT          0.781         1.521
+ AN3CT          1.183         0.940         1.780
+ AN4CT          1.118         0.776         1.314         1.613
+ AN5CT          0.813         0.865         1.194         1.190         1.613
+ AN1ST         -0.171        -0.151        -0.097        -0.041        -0.054
+ AN2ST         -0.212        -0.093        -0.089         0.012         0.037
+ AN3ST         -0.170        -0.081        -0.080        -0.019         0.000
+ AN4ST         -0.174         0.020        -0.025        -0.045         0.035
+ AN5ST         -0.093         0.067        -0.058         0.009         0.051
+
+
+           Covariances
+              AN1ST         AN2ST         AN3ST         AN4ST         AN5ST
+              ________      ________      ________      ________      ________
+ AN1ST          1.183
+ AN2ST          0.535         1.130
+ AN3ST          0.624         0.652         1.101
+ AN4ST          0.553         0.613         0.697         1.118
+ AN5ST          0.477         0.557         0.655         0.757         1.075
+
+
+           Correlations
+              AP1CT         AP2CT         AP3CT         AP4CT         AP5CT
+              ________      ________      ________      ________      ________
+ AP1CT          1.000
+ AP2CT          0.149         1.000
+ AP3CT          0.607         0.111         1.000
+ AP4CT          0.601         0.121         0.745         1.000
+ AP5CT          0.528         0.074         0.486         0.544         1.000
+ AP1ST         -0.497        -0.017        -0.391        -0.392        -0.340
+ AP2ST         -0.022        -0.142        -0.062         0.000         0.122
+ AP3ST         -0.266        -0.037        -0.292        -0.240        -0.199
+ AP4ST         -0.219         0.001        -0.148        -0.207        -0.182
+ AP5ST         -0.198         0.153        -0.303        -0.233        -0.244
+ AN1CT         -0.392         0.278        -0.358        -0.352        -0.399
+ AN2CT         -0.442         0.004        -0.422        -0.424        -0.372
+ AN3CT         -0.418         0.237        -0.401        -0.337        -0.378
+ AN4CT         -0.381         0.187        -0.345        -0.280        -0.359
+ AN5CT         -0.393         0.043        -0.364        -0.342        -0.368
+ AN1ST          0.151        -0.115         0.243         0.272         0.186
+ AN2ST          0.277         0.004         0.231         0.317         0.203
+ AN3ST          0.242        -0.075         0.295         0.310         0.199
+ AN4ST          0.158        -0.079         0.125         0.182         0.160
+ AN5ST          0.107        -0.046         0.185         0.161         0.127
+
+
+           Correlations
+              AP1ST         AP2ST         AP3ST         AP4ST         AP5ST
+              ________      ________      ________      ________      ________
+ AP1ST          1.000
+ AP2ST          0.281         1.000
+ AP3ST          0.545         0.277         1.000
+ AP4ST          0.465         0.226         0.564         1.000
+ AP5ST          0.461         0.297         0.479         0.496         1.000
+ AN1CT          0.331        -0.095         0.139         0.169         0.260
+ AN2CT          0.394        -0.038         0.237         0.290         0.142
+ AN3CT          0.355        -0.084         0.239         0.236         0.276
+ AN4CT          0.314        -0.070         0.140         0.198         0.220
+ AN5CT          0.274        -0.123         0.194         0.228         0.124
+ AN1ST         -0.152         0.070        -0.099        -0.143        -0.171
+ AN2ST         -0.267        -0.084        -0.191        -0.204        -0.273
+ AN3ST         -0.197         0.008        -0.105        -0.103        -0.188
+ AN4ST         -0.244        -0.030        -0.128        -0.113        -0.171
+ AN5ST         -0.173        -0.046        -0.113        -0.047        -0.212
+
+
+           Correlations
+              AN1CT         AN2CT         AN3CT         AN4CT         AN5CT
+              ________      ________      ________      ________      ________
+ AN1CT          1.000
+ AN2CT          0.459         1.000
+ AN3CT          0.643         0.572         1.000
+ AN4CT          0.639         0.496         0.775         1.000
+ AN5CT          0.464         0.552         0.705         0.738         1.000
+ AN1ST         -0.114        -0.113        -0.067        -0.029        -0.039
+ AN2ST         -0.144        -0.071        -0.062         0.009         0.027
+ AN3ST         -0.118        -0.063        -0.057        -0.014         0.000
+ AN4ST         -0.120         0.015        -0.017        -0.033         0.026
+ AN5ST         -0.065         0.053        -0.042         0.007         0.039
+
+
+           Correlations
+              AN1ST         AN2ST         AN3ST         AN4ST         AN5ST
+              ________      ________      ________      ________      ________
+ AN1ST          1.000
+ AN2ST          0.462         1.000
+ AN3ST          0.547         0.585         1.000
+ AN4ST          0.481         0.545         0.628         1.000
+ AN5ST          0.423         0.505         0.602         0.690         1.000
+
+
+     MAXIMUM LOG-LIKELIHOOD VALUE FOR THE UNRESTRICTED (H1) MODEL IS -8142.542
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     AP1CT                 3.135      -0.145       1.000   12.89%       2.000      3.000      3.000
+             318.000       1.633      -1.056       5.000   16.67%       4.000      4.000
+     AP2CT                 4.233      -1.324       1.000    1.57%       4.000      4.000      4.000
+             318.000       0.795       1.821       5.000   45.60%       5.000      5.000
+     AP3CT                 3.157      -0.183       1.000    8.49%       2.000      3.000      3.000
+             318.000       1.183      -0.458       5.000   11.32%       3.000      4.000
+     AP4CT                 3.110      -0.204       1.000   11.01%       2.000      3.000      3.000
+             318.000       1.280      -0.555       5.000   11.32%       3.000      4.000
+     AP5CT                 3.220      -0.269       1.000    8.49%       2.000      3.000      3.000
+             318.000       1.279      -0.661       5.000   12.58%       4.000      4.000
+     AP1ST                 3.233      -0.167       1.000    7.55%       2.000      3.000      3.000
+             318.000       1.241      -0.569       5.000   14.47%       3.000      4.000
+     AP2ST                 2.890       0.024       1.000   13.21%       2.000      3.000      3.000
+             318.000       1.293      -0.709       5.000    8.49%       3.000      4.000
+     AP3ST                 2.997       0.096       1.000    8.81%       2.000      3.000      3.000
+             318.000       1.035       0.118       5.000   10.38%       3.000      4.000
+     AP4ST                 2.984       0.095       1.000    7.23%       2.000      3.000      3.000
+             318.000       0.921       0.270       5.000    8.18%       3.000      4.000
+     AP5ST                 3.330      -0.205       1.000    6.29%       3.000      3.000      3.000
+             318.000       1.196      -0.470       5.000   16.67%       4.000      4.000
+     AN1CT                 2.994      -0.068       1.000   19.81%       2.000      3.000      3.000
+             318.000       1.899      -1.272       5.000   16.35%       4.000      4.000
+     AN2CT                 2.657       0.250       1.000   22.33%       1.000      2.000      3.000
+             318.000       1.521      -0.852       5.000    9.12%       3.000      4.000
+     AN3CT                 3.019      -0.114       1.000   18.24%       2.000      3.000      3.000
+             318.000       1.780      -1.170       5.000   15.09%       4.000      4.000
+     AN4CT                 2.714       0.198       1.000   21.70%       1.000      2.000      3.000
+             318.000       1.613      -1.027       5.000    9.75%       3.000      4.000
+     AN5CT                 2.698       0.266       1.000   21.07%       1.000      2.000      3.000
+             318.000       1.613      -0.984       5.000   10.38%       3.000      4.000
+     AN1ST                 2.330       0.534       1.000   26.73%       1.000      2.000      2.000
+             318.000       1.183      -0.242       5.000    4.72%       3.000      3.000
+     AN2ST                 2.362       0.340       1.000   26.73%       1.000      2.000      2.000
+             318.000       1.130      -0.407       5.000    3.77%       3.000      3.000
+     AN3ST                 2.396       0.398       1.000   22.96%       1.000      2.000      2.000
+             318.000       1.101      -0.325       5.000    3.77%       3.000      3.000
+     AN4ST                 2.305       0.454       1.000   27.36%       1.000      2.000      2.000
+             318.000       1.118      -0.343       5.000    3.46%       3.000      3.000
+     AN5ST                 2.252       0.431       1.000   29.25%       1.000      2.000      2.000
+             318.000       1.075      -0.440       5.000    2.52%       3.000      3.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       76
+
+Loglikelihood
+
+          H0 Value                       -8378.148
+          H0 Scaling Correction Factor      1.4799
+            for MLR
+          H1 Value                       -8142.542
+          H1 Scaling Correction Factor      1.3482
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   16908.297
+          Bayesian (BIC)                 17194.213
+          Sample-Size Adjusted BIC       16953.157
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                            367.233*
+          Degrees of Freedom                   154
+          P-Value                           0.0000
+          Scaling Correction Factor         1.2831
+            for MLR
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.066
+          90 Percent C.I.                    0.057  0.075
+          Probability RMSEA <= .05           0.001
+
+CFI/TLI
+
+          CFI                                0.897
+          TLI                                0.872
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           2251.071
+          Degrees of Freedom                   190
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.078
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ APCT     BY
+    AP1CT              1.000      0.000    999.000    999.000
+    AP2CT              0.144      0.069      2.076      0.038
+    AP3CT              1.049      0.099     10.547      0.000
+    AP4CT              1.100      0.105     10.447      0.000
+    AP5CT              0.823      0.079     10.462      0.000
+
+ APST     BY
+    AP1ST              1.000      0.000    999.000    999.000
+    AP2ST              0.531      0.106      4.994      0.000
+    AP3ST              0.947      0.112      8.434      0.000
+    AP4ST              0.836      0.116      7.188      0.000
+    AP5ST              0.936      0.108      8.643      0.000
+
+ ANCT     BY
+    AN1CT              1.000      0.000    999.000    999.000
+    AN2CT              0.822      0.080     10.265      0.000
+    AN3CT              1.233      0.085     14.586      0.000
+    AN4CT              1.161      0.084     13.898      0.000
+    AN5CT              1.063      0.094     11.301      0.000
+
+ ANST     BY
+    AN1ST              1.000      0.000    999.000    999.000
+    AN2ST              1.107      0.123      8.971      0.000
+    AN3ST              1.250      0.119     10.544      0.000
+    AN4ST              1.280      0.146      8.789      0.000
+    AN5ST              1.173      0.132      8.912      0.000
+
+ APCT     WITH
+    ANCT              -0.460      0.084     -5.485      0.000
+    APST              -0.317      0.096     -3.314      0.001
+
+ APST     WITH
+    ANST              -0.160      0.060     -2.658      0.008
+
+ ANCT     WITH
+    ANST              -0.027      0.052     -0.508      0.611
+    APST               0.288      0.078      3.666      0.000
+
+ ANST     WITH
+    APCT               0.207      0.058      3.538      0.000
+
+ AP1CT    WITH
+    AP1ST             -0.220      0.080     -2.742      0.006
+
+ AP2CT    WITH
+    AP2ST             -0.179      0.063     -2.859      0.004
+
+ AP3CT    WITH
+    AP3ST             -0.034      0.057     -0.602      0.547
+
+ AP4CT    WITH
+    AP4ST             -0.013      0.053     -0.247      0.805
+
+ AP5CT    WITH
+    AP5ST             -0.044      0.070     -0.630      0.528
+
+ AN1CT    WITH
+    AN1ST             -0.001      0.073     -0.013      0.989
+
+ AN2CT    WITH
+    AN2ST             -0.039      0.061     -0.636      0.525
+
+ AN3CT    WITH
+    AN3ST              0.014      0.041      0.341      0.733
+
+ AN4CT    WITH
+    AN4ST             -0.084      0.057     -1.474      0.141
+
+ AN5CT    WITH
+    AN5ST              0.008      0.047      0.172      0.863
+
+ Intercepts
+    AP1CT              3.135      0.072     43.756      0.000
+    AP2CT              4.233      0.050     84.659      0.000
+    AP3CT              3.157      0.061     51.768      0.000
+    AP4CT              3.110      0.063     49.014      0.000
+    AP5CT              3.220      0.063     50.783      0.000
+    AP1ST              3.233      0.062     51.739      0.000
+    AP2ST              2.890      0.064     45.323      0.000
+    AP3ST              2.997      0.057     52.541      0.000
+    AP4ST              2.984      0.054     55.449      0.000
+    AP5ST              3.330      0.061     54.302      0.000
+    AN1CT              2.994      0.077     38.737      0.000
+    AN2CT              2.657      0.069     38.423      0.000
+    AN3CT              3.019      0.075     40.356      0.000
+    AN4CT              2.714      0.071     38.104      0.000
+    AN5CT              2.698      0.071     37.881      0.000
+    AN1ST              2.330      0.061     38.197      0.000
+    AN2ST              2.362      0.060     39.614      0.000
+    AN3ST              2.396      0.059     40.726      0.000
+    AN4ST              2.305      0.059     38.881      0.000
+    AN5ST              2.252      0.058     38.724      0.000
+
+ Variances
+    APCT               0.770      0.124      6.232      0.000
+    APST               0.633      0.115      5.490      0.000
+    ANCT               0.925      0.130      7.120      0.000
+    ANST               0.458      0.094      4.881      0.000
+
+ Residual Variances
+    AP1CT              0.765      0.099      7.711      0.000
+    AP2CT              0.786      0.083      9.462      0.000
+    AP3CT              0.339      0.074      4.602      0.000
+    AP4CT              0.351      0.074      4.760      0.000
+    AP5CT              0.757      0.084      9.010      0.000
+    AP1ST              0.585      0.099      5.903      0.000
+    AP2ST              1.132      0.088     12.862      0.000
+    AP3ST              0.467      0.087      5.389      0.000
+    AP4ST              0.480      0.068      7.030      0.000
+    AP5ST              0.640      0.081      7.885      0.000
+    AN1CT              0.974      0.113      8.595      0.000
+    AN2CT              0.894      0.102      8.744      0.000
+    AN3CT              0.376      0.056      6.752      0.000
+    AN4CT              0.381      0.075      5.098      0.000
+    AN5CT              0.568      0.071      8.005      0.000
+    AN1ST              0.725      0.083      8.696      0.000
+    AN2ST              0.568      0.086      6.600      0.000
+    AN3ST              0.388      0.056      6.976      0.000
+    AN4ST              0.386      0.089      4.345      0.000
+    AN5ST              0.444      0.069      6.445      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.973E-02
+       (ratio of smallest to largest eigenvalue)
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ APCT     BY
+    AP1CT              0.708      0.047     15.048      0.000
+    AP2CT              0.141      0.065      2.150      0.032
+    AP3CT              0.845      0.036     23.317      0.000
+    AP4CT              0.852      0.033     25.973      0.000
+    AP5CT              0.639      0.049     13.127      0.000
+
+ APST     BY
+    AP1ST              0.721      0.056     12.820      0.000
+    AP2ST              0.369      0.068      5.395      0.000
+    AP3ST              0.740      0.053     13.916      0.000
+    AP4ST              0.692      0.052     13.202      0.000
+    AP5ST              0.681      0.047     14.436      0.000
+
+ ANCT     BY
+    AN1CT              0.698      0.043     16.316      0.000
+    AN2CT              0.642      0.049     12.964      0.000
+    AN3CT              0.888      0.019     47.515      0.000
+    AN4CT              0.875      0.026     33.353      0.000
+    AN5CT              0.805      0.030     27.187      0.000
+
+ ANST     BY
+    AN1ST              0.622      0.054     11.598      0.000
+    AN2ST              0.705      0.053     13.379      0.000
+    AN3ST              0.805      0.033     24.348      0.000
+    AN4ST              0.812      0.045     18.115      0.000
+    AN5ST              0.766      0.043     17.905      0.000
+
+ APCT     WITH
+    ANCT              -0.545      0.062     -8.780      0.000
+    APST              -0.455      0.088     -5.171      0.000
+
+ APST     WITH
+    ANST              -0.298      0.094     -3.184      0.001
+
+ ANCT     WITH
+    ANST              -0.041      0.079     -0.519      0.604
+    APST               0.376      0.081      4.645      0.000
+
+ ANST     WITH
+    APCT               0.348      0.075      4.676      0.000
+
+ AP1CT    WITH
+    AP1ST             -0.328      0.093     -3.531      0.000
+
+ AP2CT    WITH
+    AP2ST             -0.190      0.064     -2.959      0.003
+
+ AP3CT    WITH
+    AP3ST             -0.086      0.136     -0.628      0.530
+
+ AP4CT    WITH
+    AP4ST             -0.032      0.128     -0.250      0.802
+
+ AP5CT    WITH
+    AP5ST             -0.063      0.098     -0.643      0.520
+
+ AN1CT    WITH
+    AN1ST             -0.001      0.086     -0.013      0.989
+
+ AN2CT    WITH
+    AN2ST             -0.054      0.084     -0.646      0.518
+
+ AN3CT    WITH
+    AN3ST              0.037      0.109      0.337      0.736
+
+ AN4CT    WITH
+    AN4ST             -0.218      0.123     -1.778      0.075
+
+ AN5CT    WITH
+    AN5ST              0.016      0.093      0.172      0.864
+
+ Intercepts
+    AP1CT              2.530      0.101     24.975      0.000
+    AP2CT              4.727      0.303     15.590      0.000
+    AP3CT              2.898      0.123     23.510      0.000
+    AP4CT              2.745      0.117     23.492      0.000
+    AP5CT              2.848      0.119     23.959      0.000
+    AP1ST              2.929      0.122     23.993      0.000
+    AP2ST              2.525      0.098     25.825      0.000
+    AP3ST              2.946      0.130     22.684      0.000
+    AP4ST              3.108      0.140     22.186      0.000
+    AP5ST              3.047      0.128     23.883      0.000
+    AN1CT              2.172      0.080     27.098      0.000
+    AN2CT              2.156      0.075     28.652      0.000
+    AN3CT              2.262      0.085     26.598      0.000
+    AN4CT              2.127      0.074     28.706      0.000
+    AN5CT              2.125      0.070     30.178      0.000
+    AN1ST              2.142      0.078     27.581      0.000
+    AN2ST              2.223      0.083     26.744      0.000
+    AN3ST              2.282      0.084     27.160      0.000
+    AN4ST              2.162      0.081     26.675      0.000
+    AN5ST              2.173      0.078     27.814      0.000
+
+ Variances
+    APCT               1.000      0.000    999.000    999.000
+    APST               1.000      0.000    999.000    999.000
+    ANCT               1.000      0.000    999.000    999.000
+    ANST               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    AP1CT              0.498      0.067      7.474      0.000
+    AP2CT              0.980      0.018     53.196      0.000
+    AP3CT              0.285      0.061      4.658      0.000
+    AP4CT              0.273      0.056      4.889      0.000
+    AP5CT              0.592      0.062      9.518      0.000
+    AP1ST              0.480      0.081      5.929      0.000
+    AP2ST              0.864      0.050     17.143      0.000
+    AP3ST              0.452      0.079      5.735      0.000
+    AP4ST              0.521      0.073      7.180      0.000
+    AP5ST              0.536      0.064      8.328      0.000
+    AN1CT              0.513      0.060      8.593      0.000
+    AN2CT              0.588      0.064      9.263      0.000
+    AN3CT              0.211      0.033      6.361      0.000
+    AN4CT              0.234      0.046      5.091      0.000
+    AN5CT              0.352      0.048      7.388      0.000
+    AN1ST              0.613      0.067      9.186      0.000
+    AN2ST              0.503      0.074      6.766      0.000
+    AN3ST              0.351      0.053      6.598      0.000
+    AN4ST              0.340      0.073      4.664      0.000
+    AN5ST              0.413      0.066      6.305      0.000
+
+
+STDY Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ APCT     BY
+    AP1CT              0.708      0.047     15.048      0.000
+    AP2CT              0.141      0.065      2.150      0.032
+    AP3CT              0.845      0.036     23.317      0.000
+    AP4CT              0.852      0.033     25.973      0.000
+    AP5CT              0.639      0.049     13.127      0.000
+
+ APST     BY
+    AP1ST              0.721      0.056     12.820      0.000
+    AP2ST              0.369      0.068      5.395      0.000
+    AP3ST              0.740      0.053     13.916      0.000
+    AP4ST              0.692      0.052     13.202      0.000
+    AP5ST              0.681      0.047     14.436      0.000
+
+ ANCT     BY
+    AN1CT              0.698      0.043     16.316      0.000
+    AN2CT              0.642      0.049     12.964      0.000
+    AN3CT              0.888      0.019     47.515      0.000
+    AN4CT              0.875      0.026     33.353      0.000
+    AN5CT              0.805      0.030     27.187      0.000
+
+ ANST     BY
+    AN1ST              0.622      0.054     11.598      0.000
+    AN2ST              0.705      0.053     13.379      0.000
+    AN3ST              0.805      0.033     24.348      0.000
+    AN4ST              0.812      0.045     18.115      0.000
+    AN5ST              0.766      0.043     17.905      0.000
+
+ APCT     WITH
+    ANCT              -0.545      0.062     -8.780      0.000
+    APST              -0.455      0.088     -5.171      0.000
+
+ APST     WITH
+    ANST              -0.298      0.094     -3.184      0.001
+
+ ANCT     WITH
+    ANST              -0.041      0.079     -0.519      0.604
+    APST               0.376      0.081      4.645      0.000
+
+ ANST     WITH
+    APCT               0.348      0.075      4.676      0.000
+
+ AP1CT    WITH
+    AP1ST             -0.328      0.093     -3.531      0.000
+
+ AP2CT    WITH
+    AP2ST             -0.190      0.064     -2.959      0.003
+
+ AP3CT    WITH
+    AP3ST             -0.086      0.136     -0.628      0.530
+
+ AP4CT    WITH
+    AP4ST             -0.032      0.128     -0.250      0.802
+
+ AP5CT    WITH
+    AP5ST             -0.063      0.098     -0.643      0.520
+
+ AN1CT    WITH
+    AN1ST             -0.001      0.086     -0.013      0.989
+
+ AN2CT    WITH
+    AN2ST             -0.054      0.084     -0.646      0.518
+
+ AN3CT    WITH
+    AN3ST              0.037      0.109      0.337      0.736
+
+ AN4CT    WITH
+    AN4ST             -0.218      0.123     -1.778      0.075
+
+ AN5CT    WITH
+    AN5ST              0.016      0.093      0.172      0.864
+
+ Intercepts
+    AP1CT              2.530      0.101     24.975      0.000
+    AP2CT              4.727      0.303     15.590      0.000
+    AP3CT              2.898      0.123     23.510      0.000
+    AP4CT              2.745      0.117     23.492      0.000
+    AP5CT              2.848      0.119     23.959      0.000
+    AP1ST              2.929      0.122     23.993      0.000
+    AP2ST              2.525      0.098     25.825      0.000
+    AP3ST              2.946      0.130     22.684      0.000
+    AP4ST              3.108      0.140     22.186      0.000
+    AP5ST              3.047      0.128     23.883      0.000
+    AN1CT              2.172      0.080     27.098      0.000
+    AN2CT              2.156      0.075     28.652      0.000
+    AN3CT              2.262      0.085     26.598      0.000
+    AN4CT              2.127      0.074     28.706      0.000
+    AN5CT              2.125      0.070     30.178      0.000
+    AN1ST              2.142      0.078     27.581      0.000
+    AN2ST              2.223      0.083     26.744      0.000
+    AN3ST              2.282      0.084     27.160      0.000
+    AN4ST              2.162      0.081     26.675      0.000
+    AN5ST              2.173      0.078     27.814      0.000
+
+ Variances
+    APCT               1.000      0.000    999.000    999.000
+    APST               1.000      0.000    999.000    999.000
+    ANCT               1.000      0.000    999.000    999.000
+    ANST               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    AP1CT              0.498      0.067      7.474      0.000
+    AP2CT              0.980      0.018     53.196      0.000
+    AP3CT              0.285      0.061      4.658      0.000
+    AP4CT              0.273      0.056      4.889      0.000
+    AP5CT              0.592      0.062      9.518      0.000
+    AP1ST              0.480      0.081      5.929      0.000
+    AP2ST              0.864      0.050     17.143      0.000
+    AP3ST              0.452      0.079      5.735      0.000
+    AP4ST              0.521      0.073      7.180      0.000
+    AP5ST              0.536      0.064      8.328      0.000
+    AN1CT              0.513      0.060      8.593      0.000
+    AN2CT              0.588      0.064      9.263      0.000
+    AN3CT              0.211      0.033      6.361      0.000
+    AN4CT              0.234      0.046      5.091      0.000
+    AN5CT              0.352      0.048      7.388      0.000
+    AN1ST              0.613      0.067      9.186      0.000
+    AN2ST              0.503      0.074      6.766      0.000
+    AN3ST              0.351      0.053      6.598      0.000
+    AN4ST              0.340      0.073      4.664      0.000
+    AN5ST              0.413      0.066      6.305      0.000
+
+
+STD Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ APCT     BY
+    AP1CT              0.878      0.070     12.464      0.000
+    AP2CT              0.126      0.062      2.049      0.040
+    AP3CT              0.921      0.054     17.029      0.000
+    AP4CT              0.966      0.052     18.596      0.000
+    AP5CT              0.722      0.064     11.233      0.000
+
+ APST     BY
+    AP1ST              0.795      0.072     10.980      0.000
+    AP2ST              0.422      0.082      5.150      0.000
+    AP3ST              0.753      0.065     11.628      0.000
+    AP4ST              0.665      0.064     10.375      0.000
+    AP5ST              0.745      0.062     12.025      0.000
+
+ ANCT     BY
+    AN1CT              0.962      0.068     14.239      0.000
+    AN2CT              0.791      0.069     11.471      0.000
+    AN3CT              1.185      0.045     26.218      0.000
+    AN4CT              1.117      0.049     22.645      0.000
+    AN5CT              1.022      0.056     18.321      0.000
+
+ ANST     BY
+    AN1ST              0.677      0.069      9.763      0.000
+    AN2ST              0.749      0.066     11.338      0.000
+    AN3ST              0.846      0.054     15.805      0.000
+    AN4ST              0.866      0.057     15.169      0.000
+    AN5ST              0.794      0.059     13.550      0.000
+
+ APCT     WITH
+    ANCT              -0.545      0.062     -8.780      0.000
+    APST              -0.455      0.088     -5.171      0.000
+
+ APST     WITH
+    ANST              -0.298      0.094     -3.184      0.001
+
+ ANCT     WITH
+    ANST              -0.041      0.079     -0.519      0.604
+    APST               0.376      0.081      4.645      0.000
+
+ ANST     WITH
+    APCT               0.348      0.075      4.676      0.000
+
+ AP1CT    WITH
+    AP1ST             -0.220      0.080     -2.742      0.006
+
+ AP2CT    WITH
+    AP2ST             -0.179      0.063     -2.859      0.004
+
+ AP3CT    WITH
+    AP3ST             -0.034      0.057     -0.602      0.547
+
+ AP4CT    WITH
+    AP4ST             -0.013      0.053     -0.247      0.805
+
+ AP5CT    WITH
+    AP5ST             -0.044      0.070     -0.630      0.528
+
+ AN1CT    WITH
+    AN1ST             -0.001      0.073     -0.013      0.989
+
+ AN2CT    WITH
+    AN2ST             -0.039      0.061     -0.636      0.525
+
+ AN3CT    WITH
+    AN3ST              0.014      0.041      0.341      0.733
+
+ AN4CT    WITH
+    AN4ST             -0.084      0.057     -1.474      0.141
+
+ AN5CT    WITH
+    AN5ST              0.008      0.047      0.172      0.863
+
+ Intercepts
+    AP1CT              3.135      0.072     43.756      0.000
+    AP2CT              4.233      0.050     84.659      0.000
+    AP3CT              3.157      0.061     51.768      0.000
+    AP4CT              3.110      0.063     49.014      0.000
+    AP5CT              3.220      0.063     50.783      0.000
+    AP1ST              3.233      0.062     51.739      0.000
+    AP2ST              2.890      0.064     45.323      0.000
+    AP3ST              2.997      0.057     52.541      0.000
+    AP4ST              2.984      0.054     55.449      0.000
+    AP5ST              3.330      0.061     54.302      0.000
+    AN1CT              2.994      0.077     38.737      0.000
+    AN2CT              2.657      0.069     38.423      0.000
+    AN3CT              3.019      0.075     40.356      0.000
+    AN4CT              2.714      0.071     38.104      0.000
+    AN5CT              2.698      0.071     37.881      0.000
+    AN1ST              2.330      0.061     38.197      0.000
+    AN2ST              2.362      0.060     39.614      0.000
+    AN3ST              2.396      0.059     40.726      0.000
+    AN4ST              2.305      0.059     38.881      0.000
+    AN5ST              2.252      0.058     38.724      0.000
+
+ Variances
+    APCT               1.000      0.000    999.000    999.000
+    APST               1.000      0.000    999.000    999.000
+    ANCT               1.000      0.000    999.000    999.000
+    ANST               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    AP1CT              0.765      0.099      7.711      0.000
+    AP2CT              0.786      0.083      9.462      0.000
+    AP3CT              0.339      0.074      4.602      0.000
+    AP4CT              0.351      0.074      4.760      0.000
+    AP5CT              0.757      0.084      9.010      0.000
+    AP1ST              0.585      0.099      5.903      0.000
+    AP2ST              1.132      0.088     12.862      0.000
+    AP3ST              0.467      0.087      5.389      0.000
+    AP4ST              0.480      0.068      7.030      0.000
+    AP5ST              0.640      0.081      7.885      0.000
+    AN1CT              0.974      0.113      8.595      0.000
+    AN2CT              0.894      0.102      8.744      0.000
+    AN3CT              0.376      0.056      6.752      0.000
+    AN4CT              0.381      0.075      5.098      0.000
+    AN5CT              0.568      0.071      8.005      0.000
+    AN1ST              0.725      0.083      8.696      0.000
+    AN2ST              0.568      0.086      6.600      0.000
+    AN3ST              0.388      0.056      6.976      0.000
+    AN4ST              0.386      0.089      4.345      0.000
+    AN5ST              0.444      0.069      6.445      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    AP1CT              0.502      0.067      7.524      0.000
+    AP2CT              0.020      0.018      1.075      0.282
+    AP3CT              0.715      0.061     11.659      0.000
+    AP4CT              0.727      0.056     12.986      0.000
+    AP5CT              0.408      0.062      6.563      0.000
+    AP1ST              0.520      0.081      6.410      0.000
+    AP2ST              0.136      0.050      2.698      0.007
+    AP3ST              0.548      0.079      6.958      0.000
+    AP4ST              0.479      0.073      6.601      0.000
+    AP5ST              0.464      0.064      7.218      0.000
+    AN1CT              0.487      0.060      8.158      0.000
+    AN2CT              0.412      0.064      6.482      0.000
+    AN3CT              0.789      0.033     23.758      0.000
+    AN4CT              0.766      0.046     16.676      0.000
+    AN5CT              0.648      0.048     13.594      0.000
+    AN1ST              0.387      0.067      5.799      0.000
+    AN2ST              0.497      0.074      6.690      0.000
+    AN3ST              0.649      0.053     12.174      0.000
+    AN4ST              0.660      0.073      9.057      0.000
+    AN5ST              0.587      0.066      8.953      0.000
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED)
+
+
+           Model Estimated Means
+              AP1CT         AP2CT         AP3CT         AP4CT         AP5CT
+              ________      ________      ________      ________      ________
+                3.135         4.233         3.157         3.110         3.220
+
+
+           Model Estimated Means
+              AP1ST         AP2ST         AP3ST         AP4ST         AP5ST
+              ________      ________      ________      ________      ________
+                3.233         2.890         2.997         2.984         3.330
+
+
+           Model Estimated Means
+              AN1CT         AN2CT         AN3CT         AN4CT         AN5CT
+              ________      ________      ________      ________      ________
+                2.994         2.657         3.019         2.714         2.698
+
+
+           Model Estimated Means
+              AN1ST         AN2ST         AN3ST         AN4ST         AN5ST
+              ________      ________      ________      ________      ________
+                2.330         2.362         2.396         2.305         2.252
+
+
+           Residuals for Means
+              AP1CT         AP2CT         AP3CT         AP4CT         AP5CT
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means
+              AP1ST         AP2ST         AP3ST         AP4ST         AP5ST
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means
+              AN1CT         AN2CT         AN3CT         AN4CT         AN5CT
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means
+              AN1ST         AN2ST         AN3ST         AN4ST         AN5ST
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              AP1CT         AP2CT         AP3CT         AP4CT         AP5CT
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              AP1ST         AP2ST         AP3ST         AP4ST         AP5ST
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              AN1CT         AN2CT         AN3CT         AN4CT         AN5CT
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              AN1ST         AN2ST         AN3ST         AN4ST         AN5ST
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              AP1CT         AP2CT         AP3CT         AP4CT         AP5CT
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              AP1ST         AP2ST         AP3ST         AP4ST         AP5ST
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              AN1CT         AN2CT         AN3CT         AN4CT         AN5CT
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              AN1ST         AN2ST         AN3ST         AN4ST         AN5ST
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Model Estimated Covariances
+              AP1CT         AP2CT         AP3CT         AP4CT         AP5CT
+              ________      ________      ________      ________      ________
+ AP1CT          1.535
+ AP2CT          0.111         0.802
+ AP3CT          0.808         0.116         1.187
+ AP4CT          0.848         0.122         0.889         1.284
+ AP5CT          0.634         0.091         0.665         0.698         1.278
+ AP1ST         -0.537        -0.046        -0.333        -0.349        -0.261
+ AP2ST         -0.168        -0.203        -0.177        -0.185        -0.139
+ AP3ST         -0.301        -0.043        -0.349        -0.331        -0.247
+ AP4ST         -0.265        -0.038        -0.278        -0.305        -0.218
+ AP5ST         -0.297        -0.043        -0.312        -0.327        -0.289
+ AN1CT         -0.460        -0.066        -0.482        -0.506        -0.378
+ AN2CT         -0.378        -0.054        -0.397        -0.416        -0.311
+ AN3CT         -0.567        -0.081        -0.595        -0.624        -0.466
+ AN4CT         -0.534        -0.077        -0.560        -0.588        -0.440
+ AN5CT         -0.489        -0.070        -0.513        -0.538        -0.402
+ AN1ST          0.207         0.030         0.217         0.228         0.170
+ AN2ST          0.229         0.033         0.240         0.252         0.189
+ AN3ST          0.259         0.037         0.271         0.285         0.213
+ AN4ST          0.265         0.038         0.278         0.291         0.218
+ AN5ST          0.243         0.035         0.255         0.267         0.200
+
+
+           Model Estimated Covariances
+              AP1ST         AP2ST         AP3ST         AP4ST         AP5ST
+              ________      ________      ________      ________      ________
+ AP1ST          1.218
+ AP2ST          0.336         1.310
+ AP3ST          0.599         0.318         1.035
+ AP4ST          0.529         0.280         0.501         0.922
+ AP5ST          0.592         0.314         0.561         0.495         1.195
+ AN1CT          0.288         0.153         0.272         0.240         0.269
+ AN2CT          0.237         0.126         0.224         0.198         0.222
+ AN3CT          0.355         0.188         0.336         0.296         0.332
+ AN4CT          0.334         0.177         0.316         0.279         0.313
+ AN5CT          0.306         0.162         0.289         0.255         0.286
+ AN1ST         -0.160        -0.085        -0.152        -0.134        -0.150
+ AN2ST         -0.177        -0.094        -0.168        -0.148        -0.166
+ AN3ST         -0.200        -0.106        -0.190        -0.167        -0.188
+ AN4ST         -0.205        -0.109        -0.194        -0.171        -0.192
+ AN5ST         -0.188        -0.100        -0.178        -0.157        -0.176
+
+
+           Model Estimated Covariances
+              AN1CT         AN2CT         AN3CT         AN4CT         AN5CT
+              ________      ________      ________      ________      ________
+ AN1CT          1.899
+ AN2CT          0.761         1.519
+ AN3CT          1.140         0.937         1.782
+ AN4CT          1.074         0.883         1.324         1.629
+ AN5CT          0.983         0.808         1.212         1.142         1.612
+ AN1ST         -0.028        -0.022        -0.033        -0.031        -0.028
+ AN2ST         -0.029        -0.063        -0.036        -0.034        -0.031
+ AN3ST         -0.033        -0.027        -0.027        -0.039        -0.035
+ AN4ST         -0.034        -0.028        -0.042        -0.123        -0.036
+ AN5ST         -0.031        -0.026        -0.038        -0.036        -0.025
+
+
+           Model Estimated Covariances
+              AN1ST         AN2ST         AN3ST         AN4ST         AN5ST
+              ________      ________      ________      ________      ________
+ AN1ST          1.183
+ AN2ST          0.507         1.129
+ AN3ST          0.572         0.634         1.103
+ AN4ST          0.586         0.649         0.732         1.136
+ AN5ST          0.537         0.595         0.671         0.687         1.074
+
+
+           Model Estimated Correlations
+              AP1CT         AP2CT         AP3CT         AP4CT         AP5CT
+              ________      ________      ________      ________      ________
+ AP1CT          1.000
+ AP2CT          0.100         1.000
+ AP3CT          0.599         0.119         1.000
+ AP4CT          0.604         0.120         0.720         1.000
+ AP5CT          0.452         0.090         0.540         0.545         1.000
+ AP1ST         -0.393        -0.046        -0.277        -0.279        -0.209
+ AP2ST         -0.119        -0.198        -0.142        -0.143        -0.107
+ AP3ST         -0.238        -0.047        -0.315        -0.287        -0.215
+ AP4ST         -0.223        -0.044        -0.266        -0.280        -0.201
+ AP5ST         -0.219        -0.044        -0.262        -0.264        -0.234
+ AN1CT         -0.269        -0.054        -0.321        -0.324        -0.243
+ AN2CT         -0.248        -0.049        -0.295        -0.298        -0.223
+ AN3CT         -0.343        -0.068        -0.409        -0.412        -0.309
+ AN4CT         -0.338        -0.067        -0.403        -0.406        -0.305
+ AN5CT         -0.311        -0.062        -0.371        -0.374        -0.280
+ AN1ST          0.154         0.031         0.183         0.185         0.138
+ AN2ST          0.174         0.035         0.208         0.209         0.157
+ AN3ST          0.199         0.039         0.237         0.239         0.179
+ AN4ST          0.201         0.040         0.239         0.241         0.181
+ AN5ST          0.189         0.038         0.226         0.227         0.171
+
+
+           Model Estimated Correlations
+              AP1ST         AP2ST         AP3ST         AP4ST         AP5ST
+              ________      ________      ________      ________      ________
+ AP1ST          1.000
+ AP2ST          0.266         1.000
+ AP3ST          0.534         0.273         1.000
+ AP4ST          0.499         0.255         0.512         1.000
+ AP5ST          0.491         0.251         0.505         0.472         1.000
+ AN1CT          0.189         0.097         0.194         0.182         0.179
+ AN2CT          0.174         0.089         0.179         0.167         0.164
+ AN3CT          0.241         0.123         0.247         0.231         0.228
+ AN4CT          0.237         0.121         0.244         0.228         0.224
+ AN5CT          0.218         0.112         0.224         0.210         0.206
+ AN1ST         -0.134        -0.068        -0.137        -0.128        -0.126
+ AN2ST         -0.151        -0.077        -0.155        -0.145        -0.143
+ AN3ST         -0.173        -0.088        -0.178        -0.166        -0.163
+ AN4ST         -0.174        -0.089        -0.179        -0.167        -0.165
+ AN5ST         -0.164        -0.084        -0.169        -0.158        -0.155
+
+
+           Model Estimated Correlations
+              AN1CT         AN2CT         AN3CT         AN4CT         AN5CT
+              ________      ________      ________      ________      ________
+ AN1CT          1.000
+ AN2CT          0.448         1.000
+ AN3CT          0.620         0.570         1.000
+ AN4CT          0.611         0.562         0.777         1.000
+ AN5CT          0.562         0.516         0.715         0.705         1.000
+ AN1ST         -0.018        -0.016        -0.023        -0.022        -0.020
+ AN2ST         -0.020        -0.048        -0.026        -0.025        -0.023
+ AN3ST         -0.023        -0.021        -0.019        -0.029        -0.026
+ AN4ST         -0.023        -0.021        -0.029        -0.091        -0.027
+ AN5ST         -0.022        -0.020        -0.028        -0.027        -0.019
+
+
+           Model Estimated Correlations
+              AN1ST         AN2ST         AN3ST         AN4ST         AN5ST
+              ________      ________      ________      ________      ________
+ AN1ST          1.000
+ AN2ST          0.439         1.000
+ AN3ST          0.501         0.568         1.000
+ AN4ST          0.505         0.573         0.654         1.000
+ AN5ST          0.477         0.540         0.617         0.622         1.000
+
+
+           Model Estimated Partial Correlations
+              AP1CT         AP2CT         AP3CT         AP4CT         AP5CT
+              ________      ________      ________      ________      ________
+ AP1CT          1.000
+ AP2CT          0.022         1.000
+ AP3CT          0.243         0.030         1.000
+ AP4CT          0.249         0.031         0.429         1.000
+ AP5CT          0.112         0.014         0.189         0.197         1.000
+ AP1ST         -0.294         0.019         0.061         0.047         0.030
+ AP2ST          0.022        -0.188        -0.002        -0.008         0.000
+ AP3ST          0.076         0.016        -0.106        -0.009         0.006
+ AP4ST          0.054         0.012        -0.009        -0.066        -0.002
+ AP5ST          0.053         0.012        -0.008        -0.023        -0.074
+ AN1CT         -0.007        -0.001        -0.015        -0.017        -0.007
+ AN2CT         -0.006        -0.001        -0.012        -0.013        -0.006
+ AN3CT         -0.017        -0.002        -0.036        -0.039        -0.017
+ AN4CT         -0.014        -0.001        -0.029        -0.031        -0.013
+ AN5CT         -0.011        -0.001        -0.023        -0.024        -0.010
+ AN1ST          0.005         0.000         0.011         0.012         0.005
+ AN2ST          0.006         0.001         0.014         0.015         0.006
+ AN3ST          0.010         0.001         0.023         0.024         0.010
+ AN4ST          0.007         0.001         0.016         0.017         0.007
+ AN5ST          0.008         0.001         0.018         0.020         0.008
+
+
+           Model Estimated Partial Correlations
+              AP1ST         AP2ST         AP3ST         AP4ST         AP5ST
+              ________      ________      ________      ________      ________
+ AP1ST          1.000
+ AP2ST          0.088         1.000
+ AP3ST          0.269         0.090         1.000
+ AP4ST          0.225         0.076         0.229         1.000
+ AP5ST          0.217         0.073         0.222         0.188         1.000
+ AN1CT          0.004         0.002         0.006         0.006         0.006
+ AN2CT          0.003         0.002         0.005         0.005         0.004
+ AN3CT          0.010         0.005         0.015         0.014         0.013
+ AN4CT          0.007         0.004         0.011         0.010         0.010
+ AN5CT          0.006         0.003         0.009         0.009         0.008
+ AN1ST         -0.005        -0.002        -0.006        -0.006        -0.006
+ AN2ST         -0.006        -0.003        -0.008        -0.007        -0.007
+ AN3ST         -0.009        -0.004        -0.013        -0.011        -0.011
+ AN4ST         -0.008        -0.004        -0.010        -0.009        -0.009
+ AN5ST         -0.008        -0.004        -0.010        -0.009        -0.009
+
+
+           Model Estimated Partial Correlations
+              AN1CT         AN2CT         AN3CT         AN4CT         AN5CT
+              ________      ________      ________      ________      ________
+ AN1CT          1.000
+ AN2CT          0.072         1.000
+ AN3CT          0.195         0.165         1.000
+ AN4CT          0.184         0.159         0.420         1.000
+ AN5CT          0.124         0.105         0.284         0.266         1.000
+ AN1ST         -0.003         0.004        -0.011         0.033        -0.005
+ AN2ST          0.001        -0.052        -0.005         0.051        -0.001
+ AN3ST         -0.011         0.001         0.014         0.047        -0.020
+ AN4ST          0.035         0.041         0.068        -0.150         0.047
+ AN5ST         -0.005         0.004        -0.022         0.048         0.008
+
+
+           Model Estimated Partial Correlations
+              AN1ST         AN2ST         AN3ST         AN4ST         AN5ST
+              ________      ________      ________      ________      ________
+ AN1ST          1.000
+ AN2ST          0.108         1.000
+ AN3ST          0.158         0.202         1.000
+ AN4ST          0.169         0.218         0.312         1.000
+ AN5ST          0.134         0.172         0.251         0.266         1.000
+
+
+           Residuals for Covariances
+              AP1CT         AP2CT         AP3CT         AP4CT         AP5CT
+              ________      ________      ________      ________      ________
+ AP1CT          0.097
+ AP2CT          0.059        -0.007
+ AP3CT          0.035        -0.008        -0.004
+ AP4CT          0.021         0.000         0.027        -0.004
+ AP5CT          0.129        -0.016        -0.068        -0.002         0.000
+ AP1ST         -0.170         0.029        -0.141        -0.145        -0.167
+ AP2ST          0.136         0.059         0.100         0.185         0.295
+ AP3ST         -0.045         0.009         0.026         0.054         0.018
+ AP4ST         -0.003         0.039         0.124         0.080         0.021
+ AP5ST          0.020         0.192        -0.048         0.039        -0.014
+ AN1CT         -0.231         0.407        -0.054        -0.044        -0.243
+ AN2CT         -0.318         0.059        -0.169        -0.175        -0.208
+ AN3CT         -0.146         0.363         0.013         0.115        -0.104
+ AN4CT         -0.084         0.288         0.083         0.185        -0.076
+ AN5CT         -0.150         0.118         0.010         0.046        -0.126
+ AN1ST          0.003        -0.141         0.071         0.107         0.059
+ AN2ST          0.147        -0.029         0.027         0.129         0.056
+ AN3ST          0.065        -0.107         0.066         0.084         0.024
+ AN4ST         -0.051        -0.112        -0.134        -0.073        -0.027
+ AN5ST         -0.101        -0.078        -0.046        -0.078        -0.051
+
+
+           Residuals for Covariances
+              AP1ST         AP2ST         AP3ST         AP4ST         AP5ST
+              ________      ________      ________      ________      ________
+ AP1ST          0.023
+ AP2ST          0.020        -0.017
+ AP3ST          0.018         0.003         0.000
+ AP4ST         -0.031        -0.034         0.050        -0.001
+ AP5ST         -0.031         0.055        -0.028         0.026         0.001
+ AN1CT          0.220        -0.301        -0.077        -0.017         0.123
+ AN2CT          0.305        -0.179         0.074         0.146        -0.030
+ AN3CT          0.172        -0.315        -0.012         0.006         0.070
+ AN4CT          0.110        -0.278        -0.135        -0.038        -0.008
+ AN5CT          0.082        -0.340        -0.039         0.023        -0.114
+ AN1ST         -0.023         0.172         0.043        -0.015        -0.053
+ AN2ST         -0.139        -0.008        -0.038        -0.060        -0.151
+ AN3ST         -0.030         0.115         0.078         0.064        -0.028
+ AN4ST         -0.083         0.073         0.057         0.057        -0.006
+ AN5ST         -0.012         0.046         0.059         0.111        -0.064
+
+
+           Residuals for Covariances
+              AN1CT         AN2CT         AN3CT         AN4CT         AN5CT
+              ________      ________      ________      ________      ________
+ AN1CT          0.000
+ AN2CT          0.020         0.002
+ AN3CT          0.042         0.003        -0.002
+ AN4CT          0.043        -0.107        -0.011        -0.016
+ AN5CT         -0.170         0.057        -0.017         0.049         0.001
+ AN1ST         -0.143        -0.129        -0.065        -0.010        -0.026
+ AN2ST         -0.182        -0.030        -0.052         0.046         0.068
+ AN3ST         -0.137        -0.054        -0.053         0.020         0.035
+ AN4ST         -0.140         0.048         0.017         0.078         0.072
+ AN5ST         -0.062         0.093        -0.020         0.045         0.076
+
+
+           Residuals for Covariances
+              AN1ST         AN2ST         AN3ST         AN4ST         AN5ST
+              ________      ________      ________      ________      ________
+ AN1ST          0.000
+ AN2ST          0.028         0.001
+ AN3ST          0.052         0.019        -0.002
+ AN4ST         -0.033        -0.036        -0.036        -0.019
+ AN5ST         -0.060        -0.038        -0.016         0.069         0.001
+
+
+           Residuals for Correlations
+              AP1CT         AP2CT         AP3CT         AP4CT         AP5CT
+              ________      ________      ________      ________      ________
+ AP1CT          0.000
+ AP2CT          0.049         0.000
+ AP3CT          0.008        -0.008         0.000
+ AP4CT         -0.003         0.001         0.024         0.000
+ AP5CT          0.075        -0.016        -0.054        -0.001         0.000
+ AP1ST         -0.104         0.030        -0.114        -0.113        -0.131
+ AP2ST          0.097         0.056         0.079         0.143         0.229
+ AP3ST         -0.027         0.010         0.023         0.047         0.016
+ AP4ST          0.004         0.045         0.118         0.073         0.019
+ AP5ST          0.021         0.197        -0.041         0.031        -0.011
+ AN1CT         -0.123         0.331        -0.037        -0.028        -0.156
+ AN2CT         -0.194         0.053        -0.126        -0.126        -0.149
+ AN3CT         -0.076         0.305         0.008         0.076        -0.069
+ AN4CT         -0.043         0.254         0.058         0.126        -0.054
+ AN5CT         -0.083         0.104         0.007         0.031        -0.087
+ AN1ST         -0.002        -0.145         0.060         0.087         0.048
+ AN2ST          0.103        -0.030         0.023         0.108         0.046
+ AN3ST          0.043        -0.115         0.058         0.071         0.020
+ AN4ST         -0.042        -0.118        -0.114        -0.059        -0.021
+ AN5ST         -0.082        -0.084        -0.040        -0.066        -0.043
+
+
+           Residuals for Correlations
+              AP1ST         AP2ST         AP3ST         AP4ST         AP5ST
+              ________      ________      ________      ________      ________
+ AP1ST          0.000
+ AP2ST          0.015         0.000
+ AP3ST          0.011         0.004         0.000
+ AP4ST         -0.034        -0.029         0.051         0.000
+ AP5ST         -0.030         0.046        -0.026         0.025         0.000
+ AN1CT          0.141        -0.192        -0.055        -0.013         0.081
+ AN2CT          0.221        -0.127         0.059         0.123        -0.022
+ AN3CT          0.114        -0.207        -0.009         0.005         0.048
+ AN4CT          0.076        -0.191        -0.103        -0.030        -0.005
+ AN5CT          0.056        -0.235        -0.030         0.019        -0.082
+ AN1ST         -0.018         0.138         0.039        -0.014        -0.045
+ AN2ST         -0.116        -0.007        -0.035        -0.059        -0.130
+ AN3ST         -0.024         0.096         0.073         0.063        -0.025
+ AN4ST         -0.070         0.060         0.051         0.054        -0.007
+ AN5ST         -0.009         0.038         0.056         0.111        -0.057
+
+
+           Residuals for Correlations
+              AN1CT         AN2CT         AN3CT         AN4CT         AN5CT
+              ________      ________      ________      ________      ________
+ AN1CT          0.000
+ AN2CT          0.012         0.000
+ AN3CT          0.023         0.002         0.000
+ AN4CT          0.028        -0.066        -0.002         0.000
+ AN5CT         -0.098         0.036        -0.010         0.033         0.000
+ AN1ST         -0.096        -0.096        -0.045        -0.007        -0.019
+ AN2ST         -0.124        -0.023        -0.037         0.034         0.050
+ AN3ST         -0.095        -0.042        -0.038         0.015         0.027
+ AN4ST         -0.096         0.036         0.012         0.057         0.053
+ AN5ST         -0.043         0.073        -0.014         0.034         0.058
+
+
+           Residuals for Correlations
+              AN1ST         AN2ST         AN3ST         AN4ST         AN5ST
+              ________      ________      ________      ________      ________
+ AN1ST          0.000
+ AN2ST          0.024         0.000
+ AN3ST          0.046         0.017         0.000
+ AN4ST         -0.024        -0.027        -0.026         0.000
+ AN5ST         -0.054        -0.035        -0.015         0.068         0.000
+
+
+           Residuals for Partial Correlations
+              AP1CT         AP2CT         AP3CT         AP4CT         AP5CT
+              ________      ________      ________      ________      ________
+ AP1CT          0.000
+ AP2CT          0.120         0.000
+ AP3CT         -0.018         0.062         0.000
+ AP4CT         -0.130         0.002         0.109         0.000
+ AP5CT          0.076         0.100        -0.174         0.010         0.000
+ AP1ST          0.037        -0.011        -0.024        -0.094        -0.054
+ AP2ST         -0.001         0.049        -0.070         0.034         0.188
+ AP3ST         -0.052        -0.037        -0.032         0.070        -0.008
+ AP4ST         -0.063        -0.057         0.217        -0.013         0.019
+ AP5ST          0.064         0.157        -0.161         0.072        -0.061
+ AN1CT         -0.045         0.210         0.012        -0.051        -0.102
+ AN2CT         -0.019        -0.053        -0.059        -0.057        -0.018
+ AN3CT         -0.047         0.194        -0.015         0.078         0.018
+ AN4CT         -0.015         0.027        -0.025         0.126        -0.015
+ AN5CT         -0.012        -0.100         0.026        -0.053        -0.029
+ AN1ST         -0.081        -0.109         0.078         0.028         0.020
+ AN2ST          0.122         0.069        -0.127         0.112        -0.029
+ AN3ST          0.053        -0.089         0.097         0.005        -0.024
+ AN4ST          0.013        -0.038        -0.152         0.006         0.035
+ AN5ST         -0.093         0.052         0.087        -0.088         0.000
+
+
+           Residuals for Partial Correlations
+              AP1ST         AP2ST         AP3ST         AP4ST         AP5ST
+              ________      ________      ________      ________      ________
+ AP1ST          0.000
+ AP2ST          0.103         0.000
+ AP3ST          0.008        -0.020         0.000
+ AP4ST         -0.125        -0.034         0.116         0.000
+ AP5ST         -0.077         0.119        -0.075         0.114         0.000
+ AN1CT          0.042        -0.057        -0.060        -0.039         0.050
+ AN2CT          0.153        -0.014        -0.026         0.138        -0.149
+ AN3CT         -0.007        -0.056         0.074        -0.045         0.061
+ AN4CT          0.043         0.053        -0.146         0.009         0.044
+ AN5CT         -0.057        -0.099         0.064         0.077        -0.109
+ AN1ST          0.031         0.098         0.034        -0.073        -0.006
+ AN2ST          0.014        -0.036        -0.001        -0.045        -0.095
+ AN3ST          0.039         0.032         0.057        -0.007         0.021
+ AN4ST         -0.127         0.002        -0.019        -0.001         0.088
+ AN5ST          0.002        -0.006         0.003         0.104        -0.085
+
+
+           Residuals for Partial Correlations
+              AN1CT         AN2CT         AN3CT         AN4CT         AN5CT
+              ________      ________      ________      ________      ________
+ AN1CT          0.000
+ AN2CT          0.042         0.000
+ AN3CT          0.007         0.033         0.000
+ AN4CT          0.101        -0.195        -0.054         0.000
+ AN5CT         -0.248         0.058        -0.021         0.172         0.000
+ AN1ST          0.033        -0.082         0.047        -0.005        -0.017
+ AN2ST         -0.077         0.060        -0.038         0.032         0.066
+ AN3ST          0.040        -0.017         0.005        -0.020         0.031
+ AN4ST         -0.092         0.014         0.044         0.045        -0.031
+ AN5ST          0.046         0.081        -0.089         0.002        -0.015
+
+
+           Residuals for Partial Correlations
+              AN1ST         AN2ST         AN3ST         AN4ST         AN5ST
+              ________      ________      ________      ________      ________
+ AN1ST          0.000
+ AN2ST          0.042         0.000
+ AN3ST          0.067         0.034         0.000
+ AN4ST         -0.019        -0.069        -0.071         0.000
+ AN5ST         -0.103        -0.055        -0.033         0.198         0.000
+
+
+           Standardized Residuals (z-scores) for Covariances
+              AP1CT         AP2CT         AP3CT         AP4CT         AP5CT
+              ________      ________      ________      ________      ________
+ AP1CT        999.000
+ AP2CT          1.485       999.000
+ AP3CT          2.424        -2.623       999.000
+ AP4CT          0.836       999.000       999.000       999.000
+ AP5CT          8.043        -0.387        -1.828        -0.061       999.000
+ AP1ST        999.000         0.560       999.000       999.000        -5.262
+ AP2ST          1.722       999.000         1.613         2.729         3.899
+ AP3ST         -0.990         0.183         1.301         1.231         0.357
+ AP4ST         -0.061         0.864         2.344         2.216         0.347
+ AP5ST          0.394         3.638        -1.524         0.934       999.000
+ AN1CT         -3.612         6.552        -1.130        -0.823        -3.991
+ AN2CT         -4.691         0.860        -3.315        -3.184        -3.398
+ AN3CT         -3.696         5.552         0.549         2.535        -2.095
+ AN4CT         -2.019         4.973         2.354         3.639        -1.323
+ AN5CT         -2.919         2.070         0.260         0.904        -2.197
+ AN1ST          0.047        -2.612         1.618         2.368         0.950
+ AN2ST          2.528        -0.541         0.593         3.201         0.985
+ AN3ST          1.263        -2.035         2.105         2.616         0.493
+ AN4ST         -0.882        -2.156        -3.084        -1.889        -0.506
+ AN5ST         -1.585        -1.662        -1.015        -1.744        -0.931
+
+
+           Standardized Residuals (z-scores) for Covariances
+              AP1ST         AP2ST         AP3ST         AP4ST         AP5ST
+              ________      ________      ________      ________      ________
+ AP1ST        999.000
+ AP2ST          0.525       999.000
+ AP3ST          0.864         0.086       999.000
+ AP4ST         -0.766        -0.789         7.763       999.000
+ AP5ST         -0.964         1.382        -1.039         1.188       999.000
+ AN1CT          4.307        -3.406        -1.194        -0.280         1.864
+ AN2CT          5.359        -2.121         1.121         2.384        -0.476
+ AN3CT        999.000        -3.875        -0.255         0.126         1.667
+ AN4CT        999.000        -3.522        -2.677        -0.732        -0.178
+ AN5CT          1.993        -4.193        -0.715         0.385        -2.051
+ AN1ST         -0.383         2.155         0.689        -0.270        -0.911
+ AN2ST         -3.336        -0.111        -0.714        -1.158        -3.311
+ AN3ST         -0.743         1.702         1.408         1.282        -0.606
+ AN4ST         -2.750         1.053         1.327         1.366        -0.139
+ AN5ST         -0.262         0.685         1.238         2.356        -1.365
+
+
+           Standardized Residuals (z-scores) for Covariances
+              AN1CT         AN2CT         AN3CT         AN4CT         AN5CT
+              ________      ________      ________      ________      ________
+ AN1CT          0.043
+ AN2CT          0.557         0.160
+ AN3CT        999.000         0.182       999.000
+ AN4CT        999.000        -2.503        -0.791       999.000
+ AN5CT         -3.142         1.546        -0.997       999.000       999.000
+ AN1ST         -3.468        -1.761        -0.937        -0.141        -0.363
+ AN2ST         -2.429        -0.747        -0.892         0.735         1.073
+ AN3ST         -2.210        -0.905        -1.945         0.424         0.682
+ AN4ST         -2.066         0.770         0.418       999.000         1.415
+ AN5ST         -0.893         1.500        -0.418         0.990         2.798
+
+
+           Standardized Residuals (z-scores) for Covariances
+              AN1ST         AN2ST         AN3ST         AN4ST         AN5ST
+              ________      ________      ________      ________      ________
+ AN1ST        999.000
+ AN2ST          0.861         0.119
+ AN3ST          8.705         1.157        -0.180
+ AN4ST         -1.344        -1.353        -1.235       999.000
+ AN5ST         -1.625        -1.207        -0.620       999.000       999.000
+
+
+           Normalized Residuals for Covariances
+              AP1CT         AP2CT         AP3CT         AP4CT         AP5CT
+              ________      ________      ________      ________      ________
+ AP1CT          1.094
+ AP2CT          0.860        -0.079
+ AP3CT          0.416        -0.139        -0.046
+ AP4CT          0.245         0.008         0.324        -0.042
+ AP5CT          1.429        -0.262        -0.812        -0.020         0.004
+ AP1ST         -1.851         0.504        -1.793        -1.729        -2.058
+ AP2ST          1.466         0.931         1.291         2.230         3.458
+ AP3ST         -0.511         0.167         0.306         0.632         0.230
+ AP4ST         -0.038         0.788         1.557         0.928         0.260
+ AP5ST          0.222         3.347        -0.630         0.475        -0.154
+ AN1CT         -2.192         5.844        -0.586        -0.453        -2.528
+ AN2CT         -3.169         0.803        -1.875        -1.874        -2.294
+ AN3CT         -1.484         4.797         0.144         1.186        -1.084
+ AN4CT         -0.870         4.229         0.933         1.939        -0.786
+ AN5CT         -1.537         1.788         0.111         0.481        -1.337
+ AN1ST          0.035        -2.501         0.947         1.381         0.741
+ AN2ST          1.680        -0.513         0.329         1.613         0.708
+ AN3ST          0.775        -1.908         0.874         1.075         0.322
+ AN4ST         -0.588        -2.010        -1.699        -0.933        -0.355
+ AN5ST         -1.155        -1.544        -0.602        -0.998        -0.682
+
+
+           Normalized Residuals for Covariances
+              AP1ST         AP2ST         AP3ST         AP4ST         AP5ST
+              ________      ________      ________      ________      ________
+ AP1ST          0.281
+ AP2ST          0.235        -0.204
+ AP3ST          0.221         0.033         0.000
+ AP4ST         -0.401        -0.452         0.641        -0.014
+ AP5ST         -0.369         0.662        -0.358         0.347         0.016
+ AN1CT          2.349        -3.130        -0.847        -0.202         1.296
+ AN2CT          3.470        -1.977         0.844         1.799        -0.341
+ AN3CT          1.882        -3.392        -0.132         0.070         0.773
+ AN4CT          1.270        -3.111        -1.549        -0.458        -0.089
+ AN5CT          0.914        -3.789        -0.453         0.267        -1.283
+ AN1ST         -0.273         1.983         0.521        -0.205        -0.659
+ AN2ST         -1.722        -0.097        -0.469        -0.796        -1.922
+ AN3ST         -0.374         1.470         0.933         0.857        -0.354
+ AN4ST         -1.027         0.900         0.722         0.792        -0.075
+ AN5ST         -0.148         0.594         0.777         1.569        -0.829
+
+
+           Normalized Residuals for Covariances
+              AN1CT         AN2CT         AN3CT         AN4CT         AN5CT
+              ________      ________      ________      ________      ________
+ AN1CT          0.001
+ AN2CT          0.200         0.022
+ AN3CT          0.419         0.031        -0.022
+ AN4CT          0.442        -1.093        -0.113        -0.174
+ AN5CT         -1.650         0.577        -0.183         0.501         0.011
+ AN1ST         -1.429        -1.520        -0.687        -0.107        -0.289
+ AN2ST         -1.929        -0.346        -0.571         0.507         0.776
+ AN3ST         -1.531        -0.675        -0.564         0.225         0.412
+ AN4ST         -1.476         0.577         0.189         0.904         0.828
+ AN5ST         -0.670         1.167        -0.224         0.539         0.890
+
+
+           Normalized Residuals for Covariances
+              AN1ST         AN2ST         AN3ST         AN4ST         AN5ST
+              ________      ________      ________      ________      ________
+ AN1ST          0.002
+ AN2ST          0.326         0.017
+ AN3ST          0.636         0.239        -0.024
+ AN4ST         -0.411        -0.464        -0.460        -0.231
+ AN5ST         -0.725        -0.489        -0.206         0.894         0.018
+
+
+MODEL MODIFICATION INDICES
+
+NOTE:  Modification indices for direct effects of observed dependent variables
+regressed on covariates may not be included.  To include these, request
+MODINDICES (ALL).
+
+Minimum M.I. value for printing the modification index    10.000
+
+                                   M.I.     E.P.C.  Std E.P.C.  StdYX E.P.C.
+
+BY Statements
+
+APCT     BY AP1ST                 20.765    -0.378     -0.332       -0.301
+APCT     BY AP2ST                 10.388     0.312      0.274        0.239
+APCT     BY AN2CT                 14.496    -0.358     -0.314       -0.255
+ANCT     BY AP2CT                 18.412     0.322      0.309        0.345
+ANCT     BY AP2ST                 12.577    -0.289     -0.278       -0.243
+
+WITH Statements
+
+AP4CT    WITH AP3CT               15.815     0.224      0.224        0.650
+AP2ST    WITH AP5CT               11.470     0.207      0.207        0.224
+AP4ST    WITH AP3CT               14.934     0.148      0.148        0.367
+AP5ST    WITH AP2CT               12.069     0.168      0.168        0.236
+AN1CT    WITH AP2CT               13.523     0.209      0.209        0.239
+AN3CT    WITH AP2CT               11.292     0.137      0.137        0.253
+AN4CT    WITH AN2CT               11.914    -0.168     -0.168       -0.287
+AN5CT    WITH AN1CT               18.714    -0.244     -0.244       -0.328
+AN5ST    WITH AN4ST               21.047     0.194      0.194        0.468
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              AP1CT         AP2CT         AP3CT         AP4CT         AP5CT
+              ________      ________      ________      ________      ________
+                  1             2             3             4             5
+
+
+           NU
+              AP1ST         AP2ST         AP3ST         AP4ST         AP5ST
+              ________      ________      ________      ________      ________
+                  6             7             8             9            10
+
+
+           NU
+              AN1CT         AN2CT         AN3CT         AN4CT         AN5CT
+              ________      ________      ________      ________      ________
+                 11            12            13            14            15
+
+
+           NU
+              AN1ST         AN2ST         AN3ST         AN4ST         AN5ST
+              ________      ________      ________      ________      ________
+                 16            17            18            19            20
+
+
+           LAMBDA
+              APCT          APST          ANCT          ANST
+              ________      ________      ________      ________
+ AP1CT              0             0             0             0
+ AP2CT             21             0             0             0
+ AP3CT             22             0             0             0
+ AP4CT             23             0             0             0
+ AP5CT             24             0             0             0
+ AP1ST              0             0             0             0
+ AP2ST              0            25             0             0
+ AP3ST              0            26             0             0
+ AP4ST              0            27             0             0
+ AP5ST              0            28             0             0
+ AN1CT              0             0             0             0
+ AN2CT              0             0            29             0
+ AN3CT              0             0            30             0
+ AN4CT              0             0            31             0
+ AN5CT              0             0            32             0
+ AN1ST              0             0             0             0
+ AN2ST              0             0             0            33
+ AN3ST              0             0             0            34
+ AN4ST              0             0             0            35
+ AN5ST              0             0             0            36
+
+
+           THETA
+              AP1CT         AP2CT         AP3CT         AP4CT         AP5CT
+              ________      ________      ________      ________      ________
+ AP1CT             37
+ AP2CT              0            38
+ AP3CT              0             0            39
+ AP4CT              0             0             0            40
+ AP5CT              0             0             0             0            41
+ AP1ST             42             0             0             0             0
+ AP2ST              0            44             0             0             0
+ AP3ST              0             0            46             0             0
+ AP4ST              0             0             0            48             0
+ AP5ST              0             0             0             0            50
+ AN1CT              0             0             0             0             0
+ AN2CT              0             0             0             0             0
+ AN3CT              0             0             0             0             0
+ AN4CT              0             0             0             0             0
+ AN5CT              0             0             0             0             0
+ AN1ST              0             0             0             0             0
+ AN2ST              0             0             0             0             0
+ AN3ST              0             0             0             0             0
+ AN4ST              0             0             0             0             0
+ AN5ST              0             0             0             0             0
+
+
+           THETA
+              AP1ST         AP2ST         AP3ST         AP4ST         AP5ST
+              ________      ________      ________      ________      ________
+ AP1ST             43
+ AP2ST              0            45
+ AP3ST              0             0            47
+ AP4ST              0             0             0            49
+ AP5ST              0             0             0             0            51
+ AN1CT              0             0             0             0             0
+ AN2CT              0             0             0             0             0
+ AN3CT              0             0             0             0             0
+ AN4CT              0             0             0             0             0
+ AN5CT              0             0             0             0             0
+ AN1ST              0             0             0             0             0
+ AN2ST              0             0             0             0             0
+ AN3ST              0             0             0             0             0
+ AN4ST              0             0             0             0             0
+ AN5ST              0             0             0             0             0
+
+
+           THETA
+              AN1CT         AN2CT         AN3CT         AN4CT         AN5CT
+              ________      ________      ________      ________      ________
+ AN1CT             52
+ AN2CT              0            53
+ AN3CT              0             0            54
+ AN4CT              0             0             0            55
+ AN5CT              0             0             0             0            56
+ AN1ST             57             0             0             0             0
+ AN2ST              0            59             0             0             0
+ AN3ST              0             0            61             0             0
+ AN4ST              0             0             0            63             0
+ AN5ST              0             0             0             0            65
+
+
+           THETA
+              AN1ST         AN2ST         AN3ST         AN4ST         AN5ST
+              ________      ________      ________      ________      ________
+ AN1ST             58
+ AN2ST              0            60
+ AN3ST              0             0            62
+ AN4ST              0             0             0            64
+ AN5ST              0             0             0             0            66
+
+
+           ALPHA
+              APCT          APST          ANCT          ANST
+              ________      ________      ________      ________
+                  0             0             0             0
+
+
+           BETA
+              APCT          APST          ANCT          ANST
+              ________      ________      ________      ________
+ APCT               0             0             0             0
+ APST               0             0             0             0
+ ANCT               0             0             0             0
+ ANST               0             0             0             0
+
+
+           PSI
+              APCT          APST          ANCT          ANST
+              ________      ________      ________      ________
+ APCT              67
+ APST              68            69
+ ANCT              70            71            72
+ ANST              73            74            75            76
+
+
+     STARTING VALUES
+
+
+           NU
+              AP1CT         AP2CT         AP3CT         AP4CT         AP5CT
+              ________      ________      ________      ________      ________
+                3.135         4.233         3.157         3.110         3.220
+
+
+           NU
+              AP1ST         AP2ST         AP3ST         AP4ST         AP5ST
+              ________      ________      ________      ________      ________
+                3.233         2.890         2.997         2.984         3.330
+
+
+           NU
+              AN1CT         AN2CT         AN3CT         AN4CT         AN5CT
+              ________      ________      ________      ________      ________
+                2.994         2.657         3.019         2.714         2.698
+
+
+           NU
+              AN1ST         AN2ST         AN3ST         AN4ST         AN5ST
+              ________      ________      ________      ________      ________
+                2.330         2.362         2.396         2.305         2.252
+
+
+           LAMBDA
+              APCT          APST          ANCT          ANST
+              ________      ________      ________      ________
+ AP1CT          1.000         0.000         0.000         0.000
+ AP2CT          0.123         0.000         0.000         0.000
+ AP3CT          0.948         0.000         0.000         0.000
+ AP4CT          1.015         0.000         0.000         0.000
+ AP5CT          0.745         0.000         0.000         0.000
+ AP1ST          0.000         1.000         0.000         0.000
+ AP2ST          0.000         0.552         0.000         0.000
+ AP3ST          0.000         1.015         0.000         0.000
+ AP4ST          0.000         0.887         0.000         0.000
+ AP5ST          0.000         0.935         0.000         0.000
+ AN1CT          0.000         0.000         1.000         0.000
+ AN2CT          0.000         0.000         0.702         0.000
+ AN3CT          0.000         0.000         1.150         0.000
+ AN4CT          0.000         0.000         1.085         0.000
+ AN5CT          0.000         0.000         1.046         0.000
+ AN1ST          0.000         0.000         0.000         1.000
+ AN2ST          0.000         0.000         0.000         1.071
+ AN3ST          0.000         0.000         0.000         1.261
+ AN4ST          0.000         0.000         0.000         1.184
+ AN5ST          0.000         0.000         0.000         1.126
+
+
+           THETA
+              AP1CT         AP2CT         AP3CT         AP4CT         AP5CT
+              ________      ________      ________      ________      ________
+ AP1CT          0.816
+ AP2CT          0.000         0.397
+ AP3CT          0.000         0.000         0.591
+ AP4CT          0.000         0.000         0.000         0.640
+ AP5CT          0.000         0.000         0.000         0.000         0.639
+ AP1ST          0.000         0.000         0.000         0.000         0.000
+ AP2ST          0.000         0.000         0.000         0.000         0.000
+ AP3ST          0.000         0.000         0.000         0.000         0.000
+ AP4ST          0.000         0.000         0.000         0.000         0.000
+ AP5ST          0.000         0.000         0.000         0.000         0.000
+ AN1CT          0.000         0.000         0.000         0.000         0.000
+ AN2CT          0.000         0.000         0.000         0.000         0.000
+ AN3CT          0.000         0.000         0.000         0.000         0.000
+ AN4CT          0.000         0.000         0.000         0.000         0.000
+ AN5CT          0.000         0.000         0.000         0.000         0.000
+ AN1ST          0.000         0.000         0.000         0.000         0.000
+ AN2ST          0.000         0.000         0.000         0.000         0.000
+ AN3ST          0.000         0.000         0.000         0.000         0.000
+ AN4ST          0.000         0.000         0.000         0.000         0.000
+ AN5ST          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              AP1ST         AP2ST         AP3ST         AP4ST         AP5ST
+              ________      ________      ________      ________      ________
+ AP1ST          0.621
+ AP2ST          0.000         0.646
+ AP3ST          0.000         0.000         0.517
+ AP4ST          0.000         0.000         0.000         0.461
+ AP5ST          0.000         0.000         0.000         0.000         0.598
+ AN1CT          0.000         0.000         0.000         0.000         0.000
+ AN2CT          0.000         0.000         0.000         0.000         0.000
+ AN3CT          0.000         0.000         0.000         0.000         0.000
+ AN4CT          0.000         0.000         0.000         0.000         0.000
+ AN5CT          0.000         0.000         0.000         0.000         0.000
+ AN1ST          0.000         0.000         0.000         0.000         0.000
+ AN2ST          0.000         0.000         0.000         0.000         0.000
+ AN3ST          0.000         0.000         0.000         0.000         0.000
+ AN4ST          0.000         0.000         0.000         0.000         0.000
+ AN5ST          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              AN1CT         AN2CT         AN3CT         AN4CT         AN5CT
+              ________      ________      ________      ________      ________
+ AN1CT          0.950
+ AN2CT          0.000         0.760
+ AN3CT          0.000         0.000         0.890
+ AN4CT          0.000         0.000         0.000         0.807
+ AN5CT          0.000         0.000         0.000         0.000         0.807
+ AN1ST          0.000         0.000         0.000         0.000         0.000
+ AN2ST          0.000         0.000         0.000         0.000         0.000
+ AN3ST          0.000         0.000         0.000         0.000         0.000
+ AN4ST          0.000         0.000         0.000         0.000         0.000
+ AN5ST          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              AN1ST         AN2ST         AN3ST         AN4ST         AN5ST
+              ________      ________      ________      ________      ________
+ AN1ST          0.592
+ AN2ST          0.000         0.565
+ AN3ST          0.000         0.000         0.550
+ AN4ST          0.000         0.000         0.000         0.559
+ AN5ST          0.000         0.000         0.000         0.000         0.538
+
+
+           ALPHA
+              APCT          APST          ANCT          ANST
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           BETA
+              APCT          APST          ANCT          ANST
+              ________      ________      ________      ________
+ APCT           0.000         0.000         0.000         0.000
+ APST           0.000         0.000         0.000         0.000
+ ANCT           0.000         0.000         0.000         0.000
+ ANST           0.000         0.000         0.000         0.000
+
+
+           PSI
+              APCT          APST          ANCT          ANST
+              ________      ________      ________      ________
+ APCT           0.050
+ APST           0.000         0.050
+ ANCT           0.000         0.000         0.050
+ ANST           0.000         0.000         0.000         0.050
+
+
+TECHNICAL 4 OUTPUT
+
+
+     ESTIMATES DERIVED FROM THE MODEL
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              APCT          APST          ANCT          ANST
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              APCT          APST          ANCT          ANST
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              APCT          APST          ANCT          ANST
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              APCT          APST          ANCT          ANST
+              ________      ________      ________      ________
+                1.000         1.000         1.000         1.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              APCT          APST          ANCT          ANST
+              ________      ________      ________      ________
+ APCT           0.770
+ APST          -0.317         0.633
+ ANCT          -0.460         0.288         0.925
+ ANST           0.207        -0.160        -0.027         0.458
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              APCT          APST          ANCT          ANST
+              ________      ________      ________      ________
+ APCT           0.124
+ APST           0.096         0.115
+ ANCT           0.084         0.078         0.130
+ ANST           0.058         0.060         0.052         0.094
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              APCT          APST          ANCT          ANST
+              ________      ________      ________      ________
+ APCT           6.232
+ APST          -3.314         5.490
+ ANCT          -5.485         3.666         7.120
+ ANST           3.538        -2.658        -0.508         4.881
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              APCT          APST          ANCT          ANST
+              ________      ________      ________      ________
+ APCT           0.000
+ APST           0.001         0.000
+ ANCT           0.000         0.000         0.000
+ ANST           0.000         0.008         0.611         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              APCT          APST          ANCT          ANST
+              ________      ________      ________      ________
+ APCT           1.000
+ APST          -0.455         1.000
+ ANCT          -0.545         0.376         1.000
+ ANST           0.348        -0.298        -0.041         1.000
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              APCT          APST          ANCT          ANST
+              ________      ________      ________      ________
+ APCT           0.000
+ APST           0.088         0.000
+ ANCT           0.062         0.081         0.000
+ ANST           0.075         0.094         0.079         0.000
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              APCT          APST          ANCT          ANST
+              ________      ________      ________      ________
+ APCT         999.000
+ APST          -5.171       999.000
+ ANCT          -8.780         4.645       999.000
+ ANST           4.676        -3.184        -0.519       999.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              APCT          APST          ANCT          ANST
+              ________      ________      ________      ________
+ APCT           0.000
+ APST           0.000         0.000
+ ANCT           0.000         0.000         0.000
+ ANST           0.000         0.001         0.604         0.000
+
+
+           ESTIMATED PARTIAL CORRELATION MATRIX FOR THE LATENT VARIABLES
+              APCT          APST          ANCT          ANST
+              ________      ________      ________      ________
+ APCT           1.000
+ APST          -0.231         1.000
+ ANCT          -0.490         0.210         1.000
+ ANST           0.323        -0.206         0.225         1.000
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    c:\users\mm\onedrive - upv\dat_dropbox\investigaciÓn\cit_2025\travelwell\mplus_validation_rerun_package\mplus_valida
+
+     Beginning Time:  08:17:09
+        Ending Time:  08:17:10
+       Elapsed Time:  00:00:01
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2026 Muthen & Muthen

@@ -1,0 +1,2745 @@
+Mplus VERSION 9.1
+MUTHEN & MUTHEN
+08/17/2026   8:18 AM
+
+INPUT INSTRUCTIONS
+
+  TITLE: SD rboles - ESEM APN Presencial;
+
+    DATA:
+    FILE = ../data/datos_arb_legacy_order.txt;
+
+    VARIABLE:
+    NAMES =
+    id MODO online
+    AP1ca	AP1sa	AN1ca	AN1sa	
+    AP2ca	AP2sa	AN2ca	AN2sa	
+    AP3ca	AP3sa	AN3ca	AN3sa	
+    AP4ca	AP4sa	AN4ca	AN4sa	
+    AP5ca	AP5sa	AN5ca	AN5sa	
+    SD1ca	SD1sa	SD2ca	SD2sa	SD3ca	SD3sa	SD4ca	SD4sa	SD5ca	SD5sa	
+    AP1ap	AP1ag	AN1ap	AN1ag
+    AP2ap	AP2ag	AN2ap	AN2ag	
+    P3ap	AP3ag	AN3ap	AN3ag	
+    AP4ap	AP4ag	AN4ap	AN4ag	
+    AP5ap	AP5ag	AN5ap	AN5ag	
+    SD1ap	SD1ag	SD2ap	SD2ag	SD3ap	SD3ag	SD4ap	SD4ag	SD5ap	SD5ag	
+    V1	V2	V3	V4	V5	V6	V7	V8	V9	V10	V11	V12	V13	V14	V15	V16	V17	V18	V19;
+
+    USEVARIABLES =
+    AP1ca	AP1sa	AN1ca	AN1sa	
+    AP2ca	AP2sa	AN2ca	AN2sa	
+    AP3ca	AP3sa	AN3ca	AN3sa	
+    AP4ca	AP4sa	AN4ca	AN4sa	
+    AP5ca	AP5sa	AN5ca	AN5sa;
+
+  USEOBSERVATIONS = online EQ 2;
+
+    MISSING = ALL (-999);
+
+    ANALYSIS:
+    ESTIMATOR = MLR;
+    ROTATION = TARGET;
+
+    MODEL:
+
+      APca BY ap1ca ap2ca ap3ca ap4ca ap5ca
+      ap1sa~0 ap2sa~0 ap3sa~0 ap4sa~0 ap5sa~0
+      an1ca~0 an2ca~0 an3ca~0 an4ca~0 an5ca~0
+      an1sa~0 an2sa~0 an3sa~0 an4sa~0 an5sa~0 (*1);
+
+      APsa BY ap1sa ap2sa ap3sa ap4sa ap5sa
+      ap1ca~0 ap2ca~0 ap3ca~0 ap4ca~0 ap5ca~0
+      an1ca~0 an2ca~0 an3ca~0 an4ca~0 an5ca~0
+      an1sa~0 an2sa~0 an3sa~0 an4sa~0 an5sa~0 (*1);
+
+      ANca BY an1ca an2ca an3ca an4ca an5ca
+      ap1ca~0 ap2ca~0 ap3ca~0 ap4ca~0 ap5ca~0
+      ap1sa~0 ap2sa~0 ap3sa~0 ap4sa~0 ap5sa~0
+      an1sa~0 an2sa~0 an3sa~0 an4sa~0 an5sa~0 (*1);
+
+      ANsa BY an1sa an2sa an3sa an4sa an5sa
+      ap1ca~0 ap2ca~0 ap3ca~0 ap4ca~0 ap5ca~0
+      ap1sa~0 ap2sa~0 ap3sa~0 ap4sa~0 ap5sa~0
+      an1ca~0 an2ca~0 an3ca~0 an4ca~0 an5ca~0 (*1);
+
+    APca WITH ANca;
+    APsa WITH ANsa;
+    APca WITH APsa;
+    ANca WITH ANsa;
+
+    ap1ca WITH ap1sa;
+    ap2ca WITH ap2sa;
+    ap3ca WITH ap3sa;
+    ap4ca WITH ap4sa;
+    ap5ca WITH ap5sa;
+
+    an1ca WITH an1sa;
+    an2ca WITH an2sa;
+    an3ca WITH an3sa;
+    an4ca WITH an4sa;
+    an5ca WITH an5sa;
+
+    OUTPUT:
+    STANDARDIZED;
+    MODINDICES(10);
+    SAMPSTAT;
+    RESIDUAL;
+    TECH1;
+    TECH4;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+SD rboles - ESEM APN Presencial;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         308
+
+Number of dependent variables                                   20
+Number of independent variables                                  0
+Number of continuous latent variables                            4
+
+Observed dependent variables
+
+  Continuous
+   AP1CA       AP1SA       AN1CA       AN1SA       AP2CA       AP2SA
+   AN2CA       AN2SA       AP3CA       AP3SA       AN3CA       AN3SA
+   AP4CA       AP4SA       AN4CA       AN4SA       AP5CA       AP5SA
+   AN5CA       AN5SA
+
+Continuous latent variables
+
+  EFA factors
+  *1:   APCA        APSA        ANCA        ANSA
+
+
+Estimator                                                      MLR
+Rotation                                                    TARGET
+Row standardization                                    CORRELATION
+Type of rotation                                           OBLIQUE
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization Specifications for the Exploratory Factor Analysis
+Rotation Algorithm
+  Number of random starts                                       30
+  Maximum number of iterations                             1000000
+  Derivative convergence criterion                       0.100D-04
+
+Input data file(s)
+  ../data/datos_arb_legacy_order.txt
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+ AP1CA          1.000
+ AP1SA          1.000         1.000
+ AN1CA          1.000         1.000         1.000
+ AN1SA          1.000         1.000         1.000         1.000
+ AP2CA          1.000         1.000         1.000         1.000         1.000
+ AP2SA          1.000         1.000         1.000         1.000         1.000
+ AN2CA          1.000         1.000         1.000         1.000         1.000
+ AN2SA          1.000         1.000         1.000         1.000         1.000
+ AP3CA          1.000         1.000         1.000         1.000         1.000
+ AP3SA          1.000         1.000         1.000         1.000         1.000
+ AN3CA          1.000         1.000         1.000         1.000         1.000
+ AN3SA          1.000         1.000         1.000         1.000         1.000
+ AP4CA          1.000         1.000         1.000         1.000         1.000
+ AP4SA          1.000         1.000         1.000         1.000         1.000
+ AN4CA          1.000         1.000         1.000         1.000         1.000
+ AN4SA          1.000         1.000         1.000         1.000         1.000
+ AP5CA          1.000         1.000         1.000         1.000         1.000
+ AP5SA          1.000         1.000         1.000         1.000         1.000
+ AN5CA          1.000         1.000         1.000         1.000         1.000
+ AN5SA          1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+ AP2SA          1.000
+ AN2CA          1.000         1.000
+ AN2SA          1.000         1.000         1.000
+ AP3CA          1.000         1.000         1.000         1.000
+ AP3SA          1.000         1.000         1.000         1.000         1.000
+ AN3CA          1.000         1.000         1.000         1.000         1.000
+ AN3SA          1.000         1.000         1.000         1.000         1.000
+ AP4CA          1.000         1.000         1.000         1.000         1.000
+ AP4SA          1.000         1.000         1.000         1.000         1.000
+ AN4CA          1.000         1.000         1.000         1.000         1.000
+ AN4SA          1.000         1.000         1.000         1.000         1.000
+ AP5CA          1.000         1.000         1.000         1.000         1.000
+ AP5SA          1.000         1.000         1.000         1.000         1.000
+ AN5CA          1.000         1.000         1.000         1.000         1.000
+ AN5SA          1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+ AN3CA          1.000
+ AN3SA          1.000         1.000
+ AP4CA          1.000         1.000         1.000
+ AP4SA          1.000         1.000         1.000         1.000
+ AN4CA          1.000         1.000         1.000         1.000         1.000
+ AN4SA          1.000         1.000         1.000         1.000         1.000
+ AP5CA          1.000         1.000         1.000         1.000         1.000
+ AP5SA          1.000         1.000         1.000         1.000         1.000
+ AN5CA          1.000         1.000         1.000         1.000         1.000
+ AN5SA          1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+ AN4SA          1.000
+ AP5CA          1.000         1.000
+ AP5SA          1.000         1.000         1.000
+ AN5CA          1.000         1.000         1.000         1.000
+ AN5SA          1.000         1.000         1.000         1.000         1.000
+
+
+SAMPLE STATISTICS
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           Means
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+                4.273         2.344         2.192         2.604         3.802
+
+
+           Means
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+                2.893         1.773         3.110         3.942         2.367
+
+
+           Means
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+                2.032         2.769         3.916         2.386         2.000
+
+
+           Means
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+                2.584         3.578         2.880         1.877         2.734
+
+
+           Covariances
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+ AP1CA          0.978
+ AP1SA         -0.496         1.239
+ AN1CA         -0.231         0.353         1.415
+ AN1SA         -0.012        -0.201        -0.057         1.622
+ AP2CA          0.252        -0.143         0.152        -0.039         1.230
+ AP2SA         -0.221         0.407         0.030         0.022         0.002
+ AN2CA         -0.185         0.241         0.381         0.027         0.088
+ AN2SA          0.236        -0.379        -0.063         0.498         0.074
+ AP3CA          0.451        -0.275        -0.073         0.126         0.261
+ AP3SA         -0.207         0.565         0.261        -0.176        -0.051
+ AN3CA         -0.161         0.339         0.676         0.029         0.016
+ AN3SA          0.189        -0.401         0.015         0.568         0.224
+ AP4CA          0.377        -0.335        -0.130         0.048         0.256
+ AP4SA         -0.242         0.500         0.137        -0.110        -0.057
+ AN4CA         -0.156         0.286         0.581         0.075         0.003
+ AN4SA          0.035        -0.289         0.005         0.670         0.093
+ AP5CA          0.329        -0.280        -0.143         0.083         0.313
+ AP5SA         -0.195         0.512         0.133        -0.074        -0.199
+ AN5CA         -0.161         0.296         0.374         0.010        -0.021
+ AN5SA          0.287        -0.577        -0.063         0.570         0.132
+
+
+           Covariances
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+ AP2SA          1.414
+ AN2CA          0.083         1.150
+ AN2SA         -0.199        -0.196         1.812
+ AP3CA         -0.201        -0.114         0.341         0.925
+ AP3SA          0.422         0.275        -0.388        -0.362         1.057
+ AN3CA          0.211         0.452        -0.023        -0.138         0.355
+ AN3SA         -0.213         0.055         0.743         0.237        -0.266
+ AP4CA         -0.110        -0.126         0.285         0.631        -0.349
+ AP4SA          0.321         0.221        -0.429        -0.361         0.680
+ AN4CA          0.195         0.351         0.097        -0.110         0.244
+ AN4SA         -0.252         0.058         0.598         0.216        -0.286
+ AP5CA         -0.234        -0.044         0.206         0.378        -0.264
+ AP5SA          0.494         0.057        -0.324        -0.189         0.476
+ AN5CA          0.204         0.462        -0.113        -0.160         0.227
+ AN5SA         -0.431        -0.044         0.890         0.299        -0.419
+
+
+           Covariances
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+ AN3CA          1.226
+ AN3SA         -0.025         1.651
+ AP4CA         -0.153         0.315         1.006
+ AP4SA          0.341        -0.352        -0.347         1.016
+ AN4CA          0.760         0.068        -0.188         0.224         1.136
+ AN4SA         -0.006         0.966         0.257        -0.313         0.058
+ AP5CA         -0.168         0.305         0.474        -0.129        -0.195
+ AP5SA          0.290        -0.430        -0.156         0.520         0.244
+ AN5CA          0.523         0.049        -0.166         0.184         0.532
+ AN5SA         -0.089         1.036         0.325        -0.491         0.088
+
+
+           Covariances
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+ AN4SA          1.470
+ AP5CA          0.302         1.075
+ AP5SA         -0.368        -0.174         1.203
+ AN5CA          0.017        -0.198         0.206         0.952
+ AN5SA          0.987         0.313        -0.496         0.035         1.702
+
+
+           Correlations
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+ AP1CA          1.000
+ AP1SA         -0.451         1.000
+ AN1CA         -0.196         0.267         1.000
+ AN1SA         -0.010        -0.142        -0.038         1.000
+ AP2CA          0.230        -0.116         0.115        -0.028         1.000
+ AP2SA         -0.188         0.308         0.021         0.015         0.001
+ AN2CA         -0.174         0.202         0.299         0.020         0.074
+ AN2SA          0.177        -0.253        -0.040         0.291         0.049
+ AP3CA          0.474        -0.257        -0.064         0.103         0.245
+ AP3SA         -0.204         0.494         0.213        -0.134        -0.044
+ AN3CA         -0.147         0.275         0.513         0.021         0.013
+ AN3SA          0.149        -0.281         0.010         0.347         0.157
+ AP4CA          0.380        -0.300        -0.109         0.037         0.230
+ AP4SA         -0.243         0.446         0.114        -0.086        -0.051
+ AN4CA         -0.148         0.241         0.458         0.055         0.003
+ AN4SA          0.030        -0.214         0.003         0.434         0.069
+ AP5CA          0.321        -0.243        -0.116         0.063         0.272
+ AP5SA         -0.179         0.420         0.102        -0.053        -0.164
+ AN5CA         -0.167         0.272         0.322         0.008        -0.020
+ AN5SA          0.222        -0.398        -0.040         0.343         0.091
+
+
+           Correlations
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+ AP2SA          1.000
+ AN2CA          0.065         1.000
+ AN2SA         -0.124        -0.136         1.000
+ AP3CA         -0.176        -0.110         0.263         1.000
+ AP3SA          0.346         0.249        -0.280        -0.366         1.000
+ AN3CA          0.160         0.381        -0.015        -0.129         0.312
+ AN3SA         -0.139         0.040         0.429         0.191        -0.201
+ AP4CA         -0.092        -0.117         0.211         0.655        -0.338
+ AP4SA          0.267         0.204        -0.316        -0.372         0.656
+ AN4CA          0.154         0.307         0.068        -0.108         0.222
+ AN4SA         -0.175         0.045         0.366         0.185        -0.229
+ AP5CA         -0.189        -0.040         0.147         0.379        -0.248
+ AP5SA          0.378         0.049        -0.220        -0.179         0.422
+ AN5CA          0.176         0.442        -0.086        -0.170         0.226
+ AN5SA         -0.278        -0.032         0.507         0.239        -0.312
+
+
+           Correlations
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+ AN3CA          1.000
+ AN3SA         -0.018         1.000
+ AP4CA         -0.138         0.244         1.000
+ AP4SA          0.306        -0.272        -0.343         1.000
+ AN4CA          0.644         0.050        -0.176         0.208         1.000
+ AN4SA         -0.004         0.620         0.211        -0.256         0.045
+ AP5CA         -0.146         0.229         0.456        -0.124        -0.176
+ AP5SA          0.238        -0.305        -0.142         0.471         0.208
+ AN5CA          0.484         0.039        -0.170         0.187         0.512
+ AN5SA         -0.061         0.618         0.248        -0.374         0.063
+
+
+           Correlations
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+ AN4SA          1.000
+ AP5CA          0.240         1.000
+ AP5SA         -0.277        -0.153         1.000
+ AN5CA          0.014        -0.196         0.192         1.000
+ AN5SA          0.624         0.231        -0.347         0.028         1.000
+
+
+     MAXIMUM LOG-LIKELIHOOD VALUE FOR THE UNRESTRICTED (H1) MODEL IS -8253.251
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     AP1CA                 4.273      -1.493       1.000    2.92%       4.000      4.000      5.000
+             308.000       0.978       1.896       5.000   54.22%       5.000      5.000
+     AP1SA                 2.344       0.550       1.000   27.60%       1.000      2.000      2.000
+             308.000       1.239      -0.205       5.000    5.84%       3.000      3.000
+     AN1CA                 2.192       0.669       1.000   38.31%       1.000      2.000      2.000
+             308.000       1.415      -0.564       5.000    4.55%       2.000      3.000
+     AN1SA                 2.604       0.338       1.000   25.97%       1.000      2.000      3.000
+             308.000       1.622      -0.806       5.000   11.04%       3.000      4.000
+     AP2CA                 3.802      -0.746       1.000    4.87%       3.000      4.000      4.000
+             308.000       1.230      -0.055       5.000   32.47%       4.000      5.000
+     AP2SA                 2.893      -0.024       1.000   17.21%       2.000      3.000      3.000
+             308.000       1.414      -0.668       5.000   10.71%       3.000      4.000
+     AN2CA                 1.773       1.409       1.000   55.84%       1.000      1.000      1.000
+             308.000       1.150       1.308       5.000    3.90%       2.000      3.000
+     AN2SA                 3.110      -0.145       1.000   17.53%       2.000      3.000      3.000
+             308.000       1.812      -1.073       5.000   19.81%       3.000      4.000
+     AP3CA                 3.942      -0.671       1.000    1.95%       3.000      4.000      4.000
+             308.000       0.925       0.085       5.000   33.77%       4.000      5.000
+     AP3SA                 2.367       0.261       1.000   25.65%       1.000      2.000      2.500
+             308.000       1.057      -0.367       5.000    3.25%       3.000      3.000
+     AN3CA                 2.032       0.840       1.000   42.53%       1.000      1.000      2.000
+             308.000       1.226      -0.137       5.000    3.25%       2.000      3.000
+     AN3SA                 2.769       0.187       1.000   21.75%       1.000      2.000      3.000
+             308.000       1.651      -0.906       5.000   12.99%       3.000      4.000
+     AP4CA                 3.916      -0.970       1.000    3.90%       3.000      4.000      4.000
+             308.000       1.006       0.828       5.000   31.17%       4.000      5.000
+     AP4SA                 2.386       0.274       1.000   23.05%       1.000      2.000      2.000
+             308.000       1.016      -0.327       5.000    2.92%       3.000      3.000
+     AN4CA                 2.000       0.836       1.000   42.86%       1.000      1.000      2.000
+             308.000       1.136      -0.008       5.000    2.92%       2.000      3.000
+     AN4SA                 2.584       0.322       1.000   25.00%       1.000      2.000      3.000
+             308.000       1.470      -0.589       5.000    9.74%       3.000      3.000
+     AP5CA                 3.578      -0.558       1.000    5.19%       3.000      3.000      4.000
+             308.000       1.075       0.064       5.000   19.48%       4.000      4.000
+     AP5SA                 2.880      -0.056       1.000   14.61%       2.000      3.000      3.000
+             308.000       1.203      -0.371       5.000    8.12%       3.000      4.000
+     AN5CA                 1.877       0.877       1.000   45.78%       1.000      1.000      2.000
+             308.000       0.952      -0.039       5.000    0.97%       2.000      3.000
+     AN5SA                 2.734       0.255       1.000   23.05%       1.000      2.000      3.000
+             308.000       1.702      -0.898       5.000   13.96%       3.000      4.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                      124
+
+Loglikelihood
+
+          H0 Value                       -8372.998
+          H0 Scaling Correction Factor      1.4468
+            for MLR
+          H1 Value                       -8253.251
+          H1 Scaling Correction Factor      1.2727
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   16993.996
+          Bayesian (BIC)                 17456.528
+          Sample-Size Adjusted BIC       17063.252
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                            224.043*
+          Degrees of Freedom                   106
+          P-Value                           0.0000
+          Scaling Correction Factor         1.0690
+            for MLR
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.060
+          90 Percent C.I.                    0.049  0.071
+          Probability RMSEA <= .05           0.064
+
+CFI/TLI
+
+          CFI                                0.922
+          TLI                                0.861
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           1711.717
+          Degrees of Freedom                   190
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.036
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ APCA     BY
+    AP1CA              0.508      0.100      5.099      0.000
+    AP2CA              0.399      0.100      3.979      0.000
+    AP3CA              0.784      0.081      9.662      0.000
+    AP4CA              0.789      0.099      7.948      0.000
+    AP5CA              0.547      0.101      5.416      0.000
+    AP1SA             -0.070      0.087     -0.799      0.424
+    AP2SA              0.014      0.098      0.147      0.883
+    AP3SA             -0.089      0.082     -1.086      0.277
+    AP4SA             -0.019      0.068     -0.285      0.776
+    AP5SA              0.115      0.082      1.397      0.162
+    AN1CA              0.014      0.070      0.194      0.846
+    AN2CA             -0.020      0.079     -0.249      0.804
+    AN3CA              0.063      0.059      1.065      0.287
+    AN4CA             -0.033      0.066     -0.499      0.618
+    AN5CA             -0.084      0.057     -1.469      0.142
+    AN1SA             -0.060      0.092     -0.656      0.512
+    AN2SA              0.122      0.092      1.329      0.184
+    AN3SA              0.066      0.064      1.032      0.302
+    AN4SA              0.003      0.073      0.040      0.968
+    AN5SA              0.018      0.063      0.286      0.775
+
+ APSA     BY
+    AP1SA              0.460      0.141      3.259      0.001
+    AP2SA              0.434      0.156      2.790      0.005
+    AP3SA              0.802      0.116      6.906      0.000
+    AP4SA              0.836      0.091      9.214      0.000
+    AP5SA              0.566      0.131      4.328      0.000
+    AP1CA             -0.038      0.105     -0.364      0.716
+    AP2CA              0.091      0.117      0.772      0.440
+    AP3CA             -0.142      0.090     -1.572      0.116
+    AP4CA              0.020      0.082      0.241      0.810
+    AP5CA              0.179      0.086      2.085      0.037
+    AN1CA             -0.065      0.103     -0.632      0.527
+    AN2CA              0.137      0.102      1.352      0.176
+    AN3CA              0.117      0.079      1.472      0.141
+    AN4CA             -0.024      0.082     -0.299      0.765
+    AN5CA              0.021      0.089      0.233      0.816
+    AN1SA              0.066      0.133      0.496      0.620
+    AN2SA             -0.247      0.121     -2.041      0.041
+    AN3SA              0.041      0.091      0.453      0.651
+    AN4SA              0.027      0.082      0.334      0.739
+    AN5SA             -0.200      0.106     -1.890      0.059
+
+ ANCA     BY
+    AN1CA              0.748      0.091      8.252      0.000
+    AN2CA              0.445      0.088      5.073      0.000
+    AN3CA              0.863      0.072     11.976      0.000
+    AN4CA              0.838      0.082     10.279      0.000
+    AN5CA              0.588      0.078      7.564      0.000
+    AP1CA             -0.077      0.080     -0.972      0.331
+    AP2CA              0.085      0.094      0.896      0.370
+    AP3CA              0.107      0.060      1.780      0.075
+    AP4CA             -0.017      0.050     -0.344      0.731
+    AP5CA             -0.164      0.084     -1.949      0.051
+    AP1SA              0.207      0.093      2.220      0.026
+    AP2SA              0.067      0.107      0.627      0.530
+    AP3SA              0.010      0.062      0.166      0.868
+    AP4SA             -0.043      0.054     -0.787      0.431
+    AP5SA              0.092      0.095      0.972      0.331
+    AN1SA              0.008      0.114      0.070      0.944
+    AN2SA              0.118      0.094      1.260      0.208
+    AN3SA              0.025      0.093      0.275      0.784
+    AN4SA              0.016      0.083      0.199      0.842
+    AN5SA              0.038      0.083      0.460      0.645
+
+ ANSA     BY
+    AN1SA              0.645      0.131      4.910      0.000
+    AN2SA              0.586      0.129      4.550      0.000
+    AN3SA              0.994      0.088     11.234      0.000
+    AN4SA              0.961      0.102      9.393      0.000
+    AN5SA              0.961      0.102      9.410      0.000
+    AP1CA             -0.025      0.087     -0.286      0.775
+    AP2CA              0.049      0.109      0.448      0.654
+    AP3CA             -0.092      0.061     -1.506      0.132
+    AP4CA              0.018      0.051      0.349      0.727
+    AP5CA              0.194      0.083      2.348      0.019
+    AP1SA             -0.196      0.102     -1.918      0.055
+    AP2SA             -0.098      0.113     -0.867      0.386
+    AP3SA              0.068      0.067      1.012      0.312
+    AP4SA              0.020      0.055      0.372      0.710
+    AP5SA             -0.202      0.108     -1.861      0.063
+    AN1CA             -0.052      0.081     -0.648      0.517
+    AN2CA              0.092      0.079      1.167      0.243
+    AN3CA              0.004      0.062      0.073      0.942
+    AN4CA              0.076      0.086      0.891      0.373
+    AN5CA              0.034      0.056      0.612      0.541
+
+ APCA     WITH
+    ANCA              -0.245      0.072     -3.391      0.001
+    APSA              -0.450      0.076     -5.889      0.000
+
+ APSA     WITH
+    ANSA              -0.428      0.069     -6.219      0.000
+
+ ANCA     WITH
+    ANSA               0.004      0.065      0.067      0.946
+    APSA               0.389      0.068      5.751      0.000
+
+ ANSA     WITH
+    APCA               0.322      0.067      4.827      0.000
+
+ AP1CA    WITH
+    AP1SA             -0.252      0.073     -3.434      0.001
+
+ AP2CA    WITH
+    AP2SA              0.042      0.085      0.493      0.622
+
+ AP3CA    WITH
+    AP3SA              0.027      0.069      0.394      0.694
+
+ AP4CA    WITH
+    AP4SA             -0.053      0.064     -0.828      0.408
+
+ AP5CA    WITH
+    AP5SA             -0.038      0.066     -0.577      0.564
+
+ AN1CA    WITH
+    AN1SA             -0.078      0.113     -0.686      0.493
+
+ AN2CA    WITH
+    AN2SA             -0.184      0.112     -1.641      0.101
+
+ AN3CA    WITH
+    AN3SA             -0.031      0.067     -0.456      0.648
+
+ AN4CA    WITH
+    AN4SA             -0.039      0.092     -0.425      0.671
+
+ AN5CA    WITH
+    AN5SA              0.069      0.060      1.157      0.247
+
+ Intercepts
+    AP1CA              4.273      0.056     75.842      0.000
+    AP1SA              2.344      0.063     36.964      0.000
+    AN1CA              2.192      0.068     32.338      0.000
+    AN1SA              2.604      0.073     35.878      0.000
+    AP2CA              3.802      0.063     60.157      0.000
+    AP2SA              2.893      0.068     42.697      0.000
+    AN2CA              1.773      0.061     29.016      0.000
+    AN2SA              3.110      0.077     40.546      0.000
+    AP3CA              3.942      0.055     71.918      0.000
+    AP3SA              2.367      0.059     40.404      0.000
+    AN3CA              2.032      0.063     32.212      0.000
+    AN3SA              2.769      0.073     37.822      0.000
+    AP4CA              3.916      0.057     68.518      0.000
+    AP4SA              2.386      0.057     41.543      0.000
+    AN4CA              2.000      0.061     32.927      0.000
+    AN4SA              2.584      0.069     37.407      0.000
+    AP5CA              3.578      0.059     60.560      0.000
+    AP5SA              2.880      0.062     46.078      0.000
+    AN5CA              1.877      0.056     33.749      0.000
+    AN5SA              2.734      0.074     36.777      0.000
+
+ Variances
+    APCA               1.000      0.000    999.000    999.000
+    APSA               1.000      0.000    999.000    999.000
+    ANCA               1.000      0.000    999.000    999.000
+    ANSA               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    AP1CA              0.682      0.105      6.515      0.000
+    AP1SA              0.744      0.091      8.179      0.000
+    AN1CA              0.894      0.122      7.354      0.000
+    AN1SA              1.256      0.132      9.512      0.000
+    AP2CA              1.087      0.098     11.062      0.000
+    AP2SA              1.159      0.097     11.908      0.000
+    AN2CA              0.881      0.121      7.261      0.000
+    AN2SA              1.212      0.128      9.483      0.000
+    AP3CA              0.281      0.083      3.400      0.001
+    AP3SA              0.380      0.079      4.823      0.000
+    AN3CA              0.420      0.068      6.206      0.000
+    AN3SA              0.651      0.108      6.027      0.000
+    AP4CA              0.381      0.096      3.948      0.000
+    AP4SA              0.343      0.084      4.079      0.000
+    AN4CA              0.429      0.106      4.043      0.000
+    AN4SA              0.566      0.102      5.532      0.000
+    AP5CA              0.708      0.082      8.620      0.000
+    AP5SA              0.761      0.076     10.055      0.000
+    AN5CA              0.565      0.068      8.336      0.000
+    AN5SA              0.563      0.089      6.295      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.291E-02
+       (ratio of smallest to largest eigenvalue)
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ APCA     BY
+    AP1CA              0.513      0.093      5.541      0.000
+    AP2CA              0.360      0.088      4.087      0.000
+    AP3CA              0.815      0.071     11.451      0.000
+    AP4CA              0.787      0.086      9.191      0.000
+    AP5CA              0.527      0.091      5.764      0.000
+    AP1SA             -0.063      0.078     -0.798      0.425
+    AP2SA              0.012      0.083      0.147      0.883
+    AP3SA             -0.087      0.080     -1.081      0.280
+    AP4SA             -0.019      0.068     -0.285      0.776
+    AP5SA              0.104      0.074      1.406      0.160
+    AN1CA              0.011      0.059      0.194      0.846
+    AN2CA             -0.018      0.074     -0.248      0.804
+    AN3CA              0.057      0.053      1.067      0.286
+    AN4CA             -0.031      0.062     -0.501      0.617
+    AN5CA             -0.086      0.060     -1.446      0.148
+    AN1SA             -0.047      0.072     -0.656      0.512
+    AN2SA              0.091      0.068      1.328      0.184
+    AN3SA              0.051      0.050      1.032      0.302
+    AN4SA              0.002      0.060      0.040      0.968
+    AN5SA              0.014      0.048      0.286      0.775
+
+ APSA     BY
+    AP1SA              0.414      0.125      3.309      0.001
+    AP2SA              0.365      0.129      2.825      0.005
+    AP3SA              0.781      0.104      7.522      0.000
+    AP4SA              0.829      0.078     10.589      0.000
+    AP5SA              0.516      0.114      4.531      0.000
+    AP1CA             -0.039      0.106     -0.363      0.716
+    AP2CA              0.082      0.105      0.774      0.439
+    AP3CA             -0.147      0.094     -1.564      0.118
+    AP4CA              0.020      0.081      0.241      0.809
+    AP5CA              0.172      0.082      2.095      0.036
+    AN1CA             -0.055      0.087     -0.631      0.528
+    AN2CA              0.128      0.094      1.357      0.175
+    AN3CA              0.105      0.071      1.478      0.139
+    AN4CA             -0.023      0.077     -0.298      0.766
+    AN5CA              0.021      0.091      0.233      0.815
+    AN1SA              0.052      0.105      0.496      0.620
+    AN2SA             -0.184      0.090     -2.037      0.042
+    AN3SA              0.032      0.071      0.452      0.651
+    AN4SA              0.023      0.068      0.334      0.739
+    AN5SA             -0.153      0.081     -1.888      0.059
+
+ ANCA     BY
+    AN1CA              0.629      0.073      8.561      0.000
+    AN2CA              0.415      0.081      5.141      0.000
+    AN3CA              0.779      0.054     14.512      0.000
+    AN4CA              0.786      0.077     10.275      0.000
+    AN5CA              0.602      0.072      8.388      0.000
+    AP1CA             -0.078      0.081     -0.964      0.335
+    AP2CA              0.076      0.085      0.901      0.367
+    AP3CA              0.112      0.062      1.791      0.073
+    AP4CA             -0.017      0.049     -0.344      0.731
+    AP5CA             -0.159      0.081     -1.965      0.049
+    AP1SA              0.186      0.083      2.234      0.026
+    AP2SA              0.056      0.090      0.628      0.530
+    AP3SA              0.010      0.060      0.166      0.868
+    AP4SA             -0.042      0.054     -0.790      0.429
+    AP5SA              0.084      0.087      0.968      0.333
+    AN1SA              0.006      0.089      0.070      0.944
+    AN2SA              0.088      0.070      1.261      0.207
+    AN3SA              0.020      0.072      0.275      0.783
+    AN4SA              0.014      0.068      0.199      0.842
+    AN5SA              0.029      0.064      0.460      0.646
+
+ ANSA     BY
+    AN1SA              0.506      0.100      5.051      0.000
+    AN2SA              0.435      0.094      4.631      0.000
+    AN3SA              0.774      0.064     12.131      0.000
+    AN4SA              0.793      0.075     10.513      0.000
+    AN5SA              0.737      0.073     10.163      0.000
+    AP1CA             -0.025      0.088     -0.286      0.775
+    AP2CA              0.044      0.098      0.448      0.654
+    AP3CA             -0.095      0.063     -1.506      0.132
+    AP4CA              0.018      0.051      0.350      0.727
+    AP5CA              0.187      0.079      2.361      0.018
+    AP1SA             -0.176      0.092     -1.912      0.056
+    AP2SA             -0.083      0.095     -0.868      0.385
+    AP3SA              0.066      0.065      1.017      0.309
+    AP4SA              0.020      0.054      0.373      0.709
+    AP5SA             -0.184      0.099     -1.860      0.063
+    AN1CA             -0.044      0.068     -0.647      0.517
+    AN2CA              0.086      0.073      1.177      0.239
+    AN3CA              0.004      0.056      0.073      0.942
+    AN4CA              0.072      0.080      0.902      0.367
+    AN5CA              0.035      0.057      0.613      0.540
+
+ APCA     WITH
+    ANCA              -0.245      0.072     -3.391      0.001
+    APSA              -0.450      0.076     -5.889      0.000
+
+ APSA     WITH
+    ANSA              -0.428      0.069     -6.219      0.000
+
+ ANCA     WITH
+    ANSA               0.004      0.065      0.067      0.946
+    APSA               0.389      0.068      5.751      0.000
+
+ ANSA     WITH
+    APCA               0.322      0.067      4.827      0.000
+
+ AP1CA    WITH
+    AP1SA             -0.354      0.075     -4.703      0.000
+
+ AP2CA    WITH
+    AP2SA              0.038      0.076      0.495      0.620
+
+ AP3CA    WITH
+    AP3SA              0.084      0.219      0.382      0.702
+
+ AP4CA    WITH
+    AP4SA             -0.148      0.180     -0.821      0.412
+
+ AP5CA    WITH
+    AP5SA             -0.052      0.091     -0.571      0.568
+
+ AN1CA    WITH
+    AN1SA             -0.073      0.105     -0.699      0.485
+
+ AN2CA    WITH
+    AN2SA             -0.178      0.101     -1.755      0.079
+
+ AN3CA    WITH
+    AN3SA             -0.058      0.127     -0.459      0.646
+
+ AN4CA    WITH
+    AN4SA             -0.080      0.176     -0.452      0.651
+
+ AN5CA    WITH
+    AN5SA              0.123      0.107      1.151      0.250
+
+ Intercepts
+    AP1CA              4.321      0.289     14.977      0.000
+    AP1SA              2.106      0.077     27.304      0.000
+    AN1CA              1.843      0.057     32.555      0.000
+    AN1SA              2.044      0.071     28.751      0.000
+    AP2CA              3.428      0.173     19.757      0.000
+    AP2SA              2.433      0.099     24.529      0.000
+    AN2CA              1.653      0.055     30.074      0.000
+    AN2SA              2.310      0.091     25.280      0.000
+    AP3CA              4.098      0.201     20.340      0.000
+    AP3SA              2.302      0.091     25.239      0.000
+    AN3CA              1.835      0.058     31.771      0.000
+    AN3SA              2.155      0.078     27.685      0.000
+    AP4CA              3.904      0.225     17.368      0.000
+    AP4SA              2.367      0.094     25.307      0.000
+    AN4CA              1.876      0.062     30.259      0.000
+    AN4SA              2.131      0.079     27.016      0.000
+    AP5CA              3.451      0.172     20.108      0.000
+    AP5SA              2.626      0.113     23.171      0.000
+    AN5CA              1.923      0.060     31.809      0.000
+    AN5SA              2.096      0.074     28.413      0.000
+
+ Variances
+    APCA               1.000      0.000    999.000    999.000
+    APSA               1.000      0.000    999.000    999.000
+    ANCA               1.000      0.000    999.000    999.000
+    ANSA               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    AP1CA              0.697      0.074      9.418      0.000
+    AP1SA              0.601      0.061      9.825      0.000
+    AN1CA              0.632      0.075      8.463      0.000
+    AN1SA              0.774      0.071     10.924      0.000
+    AP2CA              0.884      0.048     18.271      0.000
+    AP2SA              0.820      0.056     14.673      0.000
+    AN2CA              0.766      0.057     13.407      0.000
+    AN2SA              0.668      0.063     10.548      0.000
+    AP3CA              0.304      0.092      3.298      0.001
+    AP3SA              0.359      0.077      4.656      0.000
+    AN3CA              0.342      0.056      6.105      0.000
+    AN3SA              0.394      0.064      6.145      0.000
+    AP4CA              0.379      0.093      4.080      0.000
+    AP4SA              0.338      0.084      4.043      0.000
+    AN4CA              0.377      0.085      4.458      0.000
+    AN4SA              0.385      0.073      5.297      0.000
+    AP5CA              0.659      0.068      9.672      0.000
+    AP5SA              0.632      0.059     10.782      0.000
+    AN5CA              0.593      0.066      8.992      0.000
+    AN5SA              0.331      0.053      6.195      0.000
+
+
+STDY Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ APCA     BY
+    AP1CA              0.513      0.093      5.541      0.000
+    AP2CA              0.360      0.088      4.087      0.000
+    AP3CA              0.815      0.071     11.451      0.000
+    AP4CA              0.787      0.086      9.191      0.000
+    AP5CA              0.527      0.091      5.764      0.000
+    AP1SA             -0.063      0.078     -0.798      0.425
+    AP2SA              0.012      0.083      0.147      0.883
+    AP3SA             -0.087      0.080     -1.081      0.280
+    AP4SA             -0.019      0.068     -0.285      0.776
+    AP5SA              0.104      0.074      1.406      0.160
+    AN1CA              0.011      0.059      0.194      0.846
+    AN2CA             -0.018      0.074     -0.248      0.804
+    AN3CA              0.057      0.053      1.067      0.286
+    AN4CA             -0.031      0.062     -0.501      0.617
+    AN5CA             -0.086      0.060     -1.446      0.148
+    AN1SA             -0.047      0.072     -0.656      0.512
+    AN2SA              0.091      0.068      1.328      0.184
+    AN3SA              0.051      0.050      1.032      0.302
+    AN4SA              0.002      0.060      0.040      0.968
+    AN5SA              0.014      0.048      0.286      0.775
+
+ APSA     BY
+    AP1SA              0.414      0.125      3.309      0.001
+    AP2SA              0.365      0.129      2.825      0.005
+    AP3SA              0.781      0.104      7.522      0.000
+    AP4SA              0.829      0.078     10.589      0.000
+    AP5SA              0.516      0.114      4.531      0.000
+    AP1CA             -0.039      0.106     -0.363      0.716
+    AP2CA              0.082      0.105      0.774      0.439
+    AP3CA             -0.147      0.094     -1.564      0.118
+    AP4CA              0.020      0.081      0.241      0.809
+    AP5CA              0.172      0.082      2.095      0.036
+    AN1CA             -0.055      0.087     -0.631      0.528
+    AN2CA              0.128      0.094      1.357      0.175
+    AN3CA              0.105      0.071      1.478      0.139
+    AN4CA             -0.023      0.077     -0.298      0.766
+    AN5CA              0.021      0.091      0.233      0.815
+    AN1SA              0.052      0.105      0.496      0.620
+    AN2SA             -0.184      0.090     -2.037      0.042
+    AN3SA              0.032      0.071      0.452      0.651
+    AN4SA              0.023      0.068      0.334      0.739
+    AN5SA             -0.153      0.081     -1.888      0.059
+
+ ANCA     BY
+    AN1CA              0.629      0.073      8.561      0.000
+    AN2CA              0.415      0.081      5.141      0.000
+    AN3CA              0.779      0.054     14.512      0.000
+    AN4CA              0.786      0.077     10.275      0.000
+    AN5CA              0.602      0.072      8.388      0.000
+    AP1CA             -0.078      0.081     -0.964      0.335
+    AP2CA              0.076      0.085      0.901      0.367
+    AP3CA              0.112      0.062      1.791      0.073
+    AP4CA             -0.017      0.049     -0.344      0.731
+    AP5CA             -0.159      0.081     -1.965      0.049
+    AP1SA              0.186      0.083      2.234      0.026
+    AP2SA              0.056      0.090      0.628      0.530
+    AP3SA              0.010      0.060      0.166      0.868
+    AP4SA             -0.042      0.054     -0.790      0.429
+    AP5SA              0.084      0.087      0.968      0.333
+    AN1SA              0.006      0.089      0.070      0.944
+    AN2SA              0.088      0.070      1.261      0.207
+    AN3SA              0.020      0.072      0.275      0.783
+    AN4SA              0.014      0.068      0.199      0.842
+    AN5SA              0.029      0.064      0.460      0.646
+
+ ANSA     BY
+    AN1SA              0.506      0.100      5.051      0.000
+    AN2SA              0.435      0.094      4.631      0.000
+    AN3SA              0.774      0.064     12.131      0.000
+    AN4SA              0.793      0.075     10.513      0.000
+    AN5SA              0.737      0.073     10.163      0.000
+    AP1CA             -0.025      0.088     -0.286      0.775
+    AP2CA              0.044      0.098      0.448      0.654
+    AP3CA             -0.095      0.063     -1.506      0.132
+    AP4CA              0.018      0.051      0.350      0.727
+    AP5CA              0.187      0.079      2.361      0.018
+    AP1SA             -0.176      0.092     -1.912      0.056
+    AP2SA             -0.083      0.095     -0.868      0.385
+    AP3SA              0.066      0.065      1.017      0.309
+    AP4SA              0.020      0.054      0.373      0.709
+    AP5SA             -0.184      0.099     -1.860      0.063
+    AN1CA             -0.044      0.068     -0.647      0.517
+    AN2CA              0.086      0.073      1.177      0.239
+    AN3CA              0.004      0.056      0.073      0.942
+    AN4CA              0.072      0.080      0.902      0.367
+    AN5CA              0.035      0.057      0.613      0.540
+
+ APCA     WITH
+    ANCA              -0.245      0.072     -3.391      0.001
+    APSA              -0.450      0.076     -5.889      0.000
+
+ APSA     WITH
+    ANSA              -0.428      0.069     -6.219      0.000
+
+ ANCA     WITH
+    ANSA               0.004      0.065      0.067      0.946
+    APSA               0.389      0.068      5.751      0.000
+
+ ANSA     WITH
+    APCA               0.322      0.067      4.827      0.000
+
+ AP1CA    WITH
+    AP1SA             -0.354      0.075     -4.703      0.000
+
+ AP2CA    WITH
+    AP2SA              0.038      0.076      0.495      0.620
+
+ AP3CA    WITH
+    AP3SA              0.084      0.219      0.382      0.702
+
+ AP4CA    WITH
+    AP4SA             -0.148      0.180     -0.821      0.412
+
+ AP5CA    WITH
+    AP5SA             -0.052      0.091     -0.571      0.568
+
+ AN1CA    WITH
+    AN1SA             -0.073      0.105     -0.699      0.485
+
+ AN2CA    WITH
+    AN2SA             -0.178      0.101     -1.755      0.079
+
+ AN3CA    WITH
+    AN3SA             -0.058      0.127     -0.459      0.646
+
+ AN4CA    WITH
+    AN4SA             -0.080      0.176     -0.452      0.651
+
+ AN5CA    WITH
+    AN5SA              0.123      0.107      1.151      0.250
+
+ Intercepts
+    AP1CA              4.321      0.289     14.977      0.000
+    AP1SA              2.106      0.077     27.304      0.000
+    AN1CA              1.843      0.057     32.555      0.000
+    AN1SA              2.044      0.071     28.751      0.000
+    AP2CA              3.428      0.173     19.757      0.000
+    AP2SA              2.433      0.099     24.529      0.000
+    AN2CA              1.653      0.055     30.074      0.000
+    AN2SA              2.310      0.091     25.280      0.000
+    AP3CA              4.098      0.201     20.340      0.000
+    AP3SA              2.302      0.091     25.239      0.000
+    AN3CA              1.835      0.058     31.771      0.000
+    AN3SA              2.155      0.078     27.685      0.000
+    AP4CA              3.904      0.225     17.368      0.000
+    AP4SA              2.367      0.094     25.307      0.000
+    AN4CA              1.876      0.062     30.259      0.000
+    AN4SA              2.131      0.079     27.016      0.000
+    AP5CA              3.451      0.172     20.108      0.000
+    AP5SA              2.626      0.113     23.171      0.000
+    AN5CA              1.923      0.060     31.809      0.000
+    AN5SA              2.096      0.074     28.413      0.000
+
+ Variances
+    APCA               1.000      0.000    999.000    999.000
+    APSA               1.000      0.000    999.000    999.000
+    ANCA               1.000      0.000    999.000    999.000
+    ANSA               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    AP1CA              0.697      0.074      9.418      0.000
+    AP1SA              0.601      0.061      9.825      0.000
+    AN1CA              0.632      0.075      8.463      0.000
+    AN1SA              0.774      0.071     10.924      0.000
+    AP2CA              0.884      0.048     18.271      0.000
+    AP2SA              0.820      0.056     14.673      0.000
+    AN2CA              0.766      0.057     13.407      0.000
+    AN2SA              0.668      0.063     10.548      0.000
+    AP3CA              0.304      0.092      3.298      0.001
+    AP3SA              0.359      0.077      4.656      0.000
+    AN3CA              0.342      0.056      6.105      0.000
+    AN3SA              0.394      0.064      6.145      0.000
+    AP4CA              0.379      0.093      4.080      0.000
+    AP4SA              0.338      0.084      4.043      0.000
+    AN4CA              0.377      0.085      4.458      0.000
+    AN4SA              0.385      0.073      5.297      0.000
+    AP5CA              0.659      0.068      9.672      0.000
+    AP5SA              0.632      0.059     10.782      0.000
+    AN5CA              0.593      0.066      8.992      0.000
+    AN5SA              0.331      0.053      6.195      0.000
+
+
+STD Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ APCA     BY
+    AP1CA              0.508      0.100      5.099      0.000
+    AP2CA              0.399      0.100      3.979      0.000
+    AP3CA              0.784      0.081      9.662      0.000
+    AP4CA              0.789      0.099      7.948      0.000
+    AP5CA              0.547      0.101      5.416      0.000
+    AP1SA             -0.070      0.087     -0.799      0.424
+    AP2SA              0.014      0.098      0.147      0.883
+    AP3SA             -0.089      0.082     -1.086      0.277
+    AP4SA             -0.019      0.068     -0.285      0.776
+    AP5SA              0.115      0.082      1.397      0.162
+    AN1CA              0.014      0.070      0.194      0.846
+    AN2CA             -0.020      0.079     -0.249      0.804
+    AN3CA              0.063      0.059      1.065      0.287
+    AN4CA             -0.033      0.066     -0.499      0.618
+    AN5CA             -0.084      0.057     -1.469      0.142
+    AN1SA             -0.060      0.092     -0.656      0.512
+    AN2SA              0.122      0.092      1.329      0.184
+    AN3SA              0.066      0.064      1.032      0.302
+    AN4SA              0.003      0.073      0.040      0.968
+    AN5SA              0.018      0.063      0.286      0.775
+
+ APSA     BY
+    AP1SA              0.460      0.141      3.259      0.001
+    AP2SA              0.434      0.156      2.790      0.005
+    AP3SA              0.802      0.116      6.906      0.000
+    AP4SA              0.836      0.091      9.214      0.000
+    AP5SA              0.566      0.131      4.328      0.000
+    AP1CA             -0.038      0.105     -0.364      0.716
+    AP2CA              0.091      0.117      0.772      0.440
+    AP3CA             -0.142      0.090     -1.572      0.116
+    AP4CA              0.020      0.082      0.241      0.810
+    AP5CA              0.179      0.086      2.085      0.037
+    AN1CA             -0.065      0.103     -0.632      0.527
+    AN2CA              0.137      0.102      1.352      0.176
+    AN3CA              0.117      0.079      1.472      0.141
+    AN4CA             -0.024      0.082     -0.299      0.765
+    AN5CA              0.021      0.089      0.233      0.816
+    AN1SA              0.066      0.133      0.496      0.620
+    AN2SA             -0.247      0.121     -2.041      0.041
+    AN3SA              0.041      0.091      0.453      0.651
+    AN4SA              0.027      0.082      0.334      0.739
+    AN5SA             -0.200      0.106     -1.890      0.059
+
+ ANCA     BY
+    AN1CA              0.748      0.091      8.252      0.000
+    AN2CA              0.445      0.088      5.073      0.000
+    AN3CA              0.863      0.072     11.976      0.000
+    AN4CA              0.838      0.082     10.279      0.000
+    AN5CA              0.588      0.078      7.564      0.000
+    AP1CA             -0.077      0.080     -0.972      0.331
+    AP2CA              0.085      0.094      0.896      0.370
+    AP3CA              0.107      0.060      1.780      0.075
+    AP4CA             -0.017      0.050     -0.344      0.731
+    AP5CA             -0.164      0.084     -1.949      0.051
+    AP1SA              0.207      0.093      2.220      0.026
+    AP2SA              0.067      0.107      0.627      0.530
+    AP3SA              0.010      0.062      0.166      0.868
+    AP4SA             -0.043      0.054     -0.787      0.431
+    AP5SA              0.092      0.095      0.972      0.331
+    AN1SA              0.008      0.114      0.070      0.944
+    AN2SA              0.118      0.094      1.260      0.208
+    AN3SA              0.025      0.093      0.275      0.784
+    AN4SA              0.016      0.083      0.199      0.842
+    AN5SA              0.038      0.083      0.460      0.645
+
+ ANSA     BY
+    AN1SA              0.645      0.131      4.910      0.000
+    AN2SA              0.586      0.129      4.550      0.000
+    AN3SA              0.994      0.088     11.234      0.000
+    AN4SA              0.961      0.102      9.393      0.000
+    AN5SA              0.961      0.102      9.410      0.000
+    AP1CA             -0.025      0.087     -0.286      0.775
+    AP2CA              0.049      0.109      0.448      0.654
+    AP3CA             -0.092      0.061     -1.506      0.132
+    AP4CA              0.018      0.051      0.349      0.727
+    AP5CA              0.194      0.083      2.348      0.019
+    AP1SA             -0.196      0.102     -1.918      0.055
+    AP2SA             -0.098      0.113     -0.867      0.386
+    AP3SA              0.068      0.067      1.012      0.312
+    AP4SA              0.020      0.055      0.372      0.710
+    AP5SA             -0.202      0.108     -1.861      0.063
+    AN1CA             -0.052      0.081     -0.648      0.517
+    AN2CA              0.092      0.079      1.167      0.243
+    AN3CA              0.004      0.062      0.073      0.942
+    AN4CA              0.076      0.086      0.891      0.373
+    AN5CA              0.034      0.056      0.612      0.541
+
+ APCA     WITH
+    ANCA              -0.245      0.072     -3.391      0.001
+    APSA              -0.450      0.076     -5.889      0.000
+
+ APSA     WITH
+    ANSA              -0.428      0.069     -6.219      0.000
+
+ ANCA     WITH
+    ANSA               0.004      0.065      0.067      0.946
+    APSA               0.389      0.068      5.751      0.000
+
+ ANSA     WITH
+    APCA               0.322      0.067      4.827      0.000
+
+ AP1CA    WITH
+    AP1SA             -0.252      0.073     -3.434      0.001
+
+ AP2CA    WITH
+    AP2SA              0.042      0.085      0.493      0.622
+
+ AP3CA    WITH
+    AP3SA              0.027      0.069      0.394      0.694
+
+ AP4CA    WITH
+    AP4SA             -0.053      0.064     -0.828      0.408
+
+ AP5CA    WITH
+    AP5SA             -0.038      0.066     -0.577      0.564
+
+ AN1CA    WITH
+    AN1SA             -0.078      0.113     -0.686      0.493
+
+ AN2CA    WITH
+    AN2SA             -0.184      0.112     -1.641      0.101
+
+ AN3CA    WITH
+    AN3SA             -0.031      0.067     -0.456      0.648
+
+ AN4CA    WITH
+    AN4SA             -0.039      0.092     -0.425      0.671
+
+ AN5CA    WITH
+    AN5SA              0.069      0.060      1.157      0.247
+
+ Intercepts
+    AP1CA              4.273      0.056     75.842      0.000
+    AP1SA              2.344      0.063     36.964      0.000
+    AN1CA              2.192      0.068     32.338      0.000
+    AN1SA              2.604      0.073     35.878      0.000
+    AP2CA              3.802      0.063     60.157      0.000
+    AP2SA              2.893      0.068     42.697      0.000
+    AN2CA              1.773      0.061     29.016      0.000
+    AN2SA              3.110      0.077     40.546      0.000
+    AP3CA              3.942      0.055     71.918      0.000
+    AP3SA              2.367      0.059     40.404      0.000
+    AN3CA              2.032      0.063     32.212      0.000
+    AN3SA              2.769      0.073     37.822      0.000
+    AP4CA              3.916      0.057     68.518      0.000
+    AP4SA              2.386      0.057     41.543      0.000
+    AN4CA              2.000      0.061     32.927      0.000
+    AN4SA              2.584      0.069     37.407      0.000
+    AP5CA              3.578      0.059     60.560      0.000
+    AP5SA              2.880      0.062     46.078      0.000
+    AN5CA              1.877      0.056     33.749      0.000
+    AN5SA              2.734      0.074     36.777      0.000
+
+ Variances
+    APCA               1.000      0.000    999.000    999.000
+    APSA               1.000      0.000    999.000    999.000
+    ANCA               1.000      0.000    999.000    999.000
+    ANSA               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    AP1CA              0.682      0.105      6.515      0.000
+    AP1SA              0.744      0.091      8.179      0.000
+    AN1CA              0.894      0.122      7.354      0.000
+    AN1SA              1.256      0.132      9.512      0.000
+    AP2CA              1.087      0.098     11.062      0.000
+    AP2SA              1.159      0.097     11.908      0.000
+    AN2CA              0.881      0.121      7.261      0.000
+    AN2SA              1.212      0.128      9.483      0.000
+    AP3CA              0.281      0.083      3.400      0.001
+    AP3SA              0.380      0.079      4.823      0.000
+    AN3CA              0.420      0.068      6.206      0.000
+    AN3SA              0.651      0.108      6.027      0.000
+    AP4CA              0.381      0.096      3.948      0.000
+    AP4SA              0.343      0.084      4.079      0.000
+    AN4CA              0.429      0.106      4.043      0.000
+    AN4SA              0.566      0.102      5.532      0.000
+    AP5CA              0.708      0.082      8.620      0.000
+    AP5SA              0.761      0.076     10.055      0.000
+    AN5CA              0.565      0.068      8.336      0.000
+    AN5SA              0.563      0.089      6.295      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    AP1CA              0.303      0.074      4.086      0.000
+    AP1SA              0.399      0.061      6.525      0.000
+    AN1CA              0.368      0.075      4.922      0.000
+    AN1SA              0.226      0.071      3.192      0.001
+    AP2CA              0.116      0.048      2.400      0.016
+    AP2SA              0.180      0.056      3.229      0.001
+    AN2CA              0.234      0.057      4.086      0.000
+    AN2SA              0.332      0.063      5.232      0.000
+    AP3CA              0.696      0.092      7.569      0.000
+    AP3SA              0.641      0.077      8.302      0.000
+    AN3CA              0.658      0.056     11.737      0.000
+    AN3SA              0.606      0.064      9.439      0.000
+    AP4CA              0.621      0.093      6.696      0.000
+    AP4SA              0.662      0.084      7.927      0.000
+    AN4CA              0.623      0.085      7.361      0.000
+    AN4SA              0.615      0.073      8.463      0.000
+    AP5CA              0.341      0.068      5.014      0.000
+    AP5SA              0.368      0.059      6.265      0.000
+    AN5CA              0.407      0.066      6.163      0.000
+    AN5SA              0.669      0.053     12.531      0.000
+
+
+STANDARDIZED SOLUTION
+
+
+           TARGET ROTATED LOADINGS (* significant at 5% level)
+               APCA              APSA              ANCA              ANSA
+              __________        __________        __________        __________
+ AP1CA           0.513*           -0.039            -0.078            -0.025
+ AP1SA          -0.063             0.414*            0.186*           -0.176
+ AN1CA           0.011            -0.055             0.629*           -0.044
+ AN1SA          -0.047             0.052             0.006             0.506*
+ AP2CA           0.360*            0.082             0.076             0.044
+ AP2SA           0.012             0.365*            0.056            -0.083
+ AN2CA          -0.018             0.128             0.415*            0.086
+ AN2SA           0.091            -0.184*            0.088             0.435*
+ AP3CA           0.815*           -0.147             0.112            -0.095
+ AP3SA          -0.087             0.781*            0.010             0.066
+ AN3CA           0.057             0.105             0.779*            0.004
+ AN3SA           0.051             0.032             0.020             0.774*
+ AP4CA           0.787*            0.020            -0.017             0.018
+ AP4SA          -0.019             0.829*           -0.042             0.020
+ AN4CA          -0.031            -0.023             0.786*            0.072
+ AN4SA           0.002             0.023             0.014             0.793*
+ AP5CA           0.527*            0.172*           -0.159*            0.187*
+ AP5SA           0.104             0.516*            0.084            -0.184
+ AN5CA          -0.086             0.021             0.602*            0.035
+ AN5SA           0.014            -0.153             0.029             0.737*
+
+           GEOMIN SIMPLICITY   0.70430
+
+
+           TARGET FACTOR CORRELATIONS (* significant at 5% level)
+               APCA              APSA              ANCA              ANSA
+              __________        __________        __________        __________
+ APCA            1.000
+ APSA           -0.450*            1.000
+ ANCA           -0.245*            0.389*            1.000
+ ANSA            0.322*           -0.428*            0.004             1.000
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED)
+
+
+           Model Estimated Means
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+                4.273         2.344         2.192         2.604         3.802
+
+
+           Model Estimated Means
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+                2.893         1.773         3.110         3.942         2.367
+
+
+           Model Estimated Means
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+                2.032         2.769         3.916         2.386         2.000
+
+
+           Model Estimated Means
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+                2.584         3.578         2.880         1.877         2.734
+
+
+           Residuals for Means
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Model Estimated Covariances
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+ AP1CA          0.978
+ AP1SA         -0.496         1.239
+ AN1CA         -0.144         0.275         1.415
+ AN1SA          0.047        -0.197        -0.057         1.622
+ AP2CA          0.177        -0.083         0.019         0.063         1.230
+ AP2SA         -0.146         0.347         0.152        -0.132         0.002
+ AN2CA         -0.132         0.239         0.355         0.051         0.005
+ AN2SA          0.201        -0.405        -0.004         0.414         0.146
+ AP3CA          0.423        -0.318        -0.079         0.067         0.278
+ AP3SA         -0.269         0.537         0.214        -0.114        -0.084
+ AN3CA         -0.186         0.398         0.638         0.033         0.033
+ AN3SA          0.172        -0.401         0.001         0.595         0.159
+ AP4CA          0.424        -0.310        -0.132         0.098         0.280
+ AP4SA         -0.237         0.531         0.174        -0.143        -0.070
+ AN4CA         -0.181         0.303         0.600         0.089         0.019
+ AN4SA          0.139        -0.375         0.002         0.570         0.133
+ AP5CA          0.307        -0.243        -0.164         0.139         0.203
+ AP5SA         -0.152         0.447         0.189        -0.204        -0.029
+ AN5CA         -0.173         0.269         0.440         0.037        -0.014
+ AN5SA          0.207        -0.522        -0.040         0.614         0.156
+
+
+           Model Estimated Covariances
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+ AP2SA          1.414
+ AN2CA          0.150         1.150
+ AN2SA         -0.287        -0.196         1.812
+ AP3CA         -0.200        -0.114         0.313         0.925
+ AP3SA          0.402         0.246        -0.392        -0.362         1.057
+ AN3CA          0.242         0.457        -0.036        -0.119         0.364
+ AN3SA         -0.266         0.043         0.732         0.253        -0.289
+ AP4CA         -0.180        -0.130         0.313         0.623        -0.335
+ AP4SA          0.403         0.216        -0.416        -0.351         0.671
+ AN4CA          0.168         0.423         0.051        -0.117         0.260
+ AN4SA         -0.252         0.044         0.690         0.202        -0.266
+ AP5CA         -0.129        -0.115         0.267         0.425        -0.205
+ AP5SA          0.332         0.180        -0.390        -0.201         0.506
+ AN5CA          0.156         0.316        -0.022        -0.150         0.245
+ AN5SA         -0.363        -0.011         0.811         0.305        -0.450
+
+
+           Model Estimated Covariances
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+ AN3CA          1.226
+ AN3SA         -0.025         1.651
+ AP4CA         -0.165         0.295         1.006
+ AP4SA          0.318        -0.326        -0.347         1.016
+ AN4CA          0.743         0.099        -0.167         0.207         1.136
+ AN4SA          0.005         0.950         0.243        -0.305         0.058
+ AP5CA         -0.185         0.314         0.454        -0.175        -0.182
+ AP5SA          0.303        -0.386        -0.179         0.516         0.198
+ AN5CA          0.550         0.013        -0.184         0.206         0.518
+ AN5SA         -0.074         1.048         0.330        -0.490         0.049
+
+
+           Model Estimated Covariances
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+ AN4SA          1.470
+ AP5CA          0.273         1.075
+ AP5SA         -0.369        -0.174         1.203
+ AN5CA          0.018        -0.176         0.185         0.952
+ AN5SA          0.996         0.326        -0.511         0.035         1.702
+
+
+           Model Estimated Correlations
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+ AP1CA          1.000
+ AP1SA         -0.451         1.000
+ AN1CA         -0.123         0.207         1.000
+ AN1SA          0.037        -0.139        -0.038         1.000
+ AP2CA          0.162        -0.067         0.014         0.045         1.000
+ AP2SA         -0.124         0.262         0.108        -0.087         0.001
+ AN2CA         -0.125         0.200         0.278         0.037         0.004
+ AN2SA          0.151        -0.271        -0.002         0.242         0.098
+ AP3CA          0.445        -0.297        -0.069         0.055         0.260
+ AP3SA         -0.265         0.470         0.175        -0.087        -0.074
+ AN3CA         -0.170         0.323         0.485         0.024         0.027
+ AN3SA          0.135        -0.280         0.001         0.364         0.111
+ AP4CA          0.427        -0.278        -0.111         0.077         0.251
+ AP4SA         -0.238         0.473         0.145        -0.111        -0.062
+ AN4CA         -0.171         0.255         0.474         0.066         0.016
+ AN4SA          0.116        -0.278         0.001         0.369         0.099
+ AP5CA          0.300        -0.211        -0.133         0.105         0.176
+ AP5SA         -0.140         0.367         0.145        -0.146        -0.024
+ AN5CA         -0.179         0.248         0.379         0.030        -0.013
+ AN5SA          0.161        -0.359        -0.026         0.370         0.108
+
+
+           Model Estimated Correlations
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+ AP2SA          1.000
+ AN2CA          0.118         1.000
+ AN2SA         -0.179        -0.136         1.000
+ AP3CA         -0.174        -0.111         0.241         1.000
+ AP3SA          0.329         0.223        -0.283        -0.366         1.000
+ AN3CA          0.184         0.385        -0.024        -0.112         0.320
+ AN3SA         -0.174         0.031         0.423         0.205        -0.218
+ AP4CA         -0.151        -0.120         0.232         0.646        -0.325
+ AP4SA          0.337         0.200        -0.307        -0.362         0.647
+ AN4CA          0.133         0.370         0.035        -0.114         0.237
+ AN4SA         -0.175         0.034         0.423         0.174        -0.213
+ AP5CA         -0.105        -0.104         0.191         0.426        -0.192
+ AP5SA          0.255         0.153        -0.264        -0.191         0.449
+ AN5CA          0.135         0.302        -0.016        -0.160         0.244
+ AN5SA         -0.234        -0.008         0.462         0.243        -0.336
+
+
+           Model Estimated Correlations
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+ AN3CA          1.000
+ AN3SA         -0.018         1.000
+ AP4CA         -0.149         0.229         1.000
+ AP4SA          0.285        -0.252        -0.343         1.000
+ AN4CA          0.629         0.072        -0.157         0.192         1.000
+ AN4SA          0.004         0.609         0.200        -0.249         0.045
+ AP5CA         -0.161         0.236         0.437        -0.167        -0.165
+ AP5SA          0.249        -0.274        -0.163         0.467         0.170
+ AN5CA          0.509         0.010        -0.188         0.209         0.498
+ AN5SA         -0.052         0.625         0.252        -0.373         0.035
+
+
+           Model Estimated Correlations
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+ AN4SA          1.000
+ AP5CA          0.218         1.000
+ AP5SA         -0.278        -0.153         1.000
+ AN5CA          0.015        -0.174         0.173         1.000
+ AN5SA          0.630         0.241        -0.357         0.028         1.000
+
+
+           Model Estimated Partial Correlations
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+ AP1CA          1.000
+ AP1SA         -0.350         1.000
+ AN1CA         -0.004         0.029         1.000
+ AN1SA         -0.013        -0.017        -0.073         1.000
+ AP2CA          0.040         0.014         0.008         0.003         1.000
+ AP2SA          0.009         0.042         0.007        -0.005         0.042
+ AN2CA         -0.004         0.022         0.066         0.022         0.008
+ AN2SA         -0.002        -0.032         0.024         0.048         0.012
+ AP3CA          0.188         0.010         0.028        -0.031         0.114
+ AP3SA         -0.003         0.127        -0.005         0.023        -0.005
+ AN3CA          0.007         0.082         0.207         0.023         0.026
+ AN3SA         -0.009        -0.044         0.009         0.116         0.020
+ AP4CA          0.160         0.048        -0.014        -0.005         0.095
+ AP4SA          0.054         0.152        -0.020         0.012         0.026
+ AN4CA         -0.018         0.046         0.197         0.035         0.013
+ AN4SA         -0.022        -0.051         0.012         0.124         0.015
+ AP5CA          0.073         0.017        -0.031         0.014         0.045
+ AP5SA          0.034         0.077         0.011        -0.015         0.015
+ AN5CA         -0.014         0.042         0.110        -0.001         0.000
+ AN5SA         -0.023        -0.090        -0.013         0.120         0.012
+
+
+           Model Estimated Partial Correlations
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+ AP2SA          1.000
+ AN2CA          0.010         1.000
+ AN2SA         -0.020        -0.161         1.000
+ AP3CA         -0.030        -0.002         0.044         1.000
+ AP3SA          0.096         0.035        -0.048        -0.102         1.000
+ AN3CA          0.032         0.135         0.046         0.053         0.067
+ AN3SA         -0.017         0.047         0.119         0.000         0.025
+ AP4CA          0.011        -0.003         0.024         0.438        -0.024
+ AP4SA          0.105         0.027        -0.054        -0.088         0.400
+ AN4CA          0.013         0.128         0.062         0.014         0.018
+ AN4SA         -0.020         0.051         0.125        -0.030         0.025
+ AP5CA          0.007        -0.008         0.019         0.181         0.019
+ AP5SA          0.047         0.015        -0.036         0.003         0.151
+ AN5CA          0.017         0.066         0.008        -0.022         0.033
+ AN5SA         -0.044         0.028         0.134         0.008        -0.064
+
+
+           Model Estimated Partial Correlations
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+ AN3CA          1.000
+ AN3SA         -0.034         1.000
+ AP4CA          0.010         0.042         1.000
+ AP4SA          0.054         0.016        -0.104         1.000
+ AN4CA          0.377         0.071        -0.038        -0.017         1.000
+ AN4SA          0.048         0.295         0.018         0.006        -0.027
+ AP5CA         -0.033         0.059         0.181         0.081        -0.053
+ AP5SA          0.054        -0.039         0.059         0.182         0.016
+ AN5CA          0.209        -0.014        -0.043         0.012         0.195
+ AN5SA         -0.016         0.294         0.020        -0.084         0.031
+
+
+           Model Estimated Partial Correlations
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+ AN4SA          1.000
+ AP5CA          0.049         1.000
+ AP5SA         -0.047        -0.028         1.000
+ AN5CA         -0.011        -0.046         0.025         1.000
+ AN5SA          0.311         0.050        -0.087         0.105         1.000
+
+
+           Residuals for Covariances
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+ AP1CA          0.000
+ AP1SA          0.000         0.000
+ AN1CA         -0.087         0.078         0.000
+ AN1SA         -0.059        -0.004         0.000         0.000
+ AP2CA          0.075        -0.060         0.133        -0.103         0.000
+ AP2SA         -0.075         0.060        -0.122         0.154         0.000
+ AN2CA         -0.053         0.002         0.027        -0.024         0.083
+ AN2SA          0.035         0.026        -0.060         0.084        -0.072
+ AP3CA          0.028         0.043         0.006         0.059        -0.017
+ AP3SA          0.062         0.028         0.047        -0.063         0.033
+ AN3CA          0.025        -0.058         0.037        -0.004        -0.017
+ AN3SA          0.018         0.000         0.014        -0.028         0.065
+ AP4CA         -0.047        -0.025         0.002        -0.050        -0.024
+ AP4SA         -0.005        -0.030        -0.037         0.033         0.013
+ AN4CA          0.025        -0.017        -0.019        -0.015        -0.016
+ AN4SA         -0.103         0.086         0.003         0.100        -0.040
+ AP5CA          0.022        -0.037         0.021        -0.056         0.110
+ AP5SA         -0.043         0.065        -0.055         0.131        -0.170
+ AN5CA          0.012         0.027        -0.066        -0.028        -0.008
+ AN5SA          0.080        -0.056        -0.023        -0.044        -0.024
+
+
+           Residuals for Covariances
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+ AP2SA          0.000
+ AN2CA         -0.067         0.000
+ AN2SA          0.087         0.000         0.000
+ AP3CA         -0.002         0.000         0.028         0.000
+ AP3SA          0.021         0.029         0.004         0.000         0.000
+ AN3CA         -0.031        -0.005         0.013        -0.019        -0.009
+ AN3SA          0.053         0.012         0.011        -0.016         0.022
+ AP4CA          0.070         0.003        -0.028         0.008        -0.014
+ AP4SA         -0.083         0.005        -0.013        -0.010         0.009
+ AN4CA          0.026        -0.072         0.047         0.006        -0.016
+ AN4SA         -0.001         0.015        -0.092         0.014        -0.020
+ AP5CA         -0.105         0.071        -0.061        -0.047        -0.059
+ AP5SA          0.162        -0.123         0.065         0.012        -0.030
+ AN5CA          0.048         0.146        -0.091        -0.010        -0.018
+ AN5SA         -0.068        -0.033         0.079        -0.006         0.032
+
+
+           Residuals for Covariances
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+ AN3CA          0.000
+ AN3SA          0.000         0.000
+ AP4CA          0.012         0.020         0.000
+ AP4SA          0.023        -0.027         0.000         0.000
+ AN4CA          0.017        -0.031        -0.021         0.017         0.000
+ AN4SA         -0.011         0.016         0.014        -0.009         0.000
+ AP5CA          0.017        -0.009         0.020         0.045        -0.012
+ AP5SA         -0.013        -0.045         0.023         0.004         0.045
+ AN5CA         -0.026         0.037         0.018        -0.022         0.015
+ AN5SA         -0.014        -0.012        -0.005        -0.001         0.039
+
+
+           Residuals for Covariances
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+ AN4SA          0.000
+ AP5CA          0.028         0.000
+ AP5SA          0.001         0.000         0.000
+ AN5CA         -0.001        -0.022         0.021         0.000
+ AN5SA         -0.009        -0.013         0.015         0.000         0.000
+
+
+           Residuals for Correlations
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+ AP1CA          0.000
+ AP1SA          0.000         0.000
+ AN1CA         -0.074         0.059         0.000
+ AN1SA         -0.047        -0.003         0.000         0.000
+ AP2CA          0.068        -0.049         0.100        -0.073         0.000
+ AP2SA         -0.063         0.045        -0.086         0.102         0.000
+ AN2CA         -0.050         0.002         0.021        -0.018         0.070
+ AN2SA          0.026         0.018        -0.037         0.049        -0.048
+ AP3CA          0.029         0.040         0.005         0.048        -0.016
+ AP3SA          0.061         0.024         0.038        -0.048         0.029
+ AN3CA          0.023        -0.047         0.028        -0.003        -0.013
+ AN3SA          0.014         0.000         0.009        -0.017         0.046
+ AP4CA         -0.047        -0.022         0.002        -0.039        -0.021
+ AP4SA         -0.005        -0.027        -0.031         0.025         0.012
+ AN4CA          0.023        -0.014        -0.015        -0.011        -0.014
+ AN4SA         -0.086         0.064         0.002         0.064        -0.030
+ AP5CA          0.021        -0.032         0.017        -0.042         0.095
+ AP5SA         -0.039         0.053        -0.042         0.093        -0.140
+ AN5CA          0.012         0.025        -0.057        -0.022        -0.007
+ AN5SA          0.062        -0.038        -0.015        -0.027        -0.016
+
+
+           Residuals for Correlations
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+ AP2SA          0.000
+ AN2CA         -0.053         0.000
+ AN2SA          0.055         0.000         0.000
+ AP3CA         -0.001         0.000         0.022         0.000
+ AP3SA          0.017         0.026         0.003         0.000         0.000
+ AN3CA         -0.024        -0.004         0.009        -0.018        -0.008
+ AN3SA          0.035         0.009         0.006        -0.013         0.017
+ AP4CA          0.059         0.003        -0.021         0.008        -0.013
+ AP4SA         -0.069         0.005        -0.009        -0.010         0.009
+ AN4CA          0.021        -0.063         0.032         0.006        -0.015
+ AN4SA          0.000         0.011        -0.056         0.012        -0.016
+ AP5CA         -0.085         0.064        -0.044        -0.047        -0.055
+ AP5SA          0.124        -0.105         0.044         0.012        -0.027
+ AN5CA          0.041         0.139        -0.070        -0.010        -0.018
+ AN5SA         -0.044        -0.024         0.045        -0.005         0.024
+
+
+           Residuals for Correlations
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+ AN3CA          0.000
+ AN3SA          0.000         0.000
+ AP4CA          0.011         0.015         0.000
+ AP4SA          0.021        -0.020         0.000         0.000
+ AN4CA          0.014        -0.023        -0.020         0.016         0.000
+ AN4SA         -0.008         0.010         0.012        -0.007         0.000
+ AP5CA          0.015        -0.007         0.019         0.043        -0.011
+ AP5SA         -0.011        -0.032         0.021         0.004         0.039
+ AN5CA         -0.024         0.029         0.018        -0.022         0.014
+ AN5SA         -0.010        -0.007        -0.004        -0.001         0.028
+
+
+           Residuals for Correlations
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+ AN4SA          0.000
+ AP5CA          0.023         0.000
+ AP5SA          0.001         0.000         0.000
+ AN5CA         -0.001        -0.022         0.020         0.000
+ AN5SA         -0.006        -0.010         0.010         0.000         0.000
+
+
+           Residuals for Partial Correlations
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+ AP1CA          0.000
+ AP1SA          0.013         0.000
+ AN1CA         -0.127         0.073         0.000
+ AN1SA         -0.045        -0.064         0.041         0.000
+ AP2CA          0.072        -0.042         0.150        -0.057         0.000
+ AP2SA         -0.079         0.022        -0.143         0.125         0.081
+ AN2CA         -0.097        -0.031        -0.003         0.017         0.051
+ AN2SA          0.019         0.059        -0.052         0.060        -0.041
+ AP3CA          0.131         0.145         0.020         0.139        -0.021
+ AP3SA          0.174         0.100         0.103        -0.107         0.024
+ AN3CA          0.044        -0.103         0.083         0.001        -0.053
+ AN3SA          0.039         0.001         0.023        -0.027         0.064
+ AP4CA         -0.154        -0.131         0.001        -0.116        -0.058
+ AP4SA         -0.093        -0.084        -0.117         0.069         0.040
+ AN4CA          0.018        -0.023        -0.019        -0.048        -0.007
+ AN4SA         -0.132         0.110        -0.024         0.127        -0.044
+ AP5CA          0.052        -0.001         0.014        -0.045         0.119
+ AP5SA         -0.016         0.065        -0.012         0.105        -0.168
+ AN5CA          0.057         0.077        -0.106        -0.031        -0.010
+ AN5SA          0.092        -0.073        -0.006        -0.055        -0.026
+
+
+           Residuals for Partial Correlations
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+ AP2SA          0.000
+ AN2CA         -0.054         0.000
+ AN2SA          0.063         0.054         0.000
+ AP3CA         -0.042         0.038         0.048         0.000
+ AP3SA          0.076         0.085        -0.003        -0.009         0.000
+ AN3CA         -0.023        -0.002         0.032        -0.083        -0.028
+ AN3SA          0.062        -0.012         0.035        -0.064         0.045
+ AP4CA          0.115        -0.013        -0.044         0.058        -0.020
+ AP4SA         -0.165        -0.002        -0.025        -0.017         0.053
+ AN4CA          0.050        -0.126         0.032         0.044        -0.062
+ AN4SA         -0.015        -0.021        -0.148         0.054        -0.029
+ AP5CA         -0.093         0.091        -0.027        -0.140        -0.150
+ AP5SA          0.151        -0.131         0.021         0.011        -0.061
+ AN5CA          0.063         0.232        -0.116        -0.035        -0.089
+ AN5SA         -0.109        -0.059         0.119        -0.040         0.110
+
+
+           Residuals for Partial Correlations
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+ AN3CA          0.000
+ AN3SA          0.004         0.000
+ AP4CA          0.061         0.044         0.000
+ AP4SA          0.079        -0.044         0.011         0.000
+ AN4CA          0.035        -0.066        -0.069         0.061         0.000
+ AN4SA         -0.002         0.031         0.022        -0.032         0.021
+ AP5CA          0.014        -0.021         0.065         0.102        -0.004
+ AP5SA         -0.028        -0.061         0.044         0.029         0.060
+ AN5CA         -0.055         0.074         0.039        -0.041         0.042
+ AN5SA         -0.056        -0.053         0.006        -0.007         0.083
+
+
+           Residuals for Partial Correlations
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+ AN4SA          0.000
+ AP5CA          0.065         0.000
+ AP5SA         -0.021         0.058         0.000
+ AN5CA         -0.016        -0.053         0.046         0.000
+ AN5SA          0.018        -0.018         0.042         0.029         0.000
+
+
+           Standardized Residuals (z-scores) for Covariances
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+ AP1CA          0.000
+ AP1SA          0.000         0.000
+ AN1CA         -3.096         2.128         0.000
+ AN1SA         -1.708        -0.077         0.000         0.000
+ AP2CA          1.495        -1.073         3.021        -1.522         0.000
+ AP2SA         -1.871         1.331        -1.992         2.060         0.000
+ AN2CA         -1.844         0.053         0.484        -0.431         1.961
+ AN2SA          0.667         0.417        -1.263         1.530        -0.976
+ AP3CA        999.000       999.000       999.000       999.000       999.000
+ AP3SA        999.000       999.000         2.134       999.000       999.000
+ AN3CA        999.000        -2.941       999.000       999.000       999.000
+ AN3SA          0.660        -0.005         0.878        -0.817         1.740
+ AP4CA         -2.934        -1.533         0.081        -2.000        -0.925
+ AP4SA        999.000        -7.686       999.000       999.000       999.000
+ AN4CA        999.000        -0.725        -0.692       999.000        -0.598
+ AN4SA        999.000         7.546       999.000       999.000        -2.503
+ AP5CA          0.519        -0.953         0.691        -1.053         2.021
+ AP5SA         -1.030         3.341        -1.569         2.466        -2.952
+ AN5CA          0.491         0.905        -2.036        -0.849        -0.202
+ AN5SA          4.281        -2.116       999.000        -3.888        -0.629
+
+
+           Standardized Residuals (z-scores) for Covariances
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+ AP2SA          0.000
+ AN2CA         -1.302         0.000
+ AN2SA          1.225         0.000         0.000
+ AP3CA         -0.066       999.000         1.355         0.000
+ AP3SA        999.000       999.000         0.195         0.000         0.000
+ AN3CA        999.000        -0.173         1.189       999.000       999.000
+ AN3SA          1.582         0.314         0.259        -0.841         1.203
+ AP4CA          4.815         0.161        -0.882       999.000       999.000
+ AP4SA         -3.231       999.000        -0.680       999.000       999.000
+ AN4CA        999.000        -2.419         1.224       999.000        -0.956
+ AN4SA         -0.035         0.456        -2.097         0.983        -1.227
+ AP5CA         -1.955         2.186        -1.222        -3.666        -3.090
+ AP5SA          3.551        -3.321         1.284       999.000       999.000
+ AN5CA          1.483         3.376        -2.460        -0.752        -1.262
+ AN5SA         -6.240       999.000       999.000        -1.640         6.032
+
+
+           Standardized Residuals (z-scores) for Covariances
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+ AN3CA          0.000
+ AN3SA          0.000         0.000
+ AP4CA        999.000         0.733         0.000
+ AP4SA        999.000        -1.205         0.000         0.000
+ AN4CA        999.000       999.000        -0.989         1.351         0.000
+ AN4SA        999.000       999.000       999.000        -0.960         0.000
+ AP5CA        999.000        -0.298       999.000       999.000        -0.603
+ AP5SA        999.000        -4.010       999.000       999.000         2.393
+ AN5CA         -1.064         1.149         1.570       999.000       999.000
+ AN5SA         -0.789        -0.537        -0.213        -0.048         1.692
+
+
+           Standardized Residuals (z-scores) for Covariances
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+ AN4SA          0.000
+ AP5CA          2.650         0.000
+ AP5SA        999.000         0.000         0.000
+ AN5CA         -0.067        -0.764         0.873         0.000
+ AN5SA         -0.394        -0.572         0.634         0.000         0.000
+
+
+           Normalized Residuals for Covariances
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+ AP1CA          0.000
+ AP1SA          0.000         0.000
+ AN1CA         -1.251         0.925         0.000
+ AN1SA         -0.762        -0.041         0.000         0.000
+ AP2CA          1.000        -0.751         1.697        -1.097         0.000
+ AP2SA         -1.141         0.707        -1.321         1.433         0.000
+ AN2CA         -0.881         0.026         0.302        -0.288         1.269
+ AN2SA          0.439         0.277        -0.636         0.775        -0.761
+ AP3CA          0.386         0.653         0.082         0.763        -0.231
+ AP3SA          1.004         0.343         0.557        -0.721         0.446
+ AN3CA          0.362        -0.738         0.421        -0.049        -0.224
+ AN3SA          0.232        -0.002         0.150        -0.257         0.712
+ AP4CA         -0.755        -0.355         0.026        -0.589        -0.295
+ AP4SA         -0.073        -0.405        -0.492         0.374         0.176
+ AN4CA          0.388        -0.213        -0.229        -0.173        -0.215
+ AN4SA         -1.494         1.072         0.037         0.975        -0.480
+ AP5CA          0.303        -0.513         0.278        -0.655         1.356
+ AP5SA         -0.604         0.863        -0.700         1.383        -2.106
+ AN5CA          0.210         0.389        -0.867        -0.382        -0.117
+ AN5SA          1.131        -0.658        -0.253        -0.412        -0.267
+
+
+           Normalized Residuals for Covariances
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+ AP2SA          0.000
+ AN2CA         -0.921         0.000
+ AN2SA          0.841         0.000         0.000
+ AP3CA         -0.022         0.006         0.342         0.000
+ AP3SA          0.262         0.422         0.048         0.000         0.000
+ AN3CA         -0.399        -0.064         0.163        -0.292        -0.123
+ AN3SA          0.528         0.142         0.099        -0.202         0.261
+ AP4CA          0.960         0.046        -0.345         0.114        -0.199
+ AP4SA         -1.080         0.073        -0.143        -0.147         0.123
+ AN4CA          0.346        -1.069         0.566         0.095        -0.216
+ AN4SA         -0.007         0.190        -0.877         0.180        -0.257
+ AP5CA         -1.259         1.066        -0.725        -0.700        -0.842
+ AP5SA          1.835        -1.778         0.704         0.184        -0.434
+ AN5CA          0.704         1.953        -1.288        -0.180        -0.286
+ AN5SA         -0.690        -0.416         0.727        -0.078         0.382
+
+
+           Normalized Residuals for Covariances
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+ AN3CA          0.000
+ AN3SA          0.000         0.000
+ AP4CA          0.168         0.249         0.000
+ AP4SA          0.334        -0.310         0.000         0.000
+ AN4CA          0.194        -0.357        -0.298         0.243         0.000
+ AN4SA         -0.148         0.160         0.194        -0.109         0.000
+ AP5CA          0.225        -0.107         0.260         0.642        -0.168
+ AP5SA         -0.183        -0.471         0.317         0.059         0.585
+ AN5CA         -0.331         0.506         0.318        -0.369         0.203
+ AN5SA         -0.175        -0.111        -0.064        -0.012         0.474
+
+
+           Normalized Residuals for Covariances
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+ AN4SA          0.000
+ AP5CA          0.367         0.000
+ AP5SA          0.012         0.000         0.000
+ AN5CA         -0.015        -0.347         0.316         0.000
+ AN5SA         -0.088        -0.156         0.156         0.000         0.000
+
+
+MODEL MODIFICATION INDICES
+
+NOTE:  Modification indices for direct effects of observed dependent variables
+regressed on covariates may not be included.  To include these, request
+MODINDICES (ALL).
+
+Minimum M.I. value for printing the modification index    10.000
+
+                                   M.I.     E.P.C.  Std E.P.C.  StdYX E.P.C.
+
+WITH Statements
+
+AP3SA    WITH AP1CA               12.116     0.141      0.141        0.277
+AP4CA    WITH AP1CA               10.678    -0.144     -0.144       -0.282
+AP5SA    WITH AP2CA               11.713    -0.197     -0.197       -0.217
+AP5SA    WITH AP2SA               10.106     0.190      0.190        0.202
+AN5CA    WITH AN2CA               13.738     0.168      0.168        0.239
+
+
+TECHNICAL 1 OUTPUT
+
+
+     TECHNICAL 1 OUTPUT FOR THE UNROTATED SOLUTION
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+                  1             2             3             4             5
+
+
+           NU
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+                  6             7             8             9            10
+
+
+           NU
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+                 11            12            13            14            15
+
+
+           NU
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+                 16            17            18            19            20
+
+
+           LAMBDA
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+ AP1CA             21             0             0             0
+ AP1SA             22            23             0             0
+ AN1CA             24            25            26             0
+ AN1SA             27            28            29            30
+ AP2CA             31            32            33            34
+ AP2SA             35            36            37            38
+ AN2CA             39            40            41            42
+ AN2SA             43            44            45            46
+ AP3CA             47            48            49            50
+ AP3SA             51            52            53            54
+ AN3CA             55            56            57            58
+ AN3SA             59            60            61            62
+ AP4CA             63            64            65            66
+ AP4SA             67            68            69            70
+ AN4CA             71            72            73            74
+ AN4SA             75            76            77            78
+ AP5CA             79            80            81            82
+ AP5SA             83            84            85            86
+ AN5CA             87            88            89            90
+ AN5SA             91            92            93            94
+
+
+           THETA
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+ AP1CA             95
+ AP1SA             96            97
+ AN1CA              0             0            98
+ AN1SA              0             0            99           100
+ AP2CA              0             0             0             0           101
+ AP2SA              0             0             0             0           102
+ AN2CA              0             0             0             0             0
+ AN2SA              0             0             0             0             0
+ AP3CA              0             0             0             0             0
+ AP3SA              0             0             0             0             0
+ AN3CA              0             0             0             0             0
+ AN3SA              0             0             0             0             0
+ AP4CA              0             0             0             0             0
+ AP4SA              0             0             0             0             0
+ AN4CA              0             0             0             0             0
+ AN4SA              0             0             0             0             0
+ AP5CA              0             0             0             0             0
+ AP5SA              0             0             0             0             0
+ AN5CA              0             0             0             0             0
+ AN5SA              0             0             0             0             0
+
+
+           THETA
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+ AP2SA            103
+ AN2CA              0           104
+ AN2SA              0           105           106
+ AP3CA              0             0             0           107
+ AP3SA              0             0             0           108           109
+ AN3CA              0             0             0             0             0
+ AN3SA              0             0             0             0             0
+ AP4CA              0             0             0             0             0
+ AP4SA              0             0             0             0             0
+ AN4CA              0             0             0             0             0
+ AN4SA              0             0             0             0             0
+ AP5CA              0             0             0             0             0
+ AP5SA              0             0             0             0             0
+ AN5CA              0             0             0             0             0
+ AN5SA              0             0             0             0             0
+
+
+           THETA
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+ AN3CA            110
+ AN3SA            111           112
+ AP4CA              0             0           113
+ AP4SA              0             0           114           115
+ AN4CA              0             0             0             0           116
+ AN4SA              0             0             0             0           117
+ AP5CA              0             0             0             0             0
+ AP5SA              0             0             0             0             0
+ AN5CA              0             0             0             0             0
+ AN5SA              0             0             0             0             0
+
+
+           THETA
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+ AN4SA            118
+ AP5CA              0           119
+ AP5SA              0           120           121
+ AN5CA              0             0             0           122
+ AN5SA              0             0             0           123           124
+
+
+           ALPHA
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+                  0             0             0             0
+
+
+           BETA
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+ APCA               0             0             0             0
+ APSA               0             0             0             0
+ ANCA               0             0             0             0
+ ANSA               0             0             0             0
+
+
+           PSI
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+ APCA               0
+ APSA               0             0
+ ANCA               0             0             0
+ ANSA               0             0             0             0
+
+
+     STARTING VALUES
+
+
+           NU
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+                4.273         2.344         2.192         2.604         3.802
+
+
+           NU
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+                2.893         1.773         3.110         3.942         2.367
+
+
+           NU
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+                2.032         2.769         3.916         2.386         2.000
+
+
+           NU
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+                2.584         3.578         2.880         1.877         2.734
+
+
+           LAMBDA
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+ AP1CA          0.556         0.000         0.000         0.000
+ AP1SA         -0.506         0.503         0.000         0.000
+ AN1CA         -0.261         0.284         0.612         0.000
+ AN1SA          0.079        -0.288         0.166         0.510
+ AP2CA          0.330         0.141         0.111         0.103
+ AP2SA         -0.278         0.415        -0.064         0.056
+ AN2CA         -0.247         0.240         0.358         0.141
+ AN2SA          0.381        -0.434         0.334         0.381
+ AP3CA          0.759         0.082         0.154        -0.005
+ AP3SA         -0.510         0.571        -0.125         0.242
+ AN3CA         -0.343         0.438         0.697         0.098
+ AN3SA          0.329        -0.464         0.332         0.756
+ AP4CA          0.786         0.099         0.085         0.073
+ AP4SA         -0.485         0.592        -0.191         0.220
+ AN4CA         -0.333         0.269         0.719         0.105
+ AN4SA          0.258        -0.467         0.300         0.729
+ AP5CA          0.559         0.040        -0.045         0.217
+ AP5SA         -0.313         0.577        -0.086         0.017
+ AN5CA         -0.320         0.207         0.487         0.090
+ AN5SA          0.396        -0.632         0.404         0.654
+
+
+           THETA
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+ AP1CA          0.669
+ AP1SA          0.000         0.730
+ AN1CA          0.000         0.000         0.891
+ AN1SA          0.000         0.000         0.000         1.246
+ AP2CA          0.000         0.000         0.000         0.000         1.078
+ AP2SA          0.000         0.000         0.000         0.000         0.000
+ AN2CA          0.000         0.000         0.000         0.000         0.000
+ AN2SA          0.000         0.000         0.000         0.000         0.000
+ AP3CA          0.000         0.000         0.000         0.000         0.000
+ AP3SA          0.000         0.000         0.000         0.000         0.000
+ AN3CA          0.000         0.000         0.000         0.000         0.000
+ AN3SA          0.000         0.000         0.000         0.000         0.000
+ AP4CA          0.000         0.000         0.000         0.000         0.000
+ AP4SA          0.000         0.000         0.000         0.000         0.000
+ AN4CA          0.000         0.000         0.000         0.000         0.000
+ AN4SA          0.000         0.000         0.000         0.000         0.000
+ AP5CA          0.000         0.000         0.000         0.000         0.000
+ AP5SA          0.000         0.000         0.000         0.000         0.000
+ AN5CA          0.000         0.000         0.000         0.000         0.000
+ AN5SA          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+ AP2SA          1.157
+ AN2CA          0.000         0.883
+ AN2SA          0.000         0.000         1.222
+ AP3CA          0.000         0.000         0.000         0.318
+ AP3SA          0.000         0.000         0.000         0.000         0.397
+ AN3CA          0.000         0.000         0.000         0.000         0.000
+ AN3SA          0.000         0.000         0.000         0.000         0.000
+ AP4CA          0.000         0.000         0.000         0.000         0.000
+ AP4SA          0.000         0.000         0.000         0.000         0.000
+ AN4CA          0.000         0.000         0.000         0.000         0.000
+ AN4SA          0.000         0.000         0.000         0.000         0.000
+ AP5CA          0.000         0.000         0.000         0.000         0.000
+ AP5SA          0.000         0.000         0.000         0.000         0.000
+ AN5CA          0.000         0.000         0.000         0.000         0.000
+ AN5SA          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+ AN3CA          0.421
+ AN3SA          0.000         0.645
+ AP4CA          0.000         0.000         0.366
+ AP4SA          0.000         0.000         0.000         0.345
+ AN4CA          0.000         0.000         0.000         0.000         0.425
+ AN4SA          0.000         0.000         0.000         0.000         0.000
+ AP5CA          0.000         0.000         0.000         0.000         0.000
+ AP5SA          0.000         0.000         0.000         0.000         0.000
+ AN5CA          0.000         0.000         0.000         0.000         0.000
+ AN5SA          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+ AN4SA          0.564
+ AP5CA          0.000         0.712
+ AP5SA          0.000         0.000         0.765
+ AN5CA          0.000         0.000         0.000         0.562
+ AN5SA          0.000         0.000         0.000         0.000         0.555
+
+
+           ALPHA
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           BETA
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+ APCA           0.000         0.000         0.000         0.000
+ APSA           0.000         0.000         0.000         0.000
+ ANCA           0.000         0.000         0.000         0.000
+ ANSA           0.000         0.000         0.000         0.000
+
+
+           PSI
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+ APCA           1.000
+ APSA           0.000         1.000
+ ANCA           0.000         0.000         1.000
+ ANSA           0.000         0.000         0.000         1.000
+
+
+     TECHNICAL 1 OUTPUT FOR THE ROTATED SOLUTION
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+                  1             2             3             4             5
+
+
+           NU
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+                  6             7             8             9            10
+
+
+           NU
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+                 11            12            13            14            15
+
+
+           NU
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+                 16            17            18            19            20
+
+
+           LAMBDA
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+ AP1CA             21            22            23            24
+ AP1SA             25            26            27            28
+ AN1CA             29            30            31            32
+ AN1SA             33            34            35            36
+ AP2CA             37            38            39            40
+ AP2SA             41            42            43            44
+ AN2CA             45            46            47            48
+ AN2SA             49            50            51            52
+ AP3CA             53            54            55            56
+ AP3SA             57            58            59            60
+ AN3CA             61            62            63            64
+ AN3SA             65            66            67            68
+ AP4CA             69            70            71            72
+ AP4SA             73            74            75            76
+ AN4CA             77            78            79            80
+ AN4SA             81            82            83            84
+ AP5CA             85            86            87            88
+ AP5SA             89            90            91            92
+ AN5CA             93            94            95            96
+ AN5SA             97            98            99           100
+
+
+           THETA
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+ AP1CA            101
+ AP1SA            102           103
+ AN1CA              0             0           104
+ AN1SA              0             0           105           106
+ AP2CA              0             0             0             0           107
+ AP2SA              0             0             0             0           108
+ AN2CA              0             0             0             0             0
+ AN2SA              0             0             0             0             0
+ AP3CA              0             0             0             0             0
+ AP3SA              0             0             0             0             0
+ AN3CA              0             0             0             0             0
+ AN3SA              0             0             0             0             0
+ AP4CA              0             0             0             0             0
+ AP4SA              0             0             0             0             0
+ AN4CA              0             0             0             0             0
+ AN4SA              0             0             0             0             0
+ AP5CA              0             0             0             0             0
+ AP5SA              0             0             0             0             0
+ AN5CA              0             0             0             0             0
+ AN5SA              0             0             0             0             0
+
+
+           THETA
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+ AP2SA            109
+ AN2CA              0           110
+ AN2SA              0           111           112
+ AP3CA              0             0             0           113
+ AP3SA              0             0             0           114           115
+ AN3CA              0             0             0             0             0
+ AN3SA              0             0             0             0             0
+ AP4CA              0             0             0             0             0
+ AP4SA              0             0             0             0             0
+ AN4CA              0             0             0             0             0
+ AN4SA              0             0             0             0             0
+ AP5CA              0             0             0             0             0
+ AP5SA              0             0             0             0             0
+ AN5CA              0             0             0             0             0
+ AN5SA              0             0             0             0             0
+
+
+           THETA
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+ AN3CA            116
+ AN3SA            117           118
+ AP4CA              0             0           119
+ AP4SA              0             0           120           121
+ AN4CA              0             0             0             0           122
+ AN4SA              0             0             0             0           123
+ AP5CA              0             0             0             0             0
+ AP5SA              0             0             0             0             0
+ AN5CA              0             0             0             0             0
+ AN5SA              0             0             0             0             0
+
+
+           THETA
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+ AN4SA            124
+ AP5CA              0           125
+ AP5SA              0           126           127
+ AN5CA              0             0             0           128
+ AN5SA              0             0             0           129           130
+
+
+           ALPHA
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+                  0             0             0             0
+
+
+           BETA
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+ APCA               0             0             0             0
+ APSA               0             0             0             0
+ ANCA               0             0             0             0
+ ANSA               0             0             0             0
+
+
+           PSI
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+ APCA               0
+ APSA             131             0
+ ANCA             132           133             0
+ ANSA             134           135           136             0
+
+
+     STARTING VALUES
+
+
+           NU
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+                4.273         2.344         2.192         2.604         3.802
+
+
+           NU
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+                2.893         1.773         3.110         3.942         2.367
+
+
+           NU
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+                2.032         2.769         3.916         2.386         2.000
+
+
+           NU
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+                2.584         3.578         2.880         1.877         2.734
+
+
+           LAMBDA
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+ AP1CA          0.000         0.000         0.000         0.000
+ AP1SA          0.000         0.000         0.000         0.000
+ AN1CA          0.000         0.000         0.000         0.000
+ AN1SA          0.000         0.000         0.000         0.000
+ AP2CA          0.000         0.000         0.000         0.000
+ AP2SA          0.000         0.000         0.000         0.000
+ AN2CA          0.000         0.000         0.000         0.000
+ AN2SA          0.000         0.000         0.000         0.000
+ AP3CA          0.000         0.000         0.000         0.000
+ AP3SA          0.000         0.000         0.000         0.000
+ AN3CA          0.000         0.000         0.000         0.000
+ AN3SA          0.000         0.000         0.000         0.000
+ AP4CA          0.000         0.000         0.000         0.000
+ AP4SA          0.000         0.000         0.000         0.000
+ AN4CA          0.000         0.000         0.000         0.000
+ AN4SA          0.000         0.000         0.000         0.000
+ AP5CA          0.000         0.000         0.000         0.000
+ AP5SA          0.000         0.000         0.000         0.000
+ AN5CA          0.000         0.000         0.000         0.000
+ AN5SA          0.000         0.000         0.000         0.000
+
+
+           THETA
+              AP1CA         AP1SA         AN1CA         AN1SA         AP2CA
+              ________      ________      ________      ________      ________
+ AP1CA          0.489
+ AP1SA          0.000         0.619
+ AN1CA          0.000         0.000         0.707
+ AN1SA          0.000         0.000         0.000         0.811
+ AP2CA          0.000         0.000         0.000         0.000         0.615
+ AP2SA          0.000         0.000         0.000         0.000         0.000
+ AN2CA          0.000         0.000         0.000         0.000         0.000
+ AN2SA          0.000         0.000         0.000         0.000         0.000
+ AP3CA          0.000         0.000         0.000         0.000         0.000
+ AP3SA          0.000         0.000         0.000         0.000         0.000
+ AN3CA          0.000         0.000         0.000         0.000         0.000
+ AN3SA          0.000         0.000         0.000         0.000         0.000
+ AP4CA          0.000         0.000         0.000         0.000         0.000
+ AP4SA          0.000         0.000         0.000         0.000         0.000
+ AN4CA          0.000         0.000         0.000         0.000         0.000
+ AN4SA          0.000         0.000         0.000         0.000         0.000
+ AP5CA          0.000         0.000         0.000         0.000         0.000
+ AP5SA          0.000         0.000         0.000         0.000         0.000
+ AN5CA          0.000         0.000         0.000         0.000         0.000
+ AN5SA          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              AP2SA         AN2CA         AN2SA         AP3CA         AP3SA
+              ________      ________      ________      ________      ________
+ AP2SA          0.707
+ AN2CA          0.000         0.575
+ AN2SA          0.000         0.000         0.906
+ AP3CA          0.000         0.000         0.000         0.463
+ AP3SA          0.000         0.000         0.000         0.000         0.528
+ AN3CA          0.000         0.000         0.000         0.000         0.000
+ AN3SA          0.000         0.000         0.000         0.000         0.000
+ AP4CA          0.000         0.000         0.000         0.000         0.000
+ AP4SA          0.000         0.000         0.000         0.000         0.000
+ AN4CA          0.000         0.000         0.000         0.000         0.000
+ AN4SA          0.000         0.000         0.000         0.000         0.000
+ AP5CA          0.000         0.000         0.000         0.000         0.000
+ AP5SA          0.000         0.000         0.000         0.000         0.000
+ AN5CA          0.000         0.000         0.000         0.000         0.000
+ AN5SA          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              AN3CA         AN3SA         AP4CA         AP4SA         AN4CA
+              ________      ________      ________      ________      ________
+ AN3CA          0.613
+ AN3SA          0.000         0.826
+ AP4CA          0.000         0.000         0.503
+ AP4SA          0.000         0.000         0.000         0.508
+ AN4CA          0.000         0.000         0.000         0.000         0.568
+ AN4SA          0.000         0.000         0.000         0.000         0.000
+ AP5CA          0.000         0.000         0.000         0.000         0.000
+ AP5SA          0.000         0.000         0.000         0.000         0.000
+ AN5CA          0.000         0.000         0.000         0.000         0.000
+ AN5SA          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              AN4SA         AP5CA         AP5SA         AN5CA         AN5SA
+              ________      ________      ________      ________      ________
+ AN4SA          0.735
+ AP5CA          0.000         0.538
+ AP5SA          0.000         0.000         0.602
+ AN5CA          0.000         0.000         0.000         0.476
+ AN5SA          0.000         0.000         0.000         0.000         0.851
+
+
+           ALPHA
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           BETA
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+ APCA           0.000         0.000         0.000         0.000
+ APSA           0.000         0.000         0.000         0.000
+ ANCA           0.000         0.000         0.000         0.000
+ ANSA           0.000         0.000         0.000         0.000
+
+
+           PSI
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+ APCA           1.000
+ APSA           0.000         1.000
+ ANCA           0.000         0.000         1.000
+ ANSA           0.000         0.000         0.000         1.000
+
+
+TECHNICAL 4 OUTPUT
+
+
+     ESTIMATES DERIVED FROM THE MODEL
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+                1.000         1.000         1.000         1.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+ APCA           1.000
+ APSA          -0.450         1.000
+ ANCA          -0.245         0.389         1.000
+ ANSA           0.322        -0.428         0.004         1.000
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+ APCA           0.000
+ APSA           0.076         0.000
+ ANCA           0.072         0.068         0.000
+ ANSA           0.067         0.069         0.065         0.000
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+ APCA     ***********
+ APSA          -5.889   ***********
+ ANCA          -3.391         5.751   ***********
+ ANSA           4.827        -6.219         0.067   ***********
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+ APCA           0.000
+ APSA           0.000         0.000
+ ANCA           0.001         0.000         0.000
+ ANSA           0.000         0.000         0.946         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+ APCA           1.000
+ APSA          -0.450         1.000
+ ANCA          -0.245         0.389         1.000
+ ANSA           0.322        -0.428         0.004         1.000
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+ APCA           0.000
+ APSA           0.076         0.000
+ ANCA           0.072         0.068         0.000
+ ANSA           0.067         0.069         0.065         0.000
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+ APCA         999.000
+ APSA          -5.889       999.000
+ ANCA          -3.391         5.751       999.000
+ ANSA           4.827        -6.219         0.067       999.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+ APCA           0.000
+ APSA           0.000         0.000
+ ANCA           0.001         0.000         0.000
+ ANSA           0.000         0.000         0.946         0.000
+
+
+           ESTIMATED PARTIAL CORRELATION MATRIX FOR THE LATENT VARIABLES
+              APCA          APSA          ANCA          ANSA
+              ________      ________      ________      ________
+ APCA           1.000
+ APSA          -0.290         1.000
+ ANCA          -0.122         0.375         1.000
+ ANSA           0.183        -0.386         0.223         1.000
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    c:\users\mm\onedrive - upv\dat_dropbox\investigaciÓn\cit_2025\travelwell\mplus_validation_rerun_package\mplus_valida
+
+     Beginning Time:  08:18:34
+        Ending Time:  08:18:34
+       Elapsed Time:  00:00:00
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2026 Muthen & Muthen

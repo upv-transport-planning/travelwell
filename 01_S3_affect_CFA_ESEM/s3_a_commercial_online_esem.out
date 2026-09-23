@@ -1,0 +1,2743 @@
+Mplus VERSION 9.1
+MUTHEN & MUTHEN
+08/17/2026   8:16 AM
+
+INPUT INSTRUCTIONS
+
+  TITLE: PANAS Comercios - CFA Online;
+
+  DATA:
+  FILE = ../data/datos_com_terr_legacy_order.txt;
+
+  VARIABLE:
+  NAMES =
+  id MODO online
+  ap1cc ap1sc an1cc an1sc
+  ap2cc ap2sc an2cc an2sc
+  ap3cc ap3sc an3cc an3sc
+  ap4cc ap4sc an4cc an4sc
+  ap5cc ap5sc an5cc an5sc
+  S1cc S1sc S2cc S2sc S3cc
+  S3sc S4cc S4sc S5cc S5sc
+  ap1ct ap1st an1ct an1st
+  ap2ct ap2st an2ct an2st
+  ap3ct ap3st an3ct an3st
+  ap4ct ap4st an4ct an4st
+  ap5ct ap5st an5ct an5st
+  S1ct S1st S2ct S2st S3ct
+  S3st S4ct S4st S5ct S5st
+  V1 V2 V3 V4 V5 V6 V7 V8 V9
+  V10 V11 V12 V13 V14 V15 V16
+  V17 V18 V19;
+
+  USEVARIABLES =
+  ap1cc ap2cc ap3cc ap4cc ap5cc
+  ap1sc ap2sc ap3sc ap4sc ap5sc
+  an1cc an2cc an3cc an4cc an5cc
+  an1sc an2sc an3sc an4sc an5sc;
+
+  USEOBSERVATIONS = online EQ 1;
+
+  MISSING = ALL (-999);
+
+  ANALYSIS:
+  ESTIMATOR = MLR;
+  ROTATION = TARGET;
+
+  MODEL:
+
+  APcc BY ap1cc ap2cc ap3cc ap4cc ap5cc
+  ap1sc~0 ap2sc~0 ap3sc~0 ap4sc~0 ap5sc~0
+  an1cc~0 an2cc~0 an3cc~0 an4cc~0 an5cc~0
+  an1sc~0 an2sc~0 an3sc~0 an4sc~0 an5sc~0 (*1);
+
+  APsc BY ap1sc ap2sc ap3sc ap4sc ap5sc
+  ap1cc~0 ap2cc~0 ap3cc~0 ap4cc~0 ap5cc~0
+  an1cc~0 an2cc~0 an3cc~0 an4cc~0 an5cc~0
+  an1sc~0 an2sc~0 an3sc~0 an4sc~0 an5sc~0 (*1);
+
+  ANcc BY an1cc an2cc an3cc an4cc an5cc
+  ap1cc~0 ap2cc~0 ap3cc~0 ap4cc~0 ap5cc~0
+  ap1sc~0 ap2sc~0 ap3sc~0 ap4sc~0 ap5sc~0
+  an1sc~0 an2sc~0 an3sc~0 an4sc~0 an5sc~0 (*1);
+
+  ANsc BY an1sc an2sc an3sc an4sc an5sc
+  ap1cc~0 ap2cc~0 ap3cc~0 ap4cc~0 ap5cc~0
+  ap1sc~0 ap2sc~0 ap3sc~0 ap4sc~0 ap5sc~0
+  an1cc~0 an2cc~0 an3cc~0 an4cc~0 an5cc~0 (*1);
+
+  APcc WITH ANcc;
+  APsc WITH ANsc;
+  APcc WITH APsc;
+  ANcc WITH ANsc;
+
+  ap1cc WITH ap1sc;
+  ap2cc WITH ap2sc;
+  ap3cc WITH ap3sc;
+  ap4cc WITH ap4sc;
+  ap5cc WITH ap5sc;
+
+  an1cc WITH an1sc;
+  an2cc WITH an2sc;
+  an3cc WITH an3sc;
+  an4cc WITH an4sc;
+  an5cc WITH an5sc;
+
+  OUTPUT:
+  STANDARDIZED;
+  MODINDICES(10);
+  SAMPSTAT;
+  RESIDUAL;
+  TECH1;
+  TECH4;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+PANAS Comercios - CFA Online;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         174
+
+Number of dependent variables                                   20
+Number of independent variables                                  0
+Number of continuous latent variables                            4
+
+Observed dependent variables
+
+  Continuous
+   AP1CC       AP2CC       AP3CC       AP4CC       AP5CC       AP1SC
+   AP2SC       AP3SC       AP4SC       AP5SC       AN1CC       AN2CC
+   AN3CC       AN4CC       AN5CC       AN1SC       AN2SC       AN3SC
+   AN4SC       AN5SC
+
+Continuous latent variables
+
+  EFA factors
+  *1:   APCC        APSC        ANCC        ANSC
+
+
+Estimator                                                      MLR
+Rotation                                                    TARGET
+Row standardization                                    CORRELATION
+Type of rotation                                           OBLIQUE
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization Specifications for the Exploratory Factor Analysis
+Rotation Algorithm
+  Number of random starts                                       30
+  Maximum number of iterations                             1000000
+  Derivative convergence criterion                       0.100D-04
+
+Input data file(s)
+  ../data/datos_com_terr_legacy_order.txt
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+ AP1CC          1.000
+ AP2CC          1.000         1.000
+ AP3CC          1.000         1.000         1.000
+ AP4CC          1.000         1.000         1.000         1.000
+ AP5CC          1.000         1.000         1.000         1.000         1.000
+ AP1SC          1.000         1.000         1.000         1.000         1.000
+ AP2SC          1.000         1.000         1.000         1.000         1.000
+ AP3SC          1.000         1.000         1.000         1.000         1.000
+ AP4SC          1.000         1.000         1.000         1.000         1.000
+ AP5SC          1.000         1.000         1.000         1.000         1.000
+ AN1CC          1.000         1.000         1.000         1.000         1.000
+ AN2CC          1.000         1.000         1.000         1.000         1.000
+ AN3CC          1.000         1.000         1.000         1.000         1.000
+ AN4CC          1.000         1.000         1.000         1.000         1.000
+ AN5CC          1.000         1.000         1.000         1.000         1.000
+ AN1SC          1.000         1.000         1.000         1.000         1.000
+ AN2SC          1.000         1.000         1.000         1.000         1.000
+ AN3SC          1.000         1.000         1.000         1.000         1.000
+ AN4SC          1.000         1.000         1.000         1.000         1.000
+ AN5SC          1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+ AP1SC          1.000
+ AP2SC          1.000         1.000
+ AP3SC          1.000         1.000         1.000
+ AP4SC          1.000         1.000         1.000         1.000
+ AP5SC          1.000         1.000         1.000         1.000         1.000
+ AN1CC          1.000         1.000         1.000         1.000         1.000
+ AN2CC          1.000         1.000         1.000         1.000         1.000
+ AN3CC          1.000         1.000         1.000         1.000         1.000
+ AN4CC          1.000         1.000         1.000         1.000         1.000
+ AN5CC          1.000         1.000         1.000         1.000         1.000
+ AN1SC          1.000         1.000         1.000         1.000         1.000
+ AN2SC          1.000         1.000         1.000         1.000         1.000
+ AN3SC          1.000         1.000         1.000         1.000         1.000
+ AN4SC          1.000         1.000         1.000         1.000         1.000
+ AN5SC          1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+ AN1CC          1.000
+ AN2CC          1.000         1.000
+ AN3CC          1.000         1.000         1.000
+ AN4CC          1.000         1.000         1.000         1.000
+ AN5CC          1.000         1.000         1.000         1.000         1.000
+ AN1SC          1.000         1.000         1.000         1.000         1.000
+ AN2SC          1.000         1.000         1.000         1.000         1.000
+ AN3SC          1.000         1.000         1.000         1.000         1.000
+ AN4SC          1.000         1.000         1.000         1.000         1.000
+ AN5SC          1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+ AN1SC          1.000
+ AN2SC          1.000         1.000
+ AN3SC          1.000         1.000         1.000
+ AN4SC          1.000         1.000         1.000         1.000
+ AN5SC          1.000         1.000         1.000         1.000         1.000
+
+
+SAMPLE STATISTICS
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           Means
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+                3.805         3.862         3.356         3.385         3.483
+
+
+           Means
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+                2.557         2.897         2.649         2.517         2.874
+
+
+           Means
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+                2.167         2.069         2.230         1.960         2.006
+
+
+           Means
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+                2.810         2.747         2.695         2.690         2.431
+
+
+           Covariances
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+ AP1CC          0.893
+ AP2CC          0.243         0.763
+ AP3CC          0.409         0.245         0.804
+ AP4CC          0.449         0.237         0.564         0.938
+ AP5CC          0.387         0.216         0.391         0.492         0.744
+ AP1SC         -0.328        -0.107        -0.135        -0.226        -0.200
+ AP2SC          0.060        -0.083        -0.153        -0.138         0.004
+ AP3SC         -0.074        -0.066        -0.030        -0.060        -0.032
+ AP4SC         -0.100        -0.084        -0.046         0.065        -0.049
+ AP5SC         -0.048        -0.012        -0.001        -0.020         0.084
+ AN1CC         -0.186        -0.069        -0.105        -0.139        -0.126
+ AN2CC         -0.182        -0.163        -0.094        -0.136        -0.183
+ AN3CC         -0.277        -0.043        -0.203        -0.140        -0.220
+ AN4CC         -0.175        -0.034        -0.112        -0.128        -0.113
+ AN5CC         -0.079         0.047         0.044        -0.019        -0.106
+ AN1SC          0.382         0.169         0.154         0.291         0.224
+ AN2SC          0.359         0.161         0.314         0.408         0.266
+ AN3SC          0.354         0.148         0.281         0.451         0.279
+ AN4SC          0.296         0.078         0.203         0.315         0.225
+ AN5SC          0.216         0.042         0.180         0.242         0.183
+
+
+           Covariances
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+ AP1SC          1.028
+ AP2SC          0.368         1.150
+ AP3SC          0.437         0.268         0.733
+ AP4SC          0.528         0.335         0.463         0.755
+ AP5SC          0.467         0.343         0.456         0.519         0.800
+ AN1CC          0.309         0.178         0.087         0.149         0.107
+ AN2CC          0.168         0.019         0.133         0.148         0.152
+ AN3CC          0.286         0.093         0.190         0.301         0.196
+ AN4CC          0.120         0.053         0.038         0.124         0.024
+ AN5CC          0.158        -0.051         0.019         0.089         0.035
+ AN1SC         -0.383        -0.054        -0.256        -0.304        -0.271
+ AN2SC         -0.520        -0.359        -0.382        -0.398        -0.469
+ AN3SC         -0.474        -0.158        -0.291        -0.245        -0.389
+ AN4SC         -0.453        -0.205        -0.339        -0.385        -0.378
+ AN5SC         -0.407        -0.220        -0.314        -0.321        -0.382
+
+
+           Covariances
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+ AN1CC          1.208
+ AN2CC          0.431         1.030
+ AN3CC          0.467         0.507         0.924
+ AN4CC          0.449         0.417         0.486         0.843
+ AN5CC          0.505         0.373         0.458         0.460         1.029
+ AN1SC          0.049        -0.044        -0.077         0.033         0.128
+ AN2SC         -0.038         0.236        -0.045         0.105         0.191
+ AN3SC          0.011         0.015         0.047         0.137         0.220
+ AN4SC         -0.011         0.010        -0.009         0.171         0.306
+ AN5SC          0.055         0.011         0.039         0.270         0.204
+
+
+           Covariances
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+ AN1SC          1.372
+ AN2SC          0.768         1.396
+ AN3SC          0.655         0.888         1.269
+ AN4SC          0.746         0.818         0.848         1.398
+ AN5SC          0.651         0.810         0.867         0.869         1.326
+
+
+           Correlations
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+ AP1CC          1.000
+ AP2CC          0.295         1.000
+ AP3CC          0.482         0.312         1.000
+ AP4CC          0.490         0.280         0.649         1.000
+ AP5CC          0.475         0.287         0.506         0.589         1.000
+ AP1SC         -0.342        -0.121        -0.149        -0.230        -0.229
+ AP2SC          0.059        -0.089        -0.159        -0.133         0.004
+ AP3SC         -0.092        -0.088        -0.039        -0.073        -0.043
+ AP4SC         -0.122        -0.110        -0.060         0.077        -0.065
+ AP5SC         -0.056        -0.015        -0.001        -0.023         0.109
+ AN1CC         -0.179        -0.072        -0.107        -0.130        -0.133
+ AN2CC         -0.190        -0.184        -0.103        -0.138        -0.209
+ AN3CC         -0.305        -0.051        -0.235        -0.151        -0.266
+ AN4CC         -0.201        -0.043        -0.136        -0.144        -0.142
+ AN5CC         -0.083         0.053         0.048        -0.020        -0.121
+ AN1SC          0.346         0.165         0.146         0.257         0.221
+ AN2SC          0.321         0.156         0.297         0.356         0.261
+ AN3SC          0.333         0.150         0.278         0.413         0.287
+ AN4SC          0.265         0.075         0.191         0.275         0.220
+ AN5SC          0.199         0.042         0.174         0.217         0.184
+
+
+           Correlations
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+ AP1SC          1.000
+ AP2SC          0.338         1.000
+ AP3SC          0.503         0.292         1.000
+ AP4SC          0.599         0.360         0.622         1.000
+ AP5SC          0.515         0.358         0.595         0.668         1.000
+ AN1CC          0.278         0.151         0.093         0.156         0.109
+ AN2CC          0.164         0.017         0.153         0.168         0.168
+ AN3CC          0.293         0.090         0.231         0.360         0.228
+ AN4CC          0.129         0.054         0.048         0.156         0.029
+ AN5CC          0.153        -0.047         0.022         0.101         0.039
+ AN1SC         -0.322        -0.043        -0.255        -0.299        -0.259
+ AN2SC         -0.434        -0.284        -0.377        -0.388        -0.444
+ AN3SC         -0.415        -0.131        -0.301        -0.250        -0.386
+ AN4SC         -0.378        -0.161        -0.334        -0.375        -0.358
+ AN5SC         -0.349        -0.178        -0.319        -0.320        -0.371
+
+
+           Correlations
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+ AN1CC          1.000
+ AN2CC          0.386         1.000
+ AN3CC          0.442         0.520         1.000
+ AN4CC          0.445         0.447         0.551         1.000
+ AN5CC          0.453         0.363         0.470         0.494         1.000
+ AN1SC          0.038        -0.037        -0.068         0.030         0.107
+ AN2SC         -0.030         0.197        -0.040         0.097         0.159
+ AN3SC          0.009         0.013         0.043         0.133         0.193
+ AN4SC         -0.009         0.008        -0.008         0.158         0.255
+ AN5SC          0.043         0.009         0.035         0.256         0.175
+
+
+           Correlations
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+ AN1SC          1.000
+ AN2SC          0.555         1.000
+ AN3SC          0.496         0.668         1.000
+ AN4SC          0.538         0.586         0.637         1.000
+ AN5SC          0.482         0.596         0.668         0.639         1.000
+
+
+     MAXIMUM LOG-LIKELIHOOD VALUE FOR THE UNRESTRICTED (H1) MODEL IS -4072.452
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     AP1CC                 3.805      -0.624       1.000    2.30%       3.000      4.000      4.000
+             174.000       0.893       0.248       5.000   24.71%       4.000      5.000
+     AP2CC                 3.862      -0.402       2.000    7.47%       3.000      4.000      4.000
+             174.000       0.763      -0.519       5.000   24.71%       4.000      5.000
+     AP3CC                 3.356       0.005       1.000    2.87%       3.000      3.000      3.000
+             174.000       0.804       0.234       5.000   12.07%       3.000      4.000
+     AP4CC                 3.385      -0.262       1.000    4.02%       3.000      3.000      3.000
+             174.000       0.938      -0.048       5.000   12.64%       4.000      4.000
+     AP5CC                 3.483      -0.189       1.000    2.30%       3.000      3.000      3.000
+             174.000       0.744       0.325       5.000   12.07%       4.000      4.000
+     AP1SC                 2.557       0.075       1.000   18.97%       2.000      2.000      3.000
+             174.000       1.028      -0.347       5.000    3.45%       3.000      3.000
+     AP2SC                 2.897       0.011       1.000   12.07%       2.000      3.000      3.000
+             174.000       1.150      -0.350       5.000    8.05%       3.000      4.000
+     AP3SC                 2.649      -0.195       1.000   12.64%       2.000      3.000      3.000
+             174.000       0.733       0.701       5.000    2.87%       3.000      3.000
+     AP4SC                 2.517      -0.158       1.000   16.09%       2.000      3.000      3.000
+             174.000       0.755       0.302       5.000    2.30%       3.000      3.000
+     AP5SC                 2.874      -0.424       1.000   10.92%       2.000      3.000      3.000
+             174.000       0.800       0.500       5.000    2.87%       3.000      3.000
+     AN1CC                 2.167       0.706       1.000   33.91%       1.000      2.000      2.000
+             174.000       1.208      -0.262       5.000    3.45%       2.000      3.000
+     AN2CC                 2.069       0.522       1.000   38.51%       1.000      2.000      2.000
+             174.000       1.030      -0.503       5.000    1.72%       2.000      3.000
+     AN3CC                 2.230       0.226       1.000   27.59%       1.000      2.000      2.000
+             174.000       0.924      -0.804       5.000    0.57%       3.000      3.000
+     AN4CC                 1.960       0.569       1.000   39.08%       1.000      2.000      2.000
+             174.000       0.843      -0.269       5.000    1.15%       2.000      3.000
+     AN5CC                 2.006       0.815       1.000   39.66%       1.000      2.000      2.000
+             174.000       1.029       0.234       5.000    2.87%       2.000      3.000
+     AN1SC                 2.810      -0.036       1.000   18.39%       2.000      3.000      3.000
+             174.000       1.372      -0.785       5.000    7.47%       3.000      4.000
+     AN2SC                 2.747       0.164       1.000   18.97%       2.000      3.000      3.000
+             174.000       1.396      -0.617       5.000    9.77%       3.000      4.000
+     AN3SC                 2.695       0.280       1.000   16.67%       2.000      2.000      3.000
+             174.000       1.269      -0.412       5.000    8.62%       3.000      3.000
+     AN4SC                 2.690       0.221       1.000   20.11%       1.000      2.000      3.000
+             174.000       1.398      -0.621       5.000    9.20%       3.000      4.000
+     AN5SC                 2.431       0.417       1.000   26.44%       1.000      2.000      2.000
+             174.000       1.326      -0.564       5.000    5.75%       3.000      3.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                      124
+
+Loglikelihood
+
+          H0 Value                       -4137.438
+          H0 Scaling Correction Factor      1.4936
+            for MLR
+          H1 Value                       -4072.452
+          H1 Scaling Correction Factor      1.3235
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                    8522.877
+          Bayesian (BIC)                  8914.600
+          Sample-Size Adjusted BIC        8521.938
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                            115.578*
+          Degrees of Freedom                   106
+          P-Value                           0.2468
+          Scaling Correction Factor         1.1245
+            for MLR
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.023
+          90 Percent C.I.                    0.000  0.046
+          Probability RMSEA <= .05           0.975
+
+CFI/TLI
+
+          CFI                                0.991
+          TLI                                0.983
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           1222.367
+          Degrees of Freedom                   190
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.028
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ APCC     BY
+    AP1CC              0.463      0.084      5.496      0.000
+    AP2CC              0.361      0.103      3.509      0.000
+    AP3CC              0.765      0.095      8.074      0.000
+    AP4CC              0.784      0.081      9.635      0.000
+    AP5CC              0.543      0.109      5.007      0.000
+    AP1SC             -0.079      0.086     -0.921      0.357
+    AP2SC             -0.159      0.104     -1.530      0.126
+    AP3SC              0.033      0.069      0.482      0.630
+    AP4SC              0.021      0.066      0.325      0.745
+    AP5SC              0.141      0.061      2.300      0.021
+    AN1CC              0.022      0.091      0.247      0.805
+    AN2CC             -0.006      0.078     -0.081      0.935
+    AN3CC             -0.103      0.077     -1.347      0.178
+    AN4CC             -0.096      0.066     -1.453      0.146
+    AN5CC              0.093      0.083      1.113      0.266
+    AN1SC              0.014      0.118      0.117      0.907
+    AN2SC              0.172      0.079      2.161      0.031
+    AN3SC              0.128      0.079      1.616      0.106
+    AN4SC              0.028      0.083      0.339      0.735
+    AN5SC             -0.069      0.084     -0.830      0.406
+
+ APSC     BY
+    AP1SC              0.568      0.102      5.560      0.000
+    AP2SC              0.617      0.136      4.538      0.000
+    AP3SC              0.605      0.096      6.316      0.000
+    AP4SC              0.734      0.091      8.077      0.000
+    AP5SC              0.634      0.086      7.370      0.000
+    AP1CC              0.135      0.090      1.499      0.134
+    AP2CC             -0.066      0.084     -0.790      0.430
+    AP3CC             -0.054      0.063     -0.866      0.386
+    AP4CC             -0.005      0.078     -0.058      0.954
+    AP5CC              0.064      0.102      0.623      0.533
+    AN1CC              0.001      0.103      0.007      0.994
+    AN2CC             -0.007      0.107     -0.063      0.950
+    AN3CC              0.161      0.076      2.125      0.034
+    AN4CC              0.020      0.082      0.238      0.812
+    AN5CC             -0.004      0.106     -0.035      0.972
+    AN1SC              0.044      0.109      0.407      0.684
+    AN2SC             -0.228      0.102     -2.233      0.026
+    AN3SC              0.008      0.088      0.088      0.930
+    AN4SC             -0.120      0.078     -1.536      0.124
+    AN5SC             -0.053      0.112     -0.474      0.635
+
+ ANCC     BY
+    AN1CC              0.680      0.105      6.471      0.000
+    AN2CC              0.627      0.096      6.519      0.000
+    AN3CC              0.654      0.072      9.095      0.000
+    AN4CC              0.632      0.078      8.137      0.000
+    AN5CC              0.701      0.109      6.406      0.000
+    AP1CC             -0.221      0.084     -2.629      0.009
+    AP2CC              0.032      0.096      0.332      0.740
+    AP3CC              0.089      0.051      1.753      0.080
+    AP4CC              0.037      0.063      0.592      0.554
+    AP5CC             -0.106      0.089     -1.192      0.233
+    AP1SC              0.157      0.086      1.824      0.068
+    AP2SC             -0.156      0.088     -1.771      0.077
+    AP3SC              0.004      0.073      0.055      0.956
+    AP4SC              0.067      0.071      0.952      0.341
+    AP5SC              0.047      0.052      0.898      0.369
+    AN1SC             -0.113      0.090     -1.251      0.211
+    AN2SC              0.081      0.075      1.081      0.280
+    AN3SC              0.052      0.072      0.728      0.467
+    AN4SC              0.109      0.066      1.647      0.100
+    AN5SC              0.123      0.104      1.182      0.237
+
+ ANSC     BY
+    AN1SC              0.789      0.128      6.142      0.000
+    AN2SC              0.719      0.113      6.380      0.000
+    AN3SC              0.878      0.100      8.758      0.000
+    AN4SC              0.843      0.105      8.027      0.000
+    AN5SC              0.912      0.133      6.881      0.000
+    AP1CC              0.250      0.111      2.256      0.024
+    AP2CC             -0.048      0.107     -0.448      0.654
+    AP3CC             -0.103      0.080     -1.290      0.197
+    AP4CC              0.040      0.082      0.488      0.626
+    AP5CC              0.082      0.129      0.641      0.522
+    AP1SC             -0.167      0.103     -1.628      0.103
+    AP2SC              0.195      0.142      1.376      0.169
+    AP3SC             -0.045      0.103     -0.439      0.661
+    AP4SC              0.021      0.090      0.237      0.813
+    AP5SC             -0.152      0.080     -1.896      0.058
+    AN1CC             -0.073      0.116     -0.633      0.527
+    AN2CC             -0.081      0.103     -0.791      0.429
+    AN3CC              0.037      0.088      0.419      0.675
+    AN4CC              0.165      0.090      1.831      0.067
+    AN5CC              0.144      0.105      1.366      0.172
+
+ APCC     WITH
+    ANCC              -0.253      0.094     -2.690      0.007
+    APSC              -0.139      0.119     -1.165      0.244
+
+ APSC     WITH
+    ANSC              -0.509      0.090     -5.632      0.000
+
+ ANCC     WITH
+    ANSC               0.073      0.094      0.782      0.434
+    APSC               0.231      0.095      2.433      0.015
+
+ ANSC     WITH
+    APCC               0.397      0.090      4.406      0.000
+
+ AP1CC    WITH
+    AP1SC             -0.116      0.054     -2.152      0.031
+
+ AP2CC    WITH
+    AP2SC             -0.014      0.081     -0.176      0.861
+
+ AP3CC    WITH
+    AP3SC              0.010      0.091      0.110      0.912
+
+ AP4CC    WITH
+    AP4SC              0.143      0.059      2.405      0.016
+
+ AP5CC    WITH
+    AP5SC              0.099      0.036      2.745      0.006
+
+ AN1CC    WITH
+    AN1SC              0.130      0.086      1.516      0.130
+
+ AN2CC    WITH
+    AN2SC              0.285      0.092      3.098      0.002
+
+ AN3CC    WITH
+    AN3SC              0.075      0.072      1.051      0.293
+
+ AN4CC    WITH
+    AN4SC             -0.023      0.102     -0.225      0.822
+
+ AN5CC    WITH
+    AN5SC             -0.092      0.100     -0.917      0.359
+
+ Intercepts
+    AP1CC              3.805      0.072     53.112      0.000
+    AP2CC              3.862      0.066     58.338      0.000
+    AP3CC              3.356      0.068     49.373      0.000
+    AP4CC              3.385      0.073     46.106      0.000
+    AP5CC              3.483      0.065     53.263      0.000
+    AP1SC              2.557      0.077     33.268      0.000
+    AP2SC              2.897      0.081     35.626      0.000
+    AP3SC              2.649      0.065     40.808      0.000
+    AP4SC              2.517      0.066     38.203      0.000
+    AP5SC              2.874      0.068     42.376      0.000
+    AN1CC              2.167      0.083     26.005      0.000
+    AN2CC              2.069      0.077     26.895      0.000
+    AN3CC              2.230      0.073     30.597      0.000
+    AN4CC              1.960      0.070     28.152      0.000
+    AN5CC              2.006      0.077     26.086      0.000
+    AN1SC              2.810      0.089     31.648      0.000
+    AN2SC              2.747      0.090     30.672      0.000
+    AN3SC              2.695      0.085     31.559      0.000
+    AN4SC              2.690      0.090     30.007      0.000
+    AN5SC              2.431      0.087     27.851      0.000
+
+ Variances
+    APCC               1.000      0.000    999.000    999.000
+    APSC               1.000      0.000    999.000    999.000
+    ANCC               1.000      0.000    999.000    999.000
+    ANSC               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    AP1CC              0.479      0.075      6.417      0.000
+    AP2CC              0.642      0.081      7.967      0.000
+    AP3CC              0.292      0.112      2.610      0.009
+    AP4CC              0.309      0.075      4.138      0.000
+    AP5CC              0.381      0.067      5.720      0.000
+    AP1SC              0.483      0.073      6.635      0.000
+    AP2SC              0.863      0.136      6.337      0.000
+    AP3SC              0.342      0.094      3.639      0.000
+    AP4SC              0.209      0.060      3.461      0.001
+    AP5SC              0.287      0.042      6.784      0.000
+    AN1CC              0.755      0.110      6.854      0.000
+    AN2CC              0.637      0.131      4.862      0.000
+    AN3CC              0.377      0.078      4.829      0.000
+    AN4CC              0.370      0.094      3.938      0.000
+    AN5CC              0.516      0.121      4.260      0.000
+    AN1SC              0.777      0.124      6.251      0.000
+    AN2SC              0.522      0.090      5.830      0.000
+    AN3SC              0.393      0.074      5.304      0.000
+    AN4SC              0.531      0.114      4.646      0.000
+    AN5SC              0.456      0.100      4.544      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.178E-04
+       (ratio of smallest to largest eigenvalue)
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ APCC     BY
+    AP1CC              0.490      0.087      5.639      0.000
+    AP2CC              0.413      0.117      3.541      0.000
+    AP3CC              0.853      0.089      9.608      0.000
+    AP4CC              0.810      0.068     11.912      0.000
+    AP5CC              0.630      0.115      5.456      0.000
+    AP1SC             -0.078      0.085     -0.915      0.360
+    AP2SC             -0.148      0.096     -1.535      0.125
+    AP3SC              0.039      0.080      0.485      0.627
+    AP4SC              0.025      0.076      0.326      0.745
+    AP5SC              0.157      0.067      2.330      0.020
+    AN1CC              0.020      0.082      0.248      0.804
+    AN2CC             -0.006      0.077     -0.081      0.935
+    AN3CC             -0.107      0.080     -1.344      0.179
+    AN4CC             -0.105      0.073     -1.433      0.152
+    AN5CC              0.091      0.079      1.152      0.249
+    AN1SC              0.012      0.101      0.116      0.907
+    AN2SC              0.145      0.067      2.179      0.029
+    AN3SC              0.113      0.070      1.628      0.104
+    AN4SC              0.024      0.071      0.339      0.735
+    AN5SC             -0.060      0.073     -0.827      0.409
+
+ APSC     BY
+    AP1SC              0.560      0.094      5.971      0.000
+    AP2SC              0.575      0.120      4.810      0.000
+    AP3SC              0.707      0.096      7.388      0.000
+    AP4SC              0.844      0.091      9.246      0.000
+    AP5SC              0.709      0.077      9.173      0.000
+    AP1CC              0.143      0.094      1.517      0.129
+    AP2CC             -0.076      0.096     -0.792      0.428
+    AP3CC             -0.061      0.070     -0.865      0.387
+    AP4CC             -0.005      0.081     -0.058      0.954
+    AP5CC              0.074      0.118      0.629      0.530
+    AN1CC              0.001      0.094      0.007      0.994
+    AN2CC             -0.007      0.105     -0.063      0.950
+    AN3CC              0.167      0.078      2.142      0.032
+    AN4CC              0.021      0.090      0.237      0.812
+    AN5CC             -0.004      0.104     -0.035      0.972
+    AN1SC              0.038      0.093      0.407      0.684
+    AN2SC             -0.193      0.086     -2.242      0.025
+    AN3SC              0.007      0.078      0.088      0.930
+    AN4SC             -0.102      0.066     -1.543      0.123
+    AN5SC             -0.046      0.097     -0.475      0.635
+
+ ANCC     BY
+    AN1CC              0.619      0.085      7.278      0.000
+    AN2CC              0.618      0.100      6.190      0.000
+    AN3CC              0.680      0.073      9.350      0.000
+    AN4CC              0.688      0.082      8.435      0.000
+    AN5CC              0.691      0.101      6.835      0.000
+    AP1CC             -0.234      0.087     -2.689      0.007
+    AP2CC              0.037      0.110      0.332      0.740
+    AP3CC              0.100      0.056      1.781      0.075
+    AP4CC              0.038      0.065      0.593      0.553
+    AP5CC             -0.123      0.103     -1.194      0.233
+    AP1SC              0.155      0.085      1.821      0.069
+    AP2SC             -0.145      0.082     -1.774      0.076
+    AP3SC              0.005      0.085      0.055      0.956
+    AP4SC              0.077      0.082      0.947      0.343
+    AP5SC              0.052      0.057      0.907      0.364
+    AN1SC             -0.096      0.077     -1.257      0.209
+    AN2SC              0.068      0.063      1.081      0.280
+    AN3SC              0.046      0.064      0.728      0.467
+    AN4SC              0.092      0.056      1.642      0.101
+    AN5SC              0.107      0.091      1.177      0.239
+
+ ANSC     BY
+    AN1SC              0.673      0.100      6.767      0.000
+    AN2SC              0.608      0.089      6.803      0.000
+    AN3SC              0.780      0.077     10.161      0.000
+    AN4SC              0.713      0.076      9.391      0.000
+    AN5SC              0.792      0.103      7.683      0.000
+    AP1CC              0.265      0.116      2.284      0.022
+    AP2CC             -0.055      0.122     -0.448      0.654
+    AP3CC             -0.115      0.089     -1.298      0.194
+    AP4CC              0.041      0.085      0.489      0.625
+    AP5CC              0.096      0.148      0.645      0.519
+    AP1SC             -0.165      0.101     -1.631      0.103
+    AP2SC              0.182      0.131      1.389      0.165
+    AP3SC             -0.053      0.120     -0.437      0.662
+    AP4SC              0.025      0.104      0.237      0.813
+    AP5SC             -0.170      0.089     -1.902      0.057
+    AN1CC             -0.067      0.106     -0.633      0.527
+    AN2CC             -0.080      0.101     -0.793      0.428
+    AN3CC              0.039      0.092      0.418      0.676
+    AN4CC              0.180      0.097      1.859      0.063
+    AN5CC              0.142      0.105      1.354      0.176
+
+ APCC     WITH
+    ANCC              -0.253      0.094     -2.690      0.007
+    APSC              -0.139      0.119     -1.165      0.244
+
+ APSC     WITH
+    ANSC              -0.509      0.090     -5.632      0.000
+
+ ANCC     WITH
+    ANSC               0.073      0.094      0.782      0.434
+    APSC               0.231      0.095      2.433      0.015
+
+ ANSC     WITH
+    APCC               0.397      0.090      4.406      0.000
+
+ AP1CC    WITH
+    AP1SC             -0.241      0.112     -2.155      0.031
+
+ AP2CC    WITH
+    AP2SC             -0.019      0.110     -0.175      0.861
+
+ AP3CC    WITH
+    AP3SC              0.032      0.296      0.107      0.915
+
+ AP4CC    WITH
+    AP4SC              0.563      0.197      2.858      0.004
+
+ AP5CC    WITH
+    AP5SC              0.301      0.098      3.068      0.002
+
+ AN1CC    WITH
+    AN1SC              0.170      0.116      1.471      0.141
+
+ AN2CC    WITH
+    AN2SC              0.494      0.112      4.428      0.000
+
+ AN3CC    WITH
+    AN3SC              0.196      0.176      1.117      0.264
+
+ AN4CC    WITH
+    AN4SC             -0.052      0.224     -0.231      0.817
+
+ AN5CC    WITH
+    AN5SC             -0.189      0.180     -1.050      0.294
+
+ Intercepts
+    AP1CC              4.026      0.269     14.948      0.000
+    AP2CC              4.423      0.240     18.427      0.000
+    AP3CC              3.743      0.225     16.637      0.000
+    AP4CC              3.495      0.213     16.426      0.000
+    AP5CC              4.038      0.254     15.889      0.000
+    AP1SC              2.522      0.141     17.937      0.000
+    AP2SC              2.701      0.151     17.857      0.000
+    AP3SC              3.094      0.215     14.369      0.000
+    AP4SC              2.896      0.190     15.239      0.000
+    AP5SC              3.212      0.225     14.274      0.000
+    AN1CC              1.971      0.086     22.836      0.000
+    AN2CC              2.039      0.093     22.018      0.000
+    AN3CC              2.320      0.109     21.196      0.000
+    AN4CC              2.134      0.100     21.242      0.000
+    AN5CC              1.978      0.095     20.796      0.000
+    AN1SC              2.399      0.128     18.798      0.000
+    AN2SC              2.325      0.120     19.448      0.000
+    AN3SC              2.392      0.122     19.564      0.000
+    AN4SC              2.275      0.114     19.872      0.000
+    AN5SC              2.111      0.099     21.240      0.000
+
+ Variances
+    APCC               1.000      0.000    999.000    999.000
+    APSC               1.000      0.000    999.000    999.000
+    ANCC               1.000      0.000    999.000    999.000
+    ANSC               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    AP1CC              0.536      0.058      9.307      0.000
+    AP2CC              0.842      0.070     12.080      0.000
+    AP3CC              0.364      0.137      2.660      0.008
+    AP4CC              0.329      0.077      4.266      0.000
+    AP5CC              0.512      0.092      5.591      0.000
+    AP1SC              0.469      0.059      7.973      0.000
+    AP2SC              0.751      0.103      7.303      0.000
+    AP3SC              0.466      0.116      4.010      0.000
+    AP4SC              0.277      0.075      3.704      0.000
+    AP5SC              0.359      0.063      5.692      0.000
+    AN1CC              0.625      0.080      7.822      0.000
+    AN2CC              0.619      0.091      6.772      0.000
+    AN3CC              0.408      0.073      5.610      0.000
+    AN4CC              0.439      0.094      4.656      0.000
+    AN5CC              0.502      0.095      5.293      0.000
+    AN1SC              0.566      0.090      6.324      0.000
+    AN2SC              0.374      0.067      5.584      0.000
+    AN3SC              0.310      0.061      5.100      0.000
+    AN4SC              0.380      0.085      4.487      0.000
+    AN5SC              0.344      0.079      4.340      0.000
+
+
+STDY Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ APCC     BY
+    AP1CC              0.490      0.087      5.639      0.000
+    AP2CC              0.413      0.117      3.541      0.000
+    AP3CC              0.853      0.089      9.608      0.000
+    AP4CC              0.810      0.068     11.912      0.000
+    AP5CC              0.630      0.115      5.456      0.000
+    AP1SC             -0.078      0.085     -0.915      0.360
+    AP2SC             -0.148      0.096     -1.535      0.125
+    AP3SC              0.039      0.080      0.485      0.627
+    AP4SC              0.025      0.076      0.326      0.745
+    AP5SC              0.157      0.067      2.330      0.020
+    AN1CC              0.020      0.082      0.248      0.804
+    AN2CC             -0.006      0.077     -0.081      0.935
+    AN3CC             -0.107      0.080     -1.344      0.179
+    AN4CC             -0.105      0.073     -1.433      0.152
+    AN5CC              0.091      0.079      1.152      0.249
+    AN1SC              0.012      0.101      0.116      0.907
+    AN2SC              0.145      0.067      2.179      0.029
+    AN3SC              0.113      0.070      1.628      0.104
+    AN4SC              0.024      0.071      0.339      0.735
+    AN5SC             -0.060      0.073     -0.827      0.409
+
+ APSC     BY
+    AP1SC              0.560      0.094      5.971      0.000
+    AP2SC              0.575      0.120      4.810      0.000
+    AP3SC              0.707      0.096      7.388      0.000
+    AP4SC              0.844      0.091      9.246      0.000
+    AP5SC              0.709      0.077      9.173      0.000
+    AP1CC              0.143      0.094      1.517      0.129
+    AP2CC             -0.076      0.096     -0.792      0.428
+    AP3CC             -0.061      0.070     -0.865      0.387
+    AP4CC             -0.005      0.081     -0.058      0.954
+    AP5CC              0.074      0.118      0.629      0.530
+    AN1CC              0.001      0.094      0.007      0.994
+    AN2CC             -0.007      0.105     -0.063      0.950
+    AN3CC              0.167      0.078      2.142      0.032
+    AN4CC              0.021      0.090      0.237      0.812
+    AN5CC             -0.004      0.104     -0.035      0.972
+    AN1SC              0.038      0.093      0.407      0.684
+    AN2SC             -0.193      0.086     -2.242      0.025
+    AN3SC              0.007      0.078      0.088      0.930
+    AN4SC             -0.102      0.066     -1.543      0.123
+    AN5SC             -0.046      0.097     -0.475      0.635
+
+ ANCC     BY
+    AN1CC              0.619      0.085      7.278      0.000
+    AN2CC              0.618      0.100      6.190      0.000
+    AN3CC              0.680      0.073      9.350      0.000
+    AN4CC              0.688      0.082      8.435      0.000
+    AN5CC              0.691      0.101      6.835      0.000
+    AP1CC             -0.234      0.087     -2.689      0.007
+    AP2CC              0.037      0.110      0.332      0.740
+    AP3CC              0.100      0.056      1.781      0.075
+    AP4CC              0.038      0.065      0.593      0.553
+    AP5CC             -0.123      0.103     -1.194      0.233
+    AP1SC              0.155      0.085      1.821      0.069
+    AP2SC             -0.145      0.082     -1.774      0.076
+    AP3SC              0.005      0.085      0.055      0.956
+    AP4SC              0.077      0.082      0.947      0.343
+    AP5SC              0.052      0.057      0.907      0.364
+    AN1SC             -0.096      0.077     -1.257      0.209
+    AN2SC              0.068      0.063      1.081      0.280
+    AN3SC              0.046      0.064      0.728      0.467
+    AN4SC              0.092      0.056      1.642      0.101
+    AN5SC              0.107      0.091      1.177      0.239
+
+ ANSC     BY
+    AN1SC              0.673      0.100      6.767      0.000
+    AN2SC              0.608      0.089      6.803      0.000
+    AN3SC              0.780      0.077     10.161      0.000
+    AN4SC              0.713      0.076      9.391      0.000
+    AN5SC              0.792      0.103      7.683      0.000
+    AP1CC              0.265      0.116      2.284      0.022
+    AP2CC             -0.055      0.122     -0.448      0.654
+    AP3CC             -0.115      0.089     -1.298      0.194
+    AP4CC              0.041      0.085      0.489      0.625
+    AP5CC              0.096      0.148      0.645      0.519
+    AP1SC             -0.165      0.101     -1.631      0.103
+    AP2SC              0.182      0.131      1.389      0.165
+    AP3SC             -0.053      0.120     -0.437      0.662
+    AP4SC              0.025      0.104      0.237      0.813
+    AP5SC             -0.170      0.089     -1.902      0.057
+    AN1CC             -0.067      0.106     -0.633      0.527
+    AN2CC             -0.080      0.101     -0.793      0.428
+    AN3CC              0.039      0.092      0.418      0.676
+    AN4CC              0.180      0.097      1.859      0.063
+    AN5CC              0.142      0.105      1.354      0.176
+
+ APCC     WITH
+    ANCC              -0.253      0.094     -2.690      0.007
+    APSC              -0.139      0.119     -1.165      0.244
+
+ APSC     WITH
+    ANSC              -0.509      0.090     -5.632      0.000
+
+ ANCC     WITH
+    ANSC               0.073      0.094      0.782      0.434
+    APSC               0.231      0.095      2.433      0.015
+
+ ANSC     WITH
+    APCC               0.397      0.090      4.406      0.000
+
+ AP1CC    WITH
+    AP1SC             -0.241      0.112     -2.155      0.031
+
+ AP2CC    WITH
+    AP2SC             -0.019      0.110     -0.175      0.861
+
+ AP3CC    WITH
+    AP3SC              0.032      0.296      0.107      0.915
+
+ AP4CC    WITH
+    AP4SC              0.563      0.197      2.858      0.004
+
+ AP5CC    WITH
+    AP5SC              0.301      0.098      3.068      0.002
+
+ AN1CC    WITH
+    AN1SC              0.170      0.116      1.471      0.141
+
+ AN2CC    WITH
+    AN2SC              0.494      0.112      4.428      0.000
+
+ AN3CC    WITH
+    AN3SC              0.196      0.176      1.117      0.264
+
+ AN4CC    WITH
+    AN4SC             -0.052      0.224     -0.231      0.817
+
+ AN5CC    WITH
+    AN5SC             -0.189      0.180     -1.050      0.294
+
+ Intercepts
+    AP1CC              4.026      0.269     14.948      0.000
+    AP2CC              4.423      0.240     18.427      0.000
+    AP3CC              3.743      0.225     16.637      0.000
+    AP4CC              3.495      0.213     16.426      0.000
+    AP5CC              4.038      0.254     15.889      0.000
+    AP1SC              2.522      0.141     17.937      0.000
+    AP2SC              2.701      0.151     17.857      0.000
+    AP3SC              3.094      0.215     14.369      0.000
+    AP4SC              2.896      0.190     15.239      0.000
+    AP5SC              3.212      0.225     14.274      0.000
+    AN1CC              1.971      0.086     22.836      0.000
+    AN2CC              2.039      0.093     22.018      0.000
+    AN3CC              2.320      0.109     21.196      0.000
+    AN4CC              2.134      0.100     21.242      0.000
+    AN5CC              1.978      0.095     20.796      0.000
+    AN1SC              2.399      0.128     18.798      0.000
+    AN2SC              2.325      0.120     19.448      0.000
+    AN3SC              2.392      0.122     19.564      0.000
+    AN4SC              2.275      0.114     19.872      0.000
+    AN5SC              2.111      0.099     21.240      0.000
+
+ Variances
+    APCC               1.000      0.000    999.000    999.000
+    APSC               1.000      0.000    999.000    999.000
+    ANCC               1.000      0.000    999.000    999.000
+    ANSC               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    AP1CC              0.536      0.058      9.307      0.000
+    AP2CC              0.842      0.070     12.080      0.000
+    AP3CC              0.364      0.137      2.660      0.008
+    AP4CC              0.329      0.077      4.266      0.000
+    AP5CC              0.512      0.092      5.591      0.000
+    AP1SC              0.469      0.059      7.973      0.000
+    AP2SC              0.751      0.103      7.303      0.000
+    AP3SC              0.466      0.116      4.010      0.000
+    AP4SC              0.277      0.075      3.704      0.000
+    AP5SC              0.359      0.063      5.692      0.000
+    AN1CC              0.625      0.080      7.822      0.000
+    AN2CC              0.619      0.091      6.772      0.000
+    AN3CC              0.408      0.073      5.610      0.000
+    AN4CC              0.439      0.094      4.656      0.000
+    AN5CC              0.502      0.095      5.293      0.000
+    AN1SC              0.566      0.090      6.324      0.000
+    AN2SC              0.374      0.067      5.584      0.000
+    AN3SC              0.310      0.061      5.100      0.000
+    AN4SC              0.380      0.085      4.487      0.000
+    AN5SC              0.344      0.079      4.340      0.000
+
+
+STD Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ APCC     BY
+    AP1CC              0.463      0.084      5.496      0.000
+    AP2CC              0.361      0.103      3.509      0.000
+    AP3CC              0.765      0.095      8.074      0.000
+    AP4CC              0.784      0.081      9.635      0.000
+    AP5CC              0.543      0.109      5.007      0.000
+    AP1SC             -0.079      0.086     -0.921      0.357
+    AP2SC             -0.159      0.104     -1.530      0.126
+    AP3SC              0.033      0.069      0.482      0.630
+    AP4SC              0.021      0.066      0.325      0.745
+    AP5SC              0.141      0.061      2.300      0.021
+    AN1CC              0.022      0.091      0.247      0.805
+    AN2CC             -0.006      0.078     -0.081      0.935
+    AN3CC             -0.103      0.077     -1.347      0.178
+    AN4CC             -0.096      0.066     -1.453      0.146
+    AN5CC              0.093      0.083      1.113      0.266
+    AN1SC              0.014      0.118      0.117      0.907
+    AN2SC              0.172      0.079      2.161      0.031
+    AN3SC              0.128      0.079      1.616      0.106
+    AN4SC              0.028      0.083      0.339      0.735
+    AN5SC             -0.069      0.084     -0.830      0.406
+
+ APSC     BY
+    AP1SC              0.568      0.102      5.560      0.000
+    AP2SC              0.617      0.136      4.538      0.000
+    AP3SC              0.605      0.096      6.316      0.000
+    AP4SC              0.734      0.091      8.077      0.000
+    AP5SC              0.634      0.086      7.370      0.000
+    AP1CC              0.135      0.090      1.499      0.134
+    AP2CC             -0.066      0.084     -0.790      0.430
+    AP3CC             -0.054      0.063     -0.866      0.386
+    AP4CC             -0.005      0.078     -0.058      0.954
+    AP5CC              0.064      0.102      0.623      0.533
+    AN1CC              0.001      0.103      0.007      0.994
+    AN2CC             -0.007      0.107     -0.063      0.950
+    AN3CC              0.161      0.076      2.125      0.034
+    AN4CC              0.020      0.082      0.238      0.812
+    AN5CC             -0.004      0.106     -0.035      0.972
+    AN1SC              0.044      0.109      0.407      0.684
+    AN2SC             -0.228      0.102     -2.233      0.026
+    AN3SC              0.008      0.088      0.088      0.930
+    AN4SC             -0.120      0.078     -1.536      0.124
+    AN5SC             -0.053      0.112     -0.474      0.635
+
+ ANCC     BY
+    AN1CC              0.680      0.105      6.471      0.000
+    AN2CC              0.627      0.096      6.519      0.000
+    AN3CC              0.654      0.072      9.095      0.000
+    AN4CC              0.632      0.078      8.137      0.000
+    AN5CC              0.701      0.109      6.406      0.000
+    AP1CC             -0.221      0.084     -2.629      0.009
+    AP2CC              0.032      0.096      0.332      0.740
+    AP3CC              0.089      0.051      1.753      0.080
+    AP4CC              0.037      0.063      0.592      0.554
+    AP5CC             -0.106      0.089     -1.192      0.233
+    AP1SC              0.157      0.086      1.824      0.068
+    AP2SC             -0.156      0.088     -1.771      0.077
+    AP3SC              0.004      0.073      0.055      0.956
+    AP4SC              0.067      0.071      0.952      0.341
+    AP5SC              0.047      0.052      0.898      0.369
+    AN1SC             -0.113      0.090     -1.251      0.211
+    AN2SC              0.081      0.075      1.081      0.280
+    AN3SC              0.052      0.072      0.728      0.467
+    AN4SC              0.109      0.066      1.647      0.100
+    AN5SC              0.123      0.104      1.182      0.237
+
+ ANSC     BY
+    AN1SC              0.789      0.128      6.142      0.000
+    AN2SC              0.719      0.113      6.380      0.000
+    AN3SC              0.878      0.100      8.758      0.000
+    AN4SC              0.843      0.105      8.027      0.000
+    AN5SC              0.912      0.133      6.881      0.000
+    AP1CC              0.250      0.111      2.256      0.024
+    AP2CC             -0.048      0.107     -0.448      0.654
+    AP3CC             -0.103      0.080     -1.290      0.197
+    AP4CC              0.040      0.082      0.488      0.626
+    AP5CC              0.082      0.129      0.641      0.522
+    AP1SC             -0.167      0.103     -1.628      0.103
+    AP2SC              0.195      0.142      1.376      0.169
+    AP3SC             -0.045      0.103     -0.439      0.661
+    AP4SC              0.021      0.090      0.237      0.813
+    AP5SC             -0.152      0.080     -1.896      0.058
+    AN1CC             -0.073      0.116     -0.633      0.527
+    AN2CC             -0.081      0.103     -0.791      0.429
+    AN3CC              0.037      0.088      0.419      0.675
+    AN4CC              0.165      0.090      1.831      0.067
+    AN5CC              0.144      0.105      1.366      0.172
+
+ APCC     WITH
+    ANCC              -0.253      0.094     -2.690      0.007
+    APSC              -0.139      0.119     -1.165      0.244
+
+ APSC     WITH
+    ANSC              -0.509      0.090     -5.632      0.000
+
+ ANCC     WITH
+    ANSC               0.073      0.094      0.782      0.434
+    APSC               0.231      0.095      2.433      0.015
+
+ ANSC     WITH
+    APCC               0.397      0.090      4.406      0.000
+
+ AP1CC    WITH
+    AP1SC             -0.116      0.054     -2.152      0.031
+
+ AP2CC    WITH
+    AP2SC             -0.014      0.081     -0.176      0.861
+
+ AP3CC    WITH
+    AP3SC              0.010      0.091      0.110      0.912
+
+ AP4CC    WITH
+    AP4SC              0.143      0.059      2.405      0.016
+
+ AP5CC    WITH
+    AP5SC              0.099      0.036      2.745      0.006
+
+ AN1CC    WITH
+    AN1SC              0.130      0.086      1.516      0.130
+
+ AN2CC    WITH
+    AN2SC              0.285      0.092      3.098      0.002
+
+ AN3CC    WITH
+    AN3SC              0.075      0.072      1.051      0.293
+
+ AN4CC    WITH
+    AN4SC             -0.023      0.102     -0.225      0.822
+
+ AN5CC    WITH
+    AN5SC             -0.092      0.100     -0.917      0.359
+
+ Intercepts
+    AP1CC              3.805      0.072     53.112      0.000
+    AP2CC              3.862      0.066     58.338      0.000
+    AP3CC              3.356      0.068     49.373      0.000
+    AP4CC              3.385      0.073     46.106      0.000
+    AP5CC              3.483      0.065     53.263      0.000
+    AP1SC              2.557      0.077     33.268      0.000
+    AP2SC              2.897      0.081     35.626      0.000
+    AP3SC              2.649      0.065     40.808      0.000
+    AP4SC              2.517      0.066     38.203      0.000
+    AP5SC              2.874      0.068     42.376      0.000
+    AN1CC              2.167      0.083     26.005      0.000
+    AN2CC              2.069      0.077     26.895      0.000
+    AN3CC              2.230      0.073     30.597      0.000
+    AN4CC              1.960      0.070     28.152      0.000
+    AN5CC              2.006      0.077     26.086      0.000
+    AN1SC              2.810      0.089     31.648      0.000
+    AN2SC              2.747      0.090     30.672      0.000
+    AN3SC              2.695      0.085     31.559      0.000
+    AN4SC              2.690      0.090     30.007      0.000
+    AN5SC              2.431      0.087     27.851      0.000
+
+ Variances
+    APCC               1.000      0.000    999.000    999.000
+    APSC               1.000      0.000    999.000    999.000
+    ANCC               1.000      0.000    999.000    999.000
+    ANSC               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    AP1CC              0.479      0.075      6.417      0.000
+    AP2CC              0.642      0.081      7.967      0.000
+    AP3CC              0.292      0.112      2.610      0.009
+    AP4CC              0.309      0.075      4.138      0.000
+    AP5CC              0.381      0.067      5.720      0.000
+    AP1SC              0.483      0.073      6.635      0.000
+    AP2SC              0.863      0.136      6.337      0.000
+    AP3SC              0.342      0.094      3.639      0.000
+    AP4SC              0.209      0.060      3.461      0.001
+    AP5SC              0.287      0.042      6.784      0.000
+    AN1CC              0.755      0.110      6.854      0.000
+    AN2CC              0.637      0.131      4.862      0.000
+    AN3CC              0.377      0.078      4.829      0.000
+    AN4CC              0.370      0.094      3.938      0.000
+    AN5CC              0.516      0.121      4.260      0.000
+    AN1SC              0.777      0.124      6.251      0.000
+    AN2SC              0.522      0.090      5.830      0.000
+    AN3SC              0.393      0.074      5.304      0.000
+    AN4SC              0.531      0.114      4.646      0.000
+    AN5SC              0.456      0.100      4.544      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    AP1CC              0.464      0.058      8.058      0.000
+    AP2CC              0.158      0.070      2.273      0.023
+    AP3CC              0.636      0.137      4.654      0.000
+    AP4CC              0.671      0.077      8.700      0.000
+    AP5CC              0.488      0.092      5.321      0.000
+    AP1SC              0.531      0.059      9.013      0.000
+    AP2SC              0.249      0.103      2.427      0.015
+    AP3SC              0.534      0.116      4.595      0.000
+    AP4SC              0.723      0.075      9.665      0.000
+    AP5SC              0.641      0.063     10.163      0.000
+    AN1CC              0.375      0.080      4.692      0.000
+    AN2CC              0.381      0.091      4.171      0.000
+    AN3CC              0.592      0.073      8.149      0.000
+    AN4CC              0.561      0.094      5.948      0.000
+    AN5CC              0.498      0.095      5.261      0.000
+    AN1SC              0.434      0.090      4.848      0.000
+    AN2SC              0.626      0.067      9.335      0.000
+    AN3SC              0.690      0.061     11.376      0.000
+    AN4SC              0.620      0.085      7.331      0.000
+    AN5SC              0.656      0.079      8.285      0.000
+
+
+STANDARDIZED SOLUTION
+
+
+           TARGET ROTATED LOADINGS (* significant at 5% level)
+               APCC              APSC              ANCC              ANSC
+              __________        __________        __________        __________
+ AP1CC           0.490*            0.143            -0.234*            0.265*
+ AP2CC           0.413*           -0.076             0.037            -0.055
+ AP3CC           0.853*           -0.061             0.100            -0.115
+ AP4CC           0.810*           -0.005             0.038             0.041
+ AP5CC           0.630*            0.074            -0.123             0.096
+ AP1SC          -0.078             0.560*            0.155            -0.165
+ AP2SC          -0.148             0.575*           -0.145             0.182
+ AP3SC           0.039             0.707*            0.005            -0.053
+ AP4SC           0.025             0.844*            0.077             0.025
+ AP5SC           0.157*            0.709*            0.052            -0.170
+ AN1CC           0.020             0.001             0.619*           -0.067
+ AN2CC          -0.006            -0.007             0.618*           -0.080
+ AN3CC          -0.107             0.167*            0.680*            0.039
+ AN4CC          -0.105             0.021             0.688*            0.180
+ AN5CC           0.091            -0.004             0.691*            0.142
+ AN1SC           0.012             0.038            -0.096             0.673*
+ AN2SC           0.145*           -0.193*            0.068             0.608*
+ AN3SC           0.113             0.007             0.046             0.780*
+ AN4SC           0.024            -0.102             0.092             0.713*
+ AN5SC          -0.060            -0.046             0.107             0.792*
+
+           GEOMIN SIMPLICITY   0.84092
+
+
+           TARGET FACTOR CORRELATIONS (* significant at 5% level)
+               APCC              APSC              ANCC              ANSC
+              __________        __________        __________        __________
+ APCC            1.000
+ APSC           -0.139             1.000
+ ANCC           -0.253*            0.231*            1.000
+ ANSC            0.397*           -0.509*            0.073             1.000
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED)
+
+
+           Model Estimated Means
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+                3.805         3.862         3.356         3.385         3.483
+
+
+           Model Estimated Means
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+                2.557         2.897         2.649         2.517         2.874
+
+
+           Model Estimated Means
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+                2.167         2.069         2.230         1.960         2.006
+
+
+           Model Estimated Means
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+                2.810         2.747         2.695         2.690         2.431
+
+
+           Residuals for Means
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Model Estimated Covariances
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+ AP1CC          0.893
+ AP2CC          0.198         0.763
+ AP3CC          0.403         0.247         0.804
+ AP4CC          0.474         0.272         0.561         0.938
+ AP5CC          0.378         0.200         0.412         0.468         0.744
+ AP1SC         -0.328        -0.110        -0.165        -0.218        -0.170
+ AP2SC         -0.048        -0.083        -0.101        -0.108        -0.057
+ AP3SC         -0.062        -0.046        -0.030        -0.066        -0.040
+ AP4SC         -0.078        -0.057        -0.052         0.065        -0.054
+ AP5SC         -0.050        -0.029         0.003        -0.030         0.084
+ AN1CC         -0.209        -0.055        -0.086        -0.117        -0.157
+ AN2CC         -0.213        -0.061        -0.101        -0.133        -0.164
+ AN3CC         -0.255        -0.095        -0.160        -0.193        -0.210
+ AN4CC         -0.185        -0.062        -0.110        -0.120        -0.157
+ AN5CC         -0.096        -0.004         0.012         0.013        -0.064
+ AN1SC          0.311         0.114         0.205         0.305         0.233
+ AN2SC          0.355         0.167         0.300         0.408         0.287
+ AN3SC          0.367         0.155         0.290         0.405         0.290
+ AN4SC          0.293         0.123         0.215         0.321         0.219
+ AN5SC          0.247         0.091         0.154         0.257         0.171
+
+
+           Model Estimated Covariances
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+ AP1SC          1.028
+ AP2SC          0.335         1.150
+ AP3SC          0.438         0.310         0.733
+ AP4SC          0.518         0.366         0.458         0.755
+ AP5SC          0.494         0.333         0.444         0.516         0.800
+ AN1CC          0.231         0.040         0.114         0.182         0.130
+ AN2CC          0.222         0.039         0.107         0.169         0.121
+ AN3CC          0.316         0.114         0.181         0.267         0.195
+ AN4CC          0.148         0.016         0.046         0.114         0.039
+ AN5CC          0.112        -0.013         0.035         0.104         0.038
+ AN1SC         -0.382        -0.137        -0.256        -0.262        -0.313
+ AN2SC         -0.524        -0.273        -0.388        -0.407        -0.450
+ AN3SC         -0.431        -0.180        -0.295        -0.291        -0.354
+ AN4SC         -0.461        -0.223        -0.349        -0.351        -0.419
+ AN5SC         -0.417        -0.189        -0.322        -0.313        -0.397
+
+
+           Model Estimated Covariances
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+ AN1CC          1.208
+ AN2CC          0.421         1.030
+ AN3CC          0.487         0.454         0.924
+ AN4CC          0.442         0.409         0.481         0.843
+ AN5CC          0.450         0.412         0.473         0.477         1.029
+ AN1SC          0.049        -0.092        -0.101         0.055         0.110
+ AN2SC         -0.031         0.236        -0.087         0.117         0.203
+ AN3SC          0.000        -0.021         0.047         0.155         0.239
+ AN4SC          0.032         0.012         0.002         0.171         0.263
+ AN5SC          0.071         0.049         0.057         0.240         0.204
+
+
+           Model Estimated Covariances
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+ AN1SC          1.372
+ AN2SC          0.693         1.396
+ AN3SC          0.710         0.856         1.269
+ AN4SC          0.695         0.856         0.859         1.398
+ AN5SC          0.686         0.833         0.849         0.863         1.326
+
+
+           Model Estimated Correlations
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+ AP1CC          1.000
+ AP2CC          0.240         1.000
+ AP3CC          0.475         0.315         1.000
+ AP4CC          0.518         0.321         0.646         1.000
+ AP5CC          0.464         0.266         0.533         0.561         1.000
+ AP1SC         -0.342        -0.124        -0.181        -0.222        -0.194
+ AP2SC         -0.048        -0.089        -0.105        -0.104        -0.062
+ AP3SC         -0.076        -0.062        -0.039        -0.080        -0.054
+ AP4SC         -0.095        -0.076        -0.067         0.077        -0.072
+ AP5SC         -0.059        -0.037         0.004        -0.034         0.109
+ AN1CC         -0.201        -0.058        -0.087        -0.110        -0.166
+ AN2CC         -0.222        -0.069        -0.111        -0.135        -0.187
+ AN3CC         -0.281        -0.114        -0.185        -0.207        -0.253
+ AN4CC         -0.213        -0.078        -0.133        -0.135        -0.198
+ AN5CC         -0.100        -0.004         0.014         0.014        -0.073
+ AN1SC          0.281         0.111         0.195         0.269         0.231
+ AN2SC          0.318         0.162         0.283         0.356         0.282
+ AN3SC          0.345         0.157         0.287         0.371         0.299
+ AN4SC          0.262         0.119         0.203         0.280         0.215
+ AN5SC          0.227         0.091         0.149         0.231         0.172
+
+
+           Model Estimated Correlations
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+ AP1SC          1.000
+ AP2SC          0.308         1.000
+ AP3SC          0.505         0.337         1.000
+ AP4SC          0.588         0.392         0.616         1.000
+ AP5SC          0.544         0.347         0.580         0.664         1.000
+ AN1CC          0.208         0.034         0.121         0.190         0.132
+ AN2CC          0.215         0.036         0.123         0.192         0.133
+ AN3CC          0.324         0.110         0.220         0.320         0.227
+ AN4CC          0.159         0.016         0.059         0.143         0.048
+ AN5CC          0.109        -0.012         0.040         0.118         0.042
+ AN1SC         -0.321        -0.109        -0.255        -0.257        -0.299
+ AN2SC         -0.437        -0.215        -0.383        -0.397        -0.426
+ AN3SC         -0.378        -0.149        -0.306        -0.297        -0.351
+ AN4SC         -0.385        -0.176        -0.345        -0.342        -0.396
+ AN5SC         -0.357        -0.153        -0.326        -0.313        -0.385
+
+
+           Model Estimated Correlations
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+ AN1CC          1.000
+ AN2CC          0.378         1.000
+ AN3CC          0.461         0.466         1.000
+ AN4CC          0.438         0.439         0.545         1.000
+ AN5CC          0.404         0.400         0.485         0.512         1.000
+ AN1SC          0.038        -0.077        -0.090         0.051         0.092
+ AN2SC         -0.024         0.197        -0.076         0.108         0.169
+ AN3SC          0.000        -0.019         0.043         0.150         0.209
+ AN4SC          0.025         0.010         0.002         0.158         0.219
+ AN5SC          0.056         0.042         0.052         0.227         0.175
+
+
+           Model Estimated Correlations
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+ AN1SC          1.000
+ AN2SC          0.501         1.000
+ AN3SC          0.538         0.643         1.000
+ AN4SC          0.502         0.613         0.645         1.000
+ AN5SC          0.509         0.612         0.655         0.634         1.000
+
+
+           Model Estimated Partial Correlations
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+ AP1CC          1.000
+ AP2CC          0.041         1.000
+ AP3CC          0.156         0.100         1.000
+ AP4CC          0.139         0.120         0.427         1.000
+ AP5CC          0.096         0.049         0.175         0.249         1.000
+ AP1SC         -0.208         0.011         0.052        -0.075        -0.005
+ AP2SC          0.047        -0.028        -0.022        -0.103        -0.009
+ AP3SC          0.080         0.008         0.083        -0.100        -0.003
+ AP4SC          0.049        -0.054        -0.171         0.428        -0.146
+ AP5SC          0.078         0.011         0.057        -0.126         0.333
+ AN1CC         -0.046         0.007         0.034         0.005        -0.032
+ AN2CC         -0.070         0.000         0.012        -0.062        -0.065
+ AN3CC         -0.068        -0.005        -0.004        -0.089        -0.072
+ AN4CC         -0.060        -0.006        -0.012        -0.045        -0.050
+ AN5CC         -0.024         0.011         0.048         0.036        -0.012
+ AN1SC          0.050        -0.005        -0.022         0.005         0.033
+ AN2SC          0.064         0.007         0.018         0.122         0.077
+ AN3SC          0.085         0.007         0.023         0.082         0.072
+ AN4SC          0.022        -0.005        -0.018         0.033         0.026
+ AN5SC          0.016        -0.012        -0.043        -0.004         0.013
+
+
+           Model Estimated Partial Correlations
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+ AP1SC          1.000
+ AP2SC          0.061         1.000
+ AP3SC          0.121         0.080         1.000
+ AP4SC          0.237         0.185         0.281         1.000
+ AP5SC          0.152         0.085         0.170         0.341         1.000
+ AN1CC          0.022        -0.030        -0.002         0.012         0.024
+ AN2CC          0.044        -0.028         0.018         0.074         0.063
+ AN3CC          0.052        -0.017         0.025         0.117         0.064
+ AN4CC          0.016        -0.023        -0.010         0.046         0.005
+ AN5CC          0.019        -0.023        -0.006         0.010         0.005
+ AN1SC         -0.013         0.032         0.003         0.012        -0.030
+ AN2SC         -0.057         0.009        -0.045        -0.125        -0.098
+ AN3SC         -0.020         0.035        -0.004        -0.028        -0.053
+ AN4SC         -0.031         0.008        -0.030        -0.037        -0.065
+ AN5SC         -0.027         0.016        -0.026         0.001        -0.065
+
+
+           Model Estimated Partial Correlations
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+ AN1CC          1.000
+ AN2CC          0.138         1.000
+ AN3CC          0.165         0.191         1.000
+ AN4CC          0.152         0.142         0.218         1.000
+ AN5CC          0.147         0.123         0.204         0.238         1.000
+ AN1SC          0.132        -0.104        -0.067        -0.009         0.006
+ AN2SC         -0.071         0.443        -0.102        -0.011         0.020
+ AN3SC         -0.050        -0.133         0.186         0.039         0.073
+ AN4SC          0.006        -0.058         0.017         0.037         0.119
+ AN5SC          0.027        -0.049         0.055         0.157        -0.065
+
+
+           Model Estimated Partial Correlations
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+ AN1SC          1.000
+ AN2SC          0.137         1.000
+ AN3SC          0.158         0.223         1.000
+ AN4SC          0.112         0.162         0.200         1.000
+ AN5SC          0.137         0.190         0.248         0.229         1.000
+
+
+           Residuals for Covariances
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+ AP1CC          0.000
+ AP2CC          0.045         0.000
+ AP3CC          0.006        -0.002         0.000
+ AP4CC         -0.025        -0.035         0.003         0.000
+ AP5CC          0.009         0.016        -0.021         0.024         0.000
+ AP1SC          0.000         0.003         0.029        -0.008        -0.031
+ AP2SC          0.109         0.000        -0.052        -0.030         0.061
+ AP3SC         -0.012        -0.019         0.000         0.006         0.008
+ AP4SC         -0.022        -0.026         0.006         0.000         0.005
+ AP5SC          0.002         0.018        -0.004         0.009         0.000
+ AN1CC          0.023        -0.014        -0.019        -0.022         0.031
+ AN2CC          0.031        -0.101         0.008        -0.003        -0.019
+ AN3CC         -0.022         0.052        -0.043         0.053        -0.010
+ AN4CC          0.010         0.028        -0.002        -0.008         0.044
+ AN5CC          0.017         0.051         0.031        -0.033        -0.043
+ AN1SC          0.071         0.055        -0.051        -0.013        -0.010
+ AN2SC          0.004        -0.006         0.014         0.000        -0.022
+ AN3SC         -0.013        -0.007        -0.009         0.046        -0.011
+ AN4SC          0.003        -0.045        -0.012        -0.006         0.005
+ AN5SC         -0.030        -0.049         0.026        -0.015         0.012
+
+
+           Residuals for Covariances
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+ AP1SC          0.000
+ AP2SC          0.033         0.000
+ AP3SC         -0.001        -0.041         0.000
+ AP4SC          0.009        -0.030         0.004         0.000
+ AP5SC         -0.026         0.010         0.012         0.003         0.000
+ AN1CC          0.078         0.139        -0.027        -0.032        -0.023
+ AN2CC         -0.053        -0.020         0.027        -0.021         0.032
+ AN3CC         -0.031        -0.021         0.008         0.033         0.000
+ AN4CC         -0.028         0.037        -0.009         0.010        -0.016
+ AN5CC          0.046        -0.038        -0.016        -0.015        -0.003
+ AN1SC         -0.001         0.083         0.000        -0.042         0.042
+ AN2SC          0.004        -0.087         0.006         0.010        -0.018
+ AN3SC         -0.043         0.022         0.005         0.046        -0.035
+ AN4SC          0.008         0.018         0.010        -0.034         0.041
+ AN5SC          0.010        -0.030         0.007        -0.008         0.014
+
+
+           Residuals for Covariances
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+ AN1CC          0.000
+ AN2CC          0.010         0.000
+ AN3CC         -0.019         0.053         0.000
+ AN4CC          0.007         0.007         0.005         0.000
+ AN5CC          0.055        -0.039        -0.014        -0.017         0.000
+ AN1SC          0.000         0.048         0.024        -0.022         0.018
+ AN2SC         -0.007         0.000         0.041        -0.012        -0.012
+ AN3SC          0.010         0.037         0.000        -0.018        -0.019
+ AN4SC         -0.044        -0.002        -0.011         0.000         0.044
+ AN5SC         -0.016        -0.039        -0.018         0.030         0.000
+
+
+           Residuals for Covariances
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+ AN1SC          0.000
+ AN2SC          0.075         0.000
+ AN3SC         -0.055         0.033         0.000
+ AN4SC          0.051        -0.038        -0.011         0.000
+ AN5SC         -0.036        -0.023         0.018         0.007         0.000
+
+
+           Residuals for Correlations
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+ AP1CC          0.000
+ AP2CC          0.055         0.000
+ AP3CC          0.007        -0.003         0.000
+ AP4CC         -0.027        -0.041         0.003         0.000
+ AP5CC          0.011         0.021        -0.027         0.029         0.000
+ AP1SC          0.000         0.003         0.032        -0.008        -0.035
+ AP2SC          0.107         0.000        -0.054        -0.029         0.066
+ AP3SC         -0.015        -0.026         0.000         0.007         0.011
+ AP4SC         -0.027        -0.035         0.007         0.000         0.007
+ AP5SC          0.003         0.022        -0.005         0.011         0.000
+ AN1CC          0.022        -0.014        -0.020        -0.021         0.032
+ AN2CC          0.032        -0.115         0.008        -0.003        -0.022
+ AN3CC         -0.024         0.062        -0.050         0.056        -0.012
+ AN4CC          0.012         0.035        -0.003        -0.009         0.056
+ AN5CC          0.018         0.057         0.035        -0.033        -0.049
+ AN1SC          0.064         0.054        -0.049        -0.012        -0.010
+ AN2SC          0.003        -0.006         0.013         0.000        -0.021
+ AN3SC         -0.012        -0.007        -0.008         0.042        -0.011
+ AN4SC          0.003        -0.043        -0.012        -0.005         0.005
+ AN5SC         -0.028        -0.049         0.025        -0.014         0.012
+
+
+           Residuals for Correlations
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+ AP1SC          0.000
+ AP2SC          0.030         0.000
+ AP3SC         -0.002        -0.045         0.000
+ AP4SC          0.011        -0.033         0.006         0.000
+ AP5SC         -0.029         0.011         0.015         0.004         0.000
+ AN1CC          0.070         0.118        -0.028        -0.034        -0.023
+ AN2CC         -0.052        -0.019         0.031        -0.024         0.035
+ AN3CC         -0.031        -0.020         0.010         0.040         0.000
+ AN4CC         -0.030         0.038        -0.011         0.013        -0.019
+ AN5CC          0.044        -0.035        -0.018        -0.017        -0.004
+ AN1SC         -0.001         0.066         0.000        -0.042         0.040
+ AN2SC          0.003        -0.069         0.006         0.009        -0.017
+ AN3SC         -0.037         0.018         0.005         0.047        -0.035
+ AN4SC          0.007         0.014         0.010        -0.034         0.039
+ AN5SC          0.008        -0.025         0.007        -0.008         0.014
+
+
+           Residuals for Correlations
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+ AN1CC          0.000
+ AN2CC          0.009         0.000
+ AN3CC         -0.018         0.054         0.000
+ AN4CC          0.007         0.008         0.005         0.000
+ AN5CC          0.049        -0.038        -0.014        -0.018         0.000
+ AN1SC          0.000         0.040         0.021        -0.020         0.015
+ AN2SC         -0.005         0.000         0.036        -0.011        -0.010
+ AN3SC          0.008         0.032         0.000        -0.017        -0.016
+ AN4SC         -0.034        -0.001        -0.010         0.000         0.036
+ AN5SC         -0.013        -0.033        -0.017         0.028         0.000
+
+
+           Residuals for Correlations
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+ AN1SC          0.000
+ AN2SC          0.055         0.000
+ AN3SC         -0.042         0.025         0.000
+ AN4SC          0.037        -0.027        -0.009         0.000
+ AN5SC         -0.026        -0.017         0.014         0.005         0.000
+
+
+           Residuals for Partial Correlations
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+ AP1CC          0.000
+ AP2CC          0.092         0.000
+ AP3CC          0.056         0.012         0.000
+ AP4CC         -0.051        -0.071         0.015         0.000
+ AP5CC         -0.006         0.023        -0.075         0.088         0.000
+ AP1SC         -0.030         0.035         0.090        -0.033        -0.059
+ AP2SC          0.187        -0.026        -0.090        -0.036         0.093
+ AP3SC         -0.019        -0.034        -0.004        -0.004         0.034
+ AP4SC          0.002        -0.087         0.025        -0.022        -0.026
+ AP5SC         -0.043         0.076         0.011         0.002         0.009
+ AN1CC          0.028        -0.051        -0.035         0.011         0.097
+ AN2CC          0.062        -0.219         0.037         0.037        -0.073
+ AN3CC         -0.067         0.153        -0.161         0.149        -0.040
+ AN4CC         -0.004         0.087         0.005        -0.073         0.151
+ AN5CC          0.053         0.064         0.105        -0.100        -0.098
+ AN1SC          0.093         0.077        -0.114         0.062        -0.078
+ AN2SC         -0.004         0.070         0.033        -0.074         0.029
+ AN3SC         -0.056         0.025        -0.012         0.041        -0.015
+ AN4SC          0.006        -0.103        -0.039         0.066        -0.002
+ AN5SC         -0.037        -0.109         0.108        -0.068        -0.003
+
+
+           Residuals for Partial Correlations
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+ AP1SC          0.000
+ AP2SC          0.115         0.000
+ AP3SC          0.007        -0.082         0.000
+ AP4SC          0.067        -0.063        -0.006         0.000
+ AP5SC         -0.081         0.001         0.013         0.046         0.000
+ AN1CC          0.145         0.137        -0.043        -0.088        -0.077
+ AN2CC         -0.089         0.026         0.058        -0.161         0.162
+ AN3CC         -0.058        -0.022         0.021         0.037         0.002
+ AN4CC         -0.085         0.078        -0.023         0.111        -0.127
+ AN5CC          0.084        -0.097        -0.037         0.010         0.040
+ AN1SC         -0.005         0.078         0.021        -0.102         0.113
+ AN2SC          0.082        -0.150        -0.028         0.114        -0.111
+ AN3SC         -0.137         0.098         0.016         0.163        -0.131
+ AN4SC          0.042         0.021         0.023        -0.154         0.109
+ AN5SC          0.043        -0.079         0.007        -0.049         0.088
+
+
+           Residuals for Partial Correlations
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+ AN1CC          0.000
+ AN2CC          0.027         0.000
+ AN3CC         -0.047         0.084         0.000
+ AN4CC          0.003         0.065         0.009         0.000
+ AN5CC          0.105        -0.090        -0.027        -0.023         0.000
+ AN1SC          0.003        -0.002         0.062        -0.039        -0.001
+ AN2SC         -0.034         0.008         0.036        -0.048        -0.005
+ AN3SC          0.072         0.073        -0.038        -0.105        -0.006
+ AN4SC         -0.120         0.018        -0.012         0.022         0.111
+ AN5SC         -0.001        -0.111        -0.030         0.101        -0.023
+
+
+           Residuals for Partial Correlations
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+ AN1SC          0.000
+ AN2SC          0.142         0.000
+ AN3SC         -0.142         0.033         0.000
+ AN4SC          0.084        -0.091         0.004         0.000
+ AN5SC         -0.037        -0.016         0.073         0.012         0.000
+
+
+           Standardized Residuals (z-scores) for Covariances
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+ AP1CC          0.000
+ AP2CC          1.118         0.000
+ AP3CC        999.000       999.000         0.000
+ AP4CC         -1.020        -1.433       999.000         0.000
+ AP5CC        999.000         0.763        -0.863         8.103         0.000
+ AP1SC          0.000         0.057       999.000        -0.611        -2.200
+ AP2SC         13.760         0.000       999.000        -1.262         1.566
+ AP3SC        999.000        -0.477         0.000       999.000         0.325
+ AP4SC         -1.136        -1.726       999.000         0.000         0.743
+ AP5SC        999.000         0.760        -0.545         0.596         0.000
+ AN1CC          0.501        -0.287        -1.566        -0.736         0.752
+ AN2CC          0.731        -2.793         0.221        -0.089        -0.593
+ AN3CC         -0.937         1.377       999.000         2.584        -0.495
+ AN4CC          1.718         0.983        -0.092        -0.625         1.591
+ AN5CC          0.715         1.661       999.000       999.000        -1.388
+ AN1SC          3.190         1.445       999.000        -0.729        -0.312
+ AN2SC          0.110        -0.192         0.894        -0.131        -0.817
+ AN3SC         -0.513        -0.184        -0.456       999.000       999.000
+ AN4SC        999.000        -1.730        -0.341        -0.224         0.118
+ AN5SC         -1.517        -1.458         0.878        -0.810         0.380
+
+
+           Standardized Residuals (z-scores) for Covariances
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+ AP1SC        999.000
+ AP2SC          1.509         0.000
+ AP3SC         -0.076        -1.019       999.000
+ AP4SC        999.000        -2.538       999.000       999.000
+ AP5SC         -2.117         0.422         0.643         0.795       999.000
+ AN1CC          1.820         2.375        -1.386        -0.941        -0.905
+ AN2CC         -1.503        -0.364       999.000        -0.828         1.417
+ AN3CC         -0.812        -0.801       999.000         0.966       999.000
+ AN4CC        999.000         0.773        -0.425       999.000        -0.576
+ AN5CC        999.000        -0.933        -0.744       999.000        -0.133
+ AN1SC         -0.024         2.572        -0.004        -1.517         1.651
+ AN2SC          0.104        -2.045         0.386         3.469        -1.753
+ AN3SC         -1.204         0.416       999.000       999.000       999.000
+ AN4SC          0.559         0.371         0.373        -1.929         1.210
+ AN5SC        999.000        -0.730         0.200        -0.936         0.463
+
+
+           Standardized Residuals (z-scores) for Covariances
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+ AN1CC          0.000
+ AN2CC          0.234         0.000
+ AN3CC         -0.501         2.309         0.000
+ AN4CC          0.280         0.818         0.468         0.000
+ AN5CC          2.700        -0.940        -0.576        -0.602         0.000
+ AN1SC          0.000         0.946         0.557        -1.520         0.482
+ AN2SC         -0.246         0.000         1.660        -1.485        -0.344
+ AN3SC          0.271         0.796         0.000        -1.123        -0.461
+ AN4SC         -1.166        -0.032        -0.392         0.000         0.865
+ AN5SC         -0.535        -1.049        -1.779         0.984       999.000
+
+
+           Standardized Residuals (z-scores) for Covariances
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+ AN1SC        999.000
+ AN2SC          3.594       999.000
+ AN3SC         -1.079         0.992       999.000
+ AN4SC          3.836        -0.693        -0.262       999.000
+ AN5SC         -0.828        -0.921       999.000         0.189       999.000
+
+
+           Normalized Residuals for Covariances
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+ AP1CC          0.000
+ AP2CC          0.651         0.000
+ AP3CC          0.088        -0.031         0.000
+ AP4CC         -0.362        -0.501         0.035         0.000
+ AP5CC          0.157         0.261        -0.261         0.269         0.000
+ AP1SC          0.000         0.038         0.370        -0.095        -0.426
+ AP2SC          1.327         0.000        -0.582        -0.320         0.745
+ AP3SC         -0.190        -0.294         0.000         0.068         0.103
+ AP4SC         -0.345        -0.459         0.077         0.000         0.068
+ AP5SC          0.039         0.287        -0.045         0.107         0.000
+ AN1CC          0.265        -0.178        -0.246        -0.253         0.422
+ AN2CC          0.393        -1.521         0.101        -0.034        -0.288
+ AN3CC         -0.304         0.740        -0.631         0.684        -0.155
+ AN4CC          0.146         0.434        -0.033        -0.102         0.682
+ AN5CC          0.220         0.727         0.406        -0.394        -0.579
+ AN1SC          0.791         0.716        -0.502        -0.126        -0.106
+ AN2SC          0.044        -0.081         0.132        -0.002        -0.236
+ AN3SC         -0.157        -0.089        -0.086         0.471        -0.125
+ AN4SC          0.037        -0.567        -0.119        -0.056         0.053
+ AN5SC         -0.352        -0.594         0.249        -0.147         0.127
+
+
+           Normalized Residuals for Covariances
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+ AP1SC          0.000
+ AP2SC          0.352         0.000
+ AP3SC         -0.015        -0.452         0.000
+ AP4SC          0.123        -0.352         0.058         0.000
+ AP5SC         -0.310         0.114         0.127         0.039         0.000
+ AN1CC          0.868         1.369        -0.375        -0.442        -0.335
+ AN2CC         -0.683        -0.215         0.408        -0.302         0.470
+ AN3CC         -0.372        -0.243         0.118         0.459         0.006
+ AN4CC         -0.360         0.415        -0.132         0.154        -0.236
+ AN5CC          0.597        -0.397        -0.217        -0.206        -0.042
+ AN1SC         -0.009         0.719        -0.001        -0.419         0.411
+ AN2SC          0.039        -0.735         0.056         0.100        -0.179
+ AN3SC         -0.426         0.184         0.045         0.480        -0.348
+ AN4SC          0.081         0.147         0.101        -0.344         0.399
+ AN5SC          0.099        -0.257         0.068        -0.082         0.137
+
+
+           Normalized Residuals for Covariances
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+ AN1CC          0.000
+ AN2CC          0.120         0.000
+ AN3CC         -0.235         0.766         0.000
+ AN4CC          0.086         0.107         0.068         0.000
+ AN5CC          0.544        -0.467        -0.186        -0.225         0.000
+ AN1SC          0.000         0.501         0.257        -0.250         0.186
+ AN2SC         -0.075         0.000         0.451        -0.141        -0.116
+ AN3SC          0.107         0.375         0.000        -0.211        -0.196
+ AN4SC         -0.447        -0.016        -0.120         0.000         0.430
+ AN5SC         -0.168        -0.413        -0.200         0.341         0.000
+
+
+           Normalized Residuals for Covariances
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+ AN1SC          0.000
+ AN2SC          0.599         0.000
+ AN3SC         -0.440         0.257         0.000
+ AN4SC          0.413        -0.283        -0.089         0.000
+ AN5SC         -0.284        -0.171         0.140         0.052         0.000
+
+
+MODEL MODIFICATION INDICES
+
+NOTE:  Modification indices for direct effects of observed dependent variables
+regressed on covariates may not be included.  To include these, request
+MODINDICES (ALL).
+
+Minimum M.I. value for printing the modification index    10.000
+
+                                   M.I.     E.P.C.  Std E.P.C.  StdYX E.P.C.
+
+No modification indices above the minimum value.
+
+
+
+TECHNICAL 1 OUTPUT
+
+
+     TECHNICAL 1 OUTPUT FOR THE UNROTATED SOLUTION
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+                  1             2             3             4             5
+
+
+           NU
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+                  6             7             8             9            10
+
+
+           NU
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+                 11            12            13            14            15
+
+
+           NU
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+                 16            17            18            19            20
+
+
+           LAMBDA
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+ AP1CC             21             0             0             0
+ AP2CC             22            23             0             0
+ AP3CC             24            25            26             0
+ AP4CC             27            28            29            30
+ AP5CC             31            32            33            34
+ AP1SC             35            36            37            38
+ AP2SC             39            40            41            42
+ AP3SC             43            44            45            46
+ AP4SC             47            48            49            50
+ AP5SC             51            52            53            54
+ AN1CC             55            56            57            58
+ AN2CC             59            60            61            62
+ AN3CC             63            64            65            66
+ AN4CC             67            68            69            70
+ AN5CC             71            72            73            74
+ AN1SC             75            76            77            78
+ AN2SC             79            80            81            82
+ AN3SC             83            84            85            86
+ AN4SC             87            88            89            90
+ AN5SC             91            92            93            94
+
+
+           THETA
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+ AP1CC             95
+ AP2CC              0            96
+ AP3CC              0             0            97
+ AP4CC              0             0             0            98
+ AP5CC              0             0             0             0            99
+ AP1SC            100             0             0             0             0
+ AP2SC              0           102             0             0             0
+ AP3SC              0             0           104             0             0
+ AP4SC              0             0             0           106             0
+ AP5SC              0             0             0             0           108
+ AN1CC              0             0             0             0             0
+ AN2CC              0             0             0             0             0
+ AN3CC              0             0             0             0             0
+ AN4CC              0             0             0             0             0
+ AN5CC              0             0             0             0             0
+ AN1SC              0             0             0             0             0
+ AN2SC              0             0             0             0             0
+ AN3SC              0             0             0             0             0
+ AN4SC              0             0             0             0             0
+ AN5SC              0             0             0             0             0
+
+
+           THETA
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+ AP1SC            101
+ AP2SC              0           103
+ AP3SC              0             0           105
+ AP4SC              0             0             0           107
+ AP5SC              0             0             0             0           109
+ AN1CC              0             0             0             0             0
+ AN2CC              0             0             0             0             0
+ AN3CC              0             0             0             0             0
+ AN4CC              0             0             0             0             0
+ AN5CC              0             0             0             0             0
+ AN1SC              0             0             0             0             0
+ AN2SC              0             0             0             0             0
+ AN3SC              0             0             0             0             0
+ AN4SC              0             0             0             0             0
+ AN5SC              0             0             0             0             0
+
+
+           THETA
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+ AN1CC            110
+ AN2CC              0           111
+ AN3CC              0             0           112
+ AN4CC              0             0             0           113
+ AN5CC              0             0             0             0           114
+ AN1SC            115             0             0             0             0
+ AN2SC              0           117             0             0             0
+ AN3SC              0             0           119             0             0
+ AN4SC              0             0             0           121             0
+ AN5SC              0             0             0             0           123
+
+
+           THETA
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+ AN1SC            116
+ AN2SC              0           118
+ AN3SC              0             0           120
+ AN4SC              0             0             0           122
+ AN5SC              0             0             0             0           124
+
+
+           ALPHA
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+                  0             0             0             0
+
+
+           BETA
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+ APCC               0             0             0             0
+ APSC               0             0             0             0
+ ANCC               0             0             0             0
+ ANSC               0             0             0             0
+
+
+           PSI
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+ APCC               0
+ APSC               0             0
+ ANCC               0             0             0
+ ANSC               0             0             0             0
+
+
+     STARTING VALUES
+
+
+           NU
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+                3.805         3.862         3.356         3.385         3.483
+
+
+           NU
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+                2.557         2.897         2.649         2.517         2.874
+
+
+           NU
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+                2.167         2.069         2.230         1.960         2.006
+
+
+           NU
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+                2.810         2.747         2.695         2.690         2.431
+
+
+           LAMBDA
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+ AP1CC          0.634         0.000         0.000         0.000
+ AP2CC          0.296         0.188         0.000         0.000
+ AP3CC          0.625         0.351         0.111         0.000
+ AP4CC          0.758         0.183         0.193         0.085
+ AP5CC          0.594         0.066         0.103        -0.028
+ AP1SC         -0.406         0.002         0.606        -0.116
+ AP2SC         -0.126        -0.312         0.417        -0.085
+ AP3SC         -0.144        -0.081         0.577        -0.134
+ AP4SC         -0.136        -0.086         0.745        -0.061
+ AP5SC         -0.112        -0.021         0.672        -0.193
+ AN1CC         -0.345         0.234         0.249         0.447
+ AN2CC         -0.325         0.236         0.224         0.454
+ AN3CC         -0.406         0.125         0.371         0.506
+ AN4CC         -0.288         0.140         0.168         0.558
+ AN5CC         -0.173         0.302         0.181         0.586
+ AN1SC          0.468        -0.211        -0.263         0.495
+ AN2SC          0.555         0.036        -0.387         0.666
+ AN3SC          0.586        -0.170        -0.216         0.704
+ AN4SC          0.469        -0.158        -0.351         0.693
+ AN5SC          0.402        -0.213        -0.317         0.725
+
+
+           THETA
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+ AP1CC          0.492
+ AP2CC          0.000         0.640
+ AP3CC          0.000         0.000         0.278
+ AP4CC          0.000         0.000         0.000         0.286
+ AP5CC          0.000         0.000         0.000         0.000         0.375
+ AP1SC          0.000         0.000         0.000         0.000         0.000
+ AP2SC          0.000         0.000         0.000         0.000         0.000
+ AP3SC          0.000         0.000         0.000         0.000         0.000
+ AP4SC          0.000         0.000         0.000         0.000         0.000
+ AP5SC          0.000         0.000         0.000         0.000         0.000
+ AN1CC          0.000         0.000         0.000         0.000         0.000
+ AN2CC          0.000         0.000         0.000         0.000         0.000
+ AN3CC          0.000         0.000         0.000         0.000         0.000
+ AN4CC          0.000         0.000         0.000         0.000         0.000
+ AN5CC          0.000         0.000         0.000         0.000         0.000
+ AN1SC          0.000         0.000         0.000         0.000         0.000
+ AN2SC          0.000         0.000         0.000         0.000         0.000
+ AN3SC          0.000         0.000         0.000         0.000         0.000
+ AN4SC          0.000         0.000         0.000         0.000         0.000
+ AN5SC          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+ AP1SC          0.483
+ AP2SC          0.000         0.856
+ AP3SC          0.000         0.000         0.355
+ AP4SC          0.000         0.000         0.000         0.171
+ AP5SC          0.000         0.000         0.000         0.000         0.298
+ AN1CC          0.000         0.000         0.000         0.000         0.000
+ AN2CC          0.000         0.000         0.000         0.000         0.000
+ AN3CC          0.000         0.000         0.000         0.000         0.000
+ AN4CC          0.000         0.000         0.000         0.000         0.000
+ AN5CC          0.000         0.000         0.000         0.000         0.000
+ AN1SC          0.000         0.000         0.000         0.000         0.000
+ AN2SC          0.000         0.000         0.000         0.000         0.000
+ AN3SC          0.000         0.000         0.000         0.000         0.000
+ AN4SC          0.000         0.000         0.000         0.000         0.000
+ AN5SC          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+ AN1CC          0.772
+ AN2CC          0.000         0.612
+ AN3CC          0.000         0.000         0.349
+ AN4CC          0.000         0.000         0.000         0.401
+ AN5CC          0.000         0.000         0.000         0.000         0.532
+ AN1SC          0.000         0.000         0.000         0.000         0.000
+ AN2SC          0.000         0.000         0.000         0.000         0.000
+ AN3SC          0.000         0.000         0.000         0.000         0.000
+ AN4SC          0.000         0.000         0.000         0.000         0.000
+ AN5SC          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+ AN1SC          0.794
+ AN2SC          0.000         0.493
+ AN3SC          0.000         0.000         0.354
+ AN4SC          0.000         0.000         0.000         0.549
+ AN5SC          0.000         0.000         0.000         0.000         0.493
+
+
+           ALPHA
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           BETA
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+ APCC           0.000         0.000         0.000         0.000
+ APSC           0.000         0.000         0.000         0.000
+ ANCC           0.000         0.000         0.000         0.000
+ ANSC           0.000         0.000         0.000         0.000
+
+
+           PSI
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+ APCC           1.000
+ APSC           0.000         1.000
+ ANCC           0.000         0.000         1.000
+ ANSC           0.000         0.000         0.000         1.000
+
+
+     TECHNICAL 1 OUTPUT FOR THE ROTATED SOLUTION
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+                  1             2             3             4             5
+
+
+           NU
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+                  6             7             8             9            10
+
+
+           NU
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+                 11            12            13            14            15
+
+
+           NU
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+                 16            17            18            19            20
+
+
+           LAMBDA
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+ AP1CC             21            22            23            24
+ AP2CC             25            26            27            28
+ AP3CC             29            30            31            32
+ AP4CC             33            34            35            36
+ AP5CC             37            38            39            40
+ AP1SC             41            42            43            44
+ AP2SC             45            46            47            48
+ AP3SC             49            50            51            52
+ AP4SC             53            54            55            56
+ AP5SC             57            58            59            60
+ AN1CC             61            62            63            64
+ AN2CC             65            66            67            68
+ AN3CC             69            70            71            72
+ AN4CC             73            74            75            76
+ AN5CC             77            78            79            80
+ AN1SC             81            82            83            84
+ AN2SC             85            86            87            88
+ AN3SC             89            90            91            92
+ AN4SC             93            94            95            96
+ AN5SC             97            98            99           100
+
+
+           THETA
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+ AP1CC            101
+ AP2CC              0           102
+ AP3CC              0             0           103
+ AP4CC              0             0             0           104
+ AP5CC              0             0             0             0           105
+ AP1SC            106             0             0             0             0
+ AP2SC              0           108             0             0             0
+ AP3SC              0             0           110             0             0
+ AP4SC              0             0             0           112             0
+ AP5SC              0             0             0             0           114
+ AN1CC              0             0             0             0             0
+ AN2CC              0             0             0             0             0
+ AN3CC              0             0             0             0             0
+ AN4CC              0             0             0             0             0
+ AN5CC              0             0             0             0             0
+ AN1SC              0             0             0             0             0
+ AN2SC              0             0             0             0             0
+ AN3SC              0             0             0             0             0
+ AN4SC              0             0             0             0             0
+ AN5SC              0             0             0             0             0
+
+
+           THETA
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+ AP1SC            107
+ AP2SC              0           109
+ AP3SC              0             0           111
+ AP4SC              0             0             0           113
+ AP5SC              0             0             0             0           115
+ AN1CC              0             0             0             0             0
+ AN2CC              0             0             0             0             0
+ AN3CC              0             0             0             0             0
+ AN4CC              0             0             0             0             0
+ AN5CC              0             0             0             0             0
+ AN1SC              0             0             0             0             0
+ AN2SC              0             0             0             0             0
+ AN3SC              0             0             0             0             0
+ AN4SC              0             0             0             0             0
+ AN5SC              0             0             0             0             0
+
+
+           THETA
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+ AN1CC            116
+ AN2CC              0           117
+ AN3CC              0             0           118
+ AN4CC              0             0             0           119
+ AN5CC              0             0             0             0           120
+ AN1SC            121             0             0             0             0
+ AN2SC              0           123             0             0             0
+ AN3SC              0             0           125             0             0
+ AN4SC              0             0             0           127             0
+ AN5SC              0             0             0             0           129
+
+
+           THETA
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+ AN1SC            122
+ AN2SC              0           124
+ AN3SC              0             0           126
+ AN4SC              0             0             0           128
+ AN5SC              0             0             0             0           130
+
+
+           ALPHA
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+                  0             0             0             0
+
+
+           BETA
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+ APCC               0             0             0             0
+ APSC               0             0             0             0
+ ANCC               0             0             0             0
+ ANSC               0             0             0             0
+
+
+           PSI
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+ APCC               0
+ APSC             131             0
+ ANCC             132           133             0
+ ANSC             134           135           136             0
+
+
+     STARTING VALUES
+
+
+           NU
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+                3.805         3.862         3.356         3.385         3.483
+
+
+           NU
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+                2.557         2.897         2.649         2.517         2.874
+
+
+           NU
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+                2.167         2.069         2.230         1.960         2.006
+
+
+           NU
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+                2.810         2.747         2.695         2.690         2.431
+
+
+           LAMBDA
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+ AP1CC          0.000         0.000         0.000         0.000
+ AP2CC          0.000         0.000         0.000         0.000
+ AP3CC          0.000         0.000         0.000         0.000
+ AP4CC          0.000         0.000         0.000         0.000
+ AP5CC          0.000         0.000         0.000         0.000
+ AP1SC          0.000         0.000         0.000         0.000
+ AP2SC          0.000         0.000         0.000         0.000
+ AP3SC          0.000         0.000         0.000         0.000
+ AP4SC          0.000         0.000         0.000         0.000
+ AP5SC          0.000         0.000         0.000         0.000
+ AN1CC          0.000         0.000         0.000         0.000
+ AN2CC          0.000         0.000         0.000         0.000
+ AN3CC          0.000         0.000         0.000         0.000
+ AN4CC          0.000         0.000         0.000         0.000
+ AN5CC          0.000         0.000         0.000         0.000
+ AN1SC          0.000         0.000         0.000         0.000
+ AN2SC          0.000         0.000         0.000         0.000
+ AN3SC          0.000         0.000         0.000         0.000
+ AN4SC          0.000         0.000         0.000         0.000
+ AN5SC          0.000         0.000         0.000         0.000
+
+
+           THETA
+              AP1CC         AP2CC         AP3CC         AP4CC         AP5CC
+              ________      ________      ________      ________      ________
+ AP1CC          0.446
+ AP2CC          0.000         0.381
+ AP3CC          0.000         0.000         0.402
+ AP4CC          0.000         0.000         0.000         0.469
+ AP5CC          0.000         0.000         0.000         0.000         0.372
+ AP1SC          0.000         0.000         0.000         0.000         0.000
+ AP2SC          0.000         0.000         0.000         0.000         0.000
+ AP3SC          0.000         0.000         0.000         0.000         0.000
+ AP4SC          0.000         0.000         0.000         0.000         0.000
+ AP5SC          0.000         0.000         0.000         0.000         0.000
+ AN1CC          0.000         0.000         0.000         0.000         0.000
+ AN2CC          0.000         0.000         0.000         0.000         0.000
+ AN3CC          0.000         0.000         0.000         0.000         0.000
+ AN4CC          0.000         0.000         0.000         0.000         0.000
+ AN5CC          0.000         0.000         0.000         0.000         0.000
+ AN1SC          0.000         0.000         0.000         0.000         0.000
+ AN2SC          0.000         0.000         0.000         0.000         0.000
+ AN3SC          0.000         0.000         0.000         0.000         0.000
+ AN4SC          0.000         0.000         0.000         0.000         0.000
+ AN5SC          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              AP1SC         AP2SC         AP3SC         AP4SC         AP5SC
+              ________      ________      ________      ________      ________
+ AP1SC          0.514
+ AP2SC          0.000         0.575
+ AP3SC          0.000         0.000         0.367
+ AP4SC          0.000         0.000         0.000         0.378
+ AP5SC          0.000         0.000         0.000         0.000         0.400
+ AN1CC          0.000         0.000         0.000         0.000         0.000
+ AN2CC          0.000         0.000         0.000         0.000         0.000
+ AN3CC          0.000         0.000         0.000         0.000         0.000
+ AN4CC          0.000         0.000         0.000         0.000         0.000
+ AN5CC          0.000         0.000         0.000         0.000         0.000
+ AN1SC          0.000         0.000         0.000         0.000         0.000
+ AN2SC          0.000         0.000         0.000         0.000         0.000
+ AN3SC          0.000         0.000         0.000         0.000         0.000
+ AN4SC          0.000         0.000         0.000         0.000         0.000
+ AN5SC          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              AN1CC         AN2CC         AN3CC         AN4CC         AN5CC
+              ________      ________      ________      ________      ________
+ AN1CC          0.604
+ AN2CC          0.000         0.515
+ AN3CC          0.000         0.000         0.462
+ AN4CC          0.000         0.000         0.000         0.422
+ AN5CC          0.000         0.000         0.000         0.000         0.514
+ AN1SC          0.000         0.000         0.000         0.000         0.000
+ AN2SC          0.000         0.000         0.000         0.000         0.000
+ AN3SC          0.000         0.000         0.000         0.000         0.000
+ AN4SC          0.000         0.000         0.000         0.000         0.000
+ AN5SC          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              AN1SC         AN2SC         AN3SC         AN4SC         AN5SC
+              ________      ________      ________      ________      ________
+ AN1SC          0.686
+ AN2SC          0.000         0.698
+ AN3SC          0.000         0.000         0.635
+ AN4SC          0.000         0.000         0.000         0.699
+ AN5SC          0.000         0.000         0.000         0.000         0.663
+
+
+           ALPHA
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           BETA
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+ APCC           0.000         0.000         0.000         0.000
+ APSC           0.000         0.000         0.000         0.000
+ ANCC           0.000         0.000         0.000         0.000
+ ANSC           0.000         0.000         0.000         0.000
+
+
+           PSI
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+ APCC           1.000
+ APSC           0.000         1.000
+ ANCC           0.000         0.000         1.000
+ ANSC           0.000         0.000         0.000         1.000
+
+
+TECHNICAL 4 OUTPUT
+
+
+     ESTIMATES DERIVED FROM THE MODEL
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+                1.000         1.000         1.000         1.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+ APCC           1.000
+ APSC          -0.139         1.000
+ ANCC          -0.253         0.231         1.000
+ ANSC           0.397        -0.509         0.073         1.000
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+ APCC           0.000
+ APSC           0.119         0.000
+ ANCC           0.094         0.095         0.000
+ ANSC           0.090         0.090         0.094         0.000
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+ APCC     ***********
+ APSC          -1.165   ***********
+ ANCC          -2.690         2.433   ***********
+ ANSC           4.406        -5.632         0.782   ***********
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+ APCC           0.000
+ APSC           0.244         0.000
+ ANCC           0.007         0.015         0.000
+ ANSC           0.000         0.000         0.434         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+ APCC           1.000
+ APSC          -0.139         1.000
+ ANCC          -0.253         0.231         1.000
+ ANSC           0.397        -0.509         0.073         1.000
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+ APCC           0.000
+ APSC           0.119         0.000
+ ANCC           0.094         0.095         0.000
+ ANSC           0.090         0.090         0.094         0.000
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+ APCC         999.000
+ APSC          -1.165       999.000
+ ANCC          -2.690         2.433       999.000
+ ANSC           4.406        -5.632         0.782       999.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+ APCC           0.000
+ APSC           0.244         0.000
+ ANCC           0.007         0.015         0.000
+ ANSC           0.000         0.000         0.434         0.000
+
+
+           ESTIMATED PARTIAL CORRELATION MATRIX FOR THE LATENT VARIABLES
+              APCC          APSC          ANCC          ANSC
+              ________      ________      ________      ________
+ APCC           1.000
+ APSC           0.195         1.000
+ ANCC          -0.352         0.356         1.000
+ ANSC           0.459        -0.562         0.351         1.000
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    c:\users\mm\onedrive - upv\dat_dropbox\investigaciÓn\cit_2025\travelwell\mplus_validation_rerun_package\mplus_valida
+
+     Beginning Time:  08:16:58
+        Ending Time:  08:16:59
+       Elapsed Time:  00:00:01
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2026 Muthen & Muthen
