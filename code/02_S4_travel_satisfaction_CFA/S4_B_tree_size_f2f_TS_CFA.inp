@@ -1,0 +1,53 @@
+TITLE: SD rbolesPG - CFA Online;
+
+  DATA:
+  FILE = ../../data/datos_arb_legacy_order.txt;
+
+  VARIABLE:
+  NAMES =
+  id MODO online
+  AP1ca	AP1sa	AN1ca	AN1sa	
+  AP2ca	AP2sa	AN2ca	AN2sa	
+  AP3ca	AP3sa	AN3ca	AN3sa	
+  AP4ca	AP4sa	AN4ca	AN4sa	
+  AP5ca	AP5sa	AN5ca	AN5sa	
+  SD1ca	SD1sa	SD2ca	SD2sa	SD3ca	SD3sa	SD4ca	SD4sa	SD5ca	SD5sa	
+  AP1ap	AP1ag	AN1ap	AN1ag
+  AP2ap	AP2ag	AN2ap	AN2ag	
+  P3ap	AP3ag	AN3ap	AN3ag	
+  AP4ap	AP4ag	AN4ap	AN4ag	
+  AP5ap	AP5ag	AN5ap	AN5ag	
+  SD1ap	SD1ag	SD2ap	SD2ag	SD3ap	SD3ag	SD4ap	SD4ag	SD5ap	SD5ag	
+  V1	V2	V3	V4	V5	V6	V7	V8	V9	V10	V11	V12	V13	V14	V15	V16	V17	V18	V19;
+
+  USEVARIABLES =
+  SD1ap	SD1ag	SD2ap	SD2ag	SD3ap	SD3ag	SD4ap	SD4ag	SD5ap	SD5ag;
+
+USEOBSERVATIONS = online EQ 2;
+
+  MISSING = ALL (-999);
+
+  ANALYSIS:
+  ESTIMATOR = MLR;
+
+  MODEL:
+
+  SDap BY SD1ap SD2ap SD3ap SD4ap SD5ap;
+
+  SDag BY SD1ag SD2ag SD3ag SD4ag SD5ag;
+
+  SDap WITH SDag;
+
+  SD1ap WITH SD1ag;
+  SD2ap WITH SD2ag;
+  SD3ap WITH SD3ag;
+  SD4ap WITH SD4ag;
+  SD5ap WITH SD5ag;
+
+  OUTPUT:
+  STANDARDIZED;
+  MODINDICES(10);
+  SAMPSTAT;
+  RESIDUAL;
+  TECH1;
+  TECH4;

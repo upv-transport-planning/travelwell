@@ -1,0 +1,2079 @@
+Mplus VERSION 9.1
+MUTHEN & MUTHEN
+08/17/2026   8:22 AM
+
+INPUT INSTRUCTIONS
+
+  TITLE: SD rbolesPG - CFA Multigroup;
+
+    DATA:
+    FILE = ../data/datos_arb_legacy_order.txt;
+
+    VARIABLE:
+    NAMES =
+    id MODO online
+    AP1ca	AP1sa	AN1ca	AN1sa	
+    AP2ca	AP2sa	AN2ca	AN2sa	
+    AP3ca	AP3sa	AN3ca	AN3sa	
+    AP4ca	AP4sa	AN4ca	AN4sa	
+    AP5ca	AP5sa	AN5ca	AN5sa	
+    SD1ca	SD1sa	SD2ca	SD2sa	SD3ca	SD3sa	SD4ca	SD4sa	SD5ca	SD5sa	
+    AP1ap	AP1ag	AN1ap	AN1ag
+    AP2ap	AP2ag	AN2ap	AN2ag	
+    P3ap	AP3ag	AN3ap	AN3ag	
+    AP4ap	AP4ag	AN4ap	AN4ag	
+    AP5ap	AP5ag	AN5ap	AN5ag	
+    SD1ap	SD1ag	SD2ap	SD2ag	SD3ap	SD3ag	SD4ap	SD4ag	SD5ap	SD5ag	
+    V1	V2	V3	V4	V5	V6	V7	V8	V9	V10	V11	V12	V13	V14	V15	V16	V17	V18	V19;
+
+    USEVARIABLES =
+    SD1ap	SD1ag	SD2ap	SD2ag	SD3ap	SD3ag	SD4ap	SD4ag	SD5ap	SD5ag;
+
+  GROUPING = online
+  (1 = online
+   2 = presencial);
+
+    MISSING = ALL (-999);
+
+    ANALYSIS:
+    ESTIMATOR = MLR;
+
+    MODEL:
+
+    SDap BY SD1ap SD2ap SD3ap SD4ap SD5ap;
+
+    SDag BY SD1ag SD2ag SD3ag SD4ag SD5ag;
+
+    SDap WITH SDag;
+
+    SD1ap WITH SD1ag;
+    SD2ap WITH SD2ag;
+    SD3ap WITH SD3ag;
+    SD4ap WITH SD4ag;
+    SD5ap WITH SD5ag;
+
+    OUTPUT:
+    STANDARDIZED;
+    MODINDICES(10);
+    SAMPSTAT;
+    RESIDUAL;
+    TECH1;
+    TECH4;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+SD rbolesPG - CFA Multigroup;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 2
+Number of observations
+   Group ONLINE                                                319
+   Group PRESENCIAL                                            308
+   Total sample size                                           627
+
+Number of dependent variables                                   10
+Number of independent variables                                  0
+Number of continuous latent variables                            2
+
+Observed dependent variables
+
+  Continuous
+   SD1AP       SD1AG       SD2AP       SD2AG       SD3AP       SD3AG
+   SD4AP       SD4AG       SD5AP       SD5AG
+
+Continuous latent variables
+   SDAP        SDAG
+
+Variables with special functions
+
+  Grouping variable     ONLINE
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  ../data/datos_arb_legacy_order.txt
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+   Group ONLINE
+     Number of missing data patterns             1
+
+   Group PRESENCIAL
+     Number of missing data patterns             1
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT FOR ONLINE
+
+
+           Covariance Coverage
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP          1.000
+ SD1AG          1.000         1.000
+ SD2AP          1.000         1.000         1.000
+ SD2AG          1.000         1.000         1.000         1.000
+ SD3AP          1.000         1.000         1.000         1.000         1.000
+ SD3AG          1.000         1.000         1.000         1.000         1.000
+ SD4AP          1.000         1.000         1.000         1.000         1.000
+ SD4AG          1.000         1.000         1.000         1.000         1.000
+ SD5AP          1.000         1.000         1.000         1.000         1.000
+ SD5AG          1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG          1.000
+ SD4AP          1.000         1.000
+ SD4AG          1.000         1.000         1.000
+ SD5AP          1.000         1.000         1.000         1.000
+ SD5AG          1.000         1.000         1.000         1.000         1.000
+
+
+     PROPORTION OF DATA PRESENT FOR PRESENCIAL
+
+
+           Covariance Coverage
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP          1.000
+ SD1AG          1.000         1.000
+ SD2AP          1.000         1.000         1.000
+ SD2AG          1.000         1.000         1.000         1.000
+ SD3AP          1.000         1.000         1.000         1.000         1.000
+ SD3AG          1.000         1.000         1.000         1.000         1.000
+ SD4AP          1.000         1.000         1.000         1.000         1.000
+ SD4AG          1.000         1.000         1.000         1.000         1.000
+ SD5AP          1.000         1.000         1.000         1.000         1.000
+ SD5AG          1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG          1.000
+ SD4AP          1.000         1.000
+ SD4AG          1.000         1.000         1.000
+ SD5AP          1.000         1.000         1.000         1.000
+ SD5AG          1.000         1.000         1.000         1.000         1.000
+
+
+SAMPLE STATISTICS
+
+
+     ESTIMATED SAMPLE STATISTICS FOR ONLINE
+
+
+           Means
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+                3.577         4.000         3.643         3.997         3.721
+
+
+           Means
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+                4.034         3.357         3.605         3.542         4.107
+
+
+           Covariances
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP          0.990
+ SD1AG          0.326         1.034
+ SD2AP          0.676         0.292         0.882
+ SD2AG          0.256         0.740         0.331         0.969
+ SD3AP          0.672         0.266         0.753         0.303         0.853
+ SD3AG          0.247         0.712         0.276         0.847         0.317
+ SD4AP          0.452         0.194         0.463         0.246         0.466
+ SD4AG          0.131         0.458         0.175         0.519         0.156
+ SD5AP          0.675         0.129         0.583         0.146         0.571
+ SD5AG          0.152         0.655         0.189         0.643         0.186
+
+
+           Covariances
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG          0.905
+ SD4AP          0.217         0.813
+ SD4AG          0.509         0.546         0.947
+ SD5AP          0.160         0.483         0.180         0.994
+ SD5AG          0.611         0.241         0.512         0.256         0.885
+
+
+           Correlations
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP          1.000
+ SD1AG          0.322         1.000
+ SD2AP          0.724         0.305         1.000
+ SD2AG          0.261         0.739         0.358         1.000
+ SD3AP          0.731         0.284         0.868         0.334         1.000
+ SD3AG          0.261         0.736         0.309         0.904         0.361
+ SD4AP          0.504         0.212         0.547         0.277         0.560
+ SD4AG          0.135         0.462         0.192         0.542         0.174
+ SD5AP          0.680         0.127         0.622         0.149         0.620
+ SD5AG          0.162         0.685         0.213         0.694         0.215
+
+
+           Correlations
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG          1.000
+ SD4AP          0.252         1.000
+ SD4AG          0.550         0.622         1.000
+ SD5AP          0.169         0.538         0.185         1.000
+ SD5AG          0.682         0.284         0.559         0.273         1.000
+
+
+     ESTIMATED SAMPLE STATISTICS FOR PRESENCIAL
+
+
+           Means
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+                3.825         4.078         3.867         4.062         3.997
+
+
+           Means
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+                4.146         3.425         3.519         3.899         4.169
+
+
+           Covariances
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP          1.210
+ SD1AG          0.264         1.124
+ SD2AP          0.775         0.108         0.966
+ SD2AG          0.089         0.774         0.171         0.999
+ SD3AP          0.714         0.117         0.724         0.120         0.828
+ SD3AG          0.136         0.800         0.175         0.790         0.176
+ SD4AP          0.529         0.136         0.524         0.123         0.514
+ SD4AG          0.101         0.531         0.098         0.513         0.099
+ SD5AP          0.706         0.063         0.704         0.071         0.659
+ SD5AG          0.049         0.792         0.091         0.720         0.078
+
+
+           Covariances
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG          0.943
+ SD4AP          0.110         1.212
+ SD4AG          0.502         0.760         1.263
+ SD5AP          0.076         0.517         0.052         0.980
+ SD5AG          0.745         0.100         0.549         0.166         1.056
+
+
+           Correlations
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP          1.000
+ SD1AG          0.226         1.000
+ SD2AP          0.717         0.103         1.000
+ SD2AG          0.081         0.731         0.174         1.000
+ SD3AP          0.713         0.121         0.809         0.132         1.000
+ SD3AG          0.127         0.777         0.184         0.813         0.199
+ SD4AP          0.437         0.116         0.484         0.112         0.513
+ SD4AG          0.082         0.446         0.089         0.457         0.097
+ SD5AP          0.649         0.060         0.724         0.072         0.731
+ SD5AG          0.043         0.727         0.090         0.701         0.084
+
+
+           Correlations
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG          1.000
+ SD4AP          0.103         1.000
+ SD4AG          0.460         0.614         1.000
+ SD5AP          0.079         0.474         0.047         1.000
+ SD5AG          0.746         0.089         0.475         0.164         1.000
+
+
+     MAXIMUM LOG-LIKELIHOOD VALUE FOR THE UNRESTRICTED (H1) MODEL IS -6265.405
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS FOR ONLINE
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     SD1AP                 3.577      -0.737       1.000    5.02%       3.000      3.000      4.000
+             319.000       0.990       0.386       5.000   15.05%       4.000      4.000
+     SD1AG                 4.000      -1.037       1.000    3.45%       3.000      4.000      4.000
+             319.000       1.034       0.779       5.000   36.99%       4.000      5.000
+     SD2AP                 3.643      -0.689       1.000    3.45%       3.000      4.000      4.000
+             319.000       0.882       0.521       5.000   15.99%       4.000      4.000
+     SD2AG                 3.997      -0.960       1.000    3.13%       3.000      4.000      4.000
+             319.000       0.969       0.786       5.000   36.05%       4.000      5.000
+     SD3AP                 3.721      -0.781       1.000    3.13%       3.000      4.000      4.000
+             319.000       0.853       0.759       5.000   17.87%       4.000      4.000
+     SD3AG                 4.034      -0.943       1.000    2.19%       3.000      4.000      4.000
+             319.000       0.905       0.717       5.000   36.68%       4.000      5.000
+     SD4AP                 3.357      -0.276       1.000    4.70%       3.000      3.000      3.000
+             319.000       0.813       0.684       5.000   10.66%       3.000      4.000
+     SD4AG                 3.605      -0.245       1.000    3.45%       3.000      3.000      3.000
+             319.000       0.947       0.001       5.000   21.94%       4.000      5.000
+     SD5AP                 3.542      -0.525       1.000    4.39%       3.000      3.000      4.000
+             319.000       0.994       0.094       5.000   16.30%       4.000      4.000
+     SD5AG                 4.107      -0.868       1.000    1.25%       3.000      4.000      4.000
+             319.000       0.885       0.237       5.000   42.32%       5.000      5.000
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS FOR PRESENCIAL
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     SD1AP                 3.825      -0.997       1.000    6.17%       3.000      4.000      4.000
+             308.000       1.210       0.521       5.000   29.55%       4.000      5.000
+     SD1AG                 4.078      -1.088       1.000    2.92%       3.000      4.000      4.000
+             308.000       1.124       0.496       5.000   44.81%       5.000      5.000
+     SD2AP                 3.867      -0.921       1.000    3.57%       3.000      4.000      4.000
+             308.000       0.966       0.784       5.000   27.27%       4.000      5.000
+     SD2AG                 4.062      -0.981       1.000    1.95%       3.000      4.000      4.000
+             308.000       0.999       0.408       5.000   40.91%       5.000      5.000
+     SD3AP                 3.997      -1.106       1.000    2.92%       3.000      4.000      4.000
+             308.000       0.828       1.659       5.000   30.19%       4.000      5.000
+     SD3AG                 4.146      -1.231       1.000    2.60%       3.000      4.000      4.000
+             308.000       0.943       1.318       5.000   43.83%       5.000      5.000
+     SD4AP                 3.425      -0.475       1.000    8.12%       3.000      3.000      3.000
+             308.000       1.212      -0.141       5.000   17.53%       4.000      4.000
+     SD4AG                 3.519      -0.378       1.000    6.49%       3.000      3.000      3.000
+             308.000       1.263      -0.370       5.000   24.03%       4.000      5.000
+     SD5AP                 3.899      -0.982       1.000    3.57%       3.000      4.000      4.000
+             308.000       0.980       0.854       5.000   28.90%       4.000      5.000
+     SD5AG                 4.169      -1.078       1.000    1.62%       3.000      4.000      5.000
+             308.000       1.056       0.300       5.000   50.97%       5.000      5.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       56
+
+Loglikelihood
+
+          H0 Value                       -6382.822
+          H0 Scaling Correction Factor      2.5111
+            for MLR
+          H1 Value                       -6265.405
+          H1 Scaling Correction Factor      1.9291
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   12877.644
+          Bayesian (BIC)                 13126.337
+          Sample-Size Adjusted BIC       12948.545
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                            157.739*
+          Degrees of Freedom                    74
+          P-Value                           0.0000
+          Scaling Correction Factor         1.4887
+            for MLR
+
+Chi-Square Contribution From Each Group
+
+          ONLINE                           116.981
+          PRESENCIAL                        40.758
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.060
+          90 Percent C.I.                    0.047  0.073
+          Probability RMSEA <= .05           0.098
+
+CFI/TLI
+
+          CFI                                0.961
+          TLI                                0.953
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           2262.126
+          Degrees of Freedom                    90
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.063
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Group ONLINE
+
+ SDAP     BY
+    SD1AP              1.000      0.000    999.000    999.000
+    SD2AP              1.030      0.039     26.236      0.000
+    SD3AP              1.002      0.042     24.141      0.000
+    SD4AP              0.682      0.051     13.241      0.000
+    SD5AP              0.950      0.036     26.414      0.000
+
+ SDAG     BY
+    SD1AG              1.000      0.000    999.000    999.000
+    SD2AG              1.059      0.048     22.106      0.000
+    SD3AG              1.037      0.049     21.289      0.000
+    SD4AG              0.624      0.046     13.671      0.000
+    SD5AG              0.935      0.043     21.657      0.000
+
+ SDAP     WITH
+    SDAG               0.255      0.053      4.831      0.000
+
+ SD1AP    WITH
+    SD1AG              0.093      0.070      1.316      0.188
+
+ SD2AP    WITH
+    SD2AG              0.033      0.016      2.014      0.044
+
+ SD3AP    WITH
+    SD3AG              0.039      0.019      2.056      0.040
+
+ SD4AP    WITH
+    SD4AG              0.409      0.056      7.297      0.000
+
+ SD5AP    WITH
+    SD5AG              0.170      0.071      2.387      0.017
+
+ Means
+    SDAP               0.000      0.000    999.000    999.000
+    SDAG               0.000      0.000    999.000    999.000
+
+ Intercepts
+    SD1AP              3.571      0.053     67.557      0.000
+    SD1AG              4.002      0.053     75.406      0.000
+    SD2AP              3.624      0.051     70.367      0.000
+    SD2AG              3.990      0.054     73.403      0.000
+    SD3AP              3.728      0.050     74.147      0.000
+    SD3AG              4.047      0.052     77.644      0.000
+    SD4AP              3.317      0.045     73.660      0.000
+    SD4AG              3.553      0.047     76.167      0.000
+    SD5AP              3.608      0.051     71.266      0.000
+    SD5AG              4.102      0.050     82.036      0.000
+
+ Variances
+    SDAP               0.687      0.075      9.103      0.000
+    SDAG               0.734      0.076      9.604      0.000
+
+ Residual Variances
+    SD1AP              0.340      0.067      5.063      0.000
+    SD1AG              0.384      0.082      4.661      0.000
+    SD2AP              0.143      0.028      5.002      0.000
+    SD2AG              0.104      0.027      3.836      0.000
+    SD3AP              0.127      0.027      4.769      0.000
+    SD3AG              0.098      0.025      3.843      0.000
+    SD4AP              0.504      0.056      9.026      0.000
+    SD4AG              0.624      0.063      9.892      0.000
+    SD5AP              0.502      0.079      6.350      0.000
+    SD5AG              0.395      0.083      4.767      0.000
+
+Group PRESENCIAL
+
+ SDAP     BY
+    SD1AP              1.000      0.000    999.000    999.000
+    SD2AP              1.030      0.039     26.236      0.000
+    SD3AP              1.002      0.042     24.141      0.000
+    SD4AP              0.682      0.051     13.241      0.000
+    SD5AP              0.950      0.036     26.414      0.000
+
+ SDAG     BY
+    SD1AG              1.000      0.000    999.000    999.000
+    SD2AG              1.059      0.048     22.106      0.000
+    SD3AG              1.037      0.049     21.289      0.000
+    SD4AG              0.624      0.046     13.671      0.000
+    SD5AG              0.935      0.043     21.657      0.000
+
+ SDAP     WITH
+    SDAG               0.110      0.062      1.763      0.078
+
+ SD1AP    WITH
+    SD1AG              0.172      0.063      2.744      0.006
+
+ SD2AP    WITH
+    SD2AG              0.032      0.032      1.015      0.310
+
+ SD3AP    WITH
+    SD3AG              0.026      0.021      1.221      0.222
+
+ SD4AP    WITH
+    SD4AG              0.685      0.089      7.725      0.000
+
+ SD5AP    WITH
+    SD5AG              0.142      0.041      3.466      0.001
+
+ Means
+    SDAP               0.262      0.070      3.759      0.000
+    SDAG               0.077      0.071      1.084      0.278
+
+ Intercepts
+    SD1AP              3.571      0.053     67.557      0.000
+    SD1AG              4.002      0.053     75.406      0.000
+    SD2AP              3.624      0.051     70.367      0.000
+    SD2AG              3.990      0.054     73.403      0.000
+    SD3AP              3.728      0.050     74.147      0.000
+    SD3AG              4.047      0.052     77.644      0.000
+    SD4AP              3.317      0.045     73.660      0.000
+    SD4AG              3.553      0.047     76.167      0.000
+    SD5AP              3.608      0.051     71.266      0.000
+    SD5AG              4.102      0.050     82.036      0.000
+
+ Variances
+    SDAP               0.718      0.099      7.268      0.000
+    SDAG               0.756      0.099      7.614      0.000
+
+ Residual Variances
+    SD1AP              0.453      0.085      5.332      0.000
+    SD1AG              0.323      0.064      5.014      0.000
+    SD2AP              0.196      0.035      5.608      0.000
+    SD2AG              0.235      0.044      5.315      0.000
+    SD3AP              0.148      0.027      5.572      0.000
+    SD3AG              0.144      0.029      5.000      0.000
+    SD4AP              0.845      0.088      9.596      0.000
+    SD4AG              0.931      0.095      9.779      0.000
+    SD5AP              0.334      0.050      6.647      0.000
+    SD5AG              0.344      0.053      6.474      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.328E-02
+       (ratio of smallest to largest eigenvalue)
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Group ONLINE
+
+ SDAP     BY
+    SD1AP              0.818      0.033     24.840      0.000
+    SD2AP              0.915      0.018     50.806      0.000
+    SD3AP              0.919      0.019     48.731      0.000
+    SD4AP              0.623      0.039     16.119      0.000
+    SD5AP              0.743      0.033     22.355      0.000
+
+ SDAG     BY
+    SD1AG              0.810      0.034     23.532      0.000
+    SD2AG              0.942      0.016     60.223      0.000
+    SD3AG              0.943      0.016     60.821      0.000
+    SD4AG              0.561      0.039     14.345      0.000
+    SD5AG              0.787      0.037     21.517      0.000
+
+ SDAP     WITH
+    SDAG               0.358      0.071      5.039      0.000
+
+ SD1AP    WITH
+    SD1AG              0.256      0.182      1.405      0.160
+
+ SD2AP    WITH
+    SD2AG              0.267      0.120      2.234      0.026
+
+ SD3AP    WITH
+    SD3AG              0.347      0.146      2.379      0.017
+
+ SD4AP    WITH
+    SD4AG              0.730      0.042     17.272      0.000
+
+ SD5AP    WITH
+    SD5AG              0.382      0.135      2.822      0.005
+
+ Means
+    SDAP               0.000      0.000    999.000    999.000
+    SDAG               0.000      0.000    999.000    999.000
+
+ Intercepts
+    SD1AP              3.523      0.183     19.218      0.000
+    SD1AG              3.785      0.210     18.061      0.000
+    SD2AP              3.883      0.196     19.768      0.000
+    SD2AG              4.142      0.222     18.643      0.000
+    SD3AP              4.125      0.220     18.772      0.000
+    SD3AG              4.296      0.226     18.982      0.000
+    SD4AP              3.656      0.188     19.417      0.000
+    SD4AG              3.726      0.168     22.113      0.000
+    SD5AP              3.406      0.169     20.140      0.000
+    SD5AG              4.029      0.227     17.716      0.000
+
+ Variances
+    SDAP               1.000      0.000    999.000    999.000
+    SDAG               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    SD1AP              0.331      0.054      6.142      0.000
+    SD1AG              0.343      0.056      6.154      0.000
+    SD2AP              0.164      0.033      4.969      0.000
+    SD2AG              0.113      0.029      3.818      0.000
+    SD3AP              0.155      0.035      4.473      0.000
+    SD3AG              0.110      0.029      3.759      0.000
+    SD4AP              0.612      0.048     12.704      0.000
+    SD4AG              0.686      0.044     15.656      0.000
+    SD5AP              0.448      0.049      9.056      0.000
+    SD5AG              0.381      0.058      6.624      0.000
+
+Group PRESENCIAL
+
+ SDAP     BY
+    SD1AP              0.783      0.039     19.882      0.000
+    SD2AP              0.892      0.022     40.555      0.000
+    SD3AP              0.911      0.018     51.153      0.000
+    SD4AP              0.532      0.045     11.896      0.000
+    SD5AP              0.812      0.032     25.399      0.000
+
+ SDAG     BY
+    SD1AG              0.837      0.033     25.089      0.000
+    SD2AG              0.885      0.022     40.124      0.000
+    SD3AG              0.922      0.016     58.412      0.000
+    SD4AG              0.490      0.040     12.162      0.000
+    SD5AG              0.811      0.033     24.722      0.000
+
+ SDAP     WITH
+    SDAG               0.149      0.083      1.805      0.071
+
+ SD1AP    WITH
+    SD1AG              0.450      0.109      4.122      0.000
+
+ SD2AP    WITH
+    SD2AG              0.149      0.147      1.020      0.308
+
+ SD3AP    WITH
+    SD3AG              0.179      0.151      1.182      0.237
+
+ SD4AP    WITH
+    SD4AG              0.773      0.035     22.017      0.000
+
+ SD5AP    WITH
+    SD5AG              0.419      0.089      4.705      0.000
+
+ Means
+    SDAP               0.309      0.092      3.371      0.001
+    SDAG               0.088      0.084      1.051      0.293
+
+ Intercepts
+    SD1AP              3.300      0.171     19.244      0.000
+    SD1AG              3.853      0.198     19.509      0.000
+    SD2AP              3.703      0.192     19.323      0.000
+    SD2AG              3.835      0.186     20.648      0.000
+    SD3AP              3.998      0.222     18.015      0.000
+    SD3AG              4.137      0.220     18.787      0.000
+    SD4AP              3.055      0.142     21.490      0.000
+    SD4AG              3.210      0.139     23.091      0.000
+    SD5AP              3.642      0.189     19.289      0.000
+    SD5AG              4.092      0.198     20.635      0.000
+
+ Variances
+    SDAP               1.000      0.000    999.000    999.000
+    SDAG               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    SD1AP              0.387      0.062      6.268      0.000
+    SD1AG              0.299      0.056      5.354      0.000
+    SD2AP              0.205      0.039      5.225      0.000
+    SD2AG              0.217      0.039      5.547      0.000
+    SD3AP              0.171      0.032      5.262      0.000
+    SD3AG              0.150      0.029      5.161      0.000
+    SD4AP              0.717      0.048     15.055      0.000
+    SD4AG              0.760      0.040     19.231      0.000
+    SD5AP              0.340      0.052      6.538      0.000
+    SD5AG              0.343      0.053      6.441      0.000
+
+
+STDY Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Group ONLINE
+
+ SDAP     BY
+    SD1AP              0.818      0.033     24.840      0.000
+    SD2AP              0.915      0.018     50.806      0.000
+    SD3AP              0.919      0.019     48.731      0.000
+    SD4AP              0.623      0.039     16.119      0.000
+    SD5AP              0.743      0.033     22.355      0.000
+
+ SDAG     BY
+    SD1AG              0.810      0.034     23.532      0.000
+    SD2AG              0.942      0.016     60.223      0.000
+    SD3AG              0.943      0.016     60.821      0.000
+    SD4AG              0.561      0.039     14.345      0.000
+    SD5AG              0.787      0.037     21.517      0.000
+
+ SDAP     WITH
+    SDAG               0.358      0.071      5.039      0.000
+
+ SD1AP    WITH
+    SD1AG              0.256      0.182      1.405      0.160
+
+ SD2AP    WITH
+    SD2AG              0.267      0.120      2.234      0.026
+
+ SD3AP    WITH
+    SD3AG              0.347      0.146      2.379      0.017
+
+ SD4AP    WITH
+    SD4AG              0.730      0.042     17.272      0.000
+
+ SD5AP    WITH
+    SD5AG              0.382      0.135      2.822      0.005
+
+ Means
+    SDAP               0.000      0.000    999.000    999.000
+    SDAG               0.000      0.000    999.000    999.000
+
+ Intercepts
+    SD1AP              3.523      0.183     19.218      0.000
+    SD1AG              3.785      0.210     18.061      0.000
+    SD2AP              3.883      0.196     19.768      0.000
+    SD2AG              4.142      0.222     18.643      0.000
+    SD3AP              4.125      0.220     18.772      0.000
+    SD3AG              4.296      0.226     18.982      0.000
+    SD4AP              3.656      0.188     19.417      0.000
+    SD4AG              3.726      0.168     22.113      0.000
+    SD5AP              3.406      0.169     20.140      0.000
+    SD5AG              4.029      0.227     17.716      0.000
+
+ Variances
+    SDAP               1.000      0.000    999.000    999.000
+    SDAG               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    SD1AP              0.331      0.054      6.142      0.000
+    SD1AG              0.343      0.056      6.154      0.000
+    SD2AP              0.164      0.033      4.969      0.000
+    SD2AG              0.113      0.029      3.818      0.000
+    SD3AP              0.155      0.035      4.473      0.000
+    SD3AG              0.110      0.029      3.759      0.000
+    SD4AP              0.612      0.048     12.704      0.000
+    SD4AG              0.686      0.044     15.656      0.000
+    SD5AP              0.448      0.049      9.056      0.000
+    SD5AG              0.381      0.058      6.624      0.000
+
+Group PRESENCIAL
+
+ SDAP     BY
+    SD1AP              0.783      0.039     19.882      0.000
+    SD2AP              0.892      0.022     40.555      0.000
+    SD3AP              0.911      0.018     51.153      0.000
+    SD4AP              0.532      0.045     11.896      0.000
+    SD5AP              0.812      0.032     25.399      0.000
+
+ SDAG     BY
+    SD1AG              0.837      0.033     25.089      0.000
+    SD2AG              0.885      0.022     40.124      0.000
+    SD3AG              0.922      0.016     58.412      0.000
+    SD4AG              0.490      0.040     12.162      0.000
+    SD5AG              0.811      0.033     24.722      0.000
+
+ SDAP     WITH
+    SDAG               0.149      0.083      1.805      0.071
+
+ SD1AP    WITH
+    SD1AG              0.450      0.109      4.122      0.000
+
+ SD2AP    WITH
+    SD2AG              0.149      0.147      1.020      0.308
+
+ SD3AP    WITH
+    SD3AG              0.179      0.151      1.182      0.237
+
+ SD4AP    WITH
+    SD4AG              0.773      0.035     22.017      0.000
+
+ SD5AP    WITH
+    SD5AG              0.419      0.089      4.705      0.000
+
+ Means
+    SDAP               0.309      0.092      3.371      0.001
+    SDAG               0.088      0.084      1.051      0.293
+
+ Intercepts
+    SD1AP              3.300      0.171     19.244      0.000
+    SD1AG              3.853      0.198     19.509      0.000
+    SD2AP              3.703      0.192     19.323      0.000
+    SD2AG              3.835      0.186     20.648      0.000
+    SD3AP              3.998      0.222     18.015      0.000
+    SD3AG              4.137      0.220     18.787      0.000
+    SD4AP              3.055      0.142     21.490      0.000
+    SD4AG              3.210      0.139     23.091      0.000
+    SD5AP              3.642      0.189     19.289      0.000
+    SD5AG              4.092      0.198     20.635      0.000
+
+ Variances
+    SDAP               1.000      0.000    999.000    999.000
+    SDAG               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    SD1AP              0.387      0.062      6.268      0.000
+    SD1AG              0.299      0.056      5.354      0.000
+    SD2AP              0.205      0.039      5.225      0.000
+    SD2AG              0.217      0.039      5.547      0.000
+    SD3AP              0.171      0.032      5.262      0.000
+    SD3AG              0.150      0.029      5.161      0.000
+    SD4AP              0.717      0.048     15.055      0.000
+    SD4AG              0.760      0.040     19.231      0.000
+    SD5AP              0.340      0.052      6.538      0.000
+    SD5AG              0.343      0.053      6.441      0.000
+
+
+STD Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Group ONLINE
+
+ SDAP     BY
+    SD1AP              0.829      0.046     18.206      0.000
+    SD2AP              0.854      0.044     19.571      0.000
+    SD3AP              0.831      0.047     17.736      0.000
+    SD4AP              0.565      0.047     12.054      0.000
+    SD5AP              0.787      0.044     18.094      0.000
+
+ SDAG     BY
+    SD1AG              0.857      0.045     19.208      0.000
+    SD2AG              0.907      0.046     19.747      0.000
+    SD3AG              0.889      0.045     19.674      0.000
+    SD4AG              0.535      0.044     12.260      0.000
+    SD5AG              0.801      0.044     18.253      0.000
+
+ SDAP     WITH
+    SDAG               0.358      0.071      5.039      0.000
+
+ SD1AP    WITH
+    SD1AG              0.093      0.070      1.316      0.188
+
+ SD2AP    WITH
+    SD2AG              0.033      0.016      2.014      0.044
+
+ SD3AP    WITH
+    SD3AG              0.039      0.019      2.056      0.040
+
+ SD4AP    WITH
+    SD4AG              0.409      0.056      7.297      0.000
+
+ SD5AP    WITH
+    SD5AG              0.170      0.071      2.387      0.017
+
+ Means
+    SDAP               0.000      0.000    999.000    999.000
+    SDAG               0.000      0.000    999.000    999.000
+
+ Intercepts
+    SD1AP              3.571      0.053     67.557      0.000
+    SD1AG              4.002      0.053     75.406      0.000
+    SD2AP              3.624      0.051     70.367      0.000
+    SD2AG              3.990      0.054     73.403      0.000
+    SD3AP              3.728      0.050     74.147      0.000
+    SD3AG              4.047      0.052     77.644      0.000
+    SD4AP              3.317      0.045     73.660      0.000
+    SD4AG              3.553      0.047     76.167      0.000
+    SD5AP              3.608      0.051     71.266      0.000
+    SD5AG              4.102      0.050     82.036      0.000
+
+ Variances
+    SDAP               1.000      0.000    999.000    999.000
+    SDAG               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    SD1AP              0.340      0.067      5.063      0.000
+    SD1AG              0.384      0.082      4.661      0.000
+    SD2AP              0.143      0.028      5.002      0.000
+    SD2AG              0.104      0.027      3.836      0.000
+    SD3AP              0.127      0.027      4.769      0.000
+    SD3AG              0.098      0.025      3.843      0.000
+    SD4AP              0.504      0.056      9.026      0.000
+    SD4AG              0.624      0.063      9.892      0.000
+    SD5AP              0.502      0.079      6.350      0.000
+    SD5AG              0.395      0.083      4.767      0.000
+
+Group PRESENCIAL
+
+ SDAP     BY
+    SD1AP              0.847      0.058     14.536      0.000
+    SD2AP              0.873      0.055     15.777      0.000
+    SD3AP              0.849      0.054     15.784      0.000
+    SD4AP              0.578      0.056     10.371      0.000
+    SD5AP              0.805      0.058     13.992      0.000
+
+ SDAG     BY
+    SD1AG              0.869      0.057     15.228      0.000
+    SD2AG              0.921      0.051     17.988      0.000
+    SD3AG              0.902      0.051     17.656      0.000
+    SD4AG              0.543      0.046     11.712      0.000
+    SD5AG              0.813      0.056     14.395      0.000
+
+ SDAP     WITH
+    SDAG               0.149      0.083      1.805      0.071
+
+ SD1AP    WITH
+    SD1AG              0.172      0.063      2.744      0.006
+
+ SD2AP    WITH
+    SD2AG              0.032      0.032      1.015      0.310
+
+ SD3AP    WITH
+    SD3AG              0.026      0.021      1.221      0.222
+
+ SD4AP    WITH
+    SD4AG              0.685      0.089      7.725      0.000
+
+ SD5AP    WITH
+    SD5AG              0.142      0.041      3.466      0.001
+
+ Means
+    SDAP               0.309      0.092      3.371      0.001
+    SDAG               0.088      0.084      1.051      0.293
+
+ Intercepts
+    SD1AP              3.571      0.053     67.557      0.000
+    SD1AG              4.002      0.053     75.406      0.000
+    SD2AP              3.624      0.051     70.367      0.000
+    SD2AG              3.990      0.054     73.403      0.000
+    SD3AP              3.728      0.050     74.147      0.000
+    SD3AG              4.047      0.052     77.644      0.000
+    SD4AP              3.317      0.045     73.660      0.000
+    SD4AG              3.553      0.047     76.167      0.000
+    SD5AP              3.608      0.051     71.266      0.000
+    SD5AG              4.102      0.050     82.036      0.000
+
+ Variances
+    SDAP               1.000      0.000    999.000    999.000
+    SDAG               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    SD1AP              0.453      0.085      5.332      0.000
+    SD1AG              0.323      0.064      5.014      0.000
+    SD2AP              0.196      0.035      5.608      0.000
+    SD2AG              0.235      0.044      5.315      0.000
+    SD3AP              0.148      0.027      5.572      0.000
+    SD3AG              0.144      0.029      5.000      0.000
+    SD4AP              0.845      0.088      9.596      0.000
+    SD4AG              0.931      0.095      9.779      0.000
+    SD5AP              0.334      0.050      6.647      0.000
+    SD5AG              0.344      0.053      6.474      0.000
+
+
+R-SQUARE
+
+Group ONLINE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    SD1AP              0.669      0.054     12.420      0.000
+    SD1AG              0.657      0.056     11.766      0.000
+    SD2AP              0.836      0.033     25.403      0.000
+    SD2AG              0.887      0.029     30.111      0.000
+    SD3AP              0.845      0.035     24.366      0.000
+    SD3AG              0.890      0.029     30.411      0.000
+    SD4AP              0.388      0.048      8.060      0.000
+    SD4AG              0.314      0.044      7.172      0.000
+    SD5AP              0.552      0.049     11.178      0.000
+    SD5AG              0.619      0.058     10.759      0.000
+
+Group PRESENCIAL
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    SD1AP              0.613      0.062      9.941      0.000
+    SD1AG              0.701      0.056     12.545      0.000
+    SD2AP              0.795      0.039     20.278      0.000
+    SD2AG              0.783      0.039     20.062      0.000
+    SD3AP              0.829      0.032     25.577      0.000
+    SD3AG              0.850      0.029     29.206      0.000
+    SD4AP              0.283      0.048      5.948      0.000
+    SD4AG              0.240      0.040      6.081      0.000
+    SD5AP              0.660      0.052     12.700      0.000
+    SD5AG              0.657      0.053     12.361      0.000
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED) FOR ONLINE
+
+
+           Model Estimated Means
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+                3.571         4.002         3.624         3.990         3.728
+
+
+           Model Estimated Means
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+                4.047         3.317         3.553         3.608         4.102
+
+
+           Residuals for Means
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+                0.006        -0.002         0.019         0.007        -0.007
+
+
+           Residuals for Means
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+               -0.013         0.040         0.052        -0.066         0.004
+
+
+           Standardized Residuals (z-scores) for Means
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+                0.339        -0.083         1.773         0.727        -0.600
+
+
+           Standardized Residuals (z-scores) for Means
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+               -1.187         1.771         1.830        -2.792         0.267
+
+
+           Normalized Residuals for Means
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+                0.107        -0.030         0.356         0.119        -0.140
+
+
+           Normalized Residuals for Means
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+               -0.243         0.800         0.946        -1.177         0.084
+
+
+           Model Estimated Covariances
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP          1.027
+ SD1AG          0.347         1.118
+ SD2AP          0.708         0.262         0.871
+ SD2AG          0.270         0.777         0.310         0.928
+ SD3AP          0.689         0.255         0.709         0.270         0.817
+ SD3AG          0.264         0.761         0.272         0.807         0.303
+ SD4AP          0.469         0.174         0.483         0.184         0.470
+ SD4AG          0.159         0.458         0.164         0.485         0.159
+ SD5AP          0.653         0.242         0.672         0.256         0.654
+ SD5AG          0.238         0.686         0.245         0.727         0.238
+
+
+           Model Estimated Covariances
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG          0.887
+ SD4AP          0.180         0.823
+ SD4AG          0.475         0.518         0.910
+ SD5AP          0.251         0.445         0.151         1.122
+ SD5AG          0.712         0.162         0.428         0.396         1.037
+
+
+           Model Estimated Correlations
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP          1.000
+ SD1AG          0.324         1.000
+ SD2AP          0.748         0.266         1.000
+ SD2AG          0.276         0.763         0.345         1.000
+ SD3AP          0.752         0.267         0.841         0.310         1.000
+ SD3AG          0.277         0.764         0.309         0.889         0.356
+ SD4AP          0.510         0.181         0.570         0.210         0.573
+ SD4AG          0.164         0.454         0.184         0.528         0.185
+ SD5AP          0.608         0.216         0.680         0.251         0.683
+ SD5AG          0.231         0.637         0.258         0.741         0.259
+
+
+           Model Estimated Correlations
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG          1.000
+ SD4AP          0.211         1.000
+ SD4AG          0.529         0.598         1.000
+ SD5AP          0.251         0.463         0.149         1.000
+ SD5AG          0.742         0.176         0.441         0.367         1.000
+
+
+           Model Estimated Partial Correlations
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP          1.000
+ SD1AG          0.265         1.000
+ SD2AP          0.251        -0.053         1.000
+ SD2AG         -0.035         0.230         0.302         1.000
+ SD3AP          0.271        -0.075         0.488        -0.154         1.000
+ SD3AG         -0.062         0.244        -0.150         0.594         0.340
+ SD4AP          0.104        -0.045         0.191        -0.099         0.212
+ SD4AG         -0.071         0.063        -0.134         0.147        -0.156
+ SD5AP          0.110        -0.032         0.198        -0.066         0.217
+ SD5AG         -0.029         0.090        -0.067         0.219        -0.090
+
+
+           Model Estimated Partial Correlations
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG          1.000
+ SD4AP         -0.122         1.000
+ SD4AG          0.166         0.717         1.000
+ SD5AP         -0.088         0.086        -0.064         1.000
+ SD5AG          0.234        -0.050         0.064         0.378         1.000
+
+
+           Residuals for Covariances
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP         -0.037
+ SD1AG         -0.021        -0.083
+ SD2AP         -0.031         0.029         0.011
+ SD2AG         -0.014        -0.038         0.021         0.041
+ SD3AP         -0.017         0.011         0.044         0.033         0.036
+ SD3AG         -0.017        -0.050         0.004         0.040         0.014
+ SD4AP         -0.016         0.021        -0.019         0.062        -0.003
+ SD4AG         -0.028         0.000         0.012         0.034        -0.003
+ SD5AP          0.022        -0.113        -0.090        -0.110        -0.083
+ SD5AG         -0.086        -0.031        -0.056        -0.084        -0.052
+
+
+           Residuals for Covariances
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG          0.017
+ SD4AP          0.036        -0.010
+ SD4AG          0.034         0.028         0.038
+ SD5AP         -0.091         0.038         0.029        -0.128
+ SD5AG         -0.101         0.079         0.084        -0.141        -0.151
+
+
+           Residuals for Correlations
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP          0.000
+ SD1AG         -0.002         0.000
+ SD2AP         -0.024         0.040         0.000
+ SD2AG         -0.015        -0.024         0.013         0.000
+ SD3AP         -0.021         0.017         0.028         0.023         0.000
+ SD3AG         -0.016        -0.029        -0.001         0.016         0.004
+ SD4AP         -0.006         0.031        -0.023         0.067        -0.012
+ SD4AG         -0.029         0.008         0.008         0.014        -0.011
+ SD5AP          0.072        -0.089        -0.058        -0.102        -0.063
+ SD5AG         -0.069         0.047        -0.044        -0.047        -0.045
+
+
+           Residuals for Correlations
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG          0.000
+ SD4AP          0.042         0.000
+ SD4AG          0.021         0.023         0.000
+ SD5AP         -0.083         0.075         0.036         0.000
+ SD5AG         -0.060         0.108         0.118        -0.095         0.000
+
+
+           Residuals for Partial Correlations
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP          0.000
+ SD1AG          0.087         0.000
+ SD2AP         -0.135         0.157         0.000
+ SD2AG          0.057        -0.139         0.031         0.000
+ SD3AP         -0.078        -0.017         0.193        -0.075         0.000
+ SD3AG          0.043        -0.059        -0.155         0.154         0.043
+ SD4AP          0.027        -0.047        -0.174         0.174         0.059
+ SD4AG         -0.050         0.001         0.162        -0.169        -0.085
+ SD5AP          0.333        -0.249        -0.027        -0.113        -0.216
+ SD5AG         -0.226         0.319        -0.040        -0.008         0.119
+
+
+           Residuals for Partial Correlations
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG          0.000
+ SD4AP         -0.103         0.000
+ SD4AG          0.086        -0.007         0.000
+ SD5AP          0.177         0.085        -0.004         0.000
+ SD5AG         -0.222         0.010         0.116         0.040         0.000
+
+
+           Standardized Residuals (z-scores) for Covariances
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP        999.000
+ SD1AG        999.000       999.000
+ SD2AP         -1.068         0.884         0.443
+ SD2AG         -0.312        -1.055         0.597         1.145
+ SD3AP         -0.589         0.364         2.494         0.941         1.377
+ SD3AG         -0.415        -1.688         0.136         1.729         0.499
+ SD4AP         -0.475         0.466        -0.710         1.399        -0.115
+ SD4AG         -0.573        -0.009         0.271         1.003        -0.069
+ SD5AP          0.571        -4.311        -3.055        -3.240        -3.165
+ SD5AG         -3.020        -1.532        -4.424        -5.022        -4.229
+
+
+           Standardized Residuals (z-scores) for Covariances
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG          0.630
+ SD4AP          0.987       999.000
+ SD4AG          1.064         0.886         2.255
+ SD5AP         -3.016         0.934         0.524       999.000
+ SD5AG         -6.846         1.804         2.421       999.000       999.000
+
+
+           Normalized Residuals for Covariances
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP         -0.431
+ SD1AG         -0.274        -0.862
+ SD2AP         -0.412         0.462         0.134
+ SD2AG         -0.196        -0.470         0.311         0.449
+ SD3AP         -0.218         0.183         0.581         0.493         0.460
+ SD3AG         -0.257        -0.657         0.061         0.484         0.218
+ SD4AP         -0.251         0.358        -0.312         1.046        -0.048
+ SD4AG         -0.478        -0.004         0.215         0.523        -0.054
+ SD5AP          0.282        -2.053        -1.245        -1.800        -1.158
+ SD5AG         -1.549        -0.448        -1.104        -1.233        -1.025
+
+
+           Normalized Residuals for Covariances
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG          0.207
+ SD4AP          0.690        -0.141
+ SD4AG          0.534         0.388         0.504
+ SD5AP         -1.573         0.565         0.458        -1.590
+ SD5AG         -1.550         1.415         1.328        -2.315        -2.042
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED) FOR PRESENCIAL
+
+
+           Model Estimated Means
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+                3.832         4.078         3.893         4.072         3.990
+
+
+           Model Estimated Means
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+                4.127         3.495         3.601         3.857         4.174
+
+
+           Residuals for Means
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+               -0.008         0.000        -0.026        -0.010         0.006
+
+
+           Residuals for Means
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+                0.019        -0.070        -0.082         0.043        -0.005
+
+
+           Standardized Residuals (z-scores) for Means
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+               -0.269        -0.021        -1.601        -0.753         0.691
+
+
+           Standardized Residuals (z-scores) for Means
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+                1.826        -1.683        -1.930         2.466        -0.208
+
+
+           Normalized Residuals for Means
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+               -0.124        -0.008        -0.471        -0.173         0.122
+
+
+           Normalized Residuals for Means
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+                0.346        -1.117        -1.278         0.759        -0.086
+
+
+           Model Estimated Covariances
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP          1.171
+ SD1AG          0.282         1.078
+ SD2AP          0.740         0.113         0.958
+ SD2AG          0.116         0.801         0.152         1.083
+ SD3AP          0.720         0.110         0.741         0.117         0.870
+ SD3AG          0.114         0.784         0.117         0.831         0.140
+ SD4AP          0.490         0.075         0.504         0.079         0.491
+ SD4AG          0.069         0.472         0.071         0.500         0.069
+ SD5AP          0.682         0.104         0.702         0.110         0.684
+ SD5AG          0.103         0.707         0.106         0.749         0.103
+
+
+           Model Estimated Covariances
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG          0.957
+ SD4AP          0.078         1.179
+ SD4AG          0.489         0.732         1.225
+ SD5AP          0.108         0.465         0.065         0.982
+ SD5AG          0.733         0.070         0.441         0.240         1.005
+
+
+           Model Estimated Correlations
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP          1.000
+ SD1AG          0.251         1.000
+ SD2AP          0.698         0.111         1.000
+ SD2AG          0.103         0.741         0.149         1.000
+ SD3AP          0.713         0.114         0.812         0.120         1.000
+ SD3AG          0.108         0.772         0.123         0.816         0.154
+ SD4AP          0.417         0.066         0.475         0.070         0.485
+ SD4AG          0.057         0.410         0.065         0.434         0.067
+ SD5AP          0.636         0.101         0.725         0.107         0.740
+ SD5AG          0.095         0.679         0.108         0.718         0.110
+
+
+           Model Estimated Correlations
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG          1.000
+ SD4AP          0.073         1.000
+ SD4AG          0.452         0.609         1.000
+ SD5AP          0.112         0.432         0.059         1.000
+ SD5AG          0.747         0.064         0.397         0.241         1.000
+
+
+           Model Estimated Partial Correlations
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP          1.000
+ SD1AG          0.423         1.000
+ SD2AP          0.221        -0.069         1.000
+ SD2AG         -0.087         0.245         0.193         1.000
+ SD3AP          0.264        -0.096         0.420        -0.024         1.000
+ SD3AG         -0.123         0.339        -0.013         0.402         0.233
+ SD4AP          0.112        -0.093         0.147        -0.079         0.177
+ SD4AG         -0.096         0.112        -0.105         0.111        -0.130
+ SD5AP          0.171        -0.100         0.248        -0.066         0.295
+ SD5AG         -0.106         0.191        -0.073         0.213        -0.099
+
+
+           Model Estimated Partial Correlations
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG          1.000
+ SD4AP         -0.111         1.000
+ SD4AG          0.154         0.760         1.000
+ SD5AP         -0.094         0.118        -0.096         1.000
+ SD5AG          0.293        -0.086         0.101         0.397         1.000
+
+
+           Residuals for Covariances
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP          0.039
+ SD1AG         -0.018         0.045
+ SD2AP          0.036        -0.005         0.008
+ SD2AG         -0.028        -0.026         0.019        -0.083
+ SD3AP         -0.006         0.007        -0.017         0.004        -0.042
+ SD3AG          0.022         0.016         0.058        -0.041         0.036
+ SD4AP          0.039         0.061         0.020         0.044         0.024
+ SD4AG          0.032         0.059         0.028         0.014         0.030
+ SD5AP          0.024        -0.041         0.002        -0.039        -0.025
+ SD5AG         -0.054         0.085        -0.015        -0.029        -0.024
+
+
+           Residuals for Covariances
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG         -0.014
+ SD4AP          0.032         0.033
+ SD4AG          0.013         0.027         0.037
+ SD5AP         -0.032         0.052        -0.013        -0.001
+ SD5AG          0.012         0.030         0.108        -0.073         0.051
+
+
+           Residuals for Correlations
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP          0.000
+ SD1AG         -0.025         0.000
+ SD2AP          0.019        -0.008         0.000
+ SD2AG         -0.023        -0.010         0.024         0.000
+ SD3AP          0.000         0.008        -0.003         0.012         0.000
+ SD3AG          0.020         0.006         0.061        -0.002         0.045
+ SD4AP          0.020         0.050         0.010         0.042         0.029
+ SD4AG          0.024         0.035         0.024         0.023         0.030
+ SD5AP          0.012        -0.041        -0.001        -0.035        -0.009
+ SD5AG         -0.051         0.048        -0.018        -0.017        -0.026
+
+
+           Residuals for Correlations
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG          0.000
+ SD4AP          0.030         0.000
+ SD4AG          0.008         0.005         0.000
+ SD5AP         -0.032         0.042        -0.012         0.000
+ SD5AG         -0.001         0.024         0.078        -0.078         0.000
+
+
+           Residuals for Partial Correlations
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP          0.000
+ SD1AG          0.023         0.000
+ SD2AP          0.098        -0.121         0.000
+ SD2AG         -0.064         0.000         0.009         0.000
+ SD3AP         -0.048         0.042        -0.023        -0.037         0.000
+ SD3AG          0.042        -0.025         0.088         0.032         0.014
+ SD4AP         -0.109         0.136        -0.037         0.031         0.029
+ SD4AG          0.115        -0.119         0.020        -0.010         0.002
+ SD5AP          0.053        -0.050        -0.035         0.071        -0.030
+ SD5AG         -0.111         0.157         0.054        -0.118         0.016
+
+
+           Residuals for Partial Correlations
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG          0.000
+ SD4AP         -0.032         0.000
+ SD4AG         -0.026         0.005         0.000
+ SD5AP         -0.054         0.132        -0.140         0.000
+ SD5AG         -0.032        -0.126         0.175         0.030         0.000
+
+
+           Standardized Residuals (z-scores) for Covariances
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP        999.000
+ SD1AG         -0.727       999.000
+ SD2AP          1.314        -0.150       999.000
+ SD2AG         -0.696        -1.234       999.000       999.000
+ SD3AP         -0.344         0.206       999.000         0.309       999.000
+ SD3AG          0.494         0.675         1.923       999.000       999.000
+ SD4AP          0.966         1.039         1.006         0.938         1.134
+ SD4AG          0.492         1.289         0.518         0.369         0.570
+ SD5AP          1.050        -0.859         0.098        -1.184        -0.937
+ SD5AG         -1.029       999.000        -0.394        -2.215        -0.804
+
+
+           Standardized Residuals (z-scores) for Covariances
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG         -1.125
+ SD4AP          0.685       999.000
+ SD4AG          0.337         0.936       999.000
+ SD5AP         -0.962         1.602        -0.208        -0.145
+ SD5AG          0.432         0.510         2.470        -2.329       999.000
+
+
+           Normalized Residuals for Covariances
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP          0.352
+ SD1AG         -0.201         0.449
+ SD2AP          0.367        -0.072         0.091
+ SD2AG         -0.360        -0.283         0.266        -0.942
+ SD3AP         -0.065         0.100        -0.197         0.057        -0.461
+ SD3AG          0.282         0.176         0.797        -0.462         0.538
+ SD4AP          0.470         0.842         0.262         0.679         0.314
+ SD4AG          0.423         0.760         0.415         0.190         0.460
+ SD5AP          0.255        -0.543         0.018        -0.560        -0.274
+ SD5AG         -0.685         0.955        -0.212        -0.331        -0.371
+
+
+           Normalized Residuals for Covariances
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG         -0.146
+ SD4AP          0.502         0.347
+ SD4AG          0.176         0.277         0.408
+ SD5AP         -0.460         0.659        -0.178        -0.015
+ SD5AG          0.133         0.424         1.410        -0.966         0.557
+
+
+MODEL MODIFICATION INDICES
+
+NOTE:  Modification indices for direct effects of observed dependent variables
+regressed on covariates may not be included.  To include these, request
+MODINDICES (ALL).
+
+Minimum M.I. value for printing the modification index    10.000
+
+                                   M.I.     E.P.C.  Std E.P.C.  StdYX E.P.C.
+Group ONLINE
+
+
+WITH Statements
+
+SD3AP    WITH SD2AP               39.214     0.130      0.130        0.968
+SD3AG    WITH SD2AP               14.520    -0.061     -0.061       -0.520
+SD3AG    WITH SD2AG               40.857     0.137      0.137        1.360
+SD5AP    WITH SD1AP               31.098     0.162      0.162        0.392
+SD5AP    WITH SD1AG               13.548    -0.109     -0.109       -0.249
+SD5AP    WITH SD3AP               13.893    -0.082     -0.082       -0.324
+SD5AG    WITH SD1AP               11.476    -0.086     -0.086       -0.234
+SD5AG    WITH SD1AG               25.696     0.134      0.134        0.345
+SD5AG    WITH SD3AG               15.718    -0.074     -0.074       -0.379
+
+Group PRESENCIAL
+
+
+No modification indices above the minimum value.
+
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION FOR ONLINE
+
+
+           NU
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+                  1             2             3             4             5
+
+
+           NU
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+                  6             7             8             9            10
+
+
+           LAMBDA
+              SDAP          SDAG
+              ________      ________
+ SD1AP              0             0
+ SD1AG              0             0
+ SD2AP             11             0
+ SD2AG              0            12
+ SD3AP             13             0
+ SD3AG              0            14
+ SD4AP             15             0
+ SD4AG              0            16
+ SD5AP             17             0
+ SD5AG              0            18
+
+
+           THETA
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP             19
+ SD1AG             20            21
+ SD2AP              0             0            22
+ SD2AG              0             0            23            24
+ SD3AP              0             0             0             0            25
+ SD3AG              0             0             0             0            26
+ SD4AP              0             0             0             0             0
+ SD4AG              0             0             0             0             0
+ SD5AP              0             0             0             0             0
+ SD5AG              0             0             0             0             0
+
+
+           THETA
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG             27
+ SD4AP              0            28
+ SD4AG              0            29            30
+ SD5AP              0             0             0            31
+ SD5AG              0             0             0            32            33
+
+
+           ALPHA
+              SDAP          SDAG
+              ________      ________
+                  0             0
+
+
+           BETA
+              SDAP          SDAG
+              ________      ________
+ SDAP               0             0
+ SDAG               0             0
+
+
+           PSI
+              SDAP          SDAG
+              ________      ________
+ SDAP              34
+ SDAG              35            36
+
+
+     PARAMETER SPECIFICATION FOR PRESENCIAL
+
+
+           NU
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+                  1             2             3             4             5
+
+
+           NU
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+                  6             7             8             9            10
+
+
+           LAMBDA
+              SDAP          SDAG
+              ________      ________
+ SD1AP              0             0
+ SD1AG              0             0
+ SD2AP             11             0
+ SD2AG              0            12
+ SD3AP             13             0
+ SD3AG              0            14
+ SD4AP             15             0
+ SD4AG              0            16
+ SD5AP             17             0
+ SD5AG              0            18
+
+
+           THETA
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP             37
+ SD1AG             38            39
+ SD2AP              0             0            40
+ SD2AG              0             0            41            42
+ SD3AP              0             0             0             0            43
+ SD3AG              0             0             0             0            44
+ SD4AP              0             0             0             0             0
+ SD4AG              0             0             0             0             0
+ SD5AP              0             0             0             0             0
+ SD5AG              0             0             0             0             0
+
+
+           THETA
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG             45
+ SD4AP              0            46
+ SD4AG              0            47            48
+ SD5AP              0             0             0            49
+ SD5AG              0             0             0            50            51
+
+
+           ALPHA
+              SDAP          SDAG
+              ________      ________
+                 52            53
+
+
+           BETA
+              SDAP          SDAG
+              ________      ________
+ SDAP               0             0
+ SDAG               0             0
+
+
+           PSI
+              SDAP          SDAG
+              ________      ________
+ SDAP              54
+ SDAG              55            56
+
+
+     STARTING VALUES FOR ONLINE
+
+
+           NU
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+                3.577         4.000         3.643         3.997         3.721
+
+
+           NU
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+                4.034         3.357         3.605         3.542         4.107
+
+
+           LAMBDA
+              SDAP          SDAG
+              ________      ________
+ SD1AP          1.000         0.000
+ SD1AG          0.000         1.000
+ SD2AP          1.017         0.000
+ SD2AG          0.000         1.109
+ SD3AP          1.004         0.000
+ SD3AG          0.000         1.065
+ SD4AP          0.700         0.000
+ SD4AG          0.000         0.733
+ SD5AP          0.876         0.000
+ SD5AG          0.000         0.876
+
+
+           THETA
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP          0.495
+ SD1AG          0.000         0.517
+ SD2AP          0.000         0.000         0.441
+ SD2AG          0.000         0.000         0.000         0.484
+ SD3AP          0.000         0.000         0.000         0.000         0.427
+ SD3AG          0.000         0.000         0.000         0.000         0.000
+ SD4AP          0.000         0.000         0.000         0.000         0.000
+ SD4AG          0.000         0.000         0.000         0.000         0.000
+ SD5AP          0.000         0.000         0.000         0.000         0.000
+ SD5AG          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG          0.452
+ SD4AP          0.000         0.406
+ SD4AG          0.000         0.000         0.474
+ SD5AP          0.000         0.000         0.000         0.497
+ SD5AG          0.000         0.000         0.000         0.000         0.443
+
+
+           ALPHA
+              SDAP          SDAG
+              ________      ________
+                0.000         0.000
+
+
+           BETA
+              SDAP          SDAG
+              ________      ________
+ SDAP           0.000         0.000
+ SDAG           0.000         0.000
+
+
+           PSI
+              SDAP          SDAG
+              ________      ________
+ SDAP           0.050
+ SDAG           0.000         0.050
+
+
+     STARTING VALUES FOR PRESENCIAL
+
+
+           NU
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+                3.577         4.000         3.643         3.997         3.721
+
+
+           NU
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+                4.034         3.357         3.605         3.542         4.107
+
+
+           LAMBDA
+              SDAP          SDAG
+              ________      ________
+ SD1AP          1.000         0.000
+ SD1AG          0.000         1.000
+ SD2AP          1.007         0.000
+ SD2AG          0.000         0.959
+ SD3AP          0.935         0.000
+ SD3AG          0.000         0.979
+ SD4AP          0.704         0.000
+ SD4AG          0.000         0.656
+ SD5AP          0.918         0.000
+ SD5AG          0.000         0.936
+
+
+           THETA
+              SD1AP         SD1AG         SD2AP         SD2AG         SD3AP
+              ________      ________      ________      ________      ________
+ SD1AP          0.495
+ SD1AG          0.000         0.517
+ SD2AP          0.000         0.000         0.441
+ SD2AG          0.000         0.000         0.000         0.484
+ SD3AP          0.000         0.000         0.000         0.000         0.427
+ SD3AG          0.000         0.000         0.000         0.000         0.000
+ SD4AP          0.000         0.000         0.000         0.000         0.000
+ SD4AG          0.000         0.000         0.000         0.000         0.000
+ SD5AP          0.000         0.000         0.000         0.000         0.000
+ SD5AG          0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              SD3AG         SD4AP         SD4AG         SD5AP         SD5AG
+              ________      ________      ________      ________      ________
+ SD3AG          0.452
+ SD4AP          0.000         0.406
+ SD4AG          0.000         0.000         0.474
+ SD5AP          0.000         0.000         0.000         0.497
+ SD5AG          0.000         0.000         0.000         0.000         0.443
+
+
+           ALPHA
+              SDAP          SDAG
+              ________      ________
+                0.000         0.000
+
+
+           BETA
+              SDAP          SDAG
+              ________      ________
+ SDAP           0.000         0.000
+ SDAG           0.000         0.000
+
+
+           PSI
+              SDAP          SDAG
+              ________      ________
+ SDAP           0.050
+ SDAG           0.000         0.050
+
+
+TECHNICAL 4 OUTPUT
+
+
+     ESTIMATES DERIVED FROM THE MODEL FOR ONLINE
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+                0.000         0.000
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+                0.000         0.000
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+                0.000         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+                1.000         1.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+ SDAP           0.687
+ SDAG           0.255         0.734
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+ SDAP           0.075
+ SDAG           0.053         0.076
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+ SDAP           9.103
+ SDAG           4.831         9.604
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+ SDAP           0.000
+ SDAG           0.000         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+ SDAP           1.000
+ SDAG           0.358         1.000
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+ SDAP           0.000
+ SDAG           0.071         0.000
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+ SDAP         999.000
+ SDAG           5.039       999.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+ SDAP           0.000
+ SDAG           0.000         0.000
+
+
+           ESTIMATED PARTIAL CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+ SDAP           1.000
+ SDAG           0.358         1.000
+
+
+     ESTIMATES DERIVED FROM THE MODEL FOR PRESENCIAL
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+                0.262         0.077
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+                0.070         0.071
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+                3.759         1.084
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+                0.000         0.278
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+ SDAP           0.718
+ SDAG           0.110         0.756
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+ SDAP           0.099
+ SDAG           0.062         0.099
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+ SDAP           7.268
+ SDAG           1.763         7.614
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+ SDAP           0.000
+ SDAG           0.078         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+ SDAP           1.000
+ SDAG           0.149         1.000
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+ SDAP           0.000
+ SDAG           0.083         0.000
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+ SDAP         999.000
+ SDAG           1.805       999.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+ SDAP           0.000
+ SDAG           0.071         0.000
+
+
+           ESTIMATED PARTIAL CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SDAP          SDAG
+              ________      ________
+ SDAP           1.000
+ SDAG           0.149         1.000
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    c:\users\mm\onedrive - upv\dat_dropbox\investigaciÓn\cit_2025\travelwell\mplus_validation_rerun_package\mplus_valida
+
+     Beginning Time:  08:22:52
+        Ending Time:  08:22:53
+       Elapsed Time:  00:00:01
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2026 Muthen & Muthen

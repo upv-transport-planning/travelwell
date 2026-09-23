@@ -1,0 +1,52 @@
+TITLE: SD rboles - CFA Presencial;
+
+  DATA:
+  FILE = ../../data/datos_arb_legacy_order.txt;
+
+  VARIABLE:
+  NAMES =
+  id MODO online
+  AP1ca	AP1sa	AN1ca	AN1sa	
+  AP2ca	AP2sa	AN2ca	AN2sa	
+  AP3ca	AP3sa	AN3ca	AN3sa	
+  AP4ca	AP4sa	AN4ca	AN4sa	
+  AP5ca	AP5sa	AN5ca	AN5sa	
+  S1ca	S1sa	S2ca	S2sa	S3ca	S3sa	S4ca	S4sa	S5ca	S5sa	
+  AP1ap	AP1ag	AN1ap	AN1ag
+  AP2ap	AP2ag	AN2ap	AN2ag	
+  P3ap	AP3ag	AN3ap	AN3ag	
+  AP4ap	AP4ag	AN4ap	AN4ag	
+  AP5ap	AP5ag	AN5ap	AN5ag	
+  S1ap	S1ag	S2ap	S2ag	S3ap	S3ag	S4ap	S4ag	S5ap	S5ag	
+  V1	V2	V3	V4	V5	V6	V7	V8	V9	V10	V11	V12	V13	V14	V15	V16	V17	V18	V19;
+
+  USEVARIABLES =
+  S1ca	S1sa	S2ca	S2sa	S3ca	S3sa	S4ca	S4sa	S5ca	S5sa;
+
+  USEOBSERVATIONS = online EQ 2;
+
+  MISSING = ALL (-999);
+
+  ANALYSIS:
+  ESTIMATOR = MLR;
+
+  MODEL:
+
+  Sca BY S1ca S2ca S3ca S4ca S5ca;
+  Ssa BY S1sa S2sa S3sa S4sa S5sa;
+
+  Sca WITH Ssa;
+
+  S1ca WITH S1sa;
+  S2ca WITH S2sa;
+  S3ca WITH S3sa;
+  S4ca WITH S4sa;
+  S5ca WITH S5sa;
+
+  OUTPUT:
+  STANDARDIZED;
+  MODINDICES(10);
+  SAMPSTAT;
+  RESIDUAL;
+  TECH1;
+  TECH4;

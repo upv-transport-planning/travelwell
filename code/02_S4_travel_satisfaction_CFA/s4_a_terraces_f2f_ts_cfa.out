@@ -1,0 +1,1136 @@
+Mplus VERSION 9.1
+MUTHEN & MUTHEN
+08/17/2026   8:21 AM
+
+INPUT INSTRUCTIONS
+
+  TITLE: PANAS Terrazas - CFA Online;
+
+  DATA:
+  FILE = ../data/datos_com_terr_legacy_order.txt;
+
+  VARIABLE:
+  NAMES =
+  id MODO online
+  ap1cc ap1sc an1cc an1sc
+  ap2cc ap2sc an2cc an2sc
+  ap3cc ap3sc an3cc an3sc
+  ap4cc ap4sc an4cc an4sc
+  ap5cc ap5sc an5cc an5sc
+  S1cc S1sc S2cc S2sc S3cc
+  S3sc S4cc S4sc S5cc S5sc
+  ap1ct ap1st an1ct an1st
+  ap2ct ap2st an2ct an2st
+  ap3ct ap3st an3ct an3st
+  ap4ct ap4st an4ct an4st
+  ap5ct ap5st an5ct an5st
+  S1ct S1st S2ct S2st S3ct
+  S3st S4ct S4st S5ct S5st
+  V1 V2 V3 V4 V5 V6 V7 V8 V9
+  V10 V11 V12 V13 V14 V15 V16
+  V17 V18 V19;
+
+  USEVARIABLES =
+  S1ct S1st S2ct S2st S3ct
+  S3st S4ct S4st S5ct S5st;
+
+  USEOBSERVATIONS = online EQ 2;
+
+  MISSING = ALL (-999);
+
+  ANALYSIS:
+  ESTIMATOR = MLR;
+
+  MODEL:
+
+  Sct BY S1ct S2ct S3ct S4ct S5ct;
+  Sst BY S1st S2st S3st S4st S5st;
+
+  Sct WITH Sst;
+
+  S1ct WITH S1st;
+  S2ct WITH S2st;
+  S3ct WITH S3st;
+  S4ct WITH S4st;
+  S5ct WITH S5st;
+
+  OUTPUT:
+  STANDARDIZED;
+  MODINDICES(10);
+  SAMPSTAT;
+  RESIDUAL;
+  TECH1;
+  TECH4;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+PANAS Terrazas - CFA Online;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         318
+
+Number of dependent variables                                   10
+Number of independent variables                                  0
+Number of continuous latent variables                            2
+
+Observed dependent variables
+
+  Continuous
+   S1CT        S1ST        S2CT        S2ST        S3CT        S3ST
+   S4CT        S4ST        S5CT        S5ST
+
+Continuous latent variables
+   SCT         SST
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  ../data/datos_com_terr_legacy_order.txt
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              S1CT          S1ST          S2CT          S2ST          S3CT
+              ________      ________      ________      ________      ________
+ S1CT           1.000
+ S1ST           1.000         1.000
+ S2CT           1.000         1.000         1.000
+ S2ST           1.000         1.000         1.000         1.000
+ S3CT           1.000         1.000         1.000         1.000         1.000
+ S3ST           1.000         1.000         1.000         1.000         1.000
+ S4CT           1.000         1.000         1.000         1.000         1.000
+ S4ST           1.000         1.000         1.000         1.000         1.000
+ S5CT           1.000         1.000         1.000         1.000         1.000
+ S5ST           1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              S3ST          S4CT          S4ST          S5CT          S5ST
+              ________      ________      ________      ________      ________
+ S3ST           1.000
+ S4CT           1.000         1.000
+ S4ST           1.000         1.000         1.000
+ S5CT           1.000         1.000         1.000         1.000
+ S5ST           1.000         1.000         1.000         1.000         1.000
+
+
+SAMPLE STATISTICS
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           Means
+              S1CT          S1ST          S2CT          S2ST          S3CT
+              ________      ________      ________      ________      ________
+                3.088         3.491         3.022         3.619         3.230
+
+
+           Means
+              S3ST          S4CT          S4ST          S5CT          S5ST
+              ________      ________      ________      ________      ________
+                3.619         2.943         3.333         3.038         3.500
+
+
+           Covariances
+              S1CT          S1ST          S2CT          S2ST          S3CT
+              ________      ________      ________      ________      ________
+ S1CT           1.552
+ S1ST          -0.612         1.137
+ S2CT           1.121        -0.611         1.600
+ S2ST          -0.599         0.844        -0.655         1.173
+ S3CT           1.093        -0.534         1.265        -0.538         1.485
+ S3ST          -0.624         0.790        -0.586         0.931        -0.604
+ S4CT           0.678        -0.375         0.825        -0.433         0.777
+ S4ST          -0.451         0.528        -0.426         0.583        -0.400
+ S5CT           1.176        -0.666         1.147        -0.668         1.120
+ S5ST          -0.698         0.745        -0.728         0.869        -0.637
+
+
+           Covariances
+              S3ST          S4CT          S4ST          S5CT          S5ST
+              ________      ________      ________      ________      ________
+ S3ST           1.179
+ S4CT          -0.367         1.223
+ S4ST           0.583        -0.097         1.065
+ S5CT          -0.627         0.942        -0.425         1.753
+ S5ST           0.876        -0.340         0.736        -0.811         1.357
+
+
+           Correlations
+              S1CT          S1ST          S2CT          S2ST          S3CT
+              ________      ________      ________      ________      ________
+ S1CT           1.000
+ S1ST          -0.461         1.000
+ S2CT           0.711        -0.453         1.000
+ S2ST          -0.444         0.731        -0.478         1.000
+ S3CT           0.720        -0.411         0.821        -0.408         1.000
+ S3ST          -0.461         0.683        -0.427         0.791        -0.457
+ S4CT           0.492        -0.318         0.590        -0.362         0.577
+ S4ST          -0.351         0.480        -0.326         0.521        -0.318
+ S5CT           0.713        -0.472         0.685        -0.466         0.694
+ S5ST          -0.481         0.600        -0.494         0.689        -0.449
+
+
+           Correlations
+              S3ST          S4CT          S4ST          S5CT          S5ST
+              ________      ________      ________      ________      ________
+ S3ST           1.000
+ S4CT          -0.306         1.000
+ S4ST           0.520        -0.085         1.000
+ S5CT          -0.436         0.644        -0.311         1.000
+ S5ST           0.692        -0.264         0.612        -0.526         1.000
+
+
+     MAXIMUM LOG-LIKELIHOOD VALUE FOR THE UNRESTRICTED (H1) MODEL IS -3822.495
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     S1CT                  3.088      -0.196       1.000   14.47%       2.000      3.000      3.000
+             318.000       1.552      -0.933       5.000   13.52%       4.000      4.000
+     S1ST                  3.491      -0.450       1.000    5.66%       3.000      3.000      4.000
+             318.000       1.137      -0.201       5.000   18.24%       4.000      4.000
+     S2CT                  3.022      -0.097       1.000   15.09%       2.000      3.000      3.000
+             318.000       1.600      -1.044       5.000   13.21%       3.000      4.000
+     S2ST                  3.619      -0.673       1.000    5.66%       3.000      4.000      4.000
+             318.000       1.173      -0.040       5.000   21.38%       4.000      5.000
+     S3CT                  3.230      -0.455       1.000   13.21%       2.000      3.000      3.000
+             318.000       1.485      -0.754       5.000   12.89%       4.000      4.000
+     S3ST                  3.619      -0.632       1.000    5.35%       3.000      3.000      4.000
+             318.000       1.179      -0.130       5.000   22.01%       4.000      5.000
+     S4CT                  2.943      -0.069       1.000   12.89%       2.000      3.000      3.000
+             318.000       1.223      -0.470       5.000    8.81%       3.000      4.000
+     S4ST                  3.333      -0.133       1.000    5.66%       3.000      3.000      3.000
+             318.000       1.065      -0.133       5.000   16.04%       3.000      4.000
+     S5CT                  3.038      -0.102       1.000   17.30%       2.000      3.000      3.000
+             318.000       1.753      -1.121       5.000   16.04%       4.000      4.000
+     S5ST                  3.500      -0.466       1.000    7.23%       3.000      3.000      4.000
+             318.000       1.357      -0.520       5.000   22.64%       4.000      5.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       36
+
+Loglikelihood
+
+          H0 Value                       -3887.744
+          H0 Scaling Correction Factor      1.5945
+            for MLR
+          H1 Value                       -3822.495
+          H1 Scaling Correction Factor      1.5077
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                    7847.489
+          Bayesian (BIC)                  7982.922
+          Sample-Size Adjusted BIC        7868.738
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                             93.225*
+          Degrees of Freedom                    29
+          P-Value                           0.0000
+          Scaling Correction Factor         1.3998
+            for MLR
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.083
+          90 Percent C.I.                    0.065  0.103
+          Probability RMSEA <= .05           0.002
+
+CFI/TLI
+
+          CFI                                0.948
+          TLI                                0.919
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           1281.888
+          Degrees of Freedom                    45
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.039
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ SCT      BY
+    S1CT               1.000      0.000    999.000    999.000
+    S2CT               1.116      0.052     21.494      0.000
+    S3CT               1.080      0.053     20.191      0.000
+    S4CT               0.733      0.055     13.418      0.000
+    S5CT               1.048      0.054     19.394      0.000
+
+ SST      BY
+    S1ST               1.000      0.000    999.000    999.000
+    S2ST               1.151      0.063     18.238      0.000
+    S3ST               1.136      0.071     15.913      0.000
+    S4ST               0.750      0.063     11.858      0.000
+    S5ST               1.078      0.072     14.899      0.000
+
+ SCT      WITH
+    SST               -0.509      0.077     -6.602      0.000
+
+ S1CT     WITH
+    S1ST              -0.023      0.051     -0.444      0.657
+
+ S2CT     WITH
+    S2ST              -0.034      0.032     -1.064      0.287
+
+ S3CT     WITH
+    S3ST              -0.069      0.061     -1.135      0.256
+
+ S4CT     WITH
+    S4ST               0.174      0.065      2.699      0.007
+
+ S5CT     WITH
+    S5ST              -0.084      0.062     -1.340      0.180
+
+ Intercepts
+    S1CT               3.088      0.070     44.203      0.000
+    S1ST               3.491      0.060     58.383      0.000
+    S2CT               3.022      0.071     42.602      0.000
+    S2ST               3.619      0.061     59.600      0.000
+    S3CT               3.230      0.068     47.259      0.000
+    S3ST               3.619      0.061     59.441      0.000
+    S4CT               2.943      0.062     47.458      0.000
+    S4ST               3.333      0.058     57.600      0.000
+    S5CT               3.038      0.074     40.911      0.000
+    S5ST               3.500      0.065     53.580      0.000
+
+ Variances
+    SCT                1.024      0.103      9.913      0.000
+    SST                0.713      0.093      7.678      0.000
+
+ Residual Variances
+    S1CT               0.524      0.067      7.816      0.000
+    S1ST               0.420      0.059      7.096      0.000
+    S2CT               0.332      0.053      6.299      0.000
+    S2ST               0.229      0.042      5.395      0.000
+    S3CT               0.308      0.065      4.718      0.000
+    S3ST               0.282      0.076      3.741      0.000
+    S4CT               0.676      0.070      9.687      0.000
+    S4ST               0.657      0.068      9.633      0.000
+    S5CT               0.600      0.092      6.513      0.000
+    S5ST               0.509      0.066      7.743      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.994E-02
+       (ratio of smallest to largest eigenvalue)
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ SCT      BY
+    S1CT               0.813      0.027     29.726      0.000
+    S2CT               0.891      0.019     47.647      0.000
+    S3CT               0.892      0.024     36.806      0.000
+    S4CT               0.670      0.041     16.536      0.000
+    S5CT               0.808      0.034     23.801      0.000
+
+ SST      BY
+    S1ST               0.793      0.034     23.557      0.000
+    S2ST               0.897      0.021     42.660      0.000
+    S3ST               0.875      0.033     26.389      0.000
+    S4ST               0.615      0.044     13.970      0.000
+    S5ST               0.787      0.032     24.738      0.000
+
+ SCT      WITH
+    SST               -0.596      0.053    -11.318      0.000
+
+ S1CT     WITH
+    S1ST              -0.048      0.107     -0.449      0.653
+
+ S2CT     WITH
+    S2ST              -0.125      0.110     -1.137      0.255
+
+ S3CT     WITH
+    S3ST              -0.234      0.164     -1.429      0.153
+
+ S4CT     WITH
+    S4ST               0.261      0.090      2.915      0.004
+
+ S5CT     WITH
+    S5ST              -0.151      0.106     -1.433      0.152
+
+ Intercepts
+    S1CT               2.482      0.099     24.970      0.000
+    S1ST               3.280      0.154     21.350      0.000
+    S2CT               2.383      0.090     26.372      0.000
+    S2ST               3.340      0.165     20.273      0.000
+    S3CT               2.634      0.119     22.221      0.000
+    S3ST               3.301      0.169     19.588      0.000
+    S4CT               2.657      0.113     23.413      0.000
+    S4ST               3.242      0.145     22.415      0.000
+    S5CT               2.312      0.088     26.296      0.000
+    S5ST               3.026      0.135     22.487      0.000
+
+ Variances
+    SCT                1.000      0.000    999.000    999.000
+    SST                1.000      0.000    999.000    999.000
+
+ Residual Variances
+    S1CT               0.338      0.045      7.598      0.000
+    S1ST               0.371      0.053      6.940      0.000
+    S2CT               0.206      0.033      6.187      0.000
+    S2ST               0.195      0.038      5.175      0.000
+    S3CT               0.205      0.043      4.746      0.000
+    S3ST               0.235      0.058      4.053      0.000
+    S4CT               0.551      0.054     10.141      0.000
+    S4ST               0.621      0.054     11.455      0.000
+    S5CT               0.347      0.055      6.337      0.000
+    S5ST               0.381      0.050      7.605      0.000
+
+
+STDY Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ SCT      BY
+    S1CT               0.813      0.027     29.726      0.000
+    S2CT               0.891      0.019     47.647      0.000
+    S3CT               0.892      0.024     36.806      0.000
+    S4CT               0.670      0.041     16.536      0.000
+    S5CT               0.808      0.034     23.801      0.000
+
+ SST      BY
+    S1ST               0.793      0.034     23.557      0.000
+    S2ST               0.897      0.021     42.660      0.000
+    S3ST               0.875      0.033     26.389      0.000
+    S4ST               0.615      0.044     13.970      0.000
+    S5ST               0.787      0.032     24.738      0.000
+
+ SCT      WITH
+    SST               -0.596      0.053    -11.318      0.000
+
+ S1CT     WITH
+    S1ST              -0.048      0.107     -0.449      0.653
+
+ S2CT     WITH
+    S2ST              -0.125      0.110     -1.137      0.255
+
+ S3CT     WITH
+    S3ST              -0.234      0.164     -1.429      0.153
+
+ S4CT     WITH
+    S4ST               0.261      0.090      2.915      0.004
+
+ S5CT     WITH
+    S5ST              -0.151      0.106     -1.433      0.152
+
+ Intercepts
+    S1CT               2.482      0.099     24.970      0.000
+    S1ST               3.280      0.154     21.350      0.000
+    S2CT               2.383      0.090     26.372      0.000
+    S2ST               3.340      0.165     20.273      0.000
+    S3CT               2.634      0.119     22.221      0.000
+    S3ST               3.301      0.169     19.588      0.000
+    S4CT               2.657      0.113     23.413      0.000
+    S4ST               3.242      0.145     22.415      0.000
+    S5CT               2.312      0.088     26.296      0.000
+    S5ST               3.026      0.135     22.487      0.000
+
+ Variances
+    SCT                1.000      0.000    999.000    999.000
+    SST                1.000      0.000    999.000    999.000
+
+ Residual Variances
+    S1CT               0.338      0.045      7.598      0.000
+    S1ST               0.371      0.053      6.940      0.000
+    S2CT               0.206      0.033      6.187      0.000
+    S2ST               0.195      0.038      5.175      0.000
+    S3CT               0.205      0.043      4.746      0.000
+    S3ST               0.235      0.058      4.053      0.000
+    S4CT               0.551      0.054     10.141      0.000
+    S4ST               0.621      0.054     11.455      0.000
+    S5CT               0.347      0.055      6.337      0.000
+    S5ST               0.381      0.050      7.605      0.000
+
+
+STD Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ SCT      BY
+    S1CT               1.012      0.051     19.826      0.000
+    S2CT               1.130      0.043     26.156      0.000
+    S3CT               1.093      0.049     22.241      0.000
+    S4CT               0.742      0.058     12.776      0.000
+    S5CT               1.061      0.059     18.090      0.000
+
+ SST      BY
+    S1ST               0.844      0.055     15.355      0.000
+    S2ST               0.972      0.050     19.502      0.000
+    S3ST               0.959      0.051     18.750      0.000
+    S4ST               0.633      0.056     11.312      0.000
+    S5ST               0.910      0.055     16.653      0.000
+
+ SCT      WITH
+    SST               -0.596      0.053    -11.318      0.000
+
+ S1CT     WITH
+    S1ST              -0.023      0.051     -0.444      0.657
+
+ S2CT     WITH
+    S2ST              -0.034      0.032     -1.064      0.287
+
+ S3CT     WITH
+    S3ST              -0.069      0.061     -1.135      0.256
+
+ S4CT     WITH
+    S4ST               0.174      0.065      2.699      0.007
+
+ S5CT     WITH
+    S5ST              -0.084      0.062     -1.340      0.180
+
+ Intercepts
+    S1CT               3.088      0.070     44.203      0.000
+    S1ST               3.491      0.060     58.383      0.000
+    S2CT               3.022      0.071     42.602      0.000
+    S2ST               3.619      0.061     59.600      0.000
+    S3CT               3.230      0.068     47.259      0.000
+    S3ST               3.619      0.061     59.441      0.000
+    S4CT               2.943      0.062     47.458      0.000
+    S4ST               3.333      0.058     57.600      0.000
+    S5CT               3.038      0.074     40.911      0.000
+    S5ST               3.500      0.065     53.580      0.000
+
+ Variances
+    SCT                1.000      0.000    999.000    999.000
+    SST                1.000      0.000    999.000    999.000
+
+ Residual Variances
+    S1CT               0.524      0.067      7.816      0.000
+    S1ST               0.420      0.059      7.096      0.000
+    S2CT               0.332      0.053      6.299      0.000
+    S2ST               0.229      0.042      5.395      0.000
+    S3CT               0.308      0.065      4.718      0.000
+    S3ST               0.282      0.076      3.741      0.000
+    S4CT               0.676      0.070      9.687      0.000
+    S4ST               0.657      0.068      9.633      0.000
+    S5CT               0.600      0.092      6.513      0.000
+    S5ST               0.509      0.066      7.743      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    S1CT               0.662      0.045     14.863      0.000
+    S1ST               0.629      0.053     11.779      0.000
+    S2CT               0.794      0.033     23.824      0.000
+    S2ST               0.805      0.038     21.330      0.000
+    S3CT               0.795      0.043     18.403      0.000
+    S3ST               0.765      0.058     13.194      0.000
+    S4CT               0.449      0.054      8.268      0.000
+    S4ST               0.379      0.054      6.985      0.000
+    S5CT               0.653      0.055     11.900      0.000
+    S5ST               0.619      0.050     12.369      0.000
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED)
+
+
+           Model Estimated Means
+              S1CT          S1ST          S2CT          S2ST          S3CT
+              ________      ________      ________      ________      ________
+                3.088         3.491         3.022         3.619         3.230
+
+
+           Model Estimated Means
+              S3ST          S4CT          S4ST          S5CT          S5ST
+              ________      ________      ________      ________      ________
+                3.619         2.943         3.333         3.038         3.500
+
+
+           Residuals for Means
+              S1CT          S1ST          S2CT          S2ST          S3CT
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means
+              S3ST          S4CT          S4ST          S5CT          S5ST
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              S1CT          S1ST          S2CT          S2ST          S3CT
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              S3ST          S4CT          S4ST          S5CT          S5ST
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              S1CT          S1ST          S2CT          S2ST          S3CT
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              S3ST          S4CT          S4ST          S5CT          S5ST
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Model Estimated Covariances
+              S1CT          S1ST          S2CT          S2ST          S3CT
+              ________      ________      ________      ________      ________
+ S1CT           1.548
+ S1ST          -0.532         1.133
+ S2CT           1.144        -0.568         1.608
+ S2ST          -0.586         0.821        -0.689         1.174
+ S3CT           1.107        -0.550         1.235        -0.633         1.504
+ S3ST          -0.578         0.810        -0.645         0.932        -0.694
+ S4CT           0.751        -0.373         0.839        -0.430         0.812
+ S4ST          -0.381         0.534        -0.426         0.615        -0.412
+ S5CT           1.074        -0.534         1.199        -0.614         1.160
+ S5ST          -0.549         0.768        -0.613         0.885        -0.593
+
+
+           Model Estimated Covariances
+              S3ST          S4CT          S4ST          S5CT          S5ST
+              ________      ________      ________      ________      ________
+ S3ST           1.202
+ S4CT          -0.424         1.227
+ S4ST           0.607        -0.106         1.057
+ S5CT          -0.606         0.788        -0.400         1.726
+ S5ST           0.873        -0.402         0.576        -0.659         1.338
+
+
+           Model Estimated Correlations
+              S1CT          S1ST          S2CT          S2ST          S3CT
+              ________      ________      ________      ________      ________
+ S1CT           1.000
+ S1ST          -0.401         1.000
+ S2CT           0.725        -0.421         1.000
+ S2ST          -0.435         0.712        -0.501         1.000
+ S3CT           0.725        -0.421         0.794        -0.476         1.000
+ S3ST          -0.424         0.694        -0.464         0.785        -0.516
+ S4CT           0.545        -0.317         0.597        -0.358         0.598
+ S4ST          -0.298         0.488        -0.327         0.552        -0.327
+ S5CT           0.657        -0.382         0.720        -0.432         0.720
+ S5ST          -0.381         0.624        -0.418         0.706        -0.418
+
+
+           Model Estimated Correlations
+              S3ST          S4CT          S4ST          S5CT          S5ST
+              ________      ________      ________      ________      ________
+ S3ST           1.000
+ S4CT          -0.349         1.000
+ S4ST           0.538        -0.093         1.000
+ S5CT          -0.421         0.541        -0.296         1.000
+ S5ST           0.688        -0.314         0.484        -0.434         1.000
+
+
+           Model Estimated Partial Correlations
+              S1CT          S1ST          S2CT          S2ST          S3CT
+              ________      ________      ________      ________      ________
+ S1CT           1.000
+ S1ST          -0.069         1.000
+ S2CT           0.246         0.001         1.000
+ S2ST          -0.005         0.265        -0.148         1.000
+ S3CT           0.251         0.023         0.388         0.069         1.000
+ S3ST           0.027         0.227         0.073         0.404        -0.214
+ S4CT           0.108        -0.037         0.160        -0.053         0.160
+ S4ST          -0.040         0.094        -0.048         0.162        -0.035
+ S5CT           0.158         0.002         0.242         0.022         0.249
+ S5ST           0.003         0.147         0.026         0.260         0.048
+
+
+           Model Estimated Partial Correlations
+              S3ST          S4CT          S4ST          S5CT          S5ST
+              ________      ________      ________      ________      ________
+ S3ST           1.000
+ S4CT          -0.025         1.000
+ S4ST           0.132         0.236         1.000
+ S5CT           0.050         0.102        -0.030         1.000
+ S5ST           0.226        -0.025         0.088        -0.156         1.000
+
+
+           Residuals for Covariances
+              S1CT          S1ST          S2CT          S2ST          S3CT
+              ________      ________      ________      ________      ________
+ S1CT           0.004
+ S1ST          -0.081         0.004
+ S2CT          -0.023        -0.043        -0.008
+ S2ST          -0.013         0.023         0.034        -0.001
+ S3CT          -0.014         0.016         0.030         0.094        -0.019
+ S3ST          -0.046        -0.019         0.059        -0.001         0.089
+ S4CT          -0.073        -0.001        -0.014        -0.004        -0.034
+ S4ST          -0.069        -0.006         0.000        -0.032         0.012
+ S5CT           0.102        -0.133        -0.052        -0.054        -0.040
+ S5ST          -0.149        -0.023        -0.115        -0.015        -0.044
+
+
+           Residuals for Covariances
+              S3ST          S4CT          S4ST          S5CT          S5ST
+              ________      ________      ________      ________      ________
+ S3ST          -0.023
+ S4CT           0.057        -0.004
+ S4ST          -0.024         0.008         0.008
+ S5CT          -0.021         0.155        -0.025         0.028
+ S5ST           0.003         0.063         0.160        -0.152         0.019
+
+
+           Residuals for Correlations
+              S1CT          S1ST          S2CT          S2ST          S3CT
+              ________      ________      ________      ________      ________
+ S1CT           0.000
+ S1ST          -0.060         0.000
+ S2CT          -0.014        -0.032         0.000
+ S2ST          -0.009         0.019         0.023         0.000
+ S3CT          -0.005         0.010         0.026         0.068         0.000
+ S3ST          -0.037        -0.011         0.038         0.007         0.059
+ S4CT          -0.053        -0.001        -0.007        -0.004        -0.021
+ S4ST          -0.052        -0.008         0.001        -0.031         0.008
+ S5CT           0.056        -0.090        -0.035        -0.034        -0.026
+ S5ST          -0.100        -0.024        -0.076        -0.017        -0.031
+
+
+           Residuals for Correlations
+              S3ST          S4CT          S4ST          S5CT          S5ST
+              ________      ________      ________      ________      ________
+ S3ST           0.000
+ S4CT           0.043         0.000
+ S4ST          -0.018         0.007         0.000
+ S5CT          -0.015         0.102        -0.015         0.000
+ S5ST           0.004         0.050         0.128        -0.092         0.000
+
+
+           Residuals for Partial Correlations
+              S1CT          S1ST          S2CT          S2ST          S3CT
+              ________      ________      ________      ________      ________
+ S1CT           0.000
+ S1ST           0.007         0.000
+ S2CT          -0.039        -0.045         0.000
+ S2ST           0.045         0.076        -0.020         0.000
+ S3CT          -0.042         0.019         0.178         0.108         0.000
+ S3ST          -0.107        -0.038         0.127         0.076        -0.022
+ S4CT          -0.172         0.058         0.008        -0.096        -0.050
+ S4ST          -0.018        -0.007         0.057        -0.071        -0.032
+ S5CT           0.178        -0.097        -0.220        -0.020        -0.087
+ S5ST           0.015        -0.127        -0.158        -0.080         0.014
+
+
+           Residuals for Partial Correlations
+              S3ST          S4CT          S4ST          S5CT          S5ST
+              ________      ________      ________      ________      ________
+ S3ST           0.000
+ S4CT           0.004         0.000
+ S4ST          -0.092        -0.066         0.000
+ S5CT           0.052         0.288         0.056         0.000
+ S5ST           0.035         0.183         0.237        -0.092         0.000
+
+
+           Standardized Residuals (z-scores) for Covariances
+              S1CT          S1ST          S2CT          S2ST          S3CT
+              ________      ________      ________      ________      ________
+ S1CT         999.000
+ S1ST          -4.497       999.000
+ S2CT          -0.787        -1.179       999.000
+ S2ST          -0.420       999.000         1.188        -0.167
+ S3CT          -0.561         0.388       999.000         2.877       999.000
+ S3ST          -1.154        -0.742         1.470        -0.099       999.000
+ S4CT          -1.760        -0.031        -0.486        -0.083        -1.193
+ S4ST          -1.265        -0.237         0.006        -1.246         0.224
+ S5CT         999.000        -4.613        -1.552        -1.950        -1.609
+ S5ST          -5.229        -0.991        -3.242        -0.557        -1.230
+
+
+           Standardized Residuals (z-scores) for Covariances
+              S3ST          S4CT          S4ST          S5CT          S5ST
+              ________      ________      ________      ________      ________
+ S3ST         999.000
+ S4CT           1.172       999.000
+ S4ST          -1.209         0.514       999.000
+ S5CT          -0.557       999.000        -0.452       999.000
+ S5ST           0.119         1.176         6.817       999.000         1.234
+
+
+           Normalized Residuals for Covariances
+              S1CT          S1ST          S2CT          S2ST          S3CT
+              ________      ________      ________      ________      ________
+ S1CT           0.043
+ S1ST          -0.910         0.045
+ S2CT          -0.250        -0.504        -0.095
+ S2ST          -0.153         0.275         0.374        -0.013
+ S3CT          -0.145         0.186         0.321         1.134        -0.199
+ S3ST          -0.526        -0.224         0.657        -0.017         1.034
+ S4CT          -0.801        -0.020        -0.157        -0.049        -0.395
+ S4ST          -0.839        -0.081         0.004        -0.426         0.144
+ S5CT           1.057        -1.560        -0.530        -0.616        -0.407
+ S5ST          -1.740        -0.274        -1.255        -0.173        -0.496
+
+
+           Normalized Residuals for Covariances
+              S3ST          S4CT          S4ST          S5CT          S5ST
+              ________      ________      ________      ________      ________
+ S3ST          -0.255
+ S4CT           0.724        -0.043
+ S4ST          -0.326         0.092         0.095
+ S5CT          -0.231         1.703        -0.284         0.300
+ S5ST           0.033         0.742         2.022        -1.539         0.206
+
+
+MODEL MODIFICATION INDICES
+
+NOTE:  Modification indices for direct effects of observed dependent variables
+regressed on covariates may not be included.  To include these, request
+MODINDICES (ALL).
+
+Minimum M.I. value for printing the modification index    10.000
+
+                                   M.I.     E.P.C.  Std E.P.C.  StdYX E.P.C.
+
+WITH Statements
+
+S3CT     WITH S2CT                25.007     0.210      0.210        0.656
+S5CT     WITH S2CT                13.148    -0.159     -0.159       -0.356
+S5CT     WITH S4CT                18.267     0.199      0.199        0.313
+S5ST     WITH S4ST                14.169     0.157      0.157        0.271
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              S1CT          S1ST          S2CT          S2ST          S3CT
+              ________      ________      ________      ________      ________
+                  1             2             3             4             5
+
+
+           NU
+              S3ST          S4CT          S4ST          S5CT          S5ST
+              ________      ________      ________      ________      ________
+                  6             7             8             9            10
+
+
+           LAMBDA
+              SCT           SST
+              ________      ________
+ S1CT               0             0
+ S1ST               0             0
+ S2CT              11             0
+ S2ST               0            12
+ S3CT              13             0
+ S3ST               0            14
+ S4CT              15             0
+ S4ST               0            16
+ S5CT              17             0
+ S5ST               0            18
+
+
+           THETA
+              S1CT          S1ST          S2CT          S2ST          S3CT
+              ________      ________      ________      ________      ________
+ S1CT              19
+ S1ST              20            21
+ S2CT               0             0            22
+ S2ST               0             0            23            24
+ S3CT               0             0             0             0            25
+ S3ST               0             0             0             0            26
+ S4CT               0             0             0             0             0
+ S4ST               0             0             0             0             0
+ S5CT               0             0             0             0             0
+ S5ST               0             0             0             0             0
+
+
+           THETA
+              S3ST          S4CT          S4ST          S5CT          S5ST
+              ________      ________      ________      ________      ________
+ S3ST              27
+ S4CT               0            28
+ S4ST               0            29            30
+ S5CT               0             0             0            31
+ S5ST               0             0             0            32            33
+
+
+           ALPHA
+              SCT           SST
+              ________      ________
+                  0             0
+
+
+           BETA
+              SCT           SST
+              ________      ________
+ SCT                0             0
+ SST                0             0
+
+
+           PSI
+              SCT           SST
+              ________      ________
+ SCT               34
+ SST               35            36
+
+
+     STARTING VALUES
+
+
+           NU
+              S1CT          S1ST          S2CT          S2ST          S3CT
+              ________      ________      ________      ________      ________
+                3.088         3.491         3.022         3.619         3.230
+
+
+           NU
+              S3ST          S4CT          S4ST          S5CT          S5ST
+              ________      ________      ________      ________      ________
+                3.619         2.943         3.333         3.038         3.500
+
+
+           LAMBDA
+              SCT           SST
+              ________      ________
+ S1CT           1.000         0.000
+ S1ST           0.000         1.000
+ S2CT           1.063         0.000
+ S2ST           0.000         1.168
+ S3CT           1.035         0.000
+ S3ST           0.000         1.114
+ S4CT           0.755         0.000
+ S4ST           0.000         0.741
+ S5CT           1.042         0.000
+ S5ST           0.000         1.084
+
+
+           THETA
+              S1CT          S1ST          S2CT          S2ST          S3CT
+              ________      ________      ________      ________      ________
+ S1CT           0.776
+ S1ST           0.000         0.568
+ S2CT           0.000         0.000         0.800
+ S2ST           0.000         0.000         0.000         0.586
+ S3CT           0.000         0.000         0.000         0.000         0.743
+ S3ST           0.000         0.000         0.000         0.000         0.000
+ S4CT           0.000         0.000         0.000         0.000         0.000
+ S4ST           0.000         0.000         0.000         0.000         0.000
+ S5CT           0.000         0.000         0.000         0.000         0.000
+ S5ST           0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              S3ST          S4CT          S4ST          S5CT          S5ST
+              ________      ________      ________      ________      ________
+ S3ST           0.590
+ S4CT           0.000         0.612
+ S4ST           0.000         0.000         0.532
+ S5CT           0.000         0.000         0.000         0.877
+ S5ST           0.000         0.000         0.000         0.000         0.678
+
+
+           ALPHA
+              SCT           SST
+              ________      ________
+                0.000         0.000
+
+
+           BETA
+              SCT           SST
+              ________      ________
+ SCT            0.000         0.000
+ SST            0.000         0.000
+
+
+           PSI
+              SCT           SST
+              ________      ________
+ SCT            0.050
+ SST            0.000         0.050
+
+
+TECHNICAL 4 OUTPUT
+
+
+     ESTIMATES DERIVED FROM THE MODEL
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              SCT           SST
+              ________      ________
+                0.000         0.000
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              SCT           SST
+              ________      ________
+                0.000         0.000
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              SCT           SST
+              ________      ________
+                0.000         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              SCT           SST
+              ________      ________
+                1.000         1.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              SCT           SST
+              ________      ________
+ SCT            1.024
+ SST           -0.509         0.713
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              SCT           SST
+              ________      ________
+ SCT            0.103
+ SST            0.077         0.093
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              SCT           SST
+              ________      ________
+ SCT            9.913
+ SST           -6.602         7.678
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              SCT           SST
+              ________      ________
+ SCT            0.000
+ SST            0.000         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SCT           SST
+              ________      ________
+ SCT            1.000
+ SST           -0.596         1.000
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SCT           SST
+              ________      ________
+ SCT            0.000
+ SST            0.053         0.000
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SCT           SST
+              ________      ________
+ SCT          999.000
+ SST          -11.318       999.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SCT           SST
+              ________      ________
+ SCT            0.000
+ SST            0.000         0.000
+
+
+           ESTIMATED PARTIAL CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SCT           SST
+              ________      ________
+ SCT            1.000
+ SST           -0.596         1.000
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    c:\users\mm\onedrive - upv\dat_dropbox\investigaciÓn\cit_2025\travelwell\mplus_validation_rerun_package\mplus_valida
+
+     Beginning Time:  08:21:35
+        Ending Time:  08:21:35
+       Elapsed Time:  00:00:00
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2026 Muthen & Muthen

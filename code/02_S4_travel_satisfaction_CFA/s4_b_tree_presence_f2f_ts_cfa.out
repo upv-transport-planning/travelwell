@@ -1,0 +1,1135 @@
+Mplus VERSION 9.1
+MUTHEN & MUTHEN
+08/17/2026   8:22 AM
+
+INPUT INSTRUCTIONS
+
+  TITLE: SD rboles - CFA Presencial;
+
+    DATA:
+    FILE = ../data/datos_arb_legacy_order.txt;
+
+    VARIABLE:
+    NAMES =
+    id MODO online
+    AP1ca	AP1sa	AN1ca	AN1sa	
+    AP2ca	AP2sa	AN2ca	AN2sa	
+    AP3ca	AP3sa	AN3ca	AN3sa	
+    AP4ca	AP4sa	AN4ca	AN4sa	
+    AP5ca	AP5sa	AN5ca	AN5sa	
+    S1ca	S1sa	S2ca	S2sa	S3ca	S3sa	S4ca	S4sa	S5ca	S5sa	
+    AP1ap	AP1ag	AN1ap	AN1ag
+    AP2ap	AP2ag	AN2ap	AN2ag	
+    P3ap	AP3ag	AN3ap	AN3ag	
+    AP4ap	AP4ag	AN4ap	AN4ag	
+    AP5ap	AP5ag	AN5ap	AN5ag	
+    S1ap	S1ag	S2ap	S2ag	S3ap	S3ag	S4ap	S4ag	S5ap	S5ag	
+    V1	V2	V3	V4	V5	V6	V7	V8	V9	V10	V11	V12	V13	V14	V15	V16	V17	V18	V19;
+
+    USEVARIABLES =
+    S1ca	S1sa	S2ca	S2sa	S3ca	S3sa	S4ca	S4sa	S5ca	S5sa;
+
+    USEOBSERVATIONS = online EQ 2;
+
+    MISSING = ALL (-999);
+
+    ANALYSIS:
+    ESTIMATOR = MLR;
+
+    MODEL:
+
+    Sca BY S1ca S2ca S3ca S4ca S5ca;
+    Ssa BY S1sa S2sa S3sa S4sa S5sa;
+
+    Sca WITH Ssa;
+
+    S1ca WITH S1sa;
+    S2ca WITH S2sa;
+    S3ca WITH S3sa;
+    S4ca WITH S4sa;
+    S5ca WITH S5sa;
+
+    OUTPUT:
+    STANDARDIZED;
+    MODINDICES(10);
+    SAMPSTAT;
+    RESIDUAL;
+    TECH1;
+    TECH4;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+SD rboles - CFA Presencial;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         308
+
+Number of dependent variables                                   10
+Number of independent variables                                  0
+Number of continuous latent variables                            2
+
+Observed dependent variables
+
+  Continuous
+   S1CA        S1SA        S2CA        S2SA        S3CA        S3SA
+   S4CA        S4SA        S5CA        S5SA
+
+Continuous latent variables
+   SCA         SSA
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  ../data/datos_arb_legacy_order.txt
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              S1CA          S1SA          S2CA          S2SA          S3CA
+              ________      ________      ________      ________      ________
+ S1CA           1.000
+ S1SA           1.000         1.000
+ S2CA           1.000         1.000         1.000
+ S2SA           1.000         1.000         1.000         1.000
+ S3CA           1.000         1.000         1.000         1.000         1.000
+ S3SA           1.000         1.000         1.000         1.000         1.000
+ S4CA           1.000         1.000         1.000         1.000         1.000
+ S4SA           1.000         1.000         1.000         1.000         1.000
+ S5CA           1.000         1.000         1.000         1.000         1.000
+ S5SA           1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              S3SA          S4CA          S4SA          S5CA          S5SA
+              ________      ________      ________      ________      ________
+ S3SA           1.000
+ S4CA           1.000         1.000
+ S4SA           1.000         1.000         1.000
+ S5CA           1.000         1.000         1.000         1.000
+ S5SA           1.000         1.000         1.000         1.000         1.000
+
+
+SAMPLE STATISTICS
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           Means
+              S1CA          S1SA          S2CA          S2SA          S3CA
+              ________      ________      ________      ________      ________
+                4.396         2.302         4.140         2.669         4.357
+
+
+           Means
+              S3SA          S4CA          S4SA          S5CA          S5SA
+              ________      ________      ________      ________      ________
+                2.627         3.458         2.672         4.364         2.370
+
+
+           Covariances
+              S1CA          S1SA          S2CA          S2SA          S3CA
+              ________      ________      ________      ________      ________
+ S1CA           0.746
+ S1SA          -0.503         1.509
+ S2CA           0.477        -0.396         1.023
+ S2SA          -0.294         0.954        -0.541         1.676
+ S3CA           0.553        -0.361         0.603        -0.236         0.814
+ S3SA          -0.349         1.122        -0.347         1.344        -0.266
+ S4CA           0.302        -0.190         0.397        -0.215         0.388
+ S4SA          -0.156         0.641        -0.243         0.797        -0.110
+ S5CA           0.544        -0.545         0.514        -0.435         0.555
+ S5SA          -0.413         0.934        -0.490         1.041        -0.372
+
+
+           Covariances
+              S3SA          S4CA          S4SA          S5CA          S5SA
+              ________      ________      ________      ________      ________
+ S3SA           1.753
+ S4CA          -0.219         1.157
+ S4SA           0.848        -0.002         1.175
+ S5CA          -0.458         0.385        -0.241         0.861
+ S5SA           1.148        -0.221         0.696        -0.605         1.564
+
+
+           Correlations
+              S1CA          S1SA          S2CA          S2SA          S3CA
+              ________      ________      ________      ________      ________
+ S1CA           1.000
+ S1SA          -0.474         1.000
+ S2CA           0.546        -0.319         1.000
+ S2SA          -0.263         0.600        -0.414         1.000
+ S3CA           0.710        -0.326         0.661        -0.202         1.000
+ S3SA          -0.305         0.690        -0.259         0.784        -0.223
+ S4CA           0.326        -0.144         0.365        -0.155         0.400
+ S4SA          -0.166         0.481        -0.222         0.568        -0.113
+ S5CA           0.679        -0.478         0.548        -0.362         0.663
+ S5SA          -0.382         0.608        -0.387         0.643        -0.330
+
+
+           Correlations
+              S3SA          S4CA          S4SA          S5CA          S5SA
+              ________      ________      ________      ________      ________
+ S3SA           1.000
+ S4CA          -0.154         1.000
+ S4SA           0.591        -0.002         1.000
+ S5CA          -0.373         0.386        -0.240         1.000
+ S5SA           0.693        -0.165         0.513        -0.522         1.000
+
+
+     MAXIMUM LOG-LIKELIHOOD VALUE FOR THE UNRESTRICTED (H1) MODEL IS -3714.520
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     S1CA                  4.396      -1.674       1.000    1.30%       4.000      4.000      5.000
+             308.000       0.746       2.841       5.000   57.47%       5.000      5.000
+     S1SA                  2.302       0.514       1.000   36.36%       1.000      2.000      2.000
+             308.000       1.509      -0.792       5.000    5.52%       3.000      3.000
+     S2CA                  4.140      -1.186       1.000    2.27%       3.000      4.000      4.000
+             308.000       1.023       0.846       5.000   45.78%       5.000      5.000
+     S2SA                  2.669       0.183       1.000   25.97%       1.000      2.000      3.000
+             308.000       1.676      -1.049       5.000    9.74%       3.000      4.000
+     S3CA                  4.357      -1.771       1.000    2.27%       4.000      4.000      5.000
+             308.000       0.814       3.318       5.000   54.87%       5.000      5.000
+     S3SA                  2.627       0.254       1.000   27.92%       1.000      2.000      3.000
+             308.000       1.753      -1.085       5.000   10.39%       3.000      4.000
+     S4CA                  3.458      -0.344       1.000    6.49%       3.000      3.000      3.000
+             308.000       1.157      -0.156       5.000   19.81%       4.000      4.000
+     S4SA                  2.672       0.066       1.000   19.48%       2.000      3.000      3.000
+             308.000       1.175      -0.291       5.000    6.49%       3.000      3.000
+     S5CA                  4.364      -1.585       1.000    1.62%       4.000      4.000      5.000
+             308.000       0.861       2.137       5.000   58.77%       5.000      5.000
+     S5SA                  2.370       0.560       1.000   32.47%       1.000      2.000      2.000
+             308.000       1.564      -0.683       5.000    7.79%       3.000      3.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       36
+
+Loglikelihood
+
+          H0 Value                       -3766.389
+          H0 Scaling Correction Factor      1.5643
+            for MLR
+          H1 Value                       -3714.520
+          H1 Scaling Correction Factor      1.4129
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                    7604.779
+          Bayesian (BIC)                  7739.063
+          Sample-Size Adjusted BIC        7624.886
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                             84.693*
+          Degrees of Freedom                    29
+          P-Value                           0.0000
+          Scaling Correction Factor         1.2249
+            for MLR
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.079
+          90 Percent C.I.                    0.060  0.099
+          Probability RMSEA <= .05           0.008
+
+CFI/TLI
+
+          CFI                                0.951
+          TLI                                0.924
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           1175.503
+          Degrees of Freedom                    45
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.062
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ SCA      BY
+    S1CA               1.000      0.000    999.000    999.000
+    S2CA               1.114      0.127      8.744      0.000
+    S3CA               1.161      0.098     11.890      0.000
+    S4CA               0.722      0.096      7.506      0.000
+    S5CA               1.037      0.075     13.896      0.000
+
+ SSA      BY
+    S1SA               1.000      0.000    999.000    999.000
+    S2SA               1.189      0.077     15.456      0.000
+    S3SA               1.336      0.086     15.509      0.000
+    S4SA               0.767      0.069     11.042      0.000
+    S5SA               1.004      0.075     13.333      0.000
+
+ SCA      WITH
+    SSA               -0.267      0.063     -4.255      0.000
+
+ S1CA     WITH
+    S1SA              -0.128      0.038     -3.405      0.001
+
+ S2CA     WITH
+    S2SA              -0.202      0.076     -2.652      0.008
+
+ S3CA     WITH
+    S3SA               0.024      0.027      0.876      0.381
+
+ S4CA     WITH
+    S4SA               0.099      0.067      1.479      0.139
+
+ S5CA     WITH
+    S5SA              -0.124      0.045     -2.747      0.006
+
+ Intercepts
+    S1CA               4.396      0.049     89.343      0.000
+    S1SA               2.302      0.070     32.882      0.000
+    S2CA               4.140      0.058     71.838      0.000
+    S2SA               2.669      0.074     36.179      0.000
+    S3CA               4.357      0.051     84.754      0.000
+    S3SA               2.627      0.075     34.812      0.000
+    S4CA               3.458      0.061     56.409      0.000
+    S4SA               2.672      0.062     43.263      0.000
+    S5CA               4.364      0.053     82.519      0.000
+    S5SA               2.370      0.071     33.257      0.000
+
+ Variances
+    SCA                0.452      0.085      5.285      0.000
+    SSA                0.827      0.111      7.427      0.000
+
+ Residual Variances
+    S1CA               0.259      0.040      6.486      0.000
+    S1SA               0.666      0.089      7.519      0.000
+    S2CA               0.488      0.097      5.013      0.000
+    S2SA               0.493      0.087      5.680      0.000
+    S3CA               0.198      0.047      4.228      0.000
+    S3SA               0.256      0.056      4.598      0.000
+    S4CA               0.912      0.076     11.957      0.000
+    S4SA               0.686      0.061     11.211      0.000
+    S5CA               0.336      0.061      5.525      0.000
+    S5SA               0.659      0.091      7.230      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.580E-02
+       (ratio of smallest to largest eigenvalue)
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ SCA      BY
+    S1CA               0.797      0.039     20.443      0.000
+    S2CA               0.731      0.056     13.169      0.000
+    S3CA               0.869      0.033     26.359      0.000
+    S4CA               0.453      0.047      9.711      0.000
+    S5CA               0.769      0.048     16.032      0.000
+
+ SSA      BY
+    S1SA               0.744      0.039     19.066      0.000
+    S2SA               0.839      0.030     27.743      0.000
+    S3SA               0.923      0.017     53.033      0.000
+    S4SA               0.644      0.042     15.434      0.000
+    S5SA               0.747      0.042     17.888      0.000
+
+ SCA      WITH
+    SSA               -0.438      0.072     -6.037      0.000
+
+ S1CA     WITH
+    S1SA              -0.309      0.076     -4.037      0.000
+
+ S2CA     WITH
+    S2SA              -0.412      0.101     -4.068      0.000
+
+ S3CA     WITH
+    S3SA               0.105      0.124      0.847      0.397
+
+ S4CA     WITH
+    S4SA               0.125      0.080      1.562      0.118
+
+ S5CA     WITH
+    S5SA              -0.264      0.083     -3.159      0.002
+
+ Intercepts
+    S1CA               5.214      0.362     14.385      0.000
+    S1SA               1.884      0.061     30.893      0.000
+    S2CA               4.043      0.247     16.385      0.000
+    S2SA               2.070      0.074     28.109      0.000
+    S3CA               4.851      0.368     13.177      0.000
+    S3SA               1.995      0.069     28.934      0.000
+    S4CA               3.228      0.145     22.300      0.000
+    S4SA               2.468      0.106     23.181      0.000
+    S5CA               4.814      0.324     14.867      0.000
+    S5SA               1.940      0.065     30.067      0.000
+
+ Variances
+    SCA                1.000      0.000    999.000    999.000
+    SSA                1.000      0.000    999.000    999.000
+
+ Residual Variances
+    S1CA               0.364      0.062      5.859      0.000
+    S1SA               0.446      0.058      7.676      0.000
+    S2CA               0.465      0.081      5.729      0.000
+    S2SA               0.296      0.051      5.842      0.000
+    S3CA               0.245      0.057      4.286      0.000
+    S3SA               0.148      0.032      4.606      0.000
+    S4CA               0.795      0.042     18.810      0.000
+    S4SA               0.585      0.054     10.877      0.000
+    S5CA               0.409      0.074      5.537      0.000
+    S5SA               0.442      0.062      7.071      0.000
+
+
+STDY Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ SCA      BY
+    S1CA               0.797      0.039     20.443      0.000
+    S2CA               0.731      0.056     13.169      0.000
+    S3CA               0.869      0.033     26.359      0.000
+    S4CA               0.453      0.047      9.711      0.000
+    S5CA               0.769      0.048     16.032      0.000
+
+ SSA      BY
+    S1SA               0.744      0.039     19.066      0.000
+    S2SA               0.839      0.030     27.743      0.000
+    S3SA               0.923      0.017     53.033      0.000
+    S4SA               0.644      0.042     15.434      0.000
+    S5SA               0.747      0.042     17.888      0.000
+
+ SCA      WITH
+    SSA               -0.438      0.072     -6.037      0.000
+
+ S1CA     WITH
+    S1SA              -0.309      0.076     -4.037      0.000
+
+ S2CA     WITH
+    S2SA              -0.412      0.101     -4.068      0.000
+
+ S3CA     WITH
+    S3SA               0.105      0.124      0.847      0.397
+
+ S4CA     WITH
+    S4SA               0.125      0.080      1.562      0.118
+
+ S5CA     WITH
+    S5SA              -0.264      0.083     -3.159      0.002
+
+ Intercepts
+    S1CA               5.214      0.362     14.385      0.000
+    S1SA               1.884      0.061     30.893      0.000
+    S2CA               4.043      0.247     16.385      0.000
+    S2SA               2.070      0.074     28.109      0.000
+    S3CA               4.851      0.368     13.177      0.000
+    S3SA               1.995      0.069     28.934      0.000
+    S4CA               3.228      0.145     22.300      0.000
+    S4SA               2.468      0.106     23.181      0.000
+    S5CA               4.814      0.324     14.867      0.000
+    S5SA               1.940      0.065     30.067      0.000
+
+ Variances
+    SCA                1.000      0.000    999.000    999.000
+    SSA                1.000      0.000    999.000    999.000
+
+ Residual Variances
+    S1CA               0.364      0.062      5.859      0.000
+    S1SA               0.446      0.058      7.676      0.000
+    S2CA               0.465      0.081      5.729      0.000
+    S2SA               0.296      0.051      5.842      0.000
+    S3CA               0.245      0.057      4.286      0.000
+    S3SA               0.148      0.032      4.606      0.000
+    S4CA               0.795      0.042     18.810      0.000
+    S4SA               0.585      0.054     10.877      0.000
+    S5CA               0.409      0.074      5.537      0.000
+    S5SA               0.442      0.062      7.071      0.000
+
+
+STD Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ SCA      BY
+    S1CA               0.672      0.064     10.570      0.000
+    S2CA               0.749      0.069     10.831      0.000
+    S3CA               0.780      0.066     11.806      0.000
+    S4CA               0.485      0.056      8.659      0.000
+    S5CA               0.697      0.068     10.263      0.000
+
+ SSA      BY
+    S1SA               0.909      0.061     14.854      0.000
+    S2SA               1.082      0.053     20.279      0.000
+    S3SA               1.215      0.043     28.451      0.000
+    S4SA               0.697      0.061     11.428      0.000
+    S5SA               0.913      0.067     13.538      0.000
+
+ SCA      WITH
+    SSA               -0.438      0.072     -6.037      0.000
+
+ S1CA     WITH
+    S1SA              -0.128      0.038     -3.405      0.001
+
+ S2CA     WITH
+    S2SA              -0.202      0.076     -2.652      0.008
+
+ S3CA     WITH
+    S3SA               0.024      0.027      0.876      0.381
+
+ S4CA     WITH
+    S4SA               0.099      0.067      1.479      0.139
+
+ S5CA     WITH
+    S5SA              -0.124      0.045     -2.747      0.006
+
+ Intercepts
+    S1CA               4.396      0.049     89.343      0.000
+    S1SA               2.302      0.070     32.882      0.000
+    S2CA               4.140      0.058     71.838      0.000
+    S2SA               2.669      0.074     36.179      0.000
+    S3CA               4.357      0.051     84.754      0.000
+    S3SA               2.627      0.075     34.812      0.000
+    S4CA               3.458      0.061     56.409      0.000
+    S4SA               2.672      0.062     43.263      0.000
+    S5CA               4.364      0.053     82.519      0.000
+    S5SA               2.370      0.071     33.257      0.000
+
+ Variances
+    SCA                1.000      0.000    999.000    999.000
+    SSA                1.000      0.000    999.000    999.000
+
+ Residual Variances
+    S1CA               0.259      0.040      6.486      0.000
+    S1SA               0.666      0.089      7.519      0.000
+    S2CA               0.488      0.097      5.013      0.000
+    S2SA               0.493      0.087      5.680      0.000
+    S3CA               0.198      0.047      4.228      0.000
+    S3SA               0.256      0.056      4.598      0.000
+    S4CA               0.912      0.076     11.957      0.000
+    S4SA               0.686      0.061     11.211      0.000
+    S5CA               0.336      0.061      5.525      0.000
+    S5SA               0.659      0.091      7.230      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    S1CA               0.636      0.062     10.221      0.000
+    S1SA               0.554      0.058      9.533      0.000
+    S2CA               0.535      0.081      6.585      0.000
+    S2SA               0.704      0.051     13.872      0.000
+    S3CA               0.755      0.057     13.179      0.000
+    S3SA               0.852      0.032     26.517      0.000
+    S4CA               0.205      0.042      4.855      0.000
+    S4SA               0.415      0.054      7.717      0.000
+    S5CA               0.591      0.074      8.016      0.000
+    S5SA               0.558      0.062      8.944      0.000
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED)
+
+
+           Model Estimated Means
+              S1CA          S1SA          S2CA          S2SA          S3CA
+              ________      ________      ________      ________      ________
+                4.396         2.302         4.140         2.669         4.357
+
+
+           Model Estimated Means
+              S3SA          S4CA          S4SA          S5CA          S5SA
+              ________      ________      ________      ________      ________
+                2.627         3.458         2.672         4.364         2.370
+
+
+           Residuals for Means
+              S1CA          S1SA          S2CA          S2SA          S3CA
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means
+              S3SA          S4CA          S4SA          S5CA          S5SA
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              S1CA          S1SA          S2CA          S2SA          S3CA
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              S3SA          S4CA          S4SA          S5CA          S5SA
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              S1CA          S1SA          S2CA          S2SA          S3CA
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              S3SA          S4CA          S4SA          S5CA          S5SA
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Model Estimated Covariances
+              S1CA          S1SA          S2CA          S2SA          S3CA
+              ________      ________      ________      ________      ________
+ S1CA           0.711
+ S1SA          -0.396         1.493
+ S2CA           0.503        -0.298         1.048
+ S2SA          -0.318         0.984        -0.556         1.663
+ S3CA           0.524        -0.311         0.584        -0.369         0.807
+ S3SA          -0.357         1.105        -0.398         1.314        -0.391
+ S4CA           0.326        -0.193         0.363        -0.230         0.379
+ S4SA          -0.205         0.634        -0.228         0.754        -0.238
+ S5CA           0.469        -0.277         0.522        -0.330         0.544
+ S5SA          -0.268         0.830        -0.299         0.987        -0.312
+
+
+           Model Estimated Covariances
+              S3SA          S4CA          S4SA          S5CA          S5SA
+              ________      ________      ________      ________      ________
+ S3SA           1.733
+ S4CA          -0.258         1.148
+ S4SA           0.847        -0.049         1.172
+ S5CA          -0.371         0.338        -0.213         0.822
+ S5SA           1.109        -0.194         0.637        -0.402         1.492
+
+
+           Model Estimated Correlations
+              S1CA          S1SA          S2CA          S2SA          S3CA
+              ________      ________      ________      ________      ________
+ S1CA           1.000
+ S1SA          -0.384         1.000
+ S2CA           0.583        -0.238         1.000
+ S2SA          -0.293         0.624        -0.421         1.000
+ S3CA           0.693        -0.283         0.635        -0.319         1.000
+ S3SA          -0.322         0.687        -0.295         0.774        -0.331
+ S4CA           0.361        -0.148         0.331        -0.166         0.393
+ S4SA          -0.225         0.479        -0.206         0.540        -0.245
+ S5CA           0.613        -0.250         0.562        -0.282         0.668
+ S5SA          -0.261         0.556        -0.239         0.627        -0.284
+
+
+           Model Estimated Correlations
+              S3SA          S4CA          S4SA          S5CA          S5SA
+              ________      ________      ________      ________      ________
+ S3SA           1.000
+ S4CA          -0.183         1.000
+ S4SA           0.595        -0.042         1.000
+ S5CA          -0.311         0.348        -0.217         1.000
+ S5SA           0.690        -0.148         0.481        -0.363         1.000
+
+
+           Model Estimated Partial Correlations
+              S1CA          S1SA          S2CA          S2SA          S3CA
+              ________      ________      ________      ________      ________
+ S1CA           1.000
+ S1SA          -0.282         1.000
+ S2CA           0.216         0.108         1.000
+ S2SA           0.107         0.188        -0.363         1.000
+ S3CA           0.354         0.041         0.269         0.027         1.000
+ S3SA          -0.011         0.284         0.100         0.450        -0.064
+ S4CA           0.084         0.007         0.062         0.002         0.132
+ S4SA          -0.003         0.076         0.027         0.120        -0.064
+ S5CA           0.225         0.073         0.189         0.091         0.311
+ S5SA           0.068         0.120         0.094         0.183         0.016
+
+
+           Model Estimated Partial Correlations
+              S3SA          S4CA          S4SA          S5CA          S5SA
+              ________      ________      ________      ________      ________
+ S3SA           1.000
+ S4CA          -0.066         1.000
+ S4SA           0.228         0.114         1.000
+ S5CA          -0.015         0.074        -0.004         1.000
+ S5SA           0.290         0.001         0.077        -0.247         1.000
+
+
+           Residuals for Covariances
+              S1CA          S1SA          S2CA          S2SA          S3CA
+              ________      ________      ________      ________      ________
+ S1CA           0.035
+ S1SA          -0.107         0.016
+ S2CA          -0.026        -0.098        -0.025
+ S2SA           0.024        -0.030         0.015         0.014
+ S3CA           0.029        -0.051         0.019         0.134         0.007
+ S3SA           0.008         0.017         0.051         0.030         0.125
+ S4CA          -0.024         0.003         0.034         0.014         0.010
+ S4SA           0.049         0.007        -0.015         0.043         0.128
+ S5CA           0.076        -0.267        -0.008        -0.105         0.011
+ S5SA          -0.144         0.103        -0.191         0.054        -0.061
+
+
+           Residuals for Covariances
+              S3SA          S4CA          S4SA          S5CA          S5SA
+              ________      ________      ________      ________      ________
+ S3SA           0.021
+ S4CA           0.039         0.010
+ S4SA           0.001         0.046         0.003
+ S5CA          -0.088         0.047        -0.028         0.040
+ S5SA           0.039        -0.028         0.059        -0.203         0.072
+
+
+           Residuals for Correlations
+              S1CA          S1SA          S2CA          S2SA          S3CA
+              ________      ________      ________      ________      ________
+ S1CA           0.000
+ S1SA          -0.090         0.000
+ S2CA          -0.037        -0.081         0.000
+ S2SA           0.029        -0.025         0.008         0.000
+ S3CA           0.018        -0.043         0.025         0.117         0.000
+ S3SA           0.017         0.003         0.036         0.010         0.108
+ S4CA          -0.036         0.004         0.034         0.012         0.007
+ S4SA           0.058         0.002        -0.016         0.028         0.132
+ S5CA           0.066        -0.227        -0.015        -0.080        -0.005
+ S5SA          -0.122         0.051        -0.148         0.016        -0.046
+
+
+           Residuals for Correlations
+              S3SA          S4CA          S4SA          S5CA          S5SA
+              ________      ________      ________      ________      ________
+ S3SA           0.000
+ S4CA           0.029         0.000
+ S4SA          -0.004         0.040         0.000
+ S5CA          -0.062         0.038        -0.023         0.000
+ S5SA           0.003        -0.016         0.032        -0.158         0.000
+
+
+           Residuals for Partial Correlations
+              S1CA          S1SA          S2CA          S2SA          S3CA
+              ________      ________      ________      ________      ________
+ S1CA           0.000
+ S1SA           0.025         0.000
+ S2CA          -0.117        -0.060         0.000
+ S2SA          -0.028        -0.103        -0.020         0.000
+ S3CA           0.025        -0.007         0.158         0.155         0.000
+ S3SA          -0.010         0.024         0.151         0.085        -0.030
+ S4CA          -0.088         0.055         0.063        -0.011        -0.021
+ S4SA           0.049         0.019        -0.086         0.018         0.093
+ S5CA           0.069        -0.173        -0.148        -0.117        -0.054
+ S5SA          -0.038        -0.013        -0.175        -0.071        -0.004
+
+
+           Residuals for Partial Correlations
+              S3SA          S4CA          S4SA          S5CA          S5SA
+              ________      ________      ________      ________      ________
+ S3SA           0.000
+ S4CA          -0.032         0.000
+ S4SA          -0.043         0.004         0.000
+ S5CA           0.075         0.091         0.005         0.000
+ S5SA          -0.008         0.059         0.048        -0.017         0.000
+
+
+           Standardized Residuals (z-scores) for Covariances
+              S1CA          S1SA          S2CA          S2SA          S3CA
+              ________      ________      ________      ________      ________
+ S1CA           0.968
+ S1SA          -2.810       999.000
+ S2CA          -1.692        -2.725       999.000
+ S2SA           0.778        -1.207       999.000       999.000
+ S3CA           0.973        -1.379         2.689         4.074       999.000
+ S3SA           1.243         1.245         2.740         2.720       999.000
+ S4CA          -0.753         0.049         0.950         0.225         0.381
+ S4SA           1.247         0.318        -0.324         1.907         3.125
+ S5CA           2.691        -5.569        -0.306        -3.811         0.478
+ S5SA          -4.225       999.000        -4.576         2.395        -1.892
+
+
+           Standardized Residuals (z-scores) for Covariances
+              S3SA          S4CA          S4SA          S5CA          S5SA
+              ________      ________      ________      ________      ________
+ S3SA           2.810
+ S4CA           0.604         0.360
+ S4SA           0.044         1.062         0.224
+ S5CA         999.000         1.710        -0.590         1.270
+ S5SA           2.580        -0.407         1.212        -4.685       999.000
+
+
+           Normalized Residuals for Covariances
+              S1CA          S1SA          S2CA          S2SA          S3CA
+              ________      ________      ________      ________      ________
+ S1CA           0.373
+ S1SA          -1.475         0.172
+ S2CA          -0.343        -1.265        -0.259
+ S2SA           0.321        -0.298         0.178         0.145
+ S3CA           0.326        -0.713         0.206         1.822         0.066
+ S3SA           0.117         0.181         0.627         0.306         1.722
+ S4CA          -0.383         0.039         0.504         0.179         0.146
+ S4SA           0.805         0.083        -0.215         0.490         2.075
+ S5CA           0.860        -3.172        -0.098        -1.301         0.129
+ S5SA          -1.968         1.078        -2.346         0.541        -0.852
+
+
+           Normalized Residuals for Covariances
+              S3SA          S4CA          S4SA          S5CA          S5SA
+              ________      ________      ________      ________      ________
+ S3SA           0.216
+ S4CA           0.474         0.106
+ S4SA           0.011         0.504         0.034
+ S5CA          -1.105         0.753        -0.399         0.398
+ S5SA           0.398        -0.336         0.623        -2.422         0.702
+
+
+MODEL MODIFICATION INDICES
+
+NOTE:  Modification indices for direct effects of observed dependent variables
+regressed on covariates may not be included.  To include these, request
+MODINDICES (ALL).
+
+Minimum M.I. value for printing the modification index    10.000
+
+                                   M.I.     E.P.C.  Std E.P.C.  StdYX E.P.C.
+
+BY Statements
+
+SCA      BY S1SA                  11.581    -0.338     -0.227       -0.186
+SCA      BY S5SA                  14.679    -0.378     -0.254       -0.208
+SSA      BY S3CA                  16.477     0.200      0.182        0.203
+SSA      BY S5CA                  14.911    -0.205     -0.187       -0.206
+
+WITH Statements
+
+S3CA     WITH S2CA                12.218     0.111      0.111        0.356
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              S1CA          S1SA          S2CA          S2SA          S3CA
+              ________      ________      ________      ________      ________
+                  1             2             3             4             5
+
+
+           NU
+              S3SA          S4CA          S4SA          S5CA          S5SA
+              ________      ________      ________      ________      ________
+                  6             7             8             9            10
+
+
+           LAMBDA
+              SCA           SSA
+              ________      ________
+ S1CA               0             0
+ S1SA               0             0
+ S2CA              11             0
+ S2SA               0            12
+ S3CA              13             0
+ S3SA               0            14
+ S4CA              15             0
+ S4SA               0            16
+ S5CA              17             0
+ S5SA               0            18
+
+
+           THETA
+              S1CA          S1SA          S2CA          S2SA          S3CA
+              ________      ________      ________      ________      ________
+ S1CA              19
+ S1SA              20            21
+ S2CA               0             0            22
+ S2SA               0             0            23            24
+ S3CA               0             0             0             0            25
+ S3SA               0             0             0             0            26
+ S4CA               0             0             0             0             0
+ S4SA               0             0             0             0             0
+ S5CA               0             0             0             0             0
+ S5SA               0             0             0             0             0
+
+
+           THETA
+              S3SA          S4CA          S4SA          S5CA          S5SA
+              ________      ________      ________      ________      ________
+ S3SA              27
+ S4CA               0            28
+ S4SA               0            29            30
+ S5CA               0             0             0            31
+ S5SA               0             0             0            32            33
+
+
+           ALPHA
+              SCA           SSA
+              ________      ________
+                  0             0
+
+
+           BETA
+              SCA           SSA
+              ________      ________
+ SCA                0             0
+ SSA                0             0
+
+
+           PSI
+              SCA           SSA
+              ________      ________
+ SCA               34
+ SSA               35            36
+
+
+     STARTING VALUES
+
+
+           NU
+              S1CA          S1SA          S2CA          S2SA          S3CA
+              ________      ________      ________      ________      ________
+                4.396         2.302         4.140         2.669         4.357
+
+
+           NU
+              S3SA          S4CA          S4SA          S5CA          S5SA
+              ________      ________      ________      ________      ________
+                2.627         3.458         2.672         4.364         2.370
+
+
+           LAMBDA
+              SCA           SSA
+              ________      ________
+ S1CA           1.000         0.000
+ S1SA           0.000         1.000
+ S2CA           1.026         0.000
+ S2SA           0.000         1.178
+ S3CA           1.089         0.000
+ S3SA           0.000         1.314
+ S4CA           0.713         0.000
+ S4SA           0.000         0.762
+ S5CA           1.019         0.000
+ S5SA           0.000         1.039
+
+
+           THETA
+              S1CA          S1SA          S2CA          S2SA          S3CA
+              ________      ________      ________      ________      ________
+ S1CA           0.373
+ S1SA           0.000         0.755
+ S2CA           0.000         0.000         0.511
+ S2SA           0.000         0.000         0.000         0.838
+ S3CA           0.000         0.000         0.000         0.000         0.407
+ S3SA           0.000         0.000         0.000         0.000         0.000
+ S4CA           0.000         0.000         0.000         0.000         0.000
+ S4SA           0.000         0.000         0.000         0.000         0.000
+ S5CA           0.000         0.000         0.000         0.000         0.000
+ S5SA           0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              S3SA          S4CA          S4SA          S5CA          S5SA
+              ________      ________      ________      ________      ________
+ S3SA           0.877
+ S4CA           0.000         0.579
+ S4SA           0.000         0.000         0.587
+ S5CA           0.000         0.000         0.000         0.431
+ S5SA           0.000         0.000         0.000         0.000         0.782
+
+
+           ALPHA
+              SCA           SSA
+              ________      ________
+                0.000         0.000
+
+
+           BETA
+              SCA           SSA
+              ________      ________
+ SCA            0.000         0.000
+ SSA            0.000         0.000
+
+
+           PSI
+              SCA           SSA
+              ________      ________
+ SCA            0.050
+ SSA            0.000         0.050
+
+
+TECHNICAL 4 OUTPUT
+
+
+     ESTIMATES DERIVED FROM THE MODEL
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              SCA           SSA
+              ________      ________
+                0.000         0.000
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              SCA           SSA
+              ________      ________
+                0.000         0.000
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              SCA           SSA
+              ________      ________
+                0.000         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              SCA           SSA
+              ________      ________
+                1.000         1.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              SCA           SSA
+              ________      ________
+ SCA            0.452
+ SSA           -0.267         0.827
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              SCA           SSA
+              ________      ________
+ SCA            0.085
+ SSA            0.063         0.111
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              SCA           SSA
+              ________      ________
+ SCA            5.285
+ SSA           -4.255         7.427
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              SCA           SSA
+              ________      ________
+ SCA            0.000
+ SSA            0.000         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SCA           SSA
+              ________      ________
+ SCA            1.000
+ SSA           -0.438         1.000
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SCA           SSA
+              ________      ________
+ SCA            0.000
+ SSA            0.072         0.000
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SCA           SSA
+              ________      ________
+ SCA          999.000
+ SSA           -6.037       999.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SCA           SSA
+              ________      ________
+ SCA            0.000
+ SSA            0.000         0.000
+
+
+           ESTIMATED PARTIAL CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SCA           SSA
+              ________      ________
+ SCA            1.000
+ SSA           -0.438         1.000
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    c:\users\mm\onedrive - upv\dat_dropbox\investigaciÓn\cit_2025\travelwell\mplus_validation_rerun_package\mplus_valida
+
+     Beginning Time:  08:22:18
+        Ending Time:  08:22:19
+       Elapsed Time:  00:00:01
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2026 Muthen & Muthen

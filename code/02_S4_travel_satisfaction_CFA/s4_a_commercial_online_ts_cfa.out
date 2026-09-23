@@ -1,0 +1,1134 @@
+Mplus VERSION 9.1
+MUTHEN & MUTHEN
+08/17/2026   8:21 AM
+
+INPUT INSTRUCTIONS
+
+  TITLE: SWLS Comercios - CFA Online;
+
+  DATA:
+  FILE = ../data/datos_com_terr_legacy_order.txt;
+
+  VARIABLE:
+  NAMES =
+  id MODO online
+  ap1cc ap1sc an1cc an1sc
+  ap2cc ap2sc an2cc an2sc
+  ap3cc ap3sc an3cc an3sc
+  ap4cc ap4sc an4cc an4sc
+  ap5cc ap5sc an5cc an5sc
+  S1cc S1sc S2cc S2sc S3cc
+  S3sc S4cc S4sc S5cc S5sc
+  ap1ct ap1st an1ct an1st
+  ap2ct ap2st an2ct an2st
+  ap3ct ap3st an3ct an3st
+  ap4ct ap4st an4ct an4st
+  ap5ct ap5st an5ct an5st
+  S1ct S1st S2ct S2st S3ct
+  S3st S4ct S4st S5ct S5st
+  V1 V2 V3 V4 V5 V6 V7 V8 V9
+  V10 V11 V12 V13 V14 V15 V16
+  V17 V18 V19;
+
+  USEVARIABLES =
+  S1cc S1sc S2cc S2sc S3cc
+  S3sc S4cc S4sc S5cc S5sc;
+
+  USEOBSERVATIONS = online EQ 1;
+
+  MISSING = ALL (-999);
+
+  ANALYSIS:
+  ESTIMATOR = MLR;
+
+  MODEL:
+
+  Scc BY S1cc S2cc S3cc S4cc S5cc;
+  Ssc BY S1sc S2sc S3sc S4sc S5sc;
+
+  Scc WITH Ssc;
+
+  S1cc WITH S1sc;
+  S2cc WITH S2sc;
+  S3cc WITH S3sc;
+  S4cc WITH S4sc;
+  S5cc WITH S5sc;
+
+  OUTPUT:
+  STANDARDIZED;
+  MODINDICES(10);
+  SAMPSTAT;
+  RESIDUAL;
+  TECH1;
+  TECH4;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+SWLS Comercios - CFA Online;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         174
+
+Number of dependent variables                                   10
+Number of independent variables                                  0
+Number of continuous latent variables                            2
+
+Observed dependent variables
+
+  Continuous
+   S1CC        S1SC        S2CC        S2SC        S3CC        S3SC
+   S4CC        S4SC        S5CC        S5SC
+
+Continuous latent variables
+   SCC         SSC
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  ../data/datos_com_terr_legacy_order.txt
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              S1CC          S1SC          S2CC          S2SC          S3CC
+              ________      ________      ________      ________      ________
+ S1CC           1.000
+ S1SC           1.000         1.000
+ S2CC           1.000         1.000         1.000
+ S2SC           1.000         1.000         1.000         1.000
+ S3CC           1.000         1.000         1.000         1.000         1.000
+ S3SC           1.000         1.000         1.000         1.000         1.000
+ S4CC           1.000         1.000         1.000         1.000         1.000
+ S4SC           1.000         1.000         1.000         1.000         1.000
+ S5CC           1.000         1.000         1.000         1.000         1.000
+ S5SC           1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              S3SC          S4CC          S4SC          S5CC          S5SC
+              ________      ________      ________      ________      ________
+ S3SC           1.000
+ S4CC           1.000         1.000
+ S4SC           1.000         1.000         1.000
+ S5CC           1.000         1.000         1.000         1.000
+ S5SC           1.000         1.000         1.000         1.000         1.000
+
+
+SAMPLE STATISTICS
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           Means
+              S1CC          S1SC          S2CC          S2SC          S3CC
+              ________      ________      ________      ________      ________
+                3.862         2.684         3.713         2.868         3.868
+
+
+           Means
+              S3SC          S4CC          S4SC          S5CC          S5SC
+              ________      ________      ________      ________      ________
+                2.810         3.333         2.667         3.851         2.667
+
+
+           Covariances
+              S1CC          S1SC          S2CC          S2SC          S3CC
+              ________      ________      ________      ________      ________
+ S1CC           0.728
+ S1SC          -0.124         1.147
+ S2CC           0.558        -0.097         0.825
+ S2SC          -0.116         0.884        -0.095         1.080
+ S3CC           0.551        -0.111         0.692        -0.092         0.793
+ S3SC          -0.147         0.929        -0.152         0.958        -0.106
+ S4CC           0.316        -0.308         0.400        -0.261         0.366
+ S4SC          -0.121         0.458        -0.096         0.467        -0.136
+ S5CC           0.497        -0.248         0.515        -0.215         0.520
+ S5SC          -0.201         0.648        -0.211         0.680        -0.262
+
+
+           Covariances
+              S3SC          S4CC          S4SC          S5CC          S5SC
+              ________      ________      ________      ________      ________
+ S3SC           1.177
+ S4CC          -0.328         0.946
+ S4SC           0.471         0.123         0.808
+ S5CC          -0.275         0.550         0.019         0.840
+ S5SC           0.684        -0.239         0.452        -0.228         1.073
+
+
+           Correlations
+              S1CC          S1SC          S2CC          S2SC          S3CC
+              ________      ________      ________      ________      ________
+ S1CC           1.000
+ S1SC          -0.136         1.000
+ S2CC           0.720        -0.099         1.000
+ S2SC          -0.131         0.794        -0.101         1.000
+ S3CC           0.725        -0.116         0.855        -0.100         1.000
+ S3SC          -0.159         0.799        -0.154         0.849        -0.109
+ S4CC           0.381        -0.296         0.453        -0.258         0.422
+ S4SC          -0.157         0.475        -0.117         0.500        -0.170
+ S5CC           0.635        -0.253         0.618        -0.226         0.638
+ S5SC          -0.228         0.584        -0.224         0.632        -0.285
+
+
+           Correlations
+              S3SC          S4CC          S4SC          S5CC          S5SC
+              ________      ________      ________      ________      ________
+ S3SC           1.000
+ S4CC          -0.310         1.000
+ S4SC           0.483         0.140         1.000
+ S5CC          -0.277         0.617         0.023         1.000
+ S5SC           0.609        -0.238         0.485        -0.240         1.000
+
+
+     MAXIMUM LOG-LIKELIHOOD VALUE FOR THE UNRESTRICTED (H1) MODEL IS -1776.856
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     S1CC                  3.862      -0.510       1.000    0.57%       3.000      4.000      4.000
+             174.000       0.728       0.004       5.000   22.99%       4.000      5.000
+     S1SC                  2.684       0.036       1.000   17.24%       2.000      3.000      3.000
+             174.000       1.147      -0.548       5.000    4.60%       3.000      3.000
+     S2CC                  3.713      -0.506       1.000    1.72%       3.000      4.000      4.000
+             174.000       0.825       0.118       5.000   18.97%       4.000      4.000
+     S2SC                  2.868      -0.226       1.000   13.79%       2.000      3.000      3.000
+             174.000       1.080      -0.380       5.000    4.60%       3.000      4.000
+     S3CC                  3.868      -0.618       1.000    1.15%       3.000      4.000      4.000
+             174.000       0.793       0.203       5.000   24.71%       4.000      5.000
+     S3SC                  2.810      -0.051       1.000   15.52%       2.000      3.000      3.000
+             174.000       1.177      -0.451       5.000    6.32%       3.000      4.000
+     S4CC                  3.333      -0.294       1.000    5.75%       3.000      3.000      3.000
+             174.000       0.946       0.253       5.000   12.07%       3.000      4.000
+     S4SC                  2.667      -0.244       1.000   14.37%       2.000      3.000      3.000
+             174.000       0.808       0.367       5.000    2.87%       3.000      3.000
+     S5CC                  3.851      -0.462       1.000    1.15%       3.000      4.000      4.000
+             174.000       0.840      -0.186       5.000   27.01%       4.000      5.000
+     S5SC                  2.667       0.171       1.000   15.52%       2.000      3.000      3.000
+             174.000       1.073      -0.166       5.000    5.75%       3.000      3.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       36
+
+Loglikelihood
+
+          H0 Value                       -1824.365
+          H0 Scaling Correction Factor      1.2988
+            for MLR
+          H1 Value                       -1776.856
+          H1 Scaling Correction Factor      1.2368
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                    3720.730
+          Bayesian (BIC)                  3834.456
+          Sample-Size Adjusted BIC        3720.457
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                             81.926*
+          Degrees of Freedom                    29
+          P-Value                           0.0000
+          Scaling Correction Factor         1.1598
+            for MLR
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.102
+          90 Percent C.I.                    0.077  0.129
+          Probability RMSEA <= .05           0.001
+
+CFI/TLI
+
+          CFI                                0.940
+          TLI                                0.907
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                            929.940
+          Degrees of Freedom                    45
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.083
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ SCC      BY
+    S1CC               1.000      0.000    999.000    999.000
+    S2CC               1.228      0.096     12.806      0.000
+    S3CC               1.223      0.089     13.725      0.000
+    S4CC               0.747      0.109      6.828      0.000
+    S5CC               0.988      0.102      9.698      0.000
+
+ SSC      BY
+    S1SC               1.000      0.000    999.000    999.000
+    S2SC               1.026      0.058     17.768      0.000
+    S3SC               1.063      0.047     22.752      0.000
+    S4SC               0.632      0.074      8.511      0.000
+    S5SC               0.786      0.086      9.182      0.000
+
+ SCC      WITH
+    SSC               -0.127      0.060     -2.114      0.035
+
+ S1CC     WITH
+    S1SC              -0.006      0.030     -0.204      0.838
+
+ S2CC     WITH
+    S2SC               0.000      0.023     -0.010      0.992
+
+ S3CC     WITH
+    S3SC               0.056      0.021      2.600      0.009
+
+ S4CC     WITH
+    S4SC               0.302      0.090      3.357      0.001
+
+ S5CC     WITH
+    S5SC               0.049      0.048      1.011      0.312
+
+ Intercepts
+    S1CC               3.862      0.065     59.703      0.000
+    S1SC               2.684      0.081     33.054      0.000
+    S2CC               3.713      0.069     53.902      0.000
+    S2SC               2.868      0.079     36.397      0.000
+    S3CC               3.868      0.068     57.298      0.000
+    S3SC               2.810      0.082     34.175      0.000
+    S4CC               3.333      0.074     45.199      0.000
+    S4SC               2.667      0.068     39.122      0.000
+    S5CC               3.851      0.069     55.428      0.000
+    S5SC               2.667      0.079     33.961      0.000
+
+ Variances
+    SCC                0.458      0.080      5.706      0.000
+    SSC                0.861      0.109      7.888      0.000
+
+ Residual Variances
+    S1CC               0.271      0.046      5.940      0.000
+    S1SC               0.286      0.046      6.239      0.000
+    S2CC               0.136      0.030      4.481      0.000
+    S2SC               0.174      0.032      5.489      0.000
+    S3CC               0.118      0.025      4.626      0.000
+    S3SC               0.185      0.038      4.880      0.000
+    S4CC               0.699      0.104      6.752      0.000
+    S4SC               0.561      0.080      7.015      0.000
+    S5CC               0.410      0.055      7.390      0.000
+    S5SC               0.560      0.114      4.933      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.762E-02
+       (ratio of smallest to largest eigenvalue)
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ SCC      BY
+    S1CC               0.793      0.041     19.188      0.000
+    S2CC               0.914      0.021     42.736      0.000
+    S3CC               0.924      0.019     48.057      0.000
+    S4CC               0.517      0.065      8.015      0.000
+    S5CC               0.722      0.050     14.445      0.000
+
+ SSC      BY
+    S1SC               0.866      0.025     34.605      0.000
+    S2SC               0.916      0.019     48.612      0.000
+    S3SC               0.917      0.018     50.105      0.000
+    S4SC               0.616      0.058     10.705      0.000
+    S5SC               0.698      0.066     10.605      0.000
+
+ SCC      WITH
+    SSC               -0.203      0.094     -2.148      0.032
+
+ S1CC     WITH
+    S1SC              -0.022      0.107     -0.204      0.838
+
+ S2CC     WITH
+    S2SC              -0.001      0.147     -0.010      0.992
+
+ S3CC     WITH
+    S3SC               0.379      0.121      3.130      0.002
+
+ S4CC     WITH
+    S4SC               0.482      0.095      5.075      0.000
+
+ S5CC     WITH
+    S5SC               0.102      0.100      1.014      0.311
+
+ Intercepts
+    S1CC               4.524      0.278     16.255      0.000
+    S1SC               2.506      0.135     18.498      0.000
+    S2CC               4.086      0.266     15.333      0.000
+    S2SC               2.759      0.165     16.703      0.000
+    S3CC               4.317      0.276     15.659      0.000
+    S3SC               2.612      0.146     17.863      0.000
+    S4CC               3.411      0.230     14.851      0.000
+    S4SC               2.803      0.212     13.231      0.000
+    S5CC               4.160      0.258     16.147      0.000
+    S5SC               2.552      0.143     17.792      0.000
+
+ Variances
+    SCC                1.000      0.000    999.000    999.000
+    SSC                1.000      0.000    999.000    999.000
+
+ Residual Variances
+    S1CC               0.372      0.065      5.676      0.000
+    S1SC               0.249      0.043      5.744      0.000
+    S2CC               0.164      0.039      4.197      0.000
+    S2SC               0.161      0.035      4.675      0.000
+    S3CC               0.146      0.036      4.123      0.000
+    S3SC               0.160      0.034      4.763      0.000
+    S4CC               0.732      0.067     10.960      0.000
+    S4SC               0.620      0.071      8.751      0.000
+    S5CC               0.478      0.072      6.620      0.000
+    S5SC               0.513      0.092      5.585      0.000
+
+
+STDY Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ SCC      BY
+    S1CC               0.793      0.041     19.188      0.000
+    S2CC               0.914      0.021     42.736      0.000
+    S3CC               0.924      0.019     48.057      0.000
+    S4CC               0.517      0.065      8.015      0.000
+    S5CC               0.722      0.050     14.445      0.000
+
+ SSC      BY
+    S1SC               0.866      0.025     34.605      0.000
+    S2SC               0.916      0.019     48.612      0.000
+    S3SC               0.917      0.018     50.105      0.000
+    S4SC               0.616      0.058     10.705      0.000
+    S5SC               0.698      0.066     10.605      0.000
+
+ SCC      WITH
+    SSC               -0.203      0.094     -2.148      0.032
+
+ S1CC     WITH
+    S1SC              -0.022      0.107     -0.204      0.838
+
+ S2CC     WITH
+    S2SC              -0.001      0.147     -0.010      0.992
+
+ S3CC     WITH
+    S3SC               0.379      0.121      3.130      0.002
+
+ S4CC     WITH
+    S4SC               0.482      0.095      5.075      0.000
+
+ S5CC     WITH
+    S5SC               0.102      0.100      1.014      0.311
+
+ Intercepts
+    S1CC               4.524      0.278     16.255      0.000
+    S1SC               2.506      0.135     18.498      0.000
+    S2CC               4.086      0.266     15.333      0.000
+    S2SC               2.759      0.165     16.703      0.000
+    S3CC               4.317      0.276     15.659      0.000
+    S3SC               2.612      0.146     17.863      0.000
+    S4CC               3.411      0.230     14.851      0.000
+    S4SC               2.803      0.212     13.231      0.000
+    S5CC               4.160      0.258     16.147      0.000
+    S5SC               2.552      0.143     17.792      0.000
+
+ Variances
+    SCC                1.000      0.000    999.000    999.000
+    SSC                1.000      0.000    999.000    999.000
+
+ Residual Variances
+    S1CC               0.372      0.065      5.676      0.000
+    S1SC               0.249      0.043      5.744      0.000
+    S2CC               0.164      0.039      4.197      0.000
+    S2SC               0.161      0.035      4.675      0.000
+    S3CC               0.146      0.036      4.123      0.000
+    S3SC               0.160      0.034      4.763      0.000
+    S4CC               0.732      0.067     10.960      0.000
+    S4SC               0.620      0.071      8.751      0.000
+    S5CC               0.478      0.072      6.620      0.000
+    S5SC               0.513      0.092      5.585      0.000
+
+
+STD Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ SCC      BY
+    S1CC               0.677      0.059     11.412      0.000
+    S2CC               0.831      0.057     14.638      0.000
+    S3CC               0.828      0.055     14.988      0.000
+    S4CC               0.506      0.070      7.218      0.000
+    S5CC               0.669      0.071      9.414      0.000
+
+ SSC      BY
+    S1SC               0.928      0.059     15.775      0.000
+    S2SC               0.952      0.059     16.172      0.000
+    S3SC               0.986      0.055     18.062      0.000
+    S4SC               0.586      0.076      7.762      0.000
+    S5SC               0.729      0.081      9.053      0.000
+
+ SCC      WITH
+    SSC               -0.203      0.094     -2.148      0.032
+
+ S1CC     WITH
+    S1SC              -0.006      0.030     -0.204      0.838
+
+ S2CC     WITH
+    S2SC               0.000      0.023     -0.010      0.992
+
+ S3CC     WITH
+    S3SC               0.056      0.021      2.600      0.009
+
+ S4CC     WITH
+    S4SC               0.302      0.090      3.357      0.001
+
+ S5CC     WITH
+    S5SC               0.049      0.048      1.011      0.312
+
+ Intercepts
+    S1CC               3.862      0.065     59.703      0.000
+    S1SC               2.684      0.081     33.054      0.000
+    S2CC               3.713      0.069     53.902      0.000
+    S2SC               2.868      0.079     36.397      0.000
+    S3CC               3.868      0.068     57.298      0.000
+    S3SC               2.810      0.082     34.175      0.000
+    S4CC               3.333      0.074     45.199      0.000
+    S4SC               2.667      0.068     39.122      0.000
+    S5CC               3.851      0.069     55.428      0.000
+    S5SC               2.667      0.079     33.961      0.000
+
+ Variances
+    SCC                1.000      0.000    999.000    999.000
+    SSC                1.000      0.000    999.000    999.000
+
+ Residual Variances
+    S1CC               0.271      0.046      5.940      0.000
+    S1SC               0.286      0.046      6.239      0.000
+    S2CC               0.136      0.030      4.481      0.000
+    S2SC               0.174      0.032      5.489      0.000
+    S3CC               0.118      0.025      4.626      0.000
+    S3SC               0.185      0.038      4.880      0.000
+    S4CC               0.699      0.104      6.752      0.000
+    S4SC               0.561      0.080      7.015      0.000
+    S5CC               0.410      0.055      7.390      0.000
+    S5SC               0.560      0.114      4.933      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    S1CC               0.628      0.065      9.594      0.000
+    S1SC               0.751      0.043     17.303      0.000
+    S2CC               0.836      0.039     21.368      0.000
+    S2SC               0.839      0.035     24.306      0.000
+    S3CC               0.854      0.036     24.028      0.000
+    S3SC               0.840      0.034     25.052      0.000
+    S4CC               0.268      0.067      4.007      0.000
+    S4SC               0.380      0.071      5.353      0.000
+    S5CC               0.522      0.072      7.223      0.000
+    S5SC               0.487      0.092      5.303      0.000
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED)
+
+
+           Model Estimated Means
+              S1CC          S1SC          S2CC          S2SC          S3CC
+              ________      ________      ________      ________      ________
+                3.862         2.684         3.713         2.868         3.868
+
+
+           Model Estimated Means
+              S3SC          S4CC          S4SC          S5CC          S5SC
+              ________      ________      ________      ________      ________
+                2.810         3.333         2.667         3.851         2.667
+
+
+           Residuals for Means
+              S1CC          S1SC          S2CC          S2SC          S3CC
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means
+              S3SC          S4CC          S4SC          S5CC          S5SC
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              S1CC          S1SC          S2CC          S2SC          S3CC
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means
+              S3SC          S4CC          S4SC          S5CC          S5SC
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              S1CC          S1SC          S2CC          S2SC          S3CC
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means
+              S3SC          S4CC          S4SC          S5CC          S5SC
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Model Estimated Covariances
+              S1CC          S1SC          S2CC          S2SC          S3CC
+              ________      ________      ________      ________      ________
+ S1CC           0.729
+ S1SC          -0.133         1.147
+ S2CC           0.562        -0.156         0.826
+ S2SC          -0.131         0.883        -0.161         1.080
+ S3CC           0.560        -0.156         0.688        -0.160         0.803
+ S3SC          -0.135         0.915        -0.166         0.939        -0.110
+ S4CC           0.342        -0.095         0.420        -0.098         0.418
+ S4SC          -0.080         0.544        -0.099         0.558        -0.098
+ S5CC           0.452        -0.126         0.555        -0.129         0.553
+ S5SC          -0.100         0.677        -0.123         0.694        -0.122
+
+
+           Model Estimated Covariances
+              S3SC          S4CC          S4SC          S5CC          S5SC
+              ________      ________      ________      ________      ________
+ S3SC           1.157
+ S4CC          -0.101         0.955
+ S4SC           0.578         0.242         0.905
+ S5CC          -0.134         0.338        -0.079         0.857
+ S5SC           0.719        -0.075         0.427        -0.050         1.092
+
+
+           Model Estimated Correlations
+              S1CC          S1SC          S2CC          S2SC          S3CC
+              ________      ________      ________      ________      ________
+ S1CC           1.000
+ S1SC          -0.146         1.000
+ S2CC           0.725        -0.161         1.000
+ S2SC          -0.147         0.794        -0.170         1.000
+ S3CC           0.732        -0.162         0.845        -0.172         1.000
+ S3SC          -0.147         0.794        -0.170         0.839        -0.114
+ S4CC           0.410        -0.091         0.473        -0.096         0.478
+ S4SC          -0.099         0.534        -0.114         0.564        -0.115
+ S5CC           0.573        -0.127         0.660        -0.134         0.667
+ S5SC          -0.112         0.605        -0.129         0.639        -0.131
+
+
+           Model Estimated Correlations
+              S3SC          S4CC          S4SC          S5CC          S5SC
+              ________      ________      ________      ________      ________
+ S3SC           1.000
+ S4CC          -0.096         1.000
+ S4SC           0.565         0.260         1.000
+ S5CC          -0.134         0.374        -0.090         1.000
+ S5SC           0.640        -0.073         0.430        -0.052         1.000
+
+
+           Model Estimated Partial Correlations
+              S1CC          S1SC          S2CC          S2SC          S3CC
+              ________      ________      ________      ________      ________
+ S1CC           1.000
+ S1SC           0.007         1.000
+ S2CC           0.240         0.056         1.000
+ S2SC           0.043         0.316         0.071         1.000
+ S3CC           0.284        -0.073         0.569        -0.114         1.000
+ S3SC          -0.061         0.337        -0.135         0.484         0.250
+ S4CC           0.055        -0.036         0.110        -0.053         0.164
+ S4SC          -0.016         0.098        -0.035         0.141        -0.109
+ S5CC           0.093         0.010         0.186         0.012         0.230
+ S5SC           0.006         0.114         0.007         0.162        -0.065
+
+
+           Model Estimated Partial Correlations
+              S3SC          S4CC          S4SC          S5CC          S5SC
+              ________      ________      ________      ________      ________
+ S3SC           1.000
+ S4CC          -0.112         1.000
+ S4SC           0.178         0.472         1.000
+ S5CC          -0.072         0.046        -0.019         1.000
+ S5SC           0.183        -0.024         0.053         0.105         1.000
+
+
+           Residuals for Covariances
+              S1CC          S1SC          S2CC          S2SC          S3CC
+              ________      ________      ________      ________      ________
+ S1CC          -0.001
+ S1SC           0.009         0.000
+ S2CC          -0.004         0.060         0.000
+ S2SC           0.015         0.000         0.065         0.000
+ S3CC          -0.009         0.045         0.004         0.068        -0.010
+ S3SC          -0.011         0.014         0.014         0.019         0.004
+ S4CC          -0.026        -0.213        -0.020        -0.163        -0.053
+ S4SC          -0.040        -0.086         0.003        -0.090        -0.038
+ S5CC           0.044        -0.123        -0.041        -0.086        -0.033
+ S5SC          -0.101        -0.029        -0.088        -0.014        -0.140
+
+
+           Residuals for Covariances
+              S3SC          S4CC          S4SC          S5CC          S5SC
+              ________      ________      ________      ________      ________
+ S3SC           0.019
+ S4CC          -0.226        -0.008
+ S4SC          -0.107        -0.119        -0.096
+ S5CC          -0.142         0.212         0.099        -0.017
+ S5SC          -0.035        -0.165         0.025        -0.178        -0.019
+
+
+           Residuals for Correlations
+              S1CC          S1SC          S2CC          S2SC          S3CC
+              ________      ________      ________      ________      ________
+ S1CC           0.000
+ S1SC           0.010         0.000
+ S2CC          -0.005         0.061         0.000
+ S2SC           0.017         0.000         0.069         0.000
+ S3CC          -0.007         0.046         0.011         0.072         0.000
+ S3SC          -0.011         0.005         0.016         0.010         0.005
+ S4CC          -0.029        -0.205        -0.020        -0.162        -0.056
+ S4SC          -0.058        -0.058        -0.003        -0.064        -0.054
+ S5CC           0.063        -0.126        -0.042        -0.092        -0.029
+ S5SC          -0.115        -0.021        -0.094        -0.007        -0.154
+
+
+           Residuals for Correlations
+              S3SC          S4CC          S4SC          S5CC          S5SC
+              ________      ________      ________      ________      ________
+ S3SC           0.000
+ S4CC          -0.214         0.000
+ S4SC          -0.082        -0.120         0.000
+ S5CC          -0.143         0.243         0.114         0.000
+ S5SC          -0.031        -0.164         0.056        -0.188         0.000
+
+
+           Residuals for Partial Correlations
+              S1CC          S1SC          S2CC          S2SC          S3CC
+              ________      ________      ________      ________      ________
+ S1CC           0.000
+ S1SC           0.012         0.000
+ S2CC           0.002         0.064         0.000
+ S2SC          -0.045        -0.018        -0.018         0.000
+ S3CC          -0.094         0.026         0.092         0.118         0.000
+ S3SC           0.078        -0.002        -0.044         0.032        -0.022
+ S4CC          -0.094        -0.094         0.016         0.035        -0.128
+ S4SC          -0.102         0.049         0.043        -0.045        -0.067
+ S5CC           0.211        -0.070        -0.181        -0.023         0.002
+ S5SC           0.003        -0.040         0.070         0.035        -0.133
+
+
+           Residuals for Partial Correlations
+              S3SC          S4CC          S4SC          S5CC          S5SC
+              ________      ________      ________      ________      ________
+ S3SC           0.000
+ S4CC           0.014         0.000
+ S4SC          -0.035        -0.115         0.000
+ S5CC          -0.041         0.281         0.227         0.000
+ S5SC          -0.068        -0.037         0.126        -0.060         0.000
+
+
+           Standardized Residuals (z-scores) for Covariances
+              S1CC          S1SC          S2CC          S2SC          S3CC
+              ________      ________      ________      ________      ________
+ S1CC          -0.182
+ S1SC           0.276       999.000
+ S2CC          -0.259         1.471       999.000
+ S2SC           0.375       999.000         2.071       999.000
+ S3CC          -0.422         1.206       999.000         1.929        -0.609
+ S3SC          -0.266         0.589         0.511         1.018         0.183
+ S4CC          -1.204        -3.078        -0.568        -2.309        -1.964
+ S4SC          -1.004       999.000         0.063        -4.333        -0.880
+ S5CC         999.000        -3.376       999.000        -2.387        -2.695
+ S5SC          -2.157       999.000        -2.278       999.000        -3.063
+
+
+           Standardized Residuals (z-scores) for Covariances
+              S3SC          S4CC          S4SC          S5CC          S5SC
+              ________      ________      ________      ________      ________
+ S3SC           0.702
+ S4CC          -3.227       999.000
+ S4SC          -5.550       999.000       999.000
+ S5CC          -4.270       999.000         1.932       999.000
+ S5SC         999.000        -2.258         0.710        -4.739       999.000
+
+
+           Normalized Residuals for Covariances
+              S1CC          S1SC          S2CC          S2SC          S3CC
+              ________      ________      ________      ________      ________
+ S1CC          -0.008
+ S1SC           0.123         0.003
+ S2CC          -0.051         0.722        -0.001
+ S2SC           0.201         0.002         0.768        -0.001
+ S3CC          -0.117         0.558         0.050         0.827        -0.110
+ S3SC          -0.149         0.130         0.172         0.184         0.051
+ S4CC          -0.399        -2.490        -0.244        -1.857        -0.694
+ S4SC          -0.713        -0.963         0.044        -0.964        -0.589
+ S5CC           0.646        -1.667        -0.536        -1.144        -0.409
+ S5SC          -1.462        -0.302        -1.217        -0.149        -1.844
+
+
+           Normalized Residuals for Covariances
+              S3SC          S4CC          S4SC          S5CC          S5SC
+              ________      ________      ________      ________      ________
+ S3SC           0.175
+ S4CC          -2.567        -0.078
+ S4SC          -1.141        -1.200        -1.023
+ S5CC          -1.875         3.050         1.489        -0.197
+ S5SC          -0.360        -1.954         0.273        -2.137        -0.175
+
+
+MODEL MODIFICATION INDICES
+
+NOTE:  Modification indices for direct effects of observed dependent variables
+regressed on covariates may not be included.  To include these, request
+MODINDICES (ALL).
+
+Minimum M.I. value for printing the modification index    10.000
+
+                                   M.I.     E.P.C.  Std E.P.C.  StdYX E.P.C.
+
+WITH Statements
+
+S3CC     WITH S2CC                14.772     0.143      0.143        1.136
+S5CC     WITH S4CC                13.292     0.148      0.148        0.276
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              S1CC          S1SC          S2CC          S2SC          S3CC
+              ________      ________      ________      ________      ________
+                  1             2             3             4             5
+
+
+           NU
+              S3SC          S4CC          S4SC          S5CC          S5SC
+              ________      ________      ________      ________      ________
+                  6             7             8             9            10
+
+
+           LAMBDA
+              SCC           SSC
+              ________      ________
+ S1CC               0             0
+ S1SC               0             0
+ S2CC              11             0
+ S2SC               0            12
+ S3CC              13             0
+ S3SC               0            14
+ S4CC              15             0
+ S4SC               0            16
+ S5CC              17             0
+ S5SC               0            18
+
+
+           THETA
+              S1CC          S1SC          S2CC          S2SC          S3CC
+              ________      ________      ________      ________      ________
+ S1CC              19
+ S1SC              20            21
+ S2CC               0             0            22
+ S2SC               0             0            23            24
+ S3CC               0             0             0             0            25
+ S3SC               0             0             0             0            26
+ S4CC               0             0             0             0             0
+ S4SC               0             0             0             0             0
+ S5CC               0             0             0             0             0
+ S5SC               0             0             0             0             0
+
+
+           THETA
+              S3SC          S4CC          S4SC          S5CC          S5SC
+              ________      ________      ________      ________      ________
+ S3SC              27
+ S4CC               0            28
+ S4SC               0            29            30
+ S5CC               0             0             0            31
+ S5SC               0             0             0            32            33
+
+
+           ALPHA
+              SCC           SSC
+              ________      ________
+                  0             0
+
+
+           BETA
+              SCC           SSC
+              ________      ________
+ SCC                0             0
+ SSC                0             0
+
+
+           PSI
+              SCC           SSC
+              ________      ________
+ SCC               34
+ SSC               35            36
+
+
+     STARTING VALUES
+
+
+           NU
+              S1CC          S1SC          S2CC          S2SC          S3CC
+              ________      ________      ________      ________      ________
+                3.862         2.684         3.713         2.868         3.868
+
+
+           NU
+              S3SC          S4CC          S4SC          S5CC          S5SC
+              ________      ________      ________      ________      ________
+                2.810         3.333         2.667         3.851         2.667
+
+
+           LAMBDA
+              SCC           SSC
+              ________      ________
+ S1CC           1.000         0.000
+ S1SC           0.000         1.000
+ S2CC           1.179         0.000
+ S2SC           0.000         1.033
+ S3CC           1.170         0.000
+ S3SC           0.000         1.078
+ S4CC           0.803         0.000
+ S4SC           0.000         0.531
+ S5CC           0.962         0.000
+ S5SC           0.000         0.764
+
+
+           THETA
+              S1CC          S1SC          S2CC          S2SC          S3CC
+              ________      ________      ________      ________      ________
+ S1CC           0.364
+ S1SC           0.000         0.574
+ S2CC           0.000         0.000         0.413
+ S2SC           0.000         0.000         0.000         0.540
+ S3CC           0.000         0.000         0.000         0.000         0.396
+ S3SC           0.000         0.000         0.000         0.000         0.000
+ S4CC           0.000         0.000         0.000         0.000         0.000
+ S4SC           0.000         0.000         0.000         0.000         0.000
+ S5CC           0.000         0.000         0.000         0.000         0.000
+ S5SC           0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              S3SC          S4CC          S4SC          S5CC          S5SC
+              ________      ________      ________      ________      ________
+ S3SC           0.588
+ S4CC           0.000         0.473
+ S4SC           0.000         0.000         0.404
+ S5CC           0.000         0.000         0.000         0.420
+ S5SC           0.000         0.000         0.000         0.000         0.536
+
+
+           ALPHA
+              SCC           SSC
+              ________      ________
+                0.000         0.000
+
+
+           BETA
+              SCC           SSC
+              ________      ________
+ SCC            0.000         0.000
+ SSC            0.000         0.000
+
+
+           PSI
+              SCC           SSC
+              ________      ________
+ SCC            0.050
+ SSC            0.000         0.050
+
+
+TECHNICAL 4 OUTPUT
+
+
+     ESTIMATES DERIVED FROM THE MODEL
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              SCC           SSC
+              ________      ________
+                0.000         0.000
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              SCC           SSC
+              ________      ________
+                0.000         0.000
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              SCC           SSC
+              ________      ________
+                0.000         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              SCC           SSC
+              ________      ________
+                1.000         1.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              SCC           SSC
+              ________      ________
+ SCC            0.458
+ SSC           -0.127         0.861
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              SCC           SSC
+              ________      ________
+ SCC            0.080
+ SSC            0.060         0.109
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              SCC           SSC
+              ________      ________
+ SCC            5.706
+ SSC           -2.114         7.888
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              SCC           SSC
+              ________      ________
+ SCC            0.000
+ SSC            0.035         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SCC           SSC
+              ________      ________
+ SCC            1.000
+ SSC           -0.203         1.000
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SCC           SSC
+              ________      ________
+ SCC            0.000
+ SSC            0.094         0.000
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SCC           SSC
+              ________      ________
+ SCC          999.000
+ SSC           -2.148       999.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SCC           SSC
+              ________      ________
+ SCC            0.000
+ SSC            0.032         0.000
+
+
+           ESTIMATED PARTIAL CORRELATION MATRIX FOR THE LATENT VARIABLES
+              SCC           SSC
+              ________      ________
+ SCC            1.000
+ SSC           -0.203         1.000
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    c:\users\mm\onedrive - upv\dat_dropbox\investigaciÓn\cit_2025\travelwell\mplus_validation_rerun_package\mplus_valida
+
+     Beginning Time:  08:21:28
+        Ending Time:  08:21:28
+       Elapsed Time:  00:00:00
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2026 Muthen & Muthen
