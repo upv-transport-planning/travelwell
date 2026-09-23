@@ -1,0 +1,252 @@
+TITLE:
+ESCENARIO A - ANALISIS POR SEXO - CONFIGURAL
+MODELO PARCIALMENTE FLEXIBLE:
+SE CONSERVA AP BY AN2; SE ELIMINA AN BY AP2;
+V3=1 MUJER; V3=2 HOMBRE;
+
+DATA:
+FILE = ../../data/Scenario_A_long_final.txt;
+
+VARIABLE:
+
+NAMES =
+ID
+MODO_rango
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+V1 V2 V3 V4 V5
+V6 V7 V8 V9 V10
+V11 V12 V13 V14 V15
+V16 V17 V18 V19;
+
+USEVARIABLES =
+ID
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+pblock;
+
+CLUSTER = ID;
+
+GROUPING = V3 (1 = woman 2 = man);
+
+MISSING = ALL(-999);
+
+DEFINE:
+! Metodo de encuesta:
+! online = 1: encuesta online
+! online = 2: encuesta presencial
+pblock = present*block;
+
+ANALYSIS:
+TYPE = COMPLEX;
+ESTIMATOR = MLR;
+STARTS = 100;
+ITERATIONS = 10000;
+
+MODEL:
+
+! ==================================================
+! MODELO GENERAL: relaciones presentes en ambos sexos
+! ==================================================
+
+AP BY
+AP1@1
+AP2
+AP3
+AP4
+AP5;
+
+AN BY
+AN1@1
+AN2
+AN3
+AN4
+AN5;
+
+ST BY
+S1@1
+S2
+S3
+S4
+S5;
+
+! Especificacion parcialmente flexible elegida tras el diagnostico:
+! se conserva SOLO la carga cruzada AN2 -> AP.
+AP BY AN2;
+
+! La carga cruzada AP2 -> AN se elimina:
+! AN BY AP2;
+
+AP WITH AN;
+
+! Estructura SEM presente en ambos grupos.
+AP ON
+present
+block
+pblock
+online;
+
+AN ON
+present
+block
+pblock
+online;
+
+ST ON
+AP
+AN
+present
+block
+pblock
+online;
+
+MODEL woman:
+
+AP BY
+AP1@1
+AP2 (wpa2)
+AP3 (wpa3)
+AP4 (wpa4)
+AP5 (wpa5);
+
+AN BY
+AN1@1
+AN2 (wna2)
+AN3 (wna3)
+AN4 (wna4)
+AN5 (wna5);
+
+ST BY
+S1@1
+S2 (wst2)
+S3 (wst3)
+S4 (wst4)
+S5 (wst5);
+
+! Carga cruzada AN2 -> AP libre por sexo.
+AP BY AN2 (wxan);
+
+! Interceptos de items libres: no se impone invariancia escalar.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Interceptos latentes fijados a cero para identificar el modelo
+! con interceptos de items libres.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Varianzas latentes y residuos de items libres por sexo.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+! Covarianza AP-AN libre por sexo.
+AP WITH AN (wpan);
+
+AP ON
+present (wa1)
+block   (wa2)
+pblock  (wa3)
+online  (wa4);
+
+AN ON
+present (wd1)
+block   (wd2)
+pblock  (wd3)
+online  (wd4);
+
+ST ON
+AP      (wb1)
+AN      (wb2)
+present (wc1)
+block   (wc2)
+pblock  (wc3)
+online  (wc4);
+
+MODEL man:
+
+AP BY
+AP1@1
+AP2 (mpa2)
+AP3 (mpa3)
+AP4 (mpa4)
+AP5 (mpa5);
+
+AN BY
+AN1@1
+AN2 (mna2)
+AN3 (mna3)
+AN4 (mna4)
+AN5 (mna5);
+
+ST BY
+S1@1
+S2 (mst2)
+S3 (mst3)
+S4 (mst4)
+S5 (mst5);
+
+! Carga cruzada AN2 -> AP libre por sexo.
+AP BY AN2 (mxan);
+
+! Interceptos de items libres: no se impone invariancia escalar.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Interceptos latentes fijados a cero para identificar el modelo
+! con interceptos de items libres.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Varianzas latentes y residuos de items libres por sexo.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+! Covarianza AP-AN libre por sexo.
+AP WITH AN (mpan);
+
+AP ON
+present (ma1)
+block   (ma2)
+pblock  (ma3)
+online  (ma4);
+
+AN ON
+present (md1)
+block   (md2)
+pblock  (md3)
+online  (md4);
+
+ST ON
+AP      (mb1)
+AN      (mb2)
+present (mc1)
+block   (mc2)
+pblock  (mc3)
+online  (mc4);
+
+
+OUTPUT:
+SAMPSTAT;
+STANDARDIZED;
+CINTERVAL;
+RESIDUAL;
+TECH1;
+TECH3;
+TECH4;
+MODINDICES(10);

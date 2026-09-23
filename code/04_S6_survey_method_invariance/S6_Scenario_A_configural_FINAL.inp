@@ -1,0 +1,118 @@
+TITLE:
+  S6 - SURVEY-METHOD CONFIGURAL INVARIANCE - SCENARIO A
+  SOCIAL STREET ACTIVATION
+  v6: within-participant GROUPMEAN centering; Mplus BY syntax corrected.
+
+DATA:
+  FILE = ../../data/Scenario_A_long_final.txt;
+
+VARIABLE:
+  NAMES =
+  ID MODO_rango online block present
+  AP1 AP2 AP3 AP4 AP5
+  AN1 AN2 AN3 AN4 AN5
+  S1 S2 S3 S4 S5
+  V1 V2 V3 V4 V5 V6 V7 V8 V9 V10
+  V11 V12 V13 V14 V15 V16 V17 V18 V19;
+  USEVARIABLES =
+  ID AP1 AP2 AP3 AP4 AP5
+  AN1 AN2 AN3 AN4 AN5
+  S1 S2 S3 S4 S5;
+  CLUSTER = ID;
+  GROUPING = online (1 = online 2 = f2f);
+  MISSING = ALL(-999);
+
+DEFINE:
+  CENTER AP1 AP2 AP3 AP4 AP5
+         AN1 AN2 AN3 AN4 AN5
+         S1 S2 S3 S4 S5
+         (GROUPMEAN);
+
+ANALYSIS:
+  TYPE = COMPLEX;
+  ESTIMATOR = MLR;
+  STARTS = 100;
+  ITERATIONS = 10000;
+
+MODEL:
+  ! Declare the latent-variable structure in the overall model.
+  AP BY AP1@1 AP2 AP3 AP4 AP5;
+  AN BY AN1@1 AN2 AN3 AN4 AN5;
+  ST BY S1@1 S2 S3 S4 S5;
+  AN BY AP2;
+  AP BY AN2;
+
+MODEL online:
+  AP BY AP1@1;
+  AP BY AP2 (opa2);
+  AP BY AP3 (opa3);
+  AP BY AP4 (opa4);
+  AP BY AP5 (opa5);
+
+  AN BY AN1@1;
+  AN BY AN2 (ona2);
+  AN BY AN3 (ona3);
+  AN BY AN4 (ona4);
+  AN BY AN5 (ona5);
+
+  ST BY S1@1;
+  ST BY S2 (ost2);
+  ST BY S3 (ost3);
+  ST BY S4 (ost4);
+  ST BY S5 (ost5);
+
+  AN BY AP2 (oxpa);
+  AP BY AN2 (oxan);
+
+  [AP1@0 AP2@0 AP3@0 AP4@0 AP5@0];
+  [AN1@0 AN2@0 AN3@0 AN4@0 AN5@0];
+  [S1@0 S2@0 S3@0 S4@0 S5@0];
+  [AP@0 AN@0 ST@0];
+
+  AP AN ST;
+  AP1-AP5*;
+  AN1-AN5*;
+  S1-S5*;
+
+  AP WITH AN (opan);
+  AP WITH ST (opst);
+  AN WITH ST (onst);
+
+MODEL f2f:
+  AP BY AP1@1;
+  AP BY AP2 (fpa2);
+  AP BY AP3 (fpa3);
+  AP BY AP4 (fpa4);
+  AP BY AP5 (fpa5);
+
+  AN BY AN1@1;
+  AN BY AN2 (fna2);
+  AN BY AN3 (fna3);
+  AN BY AN4 (fna4);
+  AN BY AN5 (fna5);
+
+  ST BY S1@1;
+  ST BY S2 (fst2);
+  ST BY S3 (fst3);
+  ST BY S4 (fst4);
+  ST BY S5 (fst5);
+
+  AN BY AP2 (fxpa);
+  AP BY AN2 (fxan);
+
+  [AP1@0 AP2@0 AP3@0 AP4@0 AP5@0];
+  [AN1@0 AN2@0 AN3@0 AN4@0 AN5@0];
+  [S1@0 S2@0 S3@0 S4@0 S5@0];
+  [AP@0 AN@0 ST@0];
+
+  AP AN ST;
+  AP1-AP5*;
+  AN1-AN5*;
+  S1-S5*;
+
+  AP WITH AN (fpan);
+  AP WITH ST (fpst);
+  AN WITH ST (fnst);
+
+OUTPUT:
+  SAMPSTAT STANDARDIZED CINTERVAL RESIDUAL TECH1 TECH4 MODINDICES(10);

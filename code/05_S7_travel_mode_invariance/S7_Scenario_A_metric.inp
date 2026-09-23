@@ -1,0 +1,281 @@
+TITLE:
+ESCENARIO A - INVARIANZA METRICA POR MODO
+ACTIVIDAD COMERCIAL Y TERRAZAS
+Cargas primarias iguales entre walking, cycling y e-scooter; cargas cruzadas libres.
+TYPE=COMPLEX, MLR, CLUSTER=ID, STARTS=100;
+
+DATA:
+FILE = ../../data/Scenario_A_long_final.txt;
+
+VARIABLE:
+
+NAMES =
+ID
+MODO_rango
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+V1 V2 V3 V4 V5
+V6 V7 V8 V9 V10
+V11 V12 V13 V14 V15
+V16 V17 V18 V19;
+
+USEVARIABLES =
+ID
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+pblock;
+
+CLUSTER = ID;
+
+GROUPING = MODO_rango
+(1 = walking
+ 2 = cycling
+ 3 = escooter);
+
+MISSING = ALL(-999);
+
+DEFINE:
+! Codificacion del metodo de encuesta:
+! online = 1: online
+! online = 2: presencial
+pblock = present*block;
+
+ANALYSIS:
+TYPE = COMPLEX;
+ESTIMATOR = MLR;
+STARTS = 100;
+ITERATIONS = 10000;
+
+MODEL:
+
+! ==================================================
+! GRUPO DE REFERENCIA: WALKING
+! El MODEL general define todas las relaciones que existen
+! en los tres grupos. Los bloques de grupo las reetiquetan
+! para permitir estimaciones especificas por modo.
+! ==================================================
+
+AP BY
+AP1@1
+AP2 (lpa2)
+AP3 (lpa3)
+AP4 (lpa4)
+AP5 (lpa5);
+
+AN BY
+AN1@1
+AN2 (lna2)
+AN3 (lna3)
+AN4 (lna4)
+AN5 (lna5);
+
+ST BY
+S1@1
+S2 (lst2)
+S3 (lst3)
+S4 (lst4)
+S5 (lst5);
+
+! Cargas cruzadas libres entre modos.
+AN BY AP2 (wxpa);
+AP BY AN2 (wxan);
+
+! Interceptos de indicadores libres; no se impone invariancia escalar.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Interceptos latentes fijados a cero para identificar el modelo
+! cuando los interceptos de los indicadores son libres.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Varianzas/residuos libres por modo.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+! Covarianza residual/latente AP-AN libre por modo.
+AP WITH AN (wpan);
+
+! Caminos estructurales libres por modo en ambos modelos.
+! De esta forma, configural y metrico difieren SOLO en las
+! restricciones sobre las cargas primarias.
+AP ON
+present (wa1)
+block   (wa2)
+pblock  (wa3)
+online  (wa4);
+
+AN ON
+present (wd1)
+block   (wd2)
+pblock  (wd3)
+online  (wd4);
+
+ST ON
+AP      (wb1)
+AN      (wb2)
+present (wc1)
+block   (wc2)
+pblock  (wc3)
+online  (wc4);
+
+MODEL cycling:
+
+AP BY
+AP1@1
+AP2 (lpa2)
+AP3 (lpa3)
+AP4 (lpa4)
+AP5 (lpa5);
+
+AN BY
+AN1@1
+AN2 (lna2)
+AN3 (lna3)
+AN4 (lna4)
+AN5 (lna5);
+
+ST BY
+S1@1
+S2 (lst2)
+S3 (lst3)
+S4 (lst4)
+S5 (lst5);
+
+! Cargas cruzadas libres entre modos.
+AN BY AP2 (cxpa);
+AP BY AN2 (cxan);
+
+! Interceptos de indicadores libres; no se impone invariancia escalar.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Interceptos latentes fijados a cero para identificar el modelo
+! cuando los interceptos de los indicadores son libres.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Varianzas/residuos libres por modo.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+! Covarianza residual/latente AP-AN libre por modo.
+AP WITH AN (cpan);
+
+! Caminos estructurales libres por modo en ambos modelos.
+! De esta forma, configural y metrico difieren SOLO en las
+! restricciones sobre las cargas primarias.
+AP ON
+present (ca1)
+block   (ca2)
+pblock  (ca3)
+online  (ca4);
+
+AN ON
+present (cd1)
+block   (cd2)
+pblock  (cd3)
+online  (cd4);
+
+ST ON
+AP      (cb1)
+AN      (cb2)
+present (cc1)
+block   (cc2)
+pblock  (cc3)
+online  (cc4);
+
+MODEL escooter:
+
+AP BY
+AP1@1
+AP2 (lpa2)
+AP3 (lpa3)
+AP4 (lpa4)
+AP5 (lpa5);
+
+AN BY
+AN1@1
+AN2 (lna2)
+AN3 (lna3)
+AN4 (lna4)
+AN5 (lna5);
+
+ST BY
+S1@1
+S2 (lst2)
+S3 (lst3)
+S4 (lst4)
+S5 (lst5);
+
+! Cargas cruzadas libres entre modos.
+AN BY AP2 (sxpa);
+AP BY AN2 (sxan);
+
+! Interceptos de indicadores libres; no se impone invariancia escalar.
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+
+! Interceptos latentes fijados a cero para identificar el modelo
+! cuando los interceptos de los indicadores son libres.
+[AP@0];
+[AN@0];
+[ST@0];
+
+! Varianzas/residuos libres por modo.
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+
+! Covarianza residual/latente AP-AN libre por modo.
+AP WITH AN (span);
+
+! Caminos estructurales libres por modo en ambos modelos.
+! De esta forma, configural y metrico difieren SOLO en las
+! restricciones sobre las cargas primarias.
+AP ON
+present (sa1)
+block   (sa2)
+pblock  (sa3)
+online  (sa4);
+
+AN ON
+present (sd1)
+block   (sd2)
+pblock  (sd3)
+online  (sd4);
+
+ST ON
+AP      (sb1)
+AN      (sb2)
+present (sc1)
+block   (sc2)
+pblock  (sc3)
+online  (sc4);
+
+OUTPUT:
+SAMPSTAT;
+STANDARDIZED;
+CINTERVAL;
+RESIDUAL;
+TECH1;
+TECH4;
+MODINDICES(10);

@@ -1,0 +1,222 @@
+TITLE:
+S11 - SURVEY-METHOD STRUCTURAL ROBUSTNESS - SCENARIO B
+URBAN GREENERY
+Reconstructed from the final reported specification.
+Primary loadings constrained equal; retained cross-loadings free by method.
+Structural paths free by method. TYPE=COMPLEX, MLR, CLUSTER=ID.
+
+DATA:
+FILE = ../../data/Scenario_B_long_final.txt;
+
+VARIABLE:
+NAMES =
+ID
+MODO_rango
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+V1 V2 V3 V4 V5
+V6 V7 V8 V9 V10
+V11 V12 V13 V14 V15
+V16 V17 V18 V19;
+
+USEVARIABLES =
+ID
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+pblock;
+
+CLUSTER = ID;
+GROUPING = online (1 = online 2 = f2f);
+MISSING = ALL(-999);
+
+DEFINE:
+pblock = present*block;
+
+ANALYSIS:
+TYPE = COMPLEX;
+ESTIMATOR = MLR;
+STARTS = 100;
+ITERATIONS = 10000;
+
+MODEL:
+! Flexible metric invariance: equal primary non-reference loadings.
+AP BY
+AP1@1
+AP2 (lpa2)
+AP3 (lpa3)
+AP4 (lpa4)
+AP5 (lpa5);
+
+AN BY
+AN1@1
+AN2 (lna2)
+AN3 (lna3)
+AN4 (lna4)
+AN5 (lna5);
+
+ST BY
+S1@1
+S2 (lst2)
+S3 (lst3)
+S4 (lst4)
+S5 (lst5);
+
+! Declare cross-loadings and structural paths in the general model.
+AN BY AP2;
+AP BY AN2;
+
+AP ON present block pblock;
+AN ON present block pblock;
+ST ON AP AN present block pblock;
+
+MODEL online:
+AN BY AP2 (oxpa);
+AP BY AN2 (oxan);
+
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+[AP@0];
+[AN@0];
+[ST@0];
+
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+AP WITH AN (opan);
+
+AP ON
+present (oa1)
+block   (oa2)
+pblock  (oa3);
+
+AN ON
+present (od1)
+block   (od2)
+pblock  (od3);
+
+ST ON
+AP      (ob1)
+AN      (ob2)
+present (oc1)
+block   (oc2)
+pblock  (oc3);
+
+MODEL f2f:
+AN BY AP2 (fxpa);
+AP BY AN2 (fxan);
+
+[AP1-AP5*];
+[AN1-AN5*];
+[S1-S5*];
+[AP@0];
+[AN@0];
+[ST@0];
+
+AP AN ST;
+AP1-AP5*;
+AN1-AN5*;
+S1-S5*;
+AP WITH AN (fpan);
+
+AP ON
+present (fa1)
+block   (fa2)
+pblock  (fa3);
+
+AN ON
+present (fd1)
+block   (fd2)
+pblock  (fd3);
+
+ST ON
+AP      (fb1)
+AN      (fb2)
+present (fc1)
+block   (fc2)
+pblock  (fc3);
+
+
+MODEL CONSTRAINT:
+NEW(
+opdr opip opin opii opto
+osdr osip osin osii osto
+fpdr fpip fpin fpii fpto
+fsdr fsip fsin fsii fsto
+dpdr dpip dpin dpii dpto
+dsdr dsip dsin dsii dsto
+);
+
+! ONLINE: street-tree presence (block=0)
+opdr = oc1;
+opip = oa1*ob1;
+opin = od1*ob2;
+opii = opip+opin;
+opto = opdr+opii;
+
+! ONLINE: tree size (block=1)
+osdr = oc1+oc3;
+osip = (oa1+oa3)*ob1;
+osin = (od1+od3)*ob2;
+osii = osip+osin;
+osto = osdr+osii;
+
+! FACE-TO-FACE: street-tree presence
+fpdr = fc1;
+fpip = fa1*fb1;
+fpin = fd1*fb2;
+fpii = fpip+fpin;
+fpto = fpdr+fpii;
+
+! FACE-TO-FACE: tree size
+fsdr = fc1+fc3;
+fsip = (fa1+fa3)*fb1;
+fsin = (fd1+fd3)*fb2;
+fsii = fsip+fsin;
+fsto = fsdr+fsii;
+
+! F2F minus online
+dpdr = fpdr-opdr;
+dpip = fpip-opip;
+dpin = fpin-opin;
+dpii = fpii-opii;
+dpto = fpto-opto;
+
+dsdr = fsdr-osdr;
+dsip = fsip-osip;
+dsin = fsin-osin;
+dsii = fsii-osii;
+dsto = fsto-osto;
+
+
+MODEL TEST:
+! Global structural-equality test: 11 df.
+0 = fa1-oa1;
+0 = fa2-oa2;
+0 = fa3-oa3;
+0 = fd1-od1;
+0 = fd2-od2;
+0 = fd3-od3;
+0 = fb1-ob1;
+0 = fb2-ob2;
+0 = fc1-oc1;
+0 = fc2-oc2;
+0 = fc3-oc3;
+
+OUTPUT:
+SAMPSTAT;
+STANDARDIZED;
+CINTERVAL;
+RESIDUAL;
+TECH1;
+TECH3;
+TECH4;
+MODINDICES(10);

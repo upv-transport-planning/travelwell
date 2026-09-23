@@ -1,0 +1,142 @@
+TITLE:
+SEM GLOBAL B - TYPE COMPLEX;
+
+DATA:
+FILE = ../../data/Scenario_B_long_final.txt;
+
+VARIABLE:
+
+NAMES =
+ID
+MODO_rango
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+V1 V2 V3 V4 V5
+V6 V7 V8 V9 V10
+V11 V12 V13 V14 V15
+V16 V17 V18 V19;
+
+USEVARIABLES =
+ID
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+
+! Variable creada en DEFINE.
+pblock;
+
+CLUSTER = ID;
+
+MISSING = ALL(-999);
+
+DEFINE:
+
+! online = 1: encuesta online.
+! online = 0: encuesta presencial.
+pblock = present*block;
+
+ANALYSIS:
+
+TYPE = COMPLEX;
+ESTIMATOR = MLR;
+ITERATIONS = 10000;
+
+MODEL:
+
+AP BY
+AP1
+AP2
+AP3
+AP4
+AP5;
+
+AN BY
+AN1
+AN2
+AN3
+AN4
+AN5;
+
+! Cargas cruzadas seleccionadas a partir del ESEM previo.
+AN BY AP2;
+AP BY AN2;
+
+ST BY
+S1
+S2
+S3
+S4
+S5;
+
+AP WITH AN;
+
+AP ON
+present (a1)
+block   (a2)
+pblock  (a3)
+online  (a4);
+
+AN ON
+present (d1)
+block   (d2)
+pblock  (d3)
+online  (d4);
+
+ST ON
+AP      (b1)
+AN      (b2)
+present (c1)
+block   (c2)
+pblock  (c3)
+online  (c4);
+
+MODEL CONSTRAINT:
+
+NEW(
+pap pan pdir piap pian piind ptot
+sap san sdir siap sian siind stot
+dap dan ddir diap dian diind dtot
+);
+
+! Presencia de arboles: block = 0.
+pap   = a1;
+pan   = d1;
+pdir  = c1;
+piap  = a1*b1;
+pian  = d1*b2;
+piind = piap+pian;
+ptot  = pdir+piind;
+
+! Tamano de los arboles: block = 1.
+sap   = a1+a3;
+san   = d1+d3;
+sdir  = c1+c3;
+siap  = (a1+a3)*b1;
+sian  = (d1+d3)*b2;
+siind = siap+sian;
+stot  = sdir+siind;
+
+! Diferencias: tamano menos presencia.
+dap   = sap-pap;
+dan   = san-pan;
+ddir  = sdir-pdir;
+diap  = siap-piap;
+dian  = sian-pian;
+diind = siind-piind;
+dtot  = stot-ptot;
+
+OUTPUT:
+STANDARDIZED;
+CINTERVAL;
+SAMPSTAT;
+RESIDUAL;
+TECH1;
+TECH3;
+TECH4;

@@ -1,0 +1,142 @@
+TITLE:
+SEM GLOBAL A - TYPE COMPLEX;
+
+DATA:
+FILE = ../../data/Scenario_A_long_final.txt;
+
+VARIABLE:
+
+NAMES =
+ID
+MODO_rango
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+V1 V2 V3 V4 V5
+V6 V7 V8 V9 V10
+V11 V12 V13 V14 V15
+V16 V17 V18 V19;
+
+USEVARIABLES =
+ID
+online
+block
+present
+AP1 AP2 AP3 AP4 AP5
+AN1 AN2 AN3 AN4 AN5
+S1 S2 S3 S4 S5
+
+! Variable creada en DEFINE.
+pblock;
+
+CLUSTER = ID;
+
+MISSING = ALL(-999);
+
+DEFINE:
+
+! online = 1: encuesta online.
+! online = 0: encuesta presencial.
+pblock = present*block;
+
+ANALYSIS:
+
+TYPE = COMPLEX;
+ESTIMATOR = MLR;
+ITERATIONS = 10000;
+
+MODEL:
+
+AP BY
+AP1
+AP2
+AP3
+AP4
+AP5;
+
+AN BY
+AN1
+AN2
+AN3
+AN4
+AN5;
+
+! Cargas cruzadas seleccionadas a partir del ESEM previo.
+AN BY AP2;
+AP BY AN2;
+
+ST BY
+S1
+S2
+S3
+S4
+S5;
+
+AP WITH AN;
+
+AP ON
+present (a1)
+block   (a2)
+pblock  (a3)
+online  (a4);
+
+AN ON
+present (d1)
+block   (d2)
+pblock  (d3)
+online  (d4);
+
+ST ON
+AP      (b1)
+AN      (b2)
+present (c1)
+block   (c2)
+pblock  (c3)
+online  (c4);
+
+MODEL CONSTRAINT:
+
+NEW(
+cap can cdir ciap cian ciind ctot
+tap tan tdir tiap tian tiind ttot
+dap dan ddir diap dian diind dtot
+);
+
+! Actividad comercial: block = 0.
+cap   = a1;
+can   = d1;
+cdir  = c1;
+ciap  = a1*b1;
+cian  = d1*b2;
+ciind = ciap+cian;
+ctot  = cdir+ciind;
+
+! Terrazas: block = 1.
+tap   = a1+a3;
+tan   = d1+d3;
+tdir  = c1+c3;
+tiap  = (a1+a3)*b1;
+tian  = (d1+d3)*b2;
+tiind = tiap+tian;
+ttot  = tdir+tiind;
+
+! Diferencias: terrazas menos actividad comercial.
+dap   = tap-cap;
+dan   = tan-can;
+ddir  = tdir-cdir;
+diap  = tiap-ciap;
+dian  = tian-cian;
+diind = tiind-ciind;
+dtot  = ttot-ctot;
+
+OUTPUT:
+STANDARDIZED;
+CINTERVAL;
+SAMPSTAT;
+RESIDUAL;
+TECH1;
+TECH3;
+TECH4;
