@@ -1,0 +1,15 @@
+Nature Cities Mplus code-only package — v3 update
+
+Added after external methodological review:
+1. Folder 13: repeated-evaluation measurement-invariance analyses across the four
+   within-participant evaluations, including configural, metric, full scalar,
+   contrast-specific diagnostic scalar and retained targeted partial-scalar models.
+2. Folder 14: multilevel sensitivity analyses, including ICC diagnostics, initial
+   diagnostic two-level models, and final within-focused two-level SEM refits with
+   saturated observed-variable between levels.
+3. Updated README, code-availability draft and data-required note.
+4. Updated MANIFEST.csv and SHA256SUMS.txt.
+5. Participant-level short- and long-format data remain excluded from this
+   code-only archive.
+
+No pre-existing Mplus syntax/output from folders 01-12 was altered.

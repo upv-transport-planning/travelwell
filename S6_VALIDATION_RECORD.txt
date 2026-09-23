@@ -1,0 +1,39 @@
+S6 SURVEY-METHOD MEASUREMENT INVARIANCE — FINAL VALIDATION RECORD
+
+The exact historical S6 .inp files were not recovered. The final syntax in this package
+was reconstructed from the recovered Mplus workflow and documented measurement model,
+then rerun with the final long-format samples in Mplus 9.1. The rerun reproduces every
+fit statistic currently reported in Supplementary Table S6.
+
+Specification recovered/validated:
+- two survey-method groups: online and face-to-face;
+- CLUSTER = ID and TYPE = COMPLEX;
+- 15 PA/NA/travel-satisfaction indicators centred within participant using
+  CENTER ... (GROUPMEAN);
+- PA, NA and travel satisfaction modelled as latent factors;
+- retained cross-loadings AN BY AP2 and AP BY AN2;
+- indicator intercepts and latent means fixed at zero after within-participant centring;
+- flexible metric model constrains the 12 primary non-reference loadings equal across
+  survey methods, while the two retained cross-loadings remain free.
+
+VALIDATED RESULTS
+
+Scenario A — Social street activation
+Configural: chi-square = 431.195; df = 200; CFI = .966; TLI = .965;
+            RMSEA = .034 (90% CI .030-.039); SRMR = .032.
+Flexible metric: chi-square = 463.104; df = 212; CFI = .964; TLI = .964;
+                 RMSEA = .035 (90% CI .030-.039); SRMR = .036.
+Changes: Delta CFI = -.002; Delta RMSEA = +.001; Delta SRMR = +.004.
+MLR robust scaled chi-square difference: chi-square(12) = 31.041, P = .00194
+(reported as 31.040, P = .002).
+
+Scenario B — Urban greenery
+Configural: chi-square = 628.893; df = 200; CFI = .956; TLI = .954;
+            RMSEA = .041 (90% CI .038-.045); SRMR = .039.
+Flexible metric: chi-square = 648.600; df = 212; CFI = .956; TLI = .956;
+                 RMSEA = .041 (90% CI .037-.044); SRMR = .040.
+Changes: Delta CFI = .000; Delta RMSEA = .000; Delta SRMR = +.001.
+MLR robust scaled chi-square difference: chi-square(12) = 22.458, P = .03270
+(reported as 22.460, P = .033).
+
+Conclusion: the reconstructed S6 syntax is fully validated against the reported S6 values.

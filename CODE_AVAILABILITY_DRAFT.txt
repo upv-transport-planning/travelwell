@@ -1,0 +1,14 @@
+Code availability — working draft
+
+Mplus input files used for the confirmatory factor, exploratory structural equation,
+measurement-invariance, repeated-evaluation measurement-invariance, primary
+structural equation, heterogeneity and multilevel sensitivity analyses will be
+deposited in a public repository upon publication. The archive includes a data
+dictionary, a code-to-results map, model outputs where available, and provenance
+information identifying the analyses underlying the Supplementary Tables and main
+figures. Mplus version 9.1 was used for factor, measurement-invariance, structural
+and multilevel models.
+
+NOTE FOR AUTHORS: finalize the repository/DOI wording once the repository has been
+created. The separate decision on whether participant-level analysis data can be
+deposited publicly should be reflected in the Data Availability statement.
