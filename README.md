@@ -1,4 +1,4 @@
-# Nature Cities — Mplus reproducibility package
+# Experiencing urban streetscapes: Affective pathways from specific street attributes to travel satisfaction. Code and data. Mplus
 
 ## Purpose
 This package consolidates the Mplus syntax and available Mplus outputs underlying the reported psychometric, measurement-invariance, structural and multilevel sensitivity analyses in the manuscript on street-design attributes, affect and scenario-specific travel satisfaction. The INTERNAL version additionally contains the final anonymous analysis files required to rerun the models.
