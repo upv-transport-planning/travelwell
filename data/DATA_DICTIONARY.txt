@@ -1,0 +1,37 @@
+FINAL LONG-FORM DATA COLUMN ORDER (39 columns)
+ID MODO_rango online block present AP1 AP2 AP3 AP4 AP5 AN1 AN2 AN3 AN4 AN5 S1 S2 S3 S4 S5 V1 V2 V3 V4 V5 V6 V7 V8 V9 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19
+
+Core coding used in final analyses
+MODO_rango: 1 walking, 2 cycling, 3 e-scooter
+online: 1 online, 2 face-to-face
+block Scenario A: 0 commercial frontage, 1 outdoor terraces
+block Scenario B: 0 street-tree presence, 1 tree size
+present: 0/1 condition indicator
+V1: exact age in years
+V3: 1 woman, 2 man
+V14: 1 = 1-2 days/week; 2 = 3-4 days/week; 3 = every day
+V15: 1 = <15 min; 2 = 15-30 min; 3 = 30-60 min; 4 = >60 min
+Missing code: -999
+
+
+FORMATO CORTO REVISADO
+
+Columnas comunes iniciales:
+ID MODO_rango online V1 V2 V3 V4 V5 V6 V7 V8 V9 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19
+
+COMERCIOS / TERRAZAS
+cc = block 0, present 1 = con comercio
+sc = block 0, present 0 = sin comercio
+ct = block 1, present 1 = con terrazas
+st = block 1, present 0 = sin terrazas
+Orden completo de variables:
+ID MODO_rango online V1 V2 V3 V4 V5 V6 V7 V8 V9 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19 AP1cc AP2cc AP3cc AP4cc AP5cc AN1cc AN2cc AN3cc AN4cc AN5cc S1cc S2cc S3cc S4cc S5cc AP1sc AP2sc AP3sc AP4sc AP5sc AN1sc AN2sc AN3sc AN4sc AN5sc S1sc S2sc S3sc S4sc S5sc AP1ct AP2ct AP3ct AP4ct AP5ct AN1ct AN2ct AN3ct AN4ct AN5ct S1ct S2ct S3ct S4ct S5ct AP1st AP2st AP3st AP4st AP5st AN1st AN2st AN3st AN4st AN5st S1st S2st S3st S4st S5st
+
+ÁRBOLES
+ca = block 0, present 1 = con árboles
+sa = block 0, present 0 = sin árboles
+ap = block 1, present 0 = árboles pequeños
+ag = block 1, present 1 = árboles grandes
+Orden completo de variables:
+ID MODO_rango online V1 V2 V3 V4 V5 V6 V7 V8 V9 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19 AP1ca AP2ca AP3ca AP4ca AP5ca AN1ca AN2ca AN3ca AN4ca AN5ca S1ca S2ca S3ca S4ca S5ca AP1sa AP2sa AP3sa AP4sa AP5sa AN1sa AN2sa AN3sa AN4sa AN5sa S1sa S2sa S3sa S4sa S5sa AP1ap AP2ap AP3ap AP4ap AP5ap AN1ap AN2ap AN3ap AN4ap AN5ap S1ap S2ap S3ap S4ap S5ap AP1ag AP2ag AP3ag AP4ag AP5ag AN1ag AN2ag AN3ag AN4ag AN5ag S1ag S2ag S3ag S4ag S5ag
+
